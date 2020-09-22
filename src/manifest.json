@@ -1,0 +1,43 @@
+{
+  "package": "com.qui.sample",
+  "name": "QUI组件库",
+  "versionName": "1.0.0",
+  "versionCode": "1",
+  "minPlatformVersion": "1020",
+  "icon": "/common/logo.png",
+  "features": [
+    { "name": "system.prompt" },
+    { "name": "system.router" },
+    { "name": "system.shortcut" }
+  ],
+  "config": {
+    "logLevel": "debug",
+    "designWidth": 720
+  },
+  "router": {
+    "entry": "pages/home",
+    "pages": {
+      "pages/home": {
+        "component": "index"
+      },
+      "pages/button": {
+        "component": "index"
+      }
+    }
+  },
+  "display": {
+    "titleBarBackgroundColor": "#f7f7f7",
+    "titleBarTextColor": "#414141",
+    "menu": true,
+    "pages": {
+      "pages/home": {
+        "titleBarText": "QUI组件库",
+        "menu": false
+      },
+      "pages/button": {
+        "titleBarText": "按钮 button",
+        "menu": false
+      }
+    }
+  }
+}

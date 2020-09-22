@@ -1,0 +1,122 @@
+<template>
+  <div class="qui-wrap">
+    <div class="logo">
+      <image src="../../common/logo.png"></image>
+    </div>
+    <div class="type">
+      <text>基础组件</text>
+    </div>
+    <div class="component">
+      <div class="item"><a href="/pages/button">按钮 button</a></div>
+      <div class="item"><a href="/pages/container">容器 container</a></div>
+      <div class="item"><a href="/pages/card">卡片 card</a></div>
+      <div class="item"><a href="/pages/title-bar">标题栏 titleBar</a></div>
+      <div class="item"><a href="/pages/search-bar">搜索栏 searchBar</a></div>
+      <div class="item"><a href="/pages/title">模块标题 title</a></div>
+      <div class="item"><a href="/pages/divider">分隔符 divider</a></div>
+      <div class="item"><a href="/pages/footer">页脚 footer</a></div>
+    </div>
+    <div class="type">
+      <text>表单组件</text>
+    </div>
+    <div class="component">
+      <div class="item"><a href="/pages/radio">单选按钮 radio</a></div>
+      <div class="item"><a href="/pages/checkbox">多选按钮 checkbox</a></div>
+      <div class="item"><a href="/pages/input">输入框 input</a></div>
+      <div class="item"><a href="/pages/textarea">多行输入 textarea</a></div>
+      <div class="item"><a href="/pages/filter">筛选栏 filter</a></div>
+      <div class="item"><a href="/pages/vcode">验证码 vcode</a></div>
+      <div class="item"><a href="/pages/switch">单选开关 switch</a></div>
+      <div class="item"><a href="/pages/slider">滑动条 slider</a></div>
+      <div class="item"><a href="/pages/calendar">日历 calendar</a></div>
+      <div class="item"><a href="/pages/terms">协议 terms</a></div>
+    </div>
+    <div class="type">
+      <text>操作反馈</text>
+    </div>
+    <div class="component">
+      <div class="item"><a href="/pages/notice">通告栏 notice</a></div>
+      <div class="item"><a href="/pages/popover">气泡菜单 popover</a></div>
+      <div class="item"><a href="/pages/page-error">异常页 pageError</a></div>
+      <div class="item"><a href="/pages/page-result">结果页 pageResult</a></div>
+      <div class="item"><a href="/pages/progress">进度条 progress</a></div>
+    </div>
+    <div class="type">
+      <text>数据展示</text>
+    </div>
+    <div class="component">
+      <div class="item"><a href="/pages/list">列表 list</a></div>
+      <div class="item"><a href="/pages/steps">步骤条 steps</a></div>
+      <div class="item"><a href="/pages/collapse">折叠面板 collapse</a></div>
+      <div class="item"><a href="/pages/gallery">画廊 gallery</a></div>
+    </div>
+    <div class="type">
+      <text>高级组件</text>
+    </div>
+    <div class="component">
+      <div class="item"><a href="/pages/tabbar">导航栏 tabbar</a></div>
+      <div class="item"><a href="/pages/desktop">添桌浮层 desktop</a></div>
+      <div class="item"><a href="/pages/tabs">横向选项卡 tabs</a></div>
+      <div class="item"><a href="/pages/vtabs">纵向选项卡 vtabs</a></div>
+      <div class="item"><a href="/pages/alphabet">字母检索表 alphabet</a></div>
+      <div class="item">
+        <a href="/pages/picker-view">滚动选择器 pickerView</a>
+      </div>
+    </div>
+  </div>
+</template>
+<style lang="less">
+.qui-wrap {
+  flex-direction: column;
+  background-color: #f7f7f7;
+
+  .logo {
+    justify-content: center;
+    padding: 50px 0;
+
+    image {
+      height: 100px;
+    }
+  }
+
+  .type {
+    padding: 20px;
+  }
+
+  .component {
+    background-color: #ffffff;
+    border-style: solid;
+    border-top-width: 1px;
+    border-top-color: #dddee1;
+    border-bottom-width: 1px;
+    flex-direction: column;
+
+    .item {
+      height: 100px;
+      justify-content: space-between;
+      margin-left: 20px;
+      border-bottom-width: 1px;
+      border-bottom-color: #dddee1;
+      border-style: solid;
+
+      a {
+        width: 100%;
+      }
+
+      a :active {
+        width: 100%;
+      }
+    }
+  }
+}
+</style>
+<script>
+export default {
+  data() {
+    return {};
+  },
+  onInit() {
+    console.log("home page init!!");
+  },
+};
+</script>

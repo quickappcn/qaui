@@ -1,0 +1,42 @@
+{
+  "name": "qui",
+  "version": "1.0.0",
+  "description": "quickapp official components library",
+  "subversion": {
+    "toolkit": "0.6.1"
+  },
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "build": "hap build",
+    "release": "hap release",
+    "server": "hap server --watch",
+    "dev": "vuepress dev docs",
+    "build:docs": "vuepress build docs"
+  },
+  "license": "MIT",
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "**/*.{ux,less,js,md}": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.12.1",
+    "eslint-plugin-hybrid": "0.0.5",
+    "hap-toolkit": "^0.6.1",
+    "husky": "^4.3.0",
+    "less": "^3.12.2",
+    "less-loader": "^7.0.1",
+    "lint-staged": "^10.4.0",
+    "prettier": "^2.1.2",
+    "prettier-plugin-quickapp": "^0.1.0",
+    "vuepress": "^1.5.4"
+  }
+}

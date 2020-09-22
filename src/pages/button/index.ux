@@ -1,0 +1,11 @@
+<template>
+  <div class="qui-wrap">
+    <text>按钮</text>
+  </div>
+</template>
+
+<script>
+export default {};
+</script>
+
+<style lang="less"></style>
