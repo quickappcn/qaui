@@ -1,6 +1,6 @@
 module.exports = {
-  title: "QUI",
-  description: "QUI是联盟官方组件库",
+  title: "QaUI",
+  description: "QaUI是联盟官方组件库",
   plugins: [
     [
       "@vuepress/google-analytics",
@@ -12,10 +12,7 @@ module.exports = {
   ],
   head: [
     ["link", { rel: "icon", href: "favicon.ico" }],
-    [
-      "meta",
-      { name: "keywords", content: "快应用 组件库 官方 UI组件库 快应用开发" },
-    ],
+    ["meta", { name: "keywords", content: "快应用 组件库 官方 UI组件库 快应用开发" }],
   ],
   markdown: {
     lineNumbers: true,
