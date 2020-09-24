@@ -1,5 +1,5 @@
 <template>
-  <div class="qui-wrap">
+  <div class="qaui-wrap">
     <stack>
       <div
         class="btn btn-{{size}} btn-{{type}} {{ loading ? 'btn-loading' : '' }}"
@@ -52,7 +52,7 @@ export default {
 <style lang="less">
 @import "../common";
 @import "./button";
-.qui-wrap {
+.qaui-wrap {
   align-self: center;
 }
 .btn {

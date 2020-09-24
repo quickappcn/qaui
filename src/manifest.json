@@ -22,6 +22,9 @@
       },
       "pages/button": {
         "component": "index"
+      },
+      "pages/container": {
+        "component": "index"
       }
     }
   },
@@ -36,6 +39,10 @@
       },
       "pages/button": {
         "titleBarText": "按钮 button",
+        "menu": false
+      },
+      "pages/container": {
+        "titleBarText": "容器 container",
         "menu": false
       }
     }

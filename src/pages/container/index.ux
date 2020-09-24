@@ -1,24 +1,4 @@
-## 容器 container
-
-### 描述
-
-用来放置各类组件的基础布局组件。
-
-### 使用效果
-
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
-
-### 使用方法
-
-在`.ux`文件中引入组件
-
-```html
-<import name="q-container" src="qaui/src/components/container/index"></import>
-```
-
-### 示例
-
-```html
+<import name="q-container" src="../../components/container/index"></import>
 <template>
   <div class="qaui-wrap">
     <q-container>
@@ -47,9 +27,14 @@
     </q-container>
   </div>
 </template>
-```
 
-```less
+<script>
+export default {
+  props: {},
+};
+</script>
+
+<style lang="less">
 .qaui-wrap {
   background-color: #e0e0e0;
   padding: 20px 0;
@@ -99,13 +84,4 @@
     indicator-selected-color: #666666;
   }
 }
-```
-
-### API
-
-#### 组件属性
-
-| 属性          | 类型   | 默认值    | 说明                           |
-| ------------- | ------ | --------- | ------------------------------ |
-| bgColor       | String | '#FFFFFF' | 背景颜色                       |
-| flexDirection | String | 'row'     | 内容排列方式，可选 row，column |
+</style>

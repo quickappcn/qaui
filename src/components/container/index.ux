@@ -1,0 +1,30 @@
+<template>
+  <div class="qaui-wrap" style="background-color: {{bgColor}};flex-direction: {{flexDirection}};">
+    <slot></slot>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    bgColor: {
+      default: "#FFFFFF",
+    },
+    flexDirection: {
+      default: "row",
+    },
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+.qaui-wrap {
+  align-self: center;
+  width: 320px * @ratio;
+  padding: 12px * @ratio;
+  border-radius: 6px * @ratio;
+  justify-content: center;
+  margin: 10px 0;
+}
+</style>
