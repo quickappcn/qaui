@@ -25,6 +25,6 @@ export default {
   padding: 12px * @ratio;
   border-radius: 6px * @ratio;
   justify-content: center;
-  margin: 10px 0;
+  margin: 10px * @ratio 0;
 }
 </style>
