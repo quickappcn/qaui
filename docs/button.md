@@ -65,7 +65,7 @@
 | 属性     | 类型    | 默认值    | 说明                                     |
 | -------- | ------- | --------- | ---------------------------------------- |
 | type     | String  | 'primary' | 按钮类型，可选值有 primary, ghost, error |
-|          | String  | 'normal'  | 按钮大小，可选值有 normal, small         |
+| size     | String  | 'normal'  | 按钮大小，可选值有 normal, small         |
 | loading  | Boolean | false     | 按钮是否处于加载中                       |
 | disabled | Boolean | false     | 按钮是否被禁用                           |
 | bgColor  | String  | ''        | 按钮背景颜色                             |
