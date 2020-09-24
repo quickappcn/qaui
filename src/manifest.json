@@ -12,10 +12,10 @@
   ],
   "config": {
     "logLevel": "debug",
-    "designWidth": 720
+    "designWidth": 360
   },
   "router": {
-    "entry": "pages/home",
+    "entry": "pages/button",
     "pages": {
       "pages/home": {
         "component": "index"

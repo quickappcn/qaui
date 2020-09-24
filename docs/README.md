@@ -9,8 +9,8 @@
 使用下面两种方式均可安装组件库到项目依赖中。
 
 ```sh
-npm install qui --save  # 使用npm
-yarn add qui # 使用yarn
+npm install qaui --save  # 使用npm
+yarn add qaui # 使用yarn
 ```
 
 组件库使用了 less 来开发，所以你还需要安装对应依赖。

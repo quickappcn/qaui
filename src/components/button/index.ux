@@ -1,13 +1,122 @@
 <template>
   <div class="qui-wrap">
-    <text>按钮</text>
+    <stack>
+      <div
+        class="btn btn-{{size}} btn-{{type}} {{ loading ? 'btn-loading' : '' }}"
+        style="{{!!bgColor ? `background-color: ${bgColor}` : ''}};{{!!color ? `border-color: ${color}` : ''}}"
+      >
+        <progress
+          style="{{!!color ? `color: ${color}` : ''}}"
+          class="btn-loading"
+          type="circular"
+          if="loading"
+        ></progress>
+        <text
+          class="btn-{{size}}-content btn-{{type}}-content"
+          style="{{!!color ? `color: ${color}` : ''}}"
+        >
+          <slot></slot>
+        </text>
+      </div>
+      <div
+        if="{{!disabled}}"
+        onclick="clickHandler"
+        class="btn btn-touched btn-{{size}}"
+      ></div>
+      <div
+        if="{{disabled || loading}}"
+        class="btn btn-{{size}} {{ disabled ? 'btn-disabled' : ''}}"
+      ></div>
+    </stack>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  props: {
+    type: {
+      default: "primary", // primary ghost error
+    },
+    size: {
+      default: "normal", // normal small
+    },
+    disabled: {
+      default: false,
+    },
+    loading: {
+      default: false,
+    },
+    bgColor: {
+      default: "",
+    },
+    color: {
+      default: "",
+    },
+  },
+  clickHandler(e) {
+    this.$emit("tap", e);
+  },
+};
 </script>
 
 <style lang="less">
-@import url("../common");
+@import "../common";
+@import "./button";
+.qui-wrap {
+  align-self: center;
+}
+.btn {
+  padding: 0 12px * @ratio;
+  justify-content: center;
+  &-normal {
+    width: 320px * @ratio;
+    height: 40px * @ratio;
+    border-radius: 40px * @ratio;
+    &-content {
+      color: #ffffff;
+      font-size: 14px * @ratio;
+      lines: 1;
+      text-overflow: ellipsis;
+      font-weight: @btn-font-weight;
+    }
+  }
+  &-small {
+    width: 120px * @ratio;
+    height: 24px * @ratio;
+    border-radius: 24px * @ratio;
+    &-content {
+      color: #ffffff;
+      font-size: 12px * @ratio;
+      lines: 1;
+      text-overflow: ellipsis;
+      font-weight: @btn-font-weight;
+    }
+  }
+  &-primary {
+    background-color: @primary-color;
+  }
+  &-error {
+    background-color: @error-color;
+  }
+  &-ghost {
+    background-color: #ffffff;
+    border: 1px * @ratio solid @primary-color;
+    &-content {
+      color: @primary-color;
+      font-weight: @btn-font-weight;
+    }
+  }
+  &-loading {
+    flex-shrink: 1;
+    color: #ffffff;
+    padding-right: 7.5px * @ratio;
+  }
+  &-disabled {
+    background-color: rgba(255, 255, 255, 0.8);
+  }
+  &-touched:active {
+    background-color: @primary-color;
+    opacity: 0.1;
+  }
+}
 </style>

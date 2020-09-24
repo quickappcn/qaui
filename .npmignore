@@ -3,3 +3,5 @@ package-lock.json
 .gitignore
 dist/
 build/
+docs/
+sign/
