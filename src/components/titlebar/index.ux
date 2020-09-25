@@ -1,0 +1,101 @@
+<template>
+  <div class="qaui-wrap">
+    <div if="!search">
+      <image if="back" onclick="goBack" src="../../common/images/back.svg" class="icon icon-back"></image>
+      <image if="home" onclick="goHome" src="../../common/images/home.svg" class="icon icon-home"></image>
+      <text class="title">{{ title }}</text>
+    </div>
+    <div if="search" class="search" onclick="goSearch">
+      <image class="icon icon-search" src="../../common/images/search.svg"></image>
+      <text class="placeholder">{{ placeholder }}</text>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from "@system.router";
+
+export default {
+  props: {
+    title: {
+      default: "",
+    },
+    home: {
+      default: "",
+    },
+    back: {
+      default: false,
+    },
+    search: {
+      default: "",
+    },
+    placeholder: {
+      default: "搜索",
+    },
+  },
+  goSearch() {
+    router.push({
+      uri: this.search,
+    });
+  },
+  goBack() {
+    router.back();
+  },
+  goHome() {
+    router.push({
+      uri: this.home,
+      params: {
+        ___PARAM_LAUNCH_FLAG___: "clearTask",
+      },
+    });
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+.qaui-wrap {
+  background-color: #ffffff;
+  height: 48px * @ratio;
+  padding: 0 20px * @ratio;
+  border-bottom-style: solid;
+  border-bottom-width: 1px * @ratio;
+  border-bottom-color: rgba(0, 0, 0, 0.08);
+  .icon {
+    height: 24px * @ratio;
+    width: 24px * @ratio;
+    align-self: center;
+    padding: 2px;
+  }
+  .icon-home {
+    border: 1px * @ratio solid rgba(0, 0, 0, 0.08);
+    border-radius: 24px * @ratio;
+    padding: 4px * @ratio;
+    margin-right: 14px * @ratio;
+  }
+  .icon-back {
+    margin-right: 10px * @ratio;
+  }
+  .title {
+    font-size: 16px * @ratio;
+    font-weight: bold;
+    color: #000000;
+    lines: 1;
+    text-overflow: ellipsis;
+  }
+  .search {
+    height: 26px * @ratio;
+    width: 217px * @ratio;
+    background-color: #f2f2f2;
+    border-radius: 26px * @ratio;
+    align-self: center;
+    padding: 0 9px * @ratio;
+    .placeholder {
+      font-size: 14px * @ratio;
+      color: #cccccc;
+      lines: 1;
+      text-overflow: ellipsis;
+    }
+  }
+}
+</style>

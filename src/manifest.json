@@ -25,6 +25,9 @@
       },
       "pages/container": {
         "component": "index"
+      },
+      "pages/titlebar": {
+        "component": "index"
       }
     }
   },
@@ -43,6 +46,10 @@
       },
       "pages/container": {
         "titleBarText": "容器 container",
+        "menu": false
+      },
+      "pages/titlebar": {
+        "titleBarText": "标题栏 titlebar",
         "menu": false
       }
     }

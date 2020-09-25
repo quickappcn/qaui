@@ -9,9 +9,8 @@
     <div class="component">
       <div class="item"><a href="/pages/button">按钮 button</a></div>
       <div class="item"><a href="/pages/container">容器 container</a></div>
-      <div class="item"><a href="/pages/card">卡片 card</a></div>
-      <div class="item"><a href="/pages/title-bar">标题栏 titleBar</a></div>
-      <div class="item"><a href="/pages/search-bar">搜索栏 searchBar</a></div>
+      <div class="item"><a href="/pages/titlebar">标题栏 titleBar</a></div>
+      <div class="item"><a href="/pages/searchbar">搜索栏 searchBar</a></div>
       <div class="item"><a href="/pages/title">模块标题 title</a></div>
       <div class="item"><a href="/pages/divider">分隔符 divider</a></div>
       <div class="item"><a href="/pages/footer">页脚 footer</a></div>
