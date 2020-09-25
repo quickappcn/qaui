@@ -29,7 +29,7 @@ module.exports = {
       {
         title: "基础组件",
         collapsable: false,
-        children: ["/button", "/container", "/card", "/titlebar", "/searchbar", "/title", "/divider", "/footer"],
+        children: ["/button", "/container", "/titlebar", "/searchbar", "/title", "/divider", "/footer"],
       },
       {
         title: "表单组件",
