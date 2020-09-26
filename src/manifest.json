@@ -15,7 +15,7 @@
     "designWidth": 360
   },
   "router": {
-    "entry": "pages/home",
+    "entry": "pages/searchbar",
     "pages": {
       "pages/home": {
         "component": "index"
@@ -27,6 +27,9 @@
         "component": "index"
       },
       "pages/titlebar": {
+        "component": "index"
+      },
+      "pages/searchbar": {
         "component": "index"
       }
     }
@@ -50,6 +53,10 @@
       },
       "pages/titlebar": {
         "titleBarText": "标题栏 titlebar",
+        "menu": false
+      },
+      "pages/searchbar": {
+        "titleBarText": "搜索栏 searchbar",
         "menu": false
       }
     }

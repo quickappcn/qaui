@@ -65,7 +65,7 @@ export default {
     height: 24px * @ratio;
     width: 24px * @ratio;
     align-self: center;
-    padding: 2px;
+    padding: 2px * @ratio;
   }
   .icon-home {
     border: 1px * @ratio solid rgba(0, 0, 0, 0.08);
