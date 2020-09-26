@@ -1,5 +1,8 @@
 <template>
-  <div class="qaui-wrap" style="background-color: {{bgColor}};flex-direction: {{flexDirection}};">
+  <div
+    class="qaui-wrap"
+    style="background-color: {{bgColor}};flex-direction: {{flexDirection}};"
+  >
     <slot></slot>
   </div>
 </template>

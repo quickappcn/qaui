@@ -9,7 +9,12 @@
     { "name": "system.prompt" },
     { "name": "system.router" },
     { "name": "system.shortcut" },
+<<<<<<< HEAD
     { "name": "system.vibrator" }
+=======
+    { "name": "system.media" }
+
+>>>>>>> 590b041... 完成gallery组件和文档
   ],
   "config": {
     "logLevel": "debug",
@@ -45,6 +50,7 @@
       "pages/icon": {
         "component": "index"
       },
+<<<<<<< HEAD
       "pages/progress": {
         "component": "index"
       },
@@ -70,6 +76,12 @@
         "component": "index"
       },
       "pages/tabbar/page2": {
+=======
+      "pages/radio": {
+        "component": "index"
+      },
+      "pages/gallery": {
+>>>>>>> 590b041... 完成gallery组件和文档
         "component": "index"
       }
     }
@@ -115,14 +127,18 @@
         "titleBarText": "图标 icon",
         "menu": false
       },
+<<<<<<< HEAD
       "pages/progress": {
         "titleBarText": "进度条 progress",
         "menu": false
       },
+=======
+>>>>>>> 590b041... 完成gallery组件和文档
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
         "menu": false
       },
+<<<<<<< HEAD
       "pages/textarea": {
         "titleBarText": "多行输入框 textarea",
         "menu": false
@@ -151,6 +167,12 @@
         "titleBarText": "底部导航 tabbar 三",
         "menu": false
       }  
+=======
+      "pages/gallery": {
+        "titleBarText": "画廊 gallery",
+        "menu": false
+      }
+>>>>>>> 590b041... 完成gallery组件和文档
     }
-  }
+  } 
 }
