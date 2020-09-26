@@ -1,0 +1,32 @@
+<import name="q-searchbar" src="../../components/searchbar/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-searchbar placeholder="搜索一下，你就知道"></q-searchbar>
+    <q-searchbar value="正在搜索" focus="true"></q-searchbar>
+    <q-searchbar left-btn="back"></q-searchbar>
+    <q-searchbar left-btn="/common/logo.png"></q-searchbar>
+    <q-searchbar right-btn="search"></q-searchbar>
+    <q-searchbar right-btn="/common/logo.png"></q-searchbar>
+    <q-searchbar left-btn="back" right-btn="search"></q-searchbar>
+    <q-searchbar
+      left-btn="/common/logo.png"
+      right-btn="/common/logo.png"
+    ></q-searchbar>
+    <q-searchbar menubar="true"></q-searchbar>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {},
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  background-color: #f6f6f6;
+  padding: 20px 0;
+  flex-direction: column;
+  justify-content: space-between;
+}
+</style>

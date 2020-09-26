@@ -1,0 +1,260 @@
+<import name="q-icon" src="../../components/icon/index"></import>
+
+<template>
+  <div class="qaui-gallery">
+    <div class="qaui-gallery-wrapper">
+      <div class="qaui-gallery-title-wrapper">
+        <text>{{ title }}</text>
+      </div>
+      <div class="qaui-gallery-media-wrapper">
+        <div if="{{ !videoUrl }}" class="{{ imageWrapperClass }}">
+          <div for="{{ srcs }}">
+            <image
+              if="{{ srcs.length <= 9 ? true : $idx > 7 ? false : true }}"
+              src="{{ $item }}"
+              class="{{ imageClass }}"
+              style="object-fit: fill"
+              oncomplete="onImageComplete"
+              onclick="onImageClick($idx)"
+            ></image>
+          </div>
+          <div class="qaui-gallery-mask-wrapper" if="{{ srcs.length > 9}}">
+            <image
+              src="{{ srcs[8] }}"
+              class="qaui-gallery-image-wrapper-standard"
+              style="margin-top: 0"
+            >
+              <div class="qaui-gallery-image-wrapper-mask">
+                <text>+ {{ srcs.length - 9 }}</text>
+              </div>
+            </image>
+          </div>
+        </div>
+        <div if="{{ videoUrl }}" class="{{ videoWrapperClass }}">
+          <video
+            id="video"
+            src="{{ videoUrl }}"
+            controls="{{ false }}"
+            orientation="{{ videoOrientation }}"
+            poster="{{ posterUrl }}"
+            style="object-fit: fill"
+            onappear="onVideoAppear"
+            onclick="onVideoClick"
+          ></video>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+import media from '@system.media'
+import prompt from '@system.prompt'
+
+export default {
+  data() {
+    return {
+      imageInfo: [{ width: 0, height: 0 }],
+    }
+  },
+  props: {
+    title: {
+      type: String,
+      default: '',
+    },
+    srcs: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    videoUrl: {
+      type: String,
+      default: false,
+    },
+    posterUrl: {
+      type: String,
+      default: '',
+    },
+    videoOrientation: {
+      type: String,
+      default: 'landscape',
+    },
+  },
+
+  computed: {
+    imageClass() {
+      let imageClass
+      const length = this.srcs.length
+      if (length === 1) {
+        const width = this.imageInfo[0].width
+        const height = this.imageInfo[0].height
+        if (width > height) {
+          imageClass = 'qaui-gallery-image-wrapper-one-typeOne'
+        } else if (width === height) {
+          imageClass = 'qaui-gallery-image-wrapper-one-typeTwo'
+        } else {
+          imageClass = 'qaui-gallery-image-wrapper-one-typeThird'
+        }
+      } else {
+        imageClass = 'qaui-gallery-image-wrapper-standard'
+      }
+      return imageClass
+    },
+
+    imageWrapperClass() {
+      let imageWrapperClass
+      if (this.srcs.length === 4) {
+        imageWrapperClass = 'qaui-gallery-image-wrapper-four'
+      } else {
+        imageWrapperClass = 'qaui-gallery-image-wrapper'
+      }
+      return imageWrapperClass
+    },
+
+    videoWrapperClass() {
+      let videoWrapperClass
+      if (this.videoOrientation === 'landscape') {
+        videoWrapperClass = 'qaui-gallery-videoWrapper'
+      } else {
+        videoWrapperClass = 'qaui-gallery-videoWrapper-portrait'
+      }
+
+      return videoWrapperClass
+    },
+  },
+
+  onImageComplete(data) {
+    this.imageInfo.splice(0, 1)
+    this.imageInfo.push({ width: data.width, height: data.height })
+  },
+
+  onImageClick($idx) {
+    media.previewImage({
+      uris: this.srcs,
+      current: this.$idx,
+      success: function () {},
+      fail: function (data, code) {},
+    })
+  },
+
+  // 将视频出现的事件暴露给开发者
+
+  onVideoAppear(e) {
+    this.$element('video').start()
+    this.$emit('videoAppear', e)
+  },
+
+  // 将视频点击的事件暴露给开发者
+
+  onVideoClick(e) {
+    this.$emit('videoClick', e)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+
+.qaui-gallery {
+  flex: 1;
+
+  &-wrapper {
+    flex-direction: column;
+  }
+
+  &-title-wrapper {
+    height: 48px * @ratio;
+    width: 360px * @ratio;
+    border-bottom: 1px * @ratio solid #ebebeb;
+
+    text {
+      font-family: HYQiHei-FES;
+      font-size: 16px * @ratio;
+      color: #000000;
+      line-height: 20px * @ratio;
+      margin-left: 20px * @ratio;
+    }
+  }
+
+  &-image-wrapper {
+    margin-left: 20px * @ratio;
+    margin-right: 20px * @ratio;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &-four {
+      margin-left: 20px * @ratio;
+      margin-right: 130px * @ratio;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    &-one-typeOne {
+      width: 210px * @ratio;
+      height: 158px * @ratio;
+      margin-top: 10px * @ratio;
+    }
+
+    &-one-typeTwo {
+      margin-top: 10px * @ratio;
+      width: 210px * @ratio;
+      height: 210px * @ratio;
+    }
+
+    &-one-typeThird {
+      margin-top: 10px * @ratio;
+      width: 210px * @ratio;
+      height: 280px * @ratio;
+    }
+
+    &-standard {
+      width: 100px * @ratio;
+      height: 100px * @ratio;
+      align-items: flex-start;
+      margin-top: 10px * @ratio;
+    }
+
+    &-mask {
+      position: absolute;
+      width: 100px * @ratio;
+      height: 100px * @ratio;
+      background-color: #000000;
+      opacity: 0.2;
+      justify-content: center;
+      align-items: center;
+
+      text {
+        width: 42px * @ratio;
+        height: 23px * @ratio;
+        font-family: HYQiHei-EES;
+        font-size: 16px * @ratio;
+        color: #ffffff;
+        line-height: 23px * @ratio;
+        text-align: center;
+      }
+    }
+  }
+
+  &-mask-wrapper {
+    width: 100px * @ratio;
+    height: 100px * @ratio;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px * @ratio;
+  }
+
+  &-videoWrapper {
+    width: 320px * @ratio;
+    height: 180px * @ratio;
+    margin: 10px * @ratio 0 10px * @ratio 10px * @ratio;
+
+    &-portrait {
+      width: 210px * @ratio;
+      height: 280px * @ratio;
+      margin: 10px * @ratio 0 10px * @ratio 10px * @ratio;
+    }
+  }
+}
+</style>

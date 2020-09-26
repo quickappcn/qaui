@@ -8,7 +8,9 @@
   "features": [
     { "name": "system.prompt" },
     { "name": "system.router" },
-    { "name": "system.shortcut" }
+    { "name": "system.shortcut" },
+    { "name": "system.media" }
+
   ],
   "config": {
     "logLevel": "debug",
@@ -27,6 +29,27 @@
         "component": "index"
       },
       "pages/titlebar": {
+        "component": "index"
+      },
+      "pages/searchbar": {
+        "component": "index"
+      },
+      "pages/title": {
+        "component": "index"
+      },
+      "pages/divider": {
+        "component": "index"
+      },
+      "pages/footer": {
+        "component": "index"
+      },
+      "pages/icon": {
+        "component": "index"
+      },
+      "pages/radio": {
+        "component": "index"
+      },
+      "pages/gallery": {
         "component": "index"
       }
     }
@@ -51,7 +74,35 @@
       "pages/titlebar": {
         "titleBarText": "标题栏 titlebar",
         "menu": false
+      },
+      "pages/searchbar": {
+        "titleBarText": "搜索栏 searchbar",
+        "menu": false
+      },
+      "pages/title": {
+        "titleBarText": "模块标题 title",
+        "menu": false
+      },
+      "pages/divider": {
+        "titleBarText": "分隔符 divider",
+        "menu": false
+      },
+      "pages/footer": {
+        "titleBarText": "页脚 footer",
+        "menu": false
+      },
+      "pages/icon": {
+        "titleBarText": "图标 icon",
+        "menu": false
+      },
+      "pages/radio": {
+        "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/gallery": {
+        "titleBarText": "画廊 gallery",
+        "menu": false
       }
     }
-  }
+  } 
 }

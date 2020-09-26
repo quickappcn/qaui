@@ -4,9 +4,10 @@
       <image src="../../common/logo.png"></image>
     </div>
     <div class="type">
-      <text>基础组件</text>
+      <text>基础组件11</text>
     </div>
     <div class="component">
+      <div class="item"><a href="/pages/icon">图标 icon</a></div>
       <div class="item"><a href="/pages/button">按钮 button</a></div>
       <div class="item"><a href="/pages/container">容器 container</a></div>
       <div class="item"><a href="/pages/titlebar">标题栏 titleBar</a></div>
@@ -45,8 +46,10 @@
     </div>
     <div class="component">
       <div class="item"><a href="/pages/list">列表 list</a></div>
+      <div class="item">
+        <a href="/pages/collapse-group">折叠面板 collapse</a>
+      </div>
       <div class="item"><a href="/pages/steps">步骤条 steps</a></div>
-      <div class="item"><a href="/pages/collapse">折叠面板 collapse</a></div>
       <div class="item"><a href="/pages/gallery">画廊 gallery</a></div>
     </div>
     <div class="type">
@@ -58,9 +61,6 @@
       <div class="item"><a href="/pages/tabs">横向选项卡 tabs</a></div>
       <div class="item"><a href="/pages/vtabs">纵向选项卡 vtabs</a></div>
       <div class="item"><a href="/pages/alphabet">字母检索表 alphabet</a></div>
-      <div class="item">
-        <a href="/pages/picker-view">滚动选择器 pickerView</a>
-      </div>
     </div>
   </div>
 </template>
@@ -117,10 +117,10 @@
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   onInit() {
-    console.log("home page init!!");
+    console.log('home page init!!')
   },
-};
+}
 </script>

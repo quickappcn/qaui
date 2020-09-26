@@ -1,5 +1,8 @@
 <template>
-  <div class="qaui-wrap" style="background-color: {{bgColor}};flex-direction: {{flexDirection}};">
+  <div
+    class="qaui-wrap"
+    style="background-color: {{bgColor}};flex-direction: {{flexDirection}};"
+  >
     <slot></slot>
   </div>
 </template>
@@ -8,17 +11,17 @@
 export default {
   props: {
     bgColor: {
-      default: "#FFFFFF",
+      default: '#FFFFFF',
     },
     flexDirection: {
-      default: "row",
+      default: 'row',
     },
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   align-self: center;
   width: 320px * @ratio;

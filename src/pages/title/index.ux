@@ -1,0 +1,74 @@
+<import name="q-title" src="../../components/title/index"></import>
+<import name="q-container" src="../../components/container/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <div class="group">
+      <q-title title="外部标题"></q-title>
+      <q-title title="外部标题" target="/pages/home"></q-title>
+      <q-title
+        title="外部标题"
+        description="描述文字"
+        target="/pages/home"
+      ></q-title>
+    </div>
+    <div class="group bg-white">
+      <q-title title="内部标题"></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="内部标题"
+        target="/pages/home"
+      ></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="内部标题"
+        description="描述文字"
+        target="/pages/home"
+      ></q-title>
+      <q-title icon="/common/logo.png" target="/pages/home"
+        ><text class="custom">自定义样式</text></q-title
+      >
+    </div>
+    <q-container flex-direction="column">
+      <q-title title="标题文字"></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="标题文字"
+        target="/pages/home"
+      ></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="标题文字"
+        description="描述文字"
+        target="/pages/home"
+      ></q-title>
+      <q-title icon="/common/logo.png" target="/pages/home"
+        ><text class="custom">自定义样式</text></q-title
+      >
+    </q-container>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {},
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  background-color: #f6f6f6;
+  flex-direction: column;
+  .group {
+    flex-direction: column;
+    padding: 0 20px;
+    margin-bottom: 20px;
+  }
+  .bg-white {
+    background-color: #ffffff;
+  }
+  .custom {
+    color: #456fff;
+    font-size: 20px;
+  }
+}
+</style>
