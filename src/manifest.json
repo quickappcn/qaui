@@ -34,6 +34,9 @@
       },
       "pages/title": {
         "component": "index"
+      },
+      "pages/divider": {
+        "component": "index"
       }
     }
   },
@@ -64,6 +67,10 @@
       },
       "pages/title": {
         "titleBarText": "模块标题 title",
+        "menu": false
+      },
+      "pages/divider": {
+        "titleBarText": "分隔符 divider",
         "menu": false
       }
     }

@@ -1,0 +1,27 @@
+<import name="q-divider" src="../../components/divider/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-divider loading="{{true}}" content="正在加载"></q-divider>
+    <q-divider content="暂无数据"></q-divider>
+    <q-divider content="自定义没有更多的内容"></q-divider>
+    <q-divider><text class="custom">自定义样式内容</text></q-divider>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {},
+};
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  background-color: #ffffff;
+  flex-direction: column;
+  padding: 20px 0;
+  .custom {
+    font-size: 20px;
+    color: #456fff;
+  }
+}
+</style>
