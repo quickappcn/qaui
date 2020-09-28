@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="9px" height="16px" viewBox="0 0 9 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>hdpi/跳转</title>
+    <desc>Created with Sketch.</desc>
+    <g id="引擎组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="跳转" fill="#D0D0D0">
+            <g id="list_into" transform="translate(0.000000, 0.500000)">
+                <path d="M6.08320291,7.50642586 L1.42160145,2.65059101 C1.18435795,2.40346236 1.18435795,2.00278764 1.42160145,1.75565899 C1.65884496,1.50853034 2.04349269,1.50853034 2.28073619,1.75565899 L7.80147239,7.50642586 L2.28073619,13.2571927 C2.04349269,13.5043214 1.65884496,13.5043214 1.42160145,13.2571927 C1.18435795,13.0100641 1.18435795,12.6093894 1.42160145,12.3622607 L6.08320291,7.50642586 Z" id="Path"></path>
+            </g>
+        </g>
+    </g>
+</svg>
