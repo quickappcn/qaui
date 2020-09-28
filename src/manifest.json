@@ -31,6 +31,9 @@
       },
       "pages/searchbar": {
         "component": "index"
+      },
+      "pages/title": {
+        "component": "index"
       }
     }
   },
@@ -57,6 +60,10 @@
       },
       "pages/searchbar": {
         "titleBarText": "搜索栏 searchbar",
+        "menu": false
+      },
+      "pages/title": {
+        "titleBarText": "模块标题 title",
         "menu": false
       }
     }
