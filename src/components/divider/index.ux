@@ -3,8 +3,8 @@
     <div if="!loading" class="line"></div>
     <div class="content">
       <progress if="loading" type="circular" class="loading"></progress>
-      <text>{{ content }}</text>
-      <slot></slot>
+      <text if="content">{{ content }}</text>
+      <block if="!content"><slot></slot></block>
     </div>
     <div if="!loading" class="line"></div>
   </div>
@@ -14,7 +14,7 @@
 export default {
   props: {
     content: {
-      default: "暂无数据",
+      default: "",
     },
     loading: {
       default: false,
