@@ -37,6 +37,9 @@
       },
       "pages/divider": {
         "component": "index"
+      },
+      "pages/footer": {
+        "component": "index"
       }
     }
   },
@@ -71,6 +74,10 @@
       },
       "pages/divider": {
         "titleBarText": "分隔符 divider",
+        "menu": false
+      },
+      "pages/footer": {
+        "titleBarText": "页脚 footer",
         "menu": false
       }
     }
