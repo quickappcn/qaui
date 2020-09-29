@@ -1,0 +1,42 @@
+<import name="q-footer" src="../../components/footer/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-footer content="这是一行版本号版本号信息，内容自定义" logo="/common/logo.png"></q-footer>
+    <q-footer links="{{links}}" content="这是一行版本号版本号信息，内容自定义"></q-footer>
+    <q-footer links="{{links.slice(0,1)}}" content="这是一行版本号版本号信息，内容自定义"></q-footer>
+    <q-footer content="底部文案自定义置底"></q-footer>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {},
+  data() {
+    return {
+      links: [
+        {
+          name: "底部链接",
+          url: "https://doc.quickapp.cn",
+        },
+        {
+          name: "底部链接",
+          url: "https://doc.quickapp.cn",
+        },
+      ],
+    };
+  },
+};
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  background-color: #ffffff;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px 0;
+  .custom {
+    font-size: 20px;
+    color: #456fff;
+  }
+}
+</style>
