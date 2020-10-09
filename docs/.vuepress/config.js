@@ -29,7 +29,7 @@ module.exports = {
       {
         title: "基础组件",
         collapsable: false,
-        children: ["/button", "/container", "/titlebar", "/searchbar", "/title", "/divider", "/footer"],
+        children: ["/icon", "/button", "/container", "/titlebar", "/searchbar", "/title", "/divider", "/footer"],
       },
       {
         title: "表单组件",
@@ -62,7 +62,7 @@ module.exports = {
       {
         title: "高级组件",
         collapsable: false,
-        children: ["/tabbar", "/desktop", "/tabs", "/vtabs", "/alphabet", "/picker-view"],
+        children: ["/tabbar", "/desktop", "/tabs", "/vtabs", "/alphabet"],
       },
     ],
   },

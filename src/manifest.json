@@ -40,6 +40,9 @@
       },
       "pages/footer": {
         "component": "index"
+      },
+      "pages/icon": {
+        "component": "index"
       }
     }
   },
@@ -78,6 +81,10 @@
       },
       "pages/footer": {
         "titleBarText": "页脚 footer",
+        "menu": false
+      },
+      "pages/icon": {
+        "titleBarText": "图标 icon",
         "menu": false
       }
     }

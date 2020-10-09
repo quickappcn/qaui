@@ -7,6 +7,7 @@
       <text>基础组件</text>
     </div>
     <div class="component">
+      <div class="item"><a href="/pages/icon">图标 icon</a></div>
       <div class="item"><a href="/pages/button">按钮 button</a></div>
       <div class="item"><a href="/pages/container">容器 container</a></div>
       <div class="item"><a href="/pages/titlebar">标题栏 titleBar</a></div>
@@ -58,9 +59,6 @@
       <div class="item"><a href="/pages/tabs">横向选项卡 tabs</a></div>
       <div class="item"><a href="/pages/vtabs">纵向选项卡 vtabs</a></div>
       <div class="item"><a href="/pages/alphabet">字母检索表 alphabet</a></div>
-      <div class="item">
-        <a href="/pages/picker-view">滚动选择器 pickerView</a>
-      </div>
     </div>
   </div>
 </template>
