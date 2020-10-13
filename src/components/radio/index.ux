@@ -1,5 +1,5 @@
 <template>
-  <div class="qaui-wrap qaui-{{type}}" onclick="clickHandler">
+  <div class="qaui-wrap qaui-{{type}} {{disabled?'disabled':''}}" onclick="clickHandler">
     <div class="icon icon-{{type}} {{my_checked?'active':''}}">
       <image if="my_checked" src="/common/images/radio-{{type}}.svg" class="icon-{{type}}-check"></image>
     </div>
@@ -109,6 +109,9 @@ export default {
   }
   .active {
     border-color: @primary-color;
+  }
+  .disabled {
+    opacity: 0.3;
   }
 }
 </style>

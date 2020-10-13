@@ -14,6 +14,7 @@
         for="{{list}}"
         value="{{$item.value}}"
         checked="{{$item.checked}}"
+        disabled="{{$item.disabled}}"
       ></q-radio>
     </q-radio-group>
     <text class="title">dot样式</text>
@@ -36,6 +37,7 @@ export default {
           id: 2,
           value: "单选项2",
           checked: true,
+          disabled: true,
         },
         {
           id: 3,
