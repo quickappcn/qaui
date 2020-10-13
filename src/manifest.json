@@ -71,6 +71,9 @@
       },
       "pages/tabbar/page2": {
         "component": "index"
+      },
+      "pages/steps": {
+        "component": "index"
       }
     }
   },
@@ -150,7 +153,11 @@
       "pages/tabbar/page2": {
         "titleBarText": "底部导航 tabbar 三",
         "menu": false
-      }  
+      },
+      "pages/steps": {
+        "titleBarText": "步骤条 steps",
+        "menu": false
+      }
     }
   }
 }
