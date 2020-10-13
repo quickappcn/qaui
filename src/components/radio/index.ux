@@ -1,0 +1,117 @@
+<template>
+  <div class="qaui-wrap qaui-{{type}} {{disabled?'disabled':''}}" onclick="clickHandler">
+    <div class="icon icon-{{type}} {{my_checked?'active':''}}">
+      <image if="my_checked" src="/common/images/radio-{{type}}.svg" class="icon-{{type}}-check"></image>
+    </div>
+    <text class="value">{{ value }}</text>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      my_checked: this.checked,
+    };
+  },
+
+  props: {
+    group: {
+      default: "",
+    },
+    value: {
+      default: "",
+    },
+    disabled: {
+      default: false,
+    },
+    type: {
+      default: "default", // 'list' 'dot'
+    },
+    checked: {
+      default: false,
+    },
+  },
+
+  onInit() {
+    this.$watch("checked", "changeChecked");
+    if (this.group) {
+      const parent = this.$parent().$child(this.group);
+      const temp = parent.radios;
+      parent.radios = temp ? [...temp, this] : [this];
+    }
+  },
+
+  changeChecked() {
+    this.my_checked = this.checked;
+  },
+
+  changeCurrent(current) {
+    this.my_checked = current;
+  },
+
+  clickHandler() {
+    if (this.disabled) return;
+    const item = { current: !this.checked, value: this.value };
+    const parent = this.$parent().$child(this.group);
+    parent ? parent.emitEvent(item) : this.$emit("change", item);
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+.qaui-wrap {
+  height: 52px * @ratio;
+  border-bottom-color: #f2f2f2;
+  border-bottom-width: 1px * @ratio;
+  padding-right: 20px * @ratio;
+  .icon {
+    height: 20px * @ratio;
+    width: 20px * @ratio;
+    align-self: center;
+    &-default {
+      border-radius: 20px * @ratio;
+      border: 1px * @ratio solid #d0d0d0;
+      margin-right: 11px * @ratio;
+      &-check {
+        border-radius: 20px * @ratio;
+        background-color: @primary-color;
+      }
+    }
+    &-list {
+      height: 24px * @ratio;
+      width: 24px * @ratio;
+    }
+    &-dot {
+      border-radius: 20px * @ratio;
+      border: 1px * @ratio solid #d0d0d0;
+      margin-right: 11px * @ratio;
+      justify-content: center;
+      align-items: center;
+      &-check {
+        width: 12px * @ratio;
+        height: 12px * @ratio;
+        border-radius: 12px * @ratio;
+        background-color: @primary-color;
+      }
+    }
+  }
+  .qaui-list {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+  .value {
+    font-size: 16px * @ratio;
+    color: #000000;
+    lines: 1;
+    text-overflow: ellipsis;
+  }
+  .active {
+    border-color: @primary-color;
+  }
+  .disabled {
+    opacity: 0.3;
+  }
+}
+</style>

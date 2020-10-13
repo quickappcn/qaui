@@ -1,24 +1,5 @@
-## 单选按钮 radio
-
-### 描述
-
-用于让用户在表单选择单个信息项。
-
-### 使用效果
-
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
-
-### 使用方法
-
-在`.ux`文件中引入组件
-
-```html
-<import name="q-radio" src="qaui/src/components/radio/index"></import>
-```
-
-### 示例
-
-```html
+<import name="q-radio" src="../../components/radio/index"></import>
+<import name="q-radio-group" src="../../components/radio-group/index"></import>
 <template>
   <div class="qaui-wrap">
     <text class="title">default样式</text>
@@ -33,6 +14,7 @@
         for="{{list}}"
         value="{{$item.value}}"
         checked="{{$item.checked}}"
+        disabled="{{$item.disabled}}"
       ></q-radio>
     </q-radio-group>
     <text class="title">dot样式</text>
@@ -41,9 +23,8 @@
     </q-radio-group>
   </div>
 </template>
-```
 
-```js
+<script>
 export default {
   data() {
     return {
@@ -56,6 +37,7 @@ export default {
           id: 2,
           value: "单选项2",
           checked: true,
+          disabled: true,
         },
         {
           id: 3,
@@ -69,9 +51,9 @@ export default {
     this.current = detail.value;
   },
 };
-```
+</script>
 
-```less
+<style lang="less">
 .qaui-wrap {
   flex-direction: column;
   align-items: center;
@@ -84,22 +66,4 @@ export default {
     padding-left: 20px;
   }
 }
-```
-
-### API
-
-#### 组件属性
-
-| 属性     | 类型    | 默认值    | 说明                                    |
-| -------- | ------- | --------- | --------------------------------------- |
-| checked  | Boolean | false     | 是否处于选中状态                        |
-| disabled | Boolean | false     | 是否处于禁用状态                        |
-| type     | String  | 'default' | 选择器样式，可选值有 default, list, dot |
-| value    | String  | -         | 展示选项的值                            |
-| group    | String  | -         | 单选框所在组的 id 值                    |
-
-#### 组件事件
-
-| 事件名称 | 事件描述         | 返回值                         |
-| -------- | ---------------- | ------------------------------ |
-| change   | 值发生变化的事件 | {current:current, value:value} |
+</style>

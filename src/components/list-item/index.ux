@@ -1,0 +1,112 @@
+<import name="q-icon" src="../icon/index"></import>
+<import name="q-button" src="../button/index"> </import>
+<template>
+  <div class="qaui-listItem-wrapper">
+    <div class="qaui-listItem-left">
+      <div class="qaui-listItem-left-icon" if="{{ item.iconType }}">
+        <q-icon type="{{ item.iconType }}" color="#000000" size="20"></q-icon>
+      </div>
+      <div class="qaui-listItem-left-thumb" if="{{ item.thumb }}" object-fit="fill">
+        <image src="{{ item.thumb }}"></image>
+      </div>
+    </div>
+    <div class="qaui-listItem-main">
+      <text class="qaui-listItem-main-title">{{ item.title }} </text>
+      <text class="qaui-listItem-main-description">{{ item.description }} </text>
+    </div>
+    <div class="qaui-listItem-right">
+      <text if="{{ item.rightText }}">{{ item.rightText }}</text>
+      <q-icon type="forward-arrow" if="{{ item.rightType === 'rightArrow' }}" color="#D0D0D0" size="20"></q-icon>
+      <q-button type="ghost" size="{{size}}" if="{{ item.rightType === 'button' }}" ontap="clickBtn">{{
+        item.rightBtnText
+      }}</q-button>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      size: "small",
+    };
+  },
+  props: {
+    item: {
+      type: Object,
+      default: {},
+    },
+    index: {
+      type: Number,
+      default: 0,
+    },
+  },
+  clickBtn(e) {
+    this.$emit("clicksmallbtn", e);
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+
+.qaui-listItem {
+  background-color: #ffffff;
+
+  &-wrapper {
+    height: 52px * @ratio;
+    width: 360px * @ratio;
+    margin-left: 20px * @ratio;
+    margin-right: 20px * @ratio;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  &-left {
+    align-items: center;
+    justify-content: center;
+    &-icon {
+      width: 20px * @ratio;
+      height: 20px * @ratio;
+      margin-right: 18px * @ratio;
+    }
+
+    &-thumb {
+      width: 30px * @ratio;
+      height: 30px * @ratio;
+      margin-right: 16px * @ratio;
+    }
+  }
+
+  &-main {
+    flex-direction: column;
+
+    &-title {
+      font-family: HYQiHei-EES;
+      font-size: 16px * @ratio;
+      color: #000000;
+      line-height: 20px * @ratio;
+    }
+
+    &-description {
+      font-family: HYQiHei-EES;
+      font-size: 12px * @ratio;
+      color: #b2b2b2;
+      line-height: 15px * @ratio;
+    }
+  }
+
+  &-right {
+    position: absolute;
+    right: 0;
+
+    text {
+      font-family: HYQiHei-EES;
+      font-size: 14px;
+      color: #b2b2b2;
+      text-align: right;
+      line-height: 18px;
+    }
+  }
+}
+</style>

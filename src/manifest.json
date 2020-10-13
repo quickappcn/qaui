@@ -43,6 +43,12 @@
       },
       "pages/icon": {
         "component": "index"
+      },
+      "pages/radio": {
+        "component": "index"
+      },
+      "pages/list": {
+        "component": "index"
       }
     }
   },
@@ -85,6 +91,14 @@
       },
       "pages/icon": {
         "titleBarText": "图标 icon",
+        "menu": false
+      },
+      "pages/radio": {
+        "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/list": {
+        "titleBarText": "列表 list",
         "menu": false
       }
     }

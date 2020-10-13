@@ -1,0 +1,47 @@
+<import name="q-icon" src="../icon/index"></import>
+<import name="q-list-item-content" src="../list-item/index"></import>
+
+<template>
+  <div class="qaui-list">
+    <list id="list">
+      <list-item for="{{ data }}">
+        <q-list-item-content
+          item="{{ $item }}"
+          onclick="clickItem($idx)"
+          index="{{ $idx }}"
+          @clicksmallbtn="clicksamllbtn($idx)"
+        ></q-list-item-content>
+      </list-item>
+    </list>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {};
+  },
+  props: {
+    data: {
+      type: Array,
+      default: [],
+    },
+  },
+
+  clickItem($idx) {
+    console.log($idx, this.$child("list")._childrenVms[$idx]._data);
+    const itemData = { index: $idx, data: this.$child("list")._childrenVms[$idx]._data };
+    this.$emit("clickitem", itemData);
+  },
+
+  clicksamllbtn($idx) {
+    console.log($idx, this.$child("list")._childrenVms[$idx]._data);
+    const itemData = { index: $idx, data: this.$child("list")._childrenVms[$idx]._data };
+    this.$emit("clicksamllbtn", itemData);
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+</style>

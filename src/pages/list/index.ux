@@ -1,0 +1,68 @@
+<import name="q-list" src="../../components/list/index"></import>
+
+<template>
+  <div class="qaui-wrap">
+    <q-list data="{{listData}}" @clickitem="clickItem" onclicksamllbtn="clicksamllbtn"> </q-list>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      listData: [
+        {
+          title: "标题文字",
+          description: "这是一段描述文字",
+        },
+        {
+          title: "标题文字2",
+          iconType: "bill-fill",
+        },
+        {
+          title: "标题文字2",
+          description: "这是一段描述文字2",
+          iconType: "bill-fill",
+          rightType: "rightArrow",
+        },
+        {
+          title: "标题文字3",
+          description: "这是一段描述文字2",
+          thumb: "../../common/logo.png",
+          rightType: "button",
+          rightBtnText: "小按钮",
+        },
+        {
+          title: "标题文字4",
+          description: "这是一段描述文字2",
+          thumb: "../../common/logo.png",
+          rightType: "rightArrow",
+          rightText: "结果文字",
+        },
+        {
+          title: "标题文字5",
+          description: "这是一段描述文字2",
+          thumb: "../../common/logo.png",
+        },
+        {
+          title: "标题文字6",
+          description: "这是一段描述文字2",
+          thumb: "../../common/logo.png",
+          rightType: "button",
+          rightBtnText: "小按钮",
+        },
+      ],
+    };
+  },
+  clickItem(data) {
+    console.log(data);
+    const index = data.detail.index;
+    this.listData[index].title = "已选中";
+  },
+  clicksamllbtn(data) {
+    const index = data.detail.index;
+    console.log(`选中小按钮${index}`);
+    this.listData[index].title = `选中小按钮${index}`;
+  },
+};
+</script>
