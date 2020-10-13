@@ -1,0 +1,42 @@
+<import name="q-icon" src="../../components/icon/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <block for="icon in iconMap">
+      <div class="icon">
+        <q-icon type="{{icon}}" size="48"></q-icon>
+        <text class="name">{{ ' ' + icon }}</text>
+      </div>
+    </block>
+  </div>
+</template>
+<style lang="less">
+.qaui-wrap {
+  flex-direction: row;
+  flex-wrap: wrap;
+  .icon {
+    flex-direction: column;
+    justify-content: center;
+    width: 120px;
+    height: 120px;
+    .name {
+      font-size: 10px;
+      text-align: center;
+      margin-top: 20px;
+    }
+  }
+}
+</style>
+<script>
+import { icons } from '../../components/icon/icon'
+
+export default {
+  data() {
+    return {
+      iconMap: Object.keys(icons),
+    }
+  },
+  onInit() {
+    console.log('icons', this.iconMap)
+  },
+}
+</script>

@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "quickapp official components library",
   "subversion": {
-    "toolkit": "0.6.1"
+    "toolkit": "0.6.8"
   },
   "directories": {
     "doc": "docs"
@@ -14,7 +14,7 @@
     "server": "hap server --watch",
     "dev": "vuepress dev docs",
     "build:docs": "vuepress build docs",
-    "pretty": "prettier --write '**/*.ux'"
+    "pretty": "prettier --write **/*.ux"
   },
   "license": "MIT",
   "husky": {
@@ -28,14 +28,16 @@
     ]
   },
   "prettier": {
-    "printWidth": 120,
-    "tabWidth": 2
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "semi": false
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
     "eslint": "^5.12.1",
     "eslint-plugin-hybrid": "0.0.5",
-    "hap-toolkit": "^0.6.1",
+    "hap-toolkit": "^0.6.8",
     "husky": "^4.3.0",
     "less": "^3.12.2",
     "less-loader": "^7.0.1",
@@ -43,5 +45,8 @@
     "prettier": "^2.1.2",
     "prettier-plugin-quickapp": "^0.1.0",
     "vuepress": "^1.5.4"
+  },
+  "dependencies": {
+    "clipboard": "^2.0.6"
   }
 }

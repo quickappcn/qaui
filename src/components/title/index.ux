@@ -1,0 +1,84 @@
+<template>
+  <div class="qaui-wrap" onclick="clickHandler">
+    <div class="left">
+      <image class="icon" if="icon" src="{{icon}}"></image>
+      <text class="title">{{ title }}</text>
+      <block if="!title"><slot></slot></block>
+    </div>
+    <div class="right">
+      <text class="description">{{ description }}</text>
+      <image
+        if="target"
+        class="icon icon-arrow-right"
+        src="/common/images/arrow-right.svg"
+      ></image>
+    </div>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+
+export default {
+  props: {
+    title: {
+      default: '',
+    },
+    description: {
+      default: '',
+    },
+    icon: {
+      default: '',
+    },
+    target: {
+      default: '',
+    },
+  },
+  clickHandler() {
+    if (!this.target) return
+    router.push({
+      uri: this.target,
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  height: 48px * @ratio;
+  justify-content: space-between;
+  .icon {
+    height: 24px * @ratio;
+    width: 24px * @ratio;
+    align-self: center;
+    padding: 2px * @ratio;
+  }
+  .left {
+    .icon {
+      margin-right: 8px * @ratio;
+    }
+    .title {
+      font-size: 16px * @ratio;
+      font-weight: bold;
+      color: #000000;
+      lines: 1;
+      text-overflow: ellipsis;
+    }
+  }
+  .right {
+    .description {
+      font-size: 14px * @ratio;
+      color: #b3b3b3;
+      text-align: right;
+      lines: 1;
+      text-overflow: ellipsis;
+    }
+    .icon-arrow-right {
+      margin-top: 2px * @ratio;
+      padding: 4px * @ratio;
+      object-fit: contain;
+    }
+  }
+}
+</style>

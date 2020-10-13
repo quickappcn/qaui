@@ -1,8 +1,8 @@
 <script>
-import util from "./util";
+import util from './util'
 
 export default {
   showMenu: util.showMenu,
   createShortcut: util.createShortcut,
-};
+}
 </script>

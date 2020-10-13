@@ -8,7 +8,10 @@
     <q-searchbar right-btn="search"></q-searchbar>
     <q-searchbar right-btn="/common/logo.png"></q-searchbar>
     <q-searchbar left-btn="back" right-btn="search"></q-searchbar>
-    <q-searchbar left-btn="/common/logo.png" right-btn="/common/logo.png"></q-searchbar>
+    <q-searchbar
+      left-btn="/common/logo.png"
+      right-btn="/common/logo.png"
+    ></q-searchbar>
     <q-searchbar menubar="true"></q-searchbar>
   </div>
 </template>
@@ -16,7 +19,7 @@
 <script>
 export default {
   props: {},
-};
+}
 </script>
 
 <style lang="less">

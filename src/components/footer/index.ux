@@ -1,0 +1,77 @@
+<template>
+  <div class="qaui-wrap">
+    <div class="logo" if="logo">
+      <image src="{{logo}}"></image>
+      <block if="!logo"><slot name="logo"></slot></block>
+    </div>
+    <div class="links">
+      <block for="links.slice(0,2)">
+        <div class="line" if="$idx"></div>
+        <a href="{{$item.url}}">{{ $item.name }}</a>
+      </block>
+    </div>
+    <div class="content">
+      <text if="content">{{ content }}</text>
+      <block if="!content"><slot name="content"></slot></block>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    content: {
+      default: '',
+    },
+    links: {
+      default: [],
+    },
+    logo: {
+      default: '',
+    },
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px * @ratio;
+  .logo {
+    height: 45px * @ratio;
+    width: 320px * @ratio;
+    align-items: center;
+    justify-content: center;
+    image {
+      height: 100%;
+    }
+  }
+  .links {
+    .line {
+      height: 11px * @ratio;
+      width: 1px * @ratio;
+      background-color: #e9e9e9;
+      align-self: center;
+      margin: 0 9.5px * @ratio;
+    }
+    a {
+      font-size: 14px * @ratio;
+      color: #456fff;
+      text-align: center;
+    }
+  }
+  .content {
+    text {
+      font-size: 12px * @ratio;
+      color: #b3b3b3;
+      text-align: center;
+      line-height: 18px * @ratio;
+      lines: 1;
+      text-overflow: ellipsis;
+    }
+  }
+}
+</style>

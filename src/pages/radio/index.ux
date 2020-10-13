@@ -1,0 +1,80 @@
+<import name="q-radio" src="../../components/radio/index"></import>
+<import name="q-radio-group" src="../../components/radio-group/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <text class="title">default样式</text>
+    <q-radio-group id="myGroup1" current="{{current}}" onchange="handleChange">
+      <q-radio
+        group="myGroup1"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
+    </q-radio-group>
+    <text class="title">list样式</text>
+    <q-radio-group id="myGroup2" current="{{current}}" onchange="handleChange">
+      <q-radio
+        group="myGroup2"
+        type="list"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+        disabled="{{$item.disabled}}"
+      ></q-radio>
+    </q-radio-group>
+    <text class="title">dot样式</text>
+    <q-radio-group id="myGroup3" current="{{current}}" onchange="handleChange">
+      <q-radio
+        group="myGroup3"
+        type="dot"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
+    </q-radio-group>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      list: [
+        {
+          id: 1,
+          value: '单选项1',
+        },
+        {
+          id: 2,
+          value: '单选项2',
+          checked: true,
+          disabled: true,
+        },
+        {
+          id: 3,
+          value: '单选项3',
+        },
+      ],
+      current: '单选项2',
+    }
+  },
+  handleChange({ detail }) {
+    this.current = detail.value
+  },
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px 0;
+  .title {
+    height: 40px;
+    font-size: 14px;
+    align-self: flex-start;
+    padding-left: 20px;
+  }
+}
+</style>

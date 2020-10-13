@@ -1,0 +1,51 @@
+<template>
+  <div class="qaui-wrap">
+    <div if="!loading" class="line"></div>
+    <div class="content">
+      <progress if="loading" type="circular" class="loading"></progress>
+      <text if="content">{{ content }}</text>
+      <block if="!content"><slot></slot></block>
+    </div>
+    <div if="!loading" class="line"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    content: {
+      default: '',
+    },
+    loading: {
+      default: false,
+    },
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  justify-content: center;
+  align-items: center;
+  padding: 0 10px * @ratio;
+  .line {
+    flex-grow: 1;
+    height: 1px * @ratio;
+    background-color: #f2f2f2;
+    margin: 0 10px * @ratio;
+  }
+  .content {
+    .loading {
+      color: #2878ff;
+      margin-right: 5px * @ratio;
+    }
+    text {
+      font-size: 12px * @ratio;
+      color: #b3b3b3;
+      text-align: center;
+      line-height: 18px * @ratio;
+    }
+  }
+}
+</style>

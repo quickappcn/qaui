@@ -1,0 +1,87 @@
+<template>
+  <div class="qaui-steps">
+    <div
+      class="qaui-steps-wrap"
+      style="flex-direction: {{direction === 'column' ? 'column' : 'row'}}"
+    >
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      steps: [],
+    }
+  },
+
+  props: {
+    direction: {
+      type: String,
+      default: 'row',
+    },
+    id: {
+      type: String,
+      required: true,
+      default: ' ',
+    },
+    current: {
+      type: Number,
+      default: 0,
+    },
+    hasText: {
+      type: Boolean,
+      default: false,
+    },
+    finishedColor: {
+      type: String,
+      default: '#456FFF',
+    },
+    errorColor: {
+      type: String,
+      default: '#F19E38',
+    },
+  },
+
+  onInit() {
+    this.$watch('current', 'updateCurrent')
+  },
+
+  onReady() {
+    this.updateCurrent()
+  },
+
+  updateCurrent() {
+    const elements = this.steps
+    const { direction, current, hasText, finishedColor, errorColor } = this
+    elements.forEach((element, index) => {
+      element.updateStatus({
+        direction,
+        current,
+        index,
+        hasText,
+        length: elements.length,
+        finishedColor,
+        errorColor,
+      })
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+
+.qaui-steps {
+  justify-content: center;
+
+  &-wrap {
+    width: 306px * @ratio;
+    background-color: #ffffff;
+    padding-top: 21px * @ratio;
+    justify-content: center;
+  }
+}
+</style>

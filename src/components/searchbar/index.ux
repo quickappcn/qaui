@@ -1,11 +1,24 @@
 <template>
   <div class="qaui-wrap">
     <div class="left-icon" if="leftBtn">
-      <image if="leftBtn!=='back'" onclick="leftClickHandler" src="{{leftBtn}}" class="icon"></image>
-      <image if="leftBtn==='back'" onclick="goBack" src="../../common/images/back.svg" class="icon icon-back"></image>
+      <image
+        if="leftBtn!=='back'"
+        onclick="leftClickHandler"
+        src="{{leftBtn}}"
+        class="icon"
+      ></image>
+      <image
+        if="leftBtn==='back'"
+        onclick="goBack"
+        src="../../common/images/back.svg"
+        class="icon icon-back"
+      ></image>
     </div>
     <div class="search {{menubar ? 'menubar': ''}}">
-      <image class="icon icon-search" src="../../common/images/search.svg"></image>
+      <image
+        class="icon icon-search"
+        src="../../common/images/search.svg"
+      ></image>
       <input
         class="input"
         id="input"
@@ -19,33 +32,46 @@
         placeholder="{{placeholder}}"
         onenterkeyclick="enterEvent"
       />
-      <image class="icon icon-clear" src="../../common/images/clear.svg" onclick="bindClear" if="inputValue"></image>
+      <image
+        class="icon icon-clear"
+        src="../../common/images/clear.svg"
+        onclick="bindClear"
+        if="inputValue"
+      ></image>
     </div>
-    <div class="right-icon" if="{{!menubar && rightBtn}}" onclick="rightClickHandler">
-      <image if="rightBtn && rightBtn!=='search'" src="{{rightBtn}}" class="icon"></image>
+    <div
+      class="right-icon"
+      if="{{!menubar && rightBtn}}"
+      onclick="rightClickHandler"
+    >
+      <image
+        if="rightBtn && rightBtn!=='search'"
+        src="{{rightBtn}}"
+        class="icon"
+      ></image>
       <text if="rightBtn==='search'" class="search-btn">搜索</text>
     </div>
   </div>
 </template>
 
 <script>
-import router from "@system.router";
+import router from '@system.router'
 
 export default {
   data() {
     return {
-      inputValue: "",
-    };
+      inputValue: '',
+    }
   },
   props: {
     leftBtn: {
-      default: "", // back
+      default: '', // back
     },
     rightBtn: {
-      default: "", // search
+      default: '', // search
     },
     placeholder: {
-      default: "搜索",
+      default: '搜索',
     },
     maxlength: {
       default: 50,
@@ -54,7 +80,7 @@ export default {
       default: false,
     },
     value: {
-      default: "",
+      default: '',
     },
     menubar: {
       default: false,
@@ -62,48 +88,48 @@ export default {
   },
   onInit() {
     if (this.value) {
-      this.inputValue = this.value;
+      this.inputValue = this.value
     }
   },
   onReady() {
     if (this.focus) {
-      this.$element("input").focus({ focus: true });
+      this.$element('input').focus({ focus: true })
     }
   },
   bindFocus(evt) {
-    this.$emit("focus", { event: evt });
-    this.$element("input").focus({ focus: true });
+    this.$emit('focus', { event: evt })
+    this.$element('input').focus({ focus: true })
   },
   bindBlur(evt) {
-    this.$emit("blur", { event: evt });
-    this.$element("input").focus({ focus: false });
+    this.$emit('blur', { event: evt })
+    this.$element('input').focus({ focus: false })
   },
   bindClear() {
-    this.$emit("clear", { value: this.inputValue });
-    this.inputValue = "";
+    this.$emit('clear', { value: this.inputValue })
+    this.inputValue = ''
   },
   bindChange(evt) {
-    this.$emit("change", { event: evt });
-    this.inputValue = evt.value;
+    this.$emit('change', { event: evt })
+    this.inputValue = evt.value
   },
   enterEvent(evt) {
-    this.$emit("enterkeyclick", { event: evt });
-    this.$element("input").focus({ focus: false });
+    this.$emit('enterkeyclick', { event: evt })
+    this.$element('input').focus({ focus: false })
   },
   leftClickHandler(evt) {
-    this.$emit("left", { value: this.inputValue });
+    this.$emit('left', { value: this.inputValue })
   },
   rightClickHandler(evt) {
-    this.$emit("right", { value: this.inputValue });
+    this.$emit('right', { value: this.inputValue })
   },
   goBack() {
-    router.back();
+    router.back()
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   background-color: #ffffff;
   height: 48px * @ratio;
