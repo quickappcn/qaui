@@ -1,0 +1,95 @@
+<template>
+  <div class="qaui-wrap {{disabled?'disabled':''}}" onclick="clickHandler">
+    <div class="icon {{my_checked?'active':''}}">
+      <image if="my_checked" src="/common/images/radio-default.svg" class="icon-check"></image>
+    </div>
+    <text class="value">{{ value }}</text>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      my_checked: this.checked,
+    };
+  },
+
+  props: {
+    group: {
+      default: "",
+    },
+    value: {
+      default: "",
+    },
+    disabled: {
+      default: false,
+    },
+    checked: {
+      default: false,
+    },
+  },
+
+  onInit() {
+    this.$watch("checked", "changeChecked");
+    if (this.group) {
+      const parent = this.$parent().$child(this.group);
+      const temp = parent.checkboxes;
+      parent.checkboxes = temp ? [...temp, this] : [this];
+    }
+  },
+
+  changeChecked() {
+    this.my_checked = this.checked;
+  },
+
+  changeCurrent(current) {
+    this.my_checked = current;
+  },
+
+  clickHandler() {
+    if (this.disabled) return;
+    const item = { current: !this.checked, value: this.value };
+    const parent = this.$parent().$child(this.group);
+    parent ? parent.emitEvent(item) : this.$emit("change", item);
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+.qaui-wrap {
+  height: 52px * @ratio;
+  border-bottom-color: #f2f2f2;
+  border-bottom-width: 1px * @ratio;
+  padding-right: 20px * @ratio;
+  .icon {
+    height: 18px * @ratio;
+    width: 18px * @ratio;
+    border-radius: 4px * @ratio;
+    align-self: center;
+    border: 1px * @ratio solid #d0d0d0;
+    margin-right: 11px * @ratio;
+    &-check {
+      border-radius: 3px * @ratio;
+      background-color: @primary-color;
+    }
+  }
+  .qaui-list {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+  .value {
+    font-size: 16px * @ratio;
+    color: #000000;
+    lines: 1;
+    text-overflow: ellipsis;
+  }
+  .active {
+    border-color: @primary-color;
+  }
+  .disabled {
+    opacity: 0.3;
+  }
+}
+</style>
