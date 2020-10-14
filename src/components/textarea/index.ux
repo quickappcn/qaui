@@ -1,0 +1,88 @@
+<template>
+  <div class="qaui-wrap">
+    <textarea
+      style="height:{{height * ratio}}px"
+      id="textarea"
+      class="textarea"
+      onlinechange="lineHandler"
+      onchange="changeHandler"
+      onfocus="bindFocus"
+      onblur="bindBlur"
+      placeholder="{{placeholder}}"
+      maxlength="{{maxlength}}"
+      >{{ defaultValue }}</textarea
+    >
+    <text class="maxlength">{{ length }}/{{ maxlength }}</text>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    defaultValue: {
+      default: "",
+    },
+    focus: {
+      default: false,
+    },
+    placeholder: {
+      default: "输入内容",
+    },
+    maxlength: {
+      default: 140,
+    },
+  },
+  data() {
+    return {
+      ratio: 1,
+      height: 36,
+      length: 0,
+    };
+  },
+  onInit() {
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750;
+    this.ratio = designWidth / 360;
+  },
+  onReady() {
+    if (this.focus) {
+      this.$element("textarea").focus({ focus: true });
+    }
+  },
+  lineHandler({ lineCount }) {
+    if (lineCount < 2) return;
+    this.height = 18 * lineCount;
+  },
+  changeHandler({ text }) {
+    this.$emit("change", { text });
+    this.length = text.length;
+  },
+  bindFocus(evt) {
+    this.$emit("focus", { event: evt });
+    this.$element("textarea").focus({ focus: true });
+  },
+  bindBlur(evt) {
+    this.$emit("blur", { event: evt });
+    this.$element("textarea").focus({ focus: false });
+  },
+};
+</script>
+
+<style lang="less">
+@import "../common";
+.qaui-wrap {
+  flex-direction: column;
+  padding: 17px * @ratio 20px * @ratio;
+  background-color: #ffffff;
+  .textarea {
+    font-size: 14px * @ratio;
+    color: #000000;
+    caret-color: @primary-color;
+    placeholder-color: #cccccc;
+  }
+  .maxlength {
+    font-size: 14px * @ratio;
+    color: #cccccc;
+    align-self: flex-end;
+  }
+}
+</style>
