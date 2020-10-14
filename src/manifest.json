@@ -15,7 +15,7 @@
     "designWidth": 360
   },
   "router": {
-    "entry": "pages/textarea",
+    "entry": "pages/home",
     "pages": {
       "pages/home": {
         "component": "index"
