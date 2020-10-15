@@ -15,7 +15,7 @@
     "designWidth": 360
   },
   "router": {
-    "entry": "pages/home",
+    "entry": "pages/switch",
     "pages": {
       "pages/home": {
         "component": "index"
@@ -45,6 +45,9 @@
         "component": "index"
       },
       "pages/radio": {
+        "component": "index"
+      },
+      "pages/switch": {
         "component": "index"
       }
     }
@@ -92,6 +95,10 @@
       },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/switch": {
+        "titleBarText": "单选开关 switch",
         "menu": false
       }
     }
