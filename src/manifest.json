@@ -15,7 +15,7 @@
     "designWidth": 360
   },
   "router": {
-    "entry": "pages/home",
+    "entry": "pages/input",
     "pages": {
       "pages/home": {
         "component": "index"
@@ -45,6 +45,9 @@
         "component": "index"
       },
       "pages/radio": {
+        "component": "index"
+      },
+      "pages/input": {
         "component": "index"
       }
     }
@@ -92,6 +95,10 @@
       },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/input": {
+        "titleBarText": "输入框 input",
         "menu": false
       }
     }

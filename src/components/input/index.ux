@@ -1,0 +1,20 @@
+<template>
+  <div class="qaui-wrap">
+    <input type="text" />
+  </div>
+</template>
+
+<script>
+export default {
+  props: {},
+};
+</script>
+
+<style lang="less">
+@import "../common";
+.qaui-wrap {
+  justify-content: center;
+  align-items: center;
+  background-color: #ffffff;
+}
+</style>
