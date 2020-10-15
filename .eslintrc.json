@@ -26,11 +26,11 @@
   ],
   "rules": {
     "indent": [
-      "warn",
+      "error",
       2
     ],
     "no-console": [
-      "warn",
+      "error",
       {
         "allow": [
           "info",
@@ -46,7 +46,7 @@
       }
     ],
     "quotes": [
-      "warn",
+      "error",
       "single",
       {
         "avoidEscape": true,
@@ -58,7 +58,7 @@
       "unix"
     ],
     "semi": [
-      "warn",
+      "error",
       "never"
     ]
   }
