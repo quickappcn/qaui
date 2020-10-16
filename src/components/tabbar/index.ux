@@ -1,0 +1,98 @@
+<import name="my-icon" src="../../components/icon/index"></import>
+<template>
+  <div class="{{tabbar.length>0?'qaui-wrap':''}}">
+    <div class="tab-bar" if="{{tabbar.length > 0}}">
+      <div class="shadow"></div>
+      <div class="tab" style="background-color:{{background}}">
+        <div
+          class="t-lable"
+          for="{{tab in tabbar}}"
+          data-active="{{tab.active}}"
+          data-path="{{tab.pagePath}}"
+          @click="changePage"
+        >
+          <my-icon
+            type="{{tab.icon}}"
+            if="{{tab.icon}}"
+            size="22"
+            color="{{tab.active?activecolor:textcolor}}"
+          ></my-icon>
+          <image else src="{{tab.active?tab.selectedIconPath:tab.iconPath}}"></image>
+          <text style="color:{{tab.active?activecolor:textcolor}}">{{ tab.text }}</text>
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<style lang="less">
+@import "../common.less";
+
+.qaui-wrap {
+  padding-bottom: 62px * @ratio;
+}
+
+.tab-bar {
+  .shadow {
+    position: fixed;
+    bottom: 62px * @ratio;
+    height: 1px * @ratio;
+    width: 100%;
+    background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09));
+  }
+
+  .tab {
+    position: fixed;
+    bottom: 0;
+    height: 62px * @ratio;
+    width: 100%;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .t-lable {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    image {
+      width: 20px * @ratio;
+      height: 20px * @ratio;
+    }
+
+    text {
+      font-size: 10px * @ratio;
+    }
+  }
+}
+</style>
+
+<script>
+import router from "@system.router";
+export default {
+  props: {
+    tabbar: {
+      default: [],
+    },
+    background: {
+      type: String,
+      default: "#fff",
+    },
+    textcolor: {
+      type: String,
+      default: "#B2B2B2",
+    },
+    activecolor: {
+      type: String,
+      default: "#0091ff",
+    },
+  },
+  changePage(e) {
+    //如果是当前激活的页面，不再进行跳转
+    if (!e.target.dataset.active) {
+      router.replace({
+        uri: e.target.dataset.path,
+      });
+    }
+  },
+};
+</script>

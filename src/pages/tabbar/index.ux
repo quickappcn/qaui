@@ -1,0 +1,70 @@
+<import name="q-tabbar" src="../../components/tabbar/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <text>这里是底部导航页-页面一</text>
+    <q-tabbar
+      background="{{background}}"
+      textcolor="{{textcolor}}"
+      activecolor="{{activecolor}}"
+      tabbar="{{tabbarData}}"
+    >
+    </q-tabbar>
+  </div>
+</template>
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  height: 3000px;
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      tabbarData: [
+        {
+          iconPath: "../../common/images/tabIcon.svg",
+          selectedIconPath: "../../common/images/tabSelectIcon.svg",
+          pagePath: "/pages/tabbar",
+          text: "首页首页",
+          active: true,
+          icon: "",
+        },
+        {
+          iconPath: "../../common/images/tabIcon.svg",
+          selectedIconPath: "../../common/images/tabSelectIcon.svg",
+          pagePath: "/pages/tabbar/page1",
+          text: "产品列表",
+          active: false,
+          icon: "qrcode",
+        },
+        {
+          iconPath: "../../common/images/tabIcon.svg",
+          selectedIconPath: "../../common/images/tabSelectIcon.svg",
+          pagePath: "/pages/tabbar/page2",
+          text: "我的",
+          active: false,
+          icon: "contact-fill",
+        },
+      ],
+      background: "#fff",
+      activecolor: "#0091ff",
+    };
+  },
+};
+</script>
