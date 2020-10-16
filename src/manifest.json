@@ -15,7 +15,7 @@
     "designWidth": 360
   },
   "router": {
-    "entry": "pages/switch",
+    "entry": "pages/home",
     "pages": {
       "pages/home": {
         "component": "index"
