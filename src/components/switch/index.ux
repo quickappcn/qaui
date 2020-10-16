@@ -49,14 +49,14 @@ export default {
   animation-name: bgChecked;
   animation-duration: 300ms;
   animation-iteration-count: 1;
-  background-color: @primary-color;
+  animation-fill-mode: forwards;
 }
 
 .unchecked {
   animation-name: bgUnchecked;
   animation-duration: 300ms;
   animation-iteration-count: 1;
-  background-color: rgba(0, 0, 0, 0.08);
+  animation-fill-mode: forwards;
 }
 
 @keyframes bgChecked {
@@ -81,20 +81,14 @@ export default {
   animation-name: dotChecked;
   animation-duration: 300ms;
   animation-iteration-count: 1;
-  background-color: #ffffff;
-  width: 4px * @ratio;
-  height: 10px * @ratio;
-  transform: translateX(20px * @ratio);
+  animation-fill-mode: forwards;
 }
 
 .dot-unchecked {
   animation-name: dotUnchecked;
   animation-duration: 300ms;
   animation-iteration-count: 1;
-  background-color: rgba(0, 0, 0, 0.36);
-  width: 8px * @ratio;
-  height: 8px * @ratio;
-  transform: translateX(0px);
+  animation-fill-mode: forwards;
 }
 
 @keyframes dotChecked {
