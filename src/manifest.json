@@ -52,8 +52,11 @@
       },
       "pages/checkbox": {
         "component": "index"
-      }
+      },
       "pages/input": {
+        "component": "index"
+      },
+      "pages/switch": {
         "component": "index"
       }
     }
@@ -113,6 +116,10 @@
       },
       "pages/input": {
         "titleBarText": "输入框 input",
+        "menu": false
+      },
+      "pages/switch": {
+        "titleBarText": "单选开关 switch",
         "menu": false
       }
     }
