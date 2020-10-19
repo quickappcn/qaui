@@ -15,7 +15,7 @@
     "designWidth": 360
   },
   "router": {
-    "entry": "pages/home",
+    "entry": "pages/input",
     "pages": {
       "pages/home": {
         "component": "index"
@@ -51,6 +51,9 @@
         "component": "index"
       },
       "pages/checkbox": {
+        "component": "index"
+      }
+      "pages/input": {
         "component": "index"
       }
     }
@@ -106,6 +109,10 @@
       },
       "pages/checkbox": {
         "titleBarText": "多选按钮 checkbox",
+        "menu": false
+      },
+      "pages/input": {
+        "titleBarText": "输入框 input",
         "menu": false
       }
     }

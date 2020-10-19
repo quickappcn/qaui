@@ -1,0 +1,161 @@
+<template>
+  <div class="qaui-wrap">
+    <image if="iconLeft" onclick="clickHandler('iconLeft')" class="icon icon-left" src="{{iconLeft}}"></image>
+    <text if="title" class="title">{{ title }}</text>
+    <stack class="input-wrap">
+      <input
+        id="input"
+        class="input input-{{type}}"
+        type="text"
+        value="{{inputValue}}"
+        placeholder="{{placeholder}}"
+        maxlength="{{maxlength}}"
+        onchange="changeHandler"
+        onblur="blurHandler"
+        onfocus="focusHandler"
+      />
+      <image
+        if="type==='default'&&inputValue.length!==0"
+        onclick="clearHandler"
+        class="clear"
+        src="../../common/images/clear.svg"
+      ></image>
+    </stack>
+    <image if="iconRightA" onclick="clickHandler('iconRightA')" class="icon icon-right" src="{{iconRightA}}"></image>
+    <image
+      if="!button && iconRightB"
+      onclick="clickHandler('iconRightB')"
+      class="icon icon-right"
+      src="{{iconRightB}}"
+    ></image>
+    <text if="button" onclick="clickHandler('button')" class="button-right">{{ button }}</text>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    type: {
+      default: 'default', // border
+    },
+    title: {
+      default: '',
+    },
+    value: {
+      default: '',
+    },
+    focus: {
+      default: false,
+    },
+    maxlength: {
+      default: 20,
+    },
+    placeholder: {
+      default: '输入内容',
+    },
+    button: {
+      default: '',
+    },
+    iconLeft: {
+      default: '',
+    },
+    iconRightA: {
+      default: '',
+    },
+    iconRightB: {
+      default: '',
+    },
+  },
+  data() {
+    return {
+      showClear: false,
+      inputValue: this.value,
+    }
+  },
+  onReady() {
+    if (this.focus) {
+      this.$element('input').focus({ focus: true })
+    }
+  },
+  changeHandler({ value }) {
+    this.$emit('change', value)
+    this.inputValue = value
+  },
+  clearHandler() {
+    this.$emit('clear')
+    this.inputValue = ''
+  },
+  blurHandler() {
+    this.$emit('blur', { value: this.inputValue })
+  },
+  focusHandler() {
+    this.$emit('focus', { value: this.inputValue })
+  },
+  clickHandler(position, event) {
+    this.$emit('tap', { position, event })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  height: 52px * @ratio;
+  align-items: center;
+  background-color: #ffffff;
+  width: 100%;
+  padding: 0 20px * @ratio;
+  .icon {
+    height: 24px * @ratio;
+    width: 24px * @ratio;
+    flex-shrink: 0;
+  }
+  .icon-left {
+    margin-right: 16px * @ratio;
+  }
+  .icon-right {
+    margin-left: 16px * @ratio;
+  }
+  .title {
+    flex-shrink: 0;
+    width: 84px * @ratio;
+    margin-right: 9px * @ratio;
+    lines: 1;
+    font-size: 14px * @ratio;
+    color: #000000;
+  }
+  .input-wrap {
+    justify-content: center;
+    flex-direction: column;
+    flex-grow: 1;
+    .input {
+      flex-grow: 1;
+      font-size: 14px * @ratio;
+      placeholder-color: #cccccc;
+      height: 32px * @ratio;
+      caret-color: @primary-color;
+    }
+    .input-default {
+      padding-right: 20px * @ratio;
+    }
+    .input-border {
+      background-color: #f8f8f8;
+      border: 1px * @ratio solid #dedede;
+      border-radius: 8px * @ratio;
+      padding: 0 8px * @ratio;
+    }
+    .clear {
+      align-self: flex-end;
+      height: 18px * @ratio;
+      width: 18px * @ratio;
+    }
+  }
+  .button-right {
+    font-size: 16px * @ratio;
+    color: @primary-color;
+    width: 32px * @ratio;
+    flex-shrink: 0;
+    margin-left: 16px * @ratio;
+  }
+}
+</style>
