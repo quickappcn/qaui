@@ -6,7 +6,7 @@
 <style lang="less">
 @font-face {
   font-family: iconfont;
-  src: url("./icomoon.ttf");
+  src: url('./icomoon.ttf');
 }
 
 .font-icon {
@@ -15,28 +15,28 @@
 }
 </style>
 <script>
-import { icons } from "./icon";
+import { icons } from './icon'
 
 export default {
   data() {
     return {
       iconMap: icons,
-    };
+    }
   },
   props: {
     type: {
-      default: "empty",
+      default: 'empty',
     },
     size: {
       default: 14,
     },
     color: {
-      default: "",
+      default: '',
     },
   },
-  unescapeFontIconCode(iconCode = "") {
-    let entity = "&#x" + iconCode;
-    return unescape(entity.replace(/&#x/g, "%u").replace(/;/g, ""));
+  unescapeFontIconCode(iconCode = '') {
+    let entity = '&#x' + iconCode
+    return unescape(entity.replace(/&#x/g, '%u').replace(/;/g, ''))
   },
-};
+}
 </script>

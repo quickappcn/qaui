@@ -25,10 +25,10 @@
 export default {
   props: {
     type: {
-      default: "primary", // primary ghost error
+      default: 'primary', // primary ghost error
     },
     size: {
-      default: "normal", // normal small
+      default: 'normal', // normal small
     },
     disabled: {
       default: false,
@@ -37,21 +37,21 @@ export default {
       default: false,
     },
     bgColor: {
-      default: "",
+      default: '',
     },
     color: {
-      default: "",
+      default: '',
     },
   },
   clickHandler(e) {
-    this.$emit("tap", e);
+    this.$emit('tap', e)
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
-@import "./button";
+@import '../common';
+@import './button';
 .qaui-wrap {
   align-self: center;
 }

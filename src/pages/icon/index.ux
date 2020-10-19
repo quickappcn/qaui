@@ -4,7 +4,7 @@
     <block for="icon in iconMap">
       <div class="icon">
         <q-icon type="{{icon}}" size="48"></q-icon>
-        <text class="name">{{ " " + icon }}</text>
+        <text class="name">{{ ' ' + icon }}</text>
       </div>
     </block>
   </div>
@@ -27,16 +27,16 @@
 }
 </style>
 <script>
-import { icons } from "../../components/icon/icon";
+import { icons } from '../../components/icon/icon'
 
 export default {
   data() {
     return {
       iconMap: Object.keys(icons),
-    };
+    }
   },
   onInit() {
-    console.log("icons", this.iconMap);
+    console.log('icons', this.iconMap)
   },
-};
+}
 </script>

@@ -35,14 +35,19 @@ export default {
     this.$watch('current', 'changeCurrent')
   },
 
+  onReady() {
+    this.changeCurrent()
+  },
+
   changeCurrent(val = this.current) {
-    const radios = this.radios
-    if (radios && radios.length > 0) {
-      radios.forEach((item) => {
-        item.changeCurrent(val === item.value)
+    const checkboxes = this.checkboxes
+    if (checkboxes && checkboxes.length > 0) {
+      checkboxes.forEach((item) => {
+        item.changeCurrent(val.includes(item.value))
       })
     }
   },
+
   emitEvent(params) {
     this.$emit('change', params)
   },

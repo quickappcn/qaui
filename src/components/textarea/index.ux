@@ -20,13 +20,13 @@
 export default {
   props: {
     defaultValue: {
-      default: "",
+      default: '',
     },
     focus: {
       default: false,
     },
     placeholder: {
-      default: "输入内容",
+      default: '输入内容',
     },
     maxlength: {
       default: 140,
@@ -37,38 +37,38 @@ export default {
       ratio: 1,
       height: 36,
       length: 0,
-    };
+    }
   },
   onInit() {
-    const designWidth = this.$app.$def.manifest.config.designWidth || 750;
-    this.ratio = designWidth / 360;
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    this.ratio = designWidth / 360
   },
   onReady() {
     if (this.focus) {
-      this.$element("textarea").focus({ focus: true });
+      this.$element('textarea').focus({ focus: true })
     }
   },
   lineHandler({ lineCount }) {
-    if (lineCount < 2) return;
-    this.height = 18 * lineCount;
+    if (lineCount < 2) return
+    this.height = 18 * lineCount
   },
   changeHandler({ text }) {
-    this.$emit("change", { text });
-    this.length = text.length;
+    this.$emit('change', { text })
+    this.length = text.length
   },
   bindFocus(evt) {
-    this.$emit("focus", { event: evt });
-    this.$element("textarea").focus({ focus: true });
+    this.$emit('focus', { event: evt })
+    this.$element('textarea').focus({ focus: true })
   },
   bindBlur(evt) {
-    this.$emit("blur", { event: evt });
-    this.$element("textarea").focus({ focus: false });
+    this.$emit('blur', { event: evt })
+    this.$element('textarea').focus({ focus: false })
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   flex-direction: column;
   padding: 17px * @ratio 20px * @ratio;

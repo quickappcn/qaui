@@ -31,26 +31,26 @@ export default {
       list: [
         {
           id: 1,
-          value: "单选项1",
+          value: '单选项1',
         },
         {
           id: 2,
-          value: "单选项2",
+          value: '单选项2',
           checked: true,
           disabled: true,
         },
         {
           id: 3,
-          value: "单选项3",
+          value: '单选项3',
         },
       ],
-      current: "单选项2",
-    };
+      current: '单选项2',
+    }
   },
   handleChange({ detail }) {
-    this.current = detail.value;
+    this.current = detail.value
   },
-};
+}
 </script>
 
 <style lang="less">

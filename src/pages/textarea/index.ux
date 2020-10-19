@@ -17,9 +17,9 @@
 <script>
 export default {
   changeHandler(e) {
-    console.log(e);
+    console.log(e)
   },
-};
+}
 </script>
 
 <style lang="less">

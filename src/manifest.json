@@ -49,6 +49,9 @@
       },
       "pages/textarea": {
         "component": "index"
+      },
+      "pages/checkbox": {
+        "component": "index"
       }
     }
   },
@@ -99,6 +102,10 @@
       },
       "pages/textarea": {
         "titleBarText": "多行输入框 textarea",
+        "menu": false
+      },
+      "pages/checkbox": {
+        "titleBarText": "多选按钮 checkbox",
         "menu": false
       }
     }

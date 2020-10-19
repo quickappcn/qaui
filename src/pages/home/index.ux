@@ -115,10 +115,10 @@
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   onInit() {
-    console.log("home page init!!");
+    console.log('home page init!!')
   },
-};
+}
 </script>
