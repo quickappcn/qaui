@@ -46,6 +46,9 @@
       },
       "pages/radio": {
         "component": "index"
+      },
+      "pages/textarea": {
+        "component": "index"
       }
     }
   },
@@ -92,6 +95,10 @@
       },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/textarea": {
+        "titleBarText": "多行输入框 textarea",
         "menu": false
       }
     }
