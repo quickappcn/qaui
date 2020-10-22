@@ -53,11 +53,7 @@
       },
       "pages/tabbar/page2": {
         "component": "index"
-      },
-      "pages/alphabet": {
-        "component": "index"
       }
-      
     }
   },
   "display": {
@@ -102,21 +98,17 @@
         "menu": false
       },
       "pages/tabbar": {
-        "titleBarText": "底部导航 tabbar",
+        "titleBarText": "底部导航 tabbar 一",
         "menu": false
       },
       "pages/tabbar/page1": {
-        "titleBarText": "底部导航 tabbar",
+        "titleBarText": "底部导航 tabbar 二",
         "menu": false
       },
       "pages/tabbar/page2": {
-        "titleBarText": "底部导航 tabbar",
+        "titleBarText": "底部导航 tabbar 三",
         "menu": false
-      },
-      "pages/alphabet": {
-        "titleBarText": "索引选择器",
-        "menu": false
-      }
+      }  
     }
   }
 }

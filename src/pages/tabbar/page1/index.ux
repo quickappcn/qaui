@@ -3,10 +3,10 @@
   <div class="qaui-wrap">
     <text>页面二</text>
     <q-tabbar
-      background="{{background}}"
-      text-color="{{textColor}}"
-      active-color="{{activeColor}}"
-      data="{{tabbarData}}"
+      background="{{ background }}"
+      text-color="{{ textColor }}"
+      active-color="{{ activeColor }}"
+      data="{{ tabbarData }}"
       icon-size="20"
     >
     </q-tabbar>
@@ -25,34 +25,34 @@ export default {
     return {
       tabbarData: [
         {
-          iconPath: "../../../common/images/tabIcon.svg",
-          selectedIconPath: "../../../common/images/tabSelectIcon.svg",
-          pagePath: "/pages/tabbar",
-          text: "首页首页",
+          iconPath: '../../../common/images/tabIcon.svg',
+          selectedIconPath: '../../../common/images/tabSelectIcon.svg',
+          pagePath: '/pages/tabbar',
+          text: '首页首页',
           active: false,
-          icon: "",
+          icon: '',
         },
         {
-          iconPath: "../../../common/images/tabIcon.svg",
-          selectedIconPath: "../../../common/images/tabSelectIcon.svg",
-          pagePath: "/pages/tabbar/page1",
-          text: "产品列表",
+          iconPath: '../../../common/images/tabIcon.svg',
+          selectedIconPath: '../../../common/images/tabSelectIcon.svg',
+          pagePath: '/pages/tabbar/page1',
+          text: '产品列表',
           active: true,
-          icon: "qrcode",
+          icon: 'qrcode',
         },
         {
-          iconPath: "../../../common/images/tabIcon.svg",
-          selectedIconPath: "../../../common/images/tabSelectIcon.svg",
-          pagePath: "/pages/tabbar/page2",
-          text: "我的",
+          iconPath: '../../../common/images/tabIcon.svg',
+          selectedIconPath: '../../../common/images/tabSelectIcon.svg',
+          pagePath: '/pages/tabbar/page2',
+          text: '我的',
           active: false,
-          icon: "contact-fill",
+          icon: 'contact-fill',
         },
       ],
-      background: "#fff",
-      textColor: "#B2B2B2",
-      activeColor: "#0091ff",
-    };
+      background: '#fff',
+      textColor: '#B2B2B2',
+      activeColor: '#0091ff',
+    }
   },
-};
+}
 </script>

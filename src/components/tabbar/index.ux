@@ -1,24 +1,24 @@
 <import name="my-icon" src="../../components/icon/index"></import>
 <template>
-  <div class="{{data.length>0?'qaui-wrap':''}}">
-    <div class="tab-bar" if="{{data.length > 0}}">
+  <div class="{{ data.length>0?'qaui-wrap':'' }}">
+    <div class="tab-bar" if="{{ data.length > 0 }}">
       <div class="shadow"></div>
-      <div class="tab" style="background-color:{{background}}">
+      <div class="tab" style="background-color:{{ background }}">
         <div
-          class="t-lable"
-          for="{{tab in data}}"
-          data-active="{{tab.active}}"
-          data-path="{{tab.pagePath}}"
+          class="tab-label"
+          for="{{ tab in data }}"
+          data-active="{{ tab.active }}"
+          data-path="{{ tab.pagePath }}"
           @click="changePage"
         >
           <my-icon
-            type="{{tab.icon}}"
-            if="{{tab.icon}}"
-            size="{{iconSize}}"
-            color="{{tab.active?activeColor:textColor}}"
+            type="{{ tab.icon }}"
+            if="{{ tab.icon }}"
+            size="{{ iconSize }}"
+            color="{{ tab.active?activeColor:textColor }}"
           ></my-icon>
-          <image else src="{{tab.active?tab.selectedIconPath:tab.iconPath}}"></image>
-          <text style="color:{{tab.active?activeColor:textColor}}">{{ tab.text }}</text>
+          <image else src="{{ tab.active?tab.selectedIconPath:tab.iconPath }}"></image>
+          <text style="color:{{ tab.active?activeColor:textColor }}">{{ tab.text }}</text>
         </div>
       </div>
     </div>
@@ -26,7 +26,7 @@
 </template>
 
 <style lang="less">
-@import "../common.less";
+@import '../common.less';
 
 .qaui-wrap {
   padding-bottom: 62px * @ratio;
@@ -50,7 +50,7 @@
     justify-content: space-around;
   }
 
-  .t-lable {
+  .tab-label {
     flex-direction: column;
     justify-content: center;
     align-items: center;
@@ -67,7 +67,7 @@
 </style>
 
 <script>
-import router from "@system.router";
+import router from '@system.router'
 export default {
   props: {
     data: {
@@ -75,15 +75,15 @@ export default {
     },
     background: {
       type: String,
-      default: "#fff",
+      default: '#fff',
     },
     textColor: {
       type: String,
-      default: "#B2B2B2",
+      default: '#B2B2B2',
     },
     activeColor: {
       type: String,
-      default: "#0091ff",
+      default: '#0091ff',
     },
     iconSize: {
       type: Number,
@@ -95,8 +95,8 @@ export default {
     if (!e.target.dataset.active) {
       router.replace({
         uri: e.target.dataset.path,
-      });
+      })
     }
   },
-};
+}
 </script>
