@@ -58,6 +58,9 @@
       },
       "pages/switch": {
         "component": "index"
+      },
+      "pages/vcode": {
+        "component": "index"
       }
     }
   },
@@ -120,6 +123,10 @@
       },
       "pages/switch": {
         "titleBarText": "单选开关 switch",
+        "menu": false
+      },
+      "pages/vcode": {
+        "titleBarText": "验证码 vcode",
         "menu": false
       }
     }
