@@ -54,6 +54,12 @@
       "pages/progress": {
         "component": "index"
       },
+      "pages/page-result": {
+        "component": "index"
+      },
+      "pages/radio": {
+        "component": "index"
+      },
       "pages/textarea": {
         "component": "index"
       },
@@ -129,6 +135,10 @@
       },
       "pages/progress": {
         "titleBarText": "进度条 progress",
+        "menu": false
+      },
+      "pages/page-result": {
+        "titleBarText": "结果页 pageResult",
         "menu": false
       },
       "pages/radio": {
