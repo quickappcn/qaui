@@ -1,12 +1,12 @@
 <import name="my-icon" src="../../components/icon/index"></import>
 <template>
-  <div class="{{tabbar.length>0?'qaui-wrap':''}}">
-    <div class="tab-bar" if="{{tabbar.length > 0}}">
+  <div class="{{data.length>0?'qaui-wrap':''}}">
+    <div class="tab-bar" if="{{data.length > 0}}">
       <div class="shadow"></div>
       <div class="tab" style="background-color:{{background}}">
         <div
           class="t-lable"
-          for="{{tab in tabbar}}"
+          for="{{tab in data}}"
           data-active="{{tab.active}}"
           data-path="{{tab.pagePath}}"
           @click="changePage"
@@ -14,11 +14,11 @@
           <my-icon
             type="{{tab.icon}}"
             if="{{tab.icon}}"
-            size="22"
-            color="{{tab.active?activecolor:textcolor}}"
+            size="{{iconSize}}"
+            color="{{tab.active?activeColor:textColor}}"
           ></my-icon>
           <image else src="{{tab.active?tab.selectedIconPath:tab.iconPath}}"></image>
-          <text style="color:{{tab.active?activecolor:textcolor}}">{{ tab.text }}</text>
+          <text style="color:{{tab.active?activeColor:textColor}}">{{ tab.text }}</text>
         </div>
       </div>
     </div>
@@ -70,20 +70,24 @@
 import router from "@system.router";
 export default {
   props: {
-    tabbar: {
+    data: {
       default: [],
     },
     background: {
       type: String,
       default: "#fff",
     },
-    textcolor: {
+    textColor: {
       type: String,
       default: "#B2B2B2",
     },
-    activecolor: {
+    activeColor: {
       type: String,
       default: "#0091ff",
+    },
+    iconSize: {
+      type: Number,
+      default: 22,
     },
   },
   changePage(e) {

@@ -1,26 +1,13 @@
 <import name="q-tabbar" src="../../components/tabbar/index"></import>
 <template>
   <div class="qaui-wrap">
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
-    <text>这里是底部导航页-页面一</text>
+    <text>页面一</text>
     <q-tabbar
       background="{{background}}"
-      textcolor="{{textcolor}}"
-      activecolor="{{activecolor}}"
-      tabbar="{{tabbarData}}"
+      text-color="{{textColor}}"
+      active-color="{{activeColor}}"
+      data="{{tabbarData}}"
+      icon-size="20"
     >
     </q-tabbar>
   </div>
@@ -29,6 +16,9 @@
 .qaui-wrap {
   flex-direction: column;
   height: 3000px;
+  text {
+    font-size: 13px;
+  }
 }
 </style>
 
@@ -63,7 +53,8 @@ export default {
         },
       ],
       background: "#fff",
-      activecolor: "#0091ff",
+      activeColor: "#0091ff",
+      textColor: "#B2B2B2",
     };
   },
 };
