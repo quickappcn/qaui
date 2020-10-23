@@ -57,7 +57,7 @@
       "pages/page-result": {
         "component": "index"
       },
-      "pages/radio": {
+      "pages/page-error": {
         "component": "index"
       },
       "pages/textarea": {
@@ -139,6 +139,10 @@
       },
       "pages/page-result": {
         "titleBarText": "结果页 pageResult",
+        "menu": false
+      },
+      "pages/page-error": {
+        "titleBarText": "异常页 pageError",
         "menu": false
       },
       "pages/radio": {
