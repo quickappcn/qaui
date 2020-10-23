@@ -43,6 +43,9 @@
       },
       "pages/icon": {
         "component": "index"
+      },
+      "pages/alphabet": {
+        "component": "index"
       }
     }
   },
@@ -85,6 +88,10 @@
       },
       "pages/icon": {
         "titleBarText": "图标 icon",
+        "menu": false
+      },
+      "pages/alphabet": {
+        "titleBarText": "字母索引表 alphabet",
         "menu": false
       }
     }
