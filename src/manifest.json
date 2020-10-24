@@ -58,6 +58,9 @@
       },
       "pages/switch": {
         "component": "index"
+      },
+      "pages/slider": {
+        "component": "index"
       }
     }
   },
@@ -120,6 +123,10 @@
       },
       "pages/switch": {
         "titleBarText": "单选开关 switch",
+        "menu": false
+      },
+      "pages/slider": {
+        "titleBarText": "滑动条 slider",
         "menu": false
       }
     }
