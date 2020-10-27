@@ -3,13 +3,17 @@
 
 <template>
   <div class="qaui-list">
-    <list id="list">
-      <list-item for="{{ data }}">
+    <div class="qaui-list-title">
+      <text>{{ title }}</text>
+    </div>
+    <list id="list" class="qaui-list-content">
+      <list-item for="{{ data }}" type="listItem">
         <q-list-item-content
           item="{{ $item }}"
-          onclick="clickItem($idx)"
           index="{{ $idx }}"
-          @clicksmallbtn="clicksamllbtn($idx)"
+          onclick="clickItem($idx)"
+          onclick-small-btn="clickSamllBtn($idx)"
+          onclick-switch="clickSwitch($idx)"
         ></q-list-item-content>
       </list-item>
     </list>
@@ -19,29 +23,63 @@
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   props: {
     data: {
       type: Array,
-      default: [],
+      default() {
+        return []
+      },
+    },
+    title: {
+      type: String,
+      default: '',
     },
   },
 
   clickItem($idx) {
-    console.log($idx, this.$child("list")._childrenVms[$idx]._data);
-    const itemData = { index: $idx, data: this.$child("list")._childrenVms[$idx]._data };
-    this.$emit("clickitem", itemData);
+    const data = this.$child('list')._childrenVms[$idx]._data
+    const itemData = { index: $idx, data: data }
+    this.$emit('clickItem', itemData)
   },
 
-  clicksamllbtn($idx) {
-    console.log($idx, this.$child("list")._childrenVms[$idx]._data);
-    const itemData = { index: $idx, data: this.$child("list")._childrenVms[$idx]._data };
-    this.$emit("clicksamllbtn", itemData);
+  clickSamllBtn($idx) {
+    const data = this.$child('list')._childrenVms[$idx]._data
+    const itemData = { index: $idx, data: data }
+    this.$emit('clickSamllBtn', itemData)
   },
-};
+
+  clickSwitch($idx, e) {
+    const data = this.$child('list')._childrenVms[$idx]._data
+    const itemData = { index: $idx, data: data, active: e.detail.active }
+    this.$emit('clickSwitch', itemData)
+  },
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
+
+.qaui-list {
+  flex-direction: column;
+
+  &-title {
+    width: 360px * @ratio;
+    height: 48px * @ratio;
+    align-items: center;
+    margin-left: 20px * @ratio;
+
+    text {
+      font-family: HYQiHei-FES;
+      font-size: 16px * @ratio;
+      color: #000000;
+      line-height: 20px;
+    }
+  }
+
+  &-content {
+    flex: 1;
+  }
+}
 </style>

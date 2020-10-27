@@ -47,6 +47,18 @@
       "pages/radio": {
         "component": "index"
       },
+      "pages/textarea": {
+        "component": "index"
+      },
+      "pages/checkbox": {
+        "component": "index"
+      },
+      "pages/input": {
+        "component": "index"
+      },
+      "pages/switch": {
+        "component": "index"
+      },
       "pages/list": {
         "component": "index"
       }
@@ -95,6 +107,22 @@
       },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/textarea": {
+        "titleBarText": "多行输入框 textarea",
+        "menu": false
+      },
+      "pages/checkbox": {
+        "titleBarText": "多选按钮 checkbox",
+        "menu": false
+      },
+      "pages/input": {
+        "titleBarText": "输入框 input",
+        "menu": false
+      },
+      "pages/switch": {
+        "titleBarText": "单选开关 switch",
         "menu": false
       },
       "pages/list": {

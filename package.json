@@ -14,7 +14,7 @@
     "server": "hap server --watch",
     "dev": "vuepress dev docs",
     "build:docs": "vuepress build docs",
-    "pretty": "prettier --write '**/*.ux'"
+    "pretty": "prettier --write **/*.ux"
   },
   "license": "MIT",
   "husky": {
@@ -29,11 +29,13 @@
   },
   "prettier": {
     "printWidth": 120,
-    "tabWidth": 2
+    "tabWidth": 2,
+    "useTabs": false,
+    "singleQuote": true,
+    "semi": false
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
     "eslint-plugin-hybrid": "0.0.5",
     "hap-toolkit": "^0.6.1",
     "husky": "^4.3.0",

@@ -1,12 +1,14 @@
 <import name="q-icon" src="../icon/index"></import>
 <import name="q-button" src="../button/index"> </import>
+<import name="q-switch" src="../switch/index"></import>
+
 <template>
   <div class="qaui-listItem-wrapper">
     <div class="qaui-listItem-left">
       <div class="qaui-listItem-left-icon" if="{{ item.iconType }}">
         <q-icon type="{{ item.iconType }}" color="#000000" size="20"></q-icon>
       </div>
-      <div class="qaui-listItem-left-thumb" if="{{ item.thumb }}" object-fit="fill">
+      <div if="{{ item.thumb }}" class="qaui-listItem-left-thumb">
         <image src="{{ item.thumb }}"></image>
       </div>
     </div>
@@ -16,39 +18,42 @@
     </div>
     <div class="qaui-listItem-right">
       <text if="{{ item.rightText }}">{{ item.rightText }}</text>
-      <q-icon type="forward-arrow" if="{{ item.rightType === 'rightArrow' }}" color="#D0D0D0" size="20"></q-icon>
-      <q-button type="ghost" size="{{size}}" if="{{ item.rightType === 'button' }}" ontap="clickBtn">{{
-        item.rightBtnText
-      }}</q-button>
+      <q-icon if="{{ item.extra === 'rightArrow' }}" type="forward-arrow" color="#D0D0D0" size="20"></q-icon>
+      <q-button if="{{ item.extra === 'button' }}" type="ghost" width="60" size="small" ontap="clickSmallBtn">
+        {{ item.rightBtnText }}
+      </q-button>
+      <q-switch if="{{ item.extra === 'switch' }}" value="{{ item.switchValue }}" onchange="clickSwitch"></q-switch>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      size: "small",
-    };
-  },
   props: {
     item: {
       type: Object,
-      default: {},
+      default() {
+        return {}
+      },
     },
     index: {
       type: Number,
       default: 0,
     },
   },
-  clickBtn(e) {
-    this.$emit("clicksmallbtn", e);
+
+  clickSmallBtn(e) {
+    this.$emit('clickSmallBtn', e)
   },
-};
+
+  clickSwitch(e) {
+    this.$emit('clickSwitch', e)
+  },
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 
 .qaui-listItem {
   background-color: #ffffff;

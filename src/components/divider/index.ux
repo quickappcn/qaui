@@ -14,17 +14,17 @@
 export default {
   props: {
     content: {
-      default: "",
+      default: '',
     },
     loading: {
       default: false,
     },
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   justify-content: center;
   align-items: center;

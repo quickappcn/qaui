@@ -1,0 +1,35 @@
+<import name="q-textarea" src="../../components/textarea/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <text class="title">默认用法</text>
+    <q-textarea></q-textarea>
+    <text class="title">自定义用法</text>
+    <q-textarea
+      placeholder="请输入您的意见！"
+      maxlength="50"
+      default-value="快应用真快"
+      focus="true"
+      onchange="changeHandler"
+    ></q-textarea>
+  </div>
+</template>
+
+<script>
+export default {
+  changeHandler(e) {
+    console.log(e)
+  },
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  background-color: #f2f2f2;
+  .title {
+    font-size: 14px;
+    height: 30px;
+    padding: 10px;
+  }
+}
+</style>

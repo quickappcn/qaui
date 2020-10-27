@@ -13,34 +13,34 @@
 </template>
 
 <script>
-import router from "@system.router";
+import router from '@system.router'
 
 export default {
   props: {
     title: {
-      default: "",
+      default: '',
     },
     description: {
-      default: "",
+      default: '',
     },
     icon: {
-      default: "",
+      default: '',
     },
     target: {
-      default: "",
+      default: '',
     },
   },
   clickHandler() {
-    if (!this.target) return;
+    if (!this.target) return
     router.push({
       uri: this.target,
-    });
+    })
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   height: 48px * @ratio;
   justify-content: space-between;

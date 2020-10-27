@@ -29,23 +29,23 @@
 </template>
 
 <script>
-import router from "@system.router";
+import router from '@system.router'
 
 export default {
   data() {
     return {
-      inputValue: "",
-    };
+      inputValue: '',
+    }
   },
   props: {
     leftBtn: {
-      default: "", // back
+      default: '', // back
     },
     rightBtn: {
-      default: "", // search
+      default: '', // search
     },
     placeholder: {
-      default: "搜索",
+      default: '搜索',
     },
     maxlength: {
       default: 50,
@@ -54,7 +54,7 @@ export default {
       default: false,
     },
     value: {
-      default: "",
+      default: '',
     },
     menubar: {
       default: false,
@@ -62,48 +62,48 @@ export default {
   },
   onInit() {
     if (this.value) {
-      this.inputValue = this.value;
+      this.inputValue = this.value
     }
   },
   onReady() {
     if (this.focus) {
-      this.$element("input").focus({ focus: true });
+      this.$element('input').focus({ focus: true })
     }
   },
   bindFocus(evt) {
-    this.$emit("focus", { event: evt });
-    this.$element("input").focus({ focus: true });
+    this.$emit('focus', { event: evt })
+    this.$element('input').focus({ focus: true })
   },
   bindBlur(evt) {
-    this.$emit("blur", { event: evt });
-    this.$element("input").focus({ focus: false });
+    this.$emit('blur', { event: evt })
+    this.$element('input').focus({ focus: false })
   },
   bindClear() {
-    this.$emit("clear", { value: this.inputValue });
-    this.inputValue = "";
+    this.$emit('clear', { value: this.inputValue })
+    this.inputValue = ''
   },
   bindChange(evt) {
-    this.$emit("change", { event: evt });
-    this.inputValue = evt.value;
+    this.$emit('change', { event: evt })
+    this.inputValue = evt.value
   },
   enterEvent(evt) {
-    this.$emit("enterkeyclick", { event: evt });
-    this.$element("input").focus({ focus: false });
+    this.$emit('enterkeyclick', { event: evt })
+    this.$element('input').focus({ focus: false })
   },
-  leftClickHandler(evt) {
-    this.$emit("left", { value: this.inputValue });
+  leftClickHandler() {
+    this.$emit('left', { value: this.inputValue })
   },
-  rightClickHandler(evt) {
-    this.$emit("right", { value: this.inputValue });
+  rightClickHandler() {
+    this.$emit('right', { value: this.inputValue })
   },
   goBack() {
-    router.back();
+    router.back()
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   background-color: #ffffff;
   height: 48px * @ratio;

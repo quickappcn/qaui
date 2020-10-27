@@ -21,20 +21,20 @@
 export default {
   props: {
     content: {
-      default: "",
+      default: '',
     },
     links: {
       default: [],
     },
     logo: {
-      default: "",
+      default: '',
     },
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
+@import '../common';
 .qaui-wrap {
   flex-direction: column;
   justify-content: center;
