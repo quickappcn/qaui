@@ -44,6 +44,9 @@
       "pages/icon": {
         "component": "index"
       },
+      "pages/progress": {
+        "component": "index"
+      },
       "pages/radio": {
         "component": "index"
       },
@@ -100,6 +103,10 @@
       },
       "pages/icon": {
         "titleBarText": "图标 icon",
+        "menu": false
+      },
+      "pages/progress": {
+        "titleBarText": "进度条 progress",
         "menu": false
       },
       "pages/radio": {
