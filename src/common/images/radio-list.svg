@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 60 (88103) - https://sketch.com -->
+    <title>hdpi/单选按钮-已选2</title>
+    <desc>Created with Sketch.</desc>
+    <g id="引擎组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="单选按钮-已选2">
+            <rect id="切图区域" x="0" y="0" width="24" height="24"></rect>
+            <path d="M6.50848156,11.7721406 C6.13537951,11.4299491 5.55551944,11.455007 5.21332786,11.828109 C4.87113628,12.2012111 4.89619417,12.7810711 5.26929622,13.1232627 L10.1125061,17.5652261 L18.7788659,8.35022004 C19.1256996,7.98142923 19.1078997,7.401301 18.7391089,7.05446739 C18.3703181,6.70763377 17.7901899,6.72543359 17.4433563,7.09422441 L10.0173722,14.9903295 L6.50848156,11.7721406 Z" id="radiobutton" fill="#456FFF"></path>
+        </g>
+    </g>
+</svg>

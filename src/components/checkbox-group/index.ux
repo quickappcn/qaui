@@ -1,0 +1,55 @@
+<template>
+  <div class="qaui-wrap">
+    <slot></slot>
+  </div>
+</template>
+
+<style lang="less">
+@import '../common.less';
+.qaui-wrap {
+  flex-direction: column;
+  background-color: #ffffff;
+  width: 100%;
+  padding-left: 20px * @ratio;
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {}
+  },
+
+  props: {
+    current: {
+      default: '',
+    },
+    id: {
+      type: String,
+      required: true,
+      default: '',
+    },
+  },
+
+  onInit() {
+    this.$watch('current', 'changeCurrent')
+  },
+
+  onReady() {
+    this.changeCurrent()
+  },
+
+  changeCurrent(val = this.current) {
+    const checkboxes = this.checkboxes
+    if (checkboxes && checkboxes.length > 0) {
+      checkboxes.forEach((item) => {
+        item.changeCurrent(val.includes(item.value))
+      })
+    }
+  },
+
+  emitEvent(params) {
+    this.$emit('change', params)
+  },
+}
+</script>

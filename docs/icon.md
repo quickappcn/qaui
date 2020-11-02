@@ -24,7 +24,7 @@
 
 ```html
 <template>
-  <div class="qui-wrap">
+  <div class="qaui-wrap">
     <div class="icon">
       <q-icon type="love" size="48"></q-icon>
     </div>
@@ -33,7 +33,7 @@
 ```
 
 ```less
-.qui-wrap {
+.qaui-wrap {
   flex-direction: row;
   flex-wrap: wrap;
   .icon {

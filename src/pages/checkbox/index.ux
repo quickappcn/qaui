@@ -1,0 +1,60 @@
+<import name="q-checkbox" src="../../components/checkbox/index"></import>
+<import name="q-checkbox-group" src="../../components/checkbox-group/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-checkbox-group id="myGroup" current="{{current}}" onchange="handleChange">
+      <q-checkbox
+        group="myGroup"
+        type="list"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+        disabled="{{$item.disabled}}"
+      ></q-checkbox>
+    </q-checkbox-group>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      list: [
+        {
+          id: 1,
+          value: '多选项1',
+        },
+        {
+          id: 2,
+          value: '多选项2',
+          checked: true,
+          disabled: true,
+        },
+        {
+          id: 3,
+          value: '多选项3',
+        },
+        {
+          id: 4,
+          value: '多选项4',
+          disabled: true,
+        },
+      ],
+      current: ['多选项2', '多选项1'],
+    }
+  },
+  handleChange({ detail }) {
+    const index = this.current.indexOf(detail.value)
+    index === -1 ? this.current.push(detail.value) : this.current.splice(index, 1)
+  },
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px 0;
+}
+</style>

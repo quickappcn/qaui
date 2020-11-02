@@ -1,0 +1,40 @@
+<import name="q-switch" src="../../components/switch/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <div class="row">
+      <q-switch value="true"></q-switch>
+      <text>常规-开</text>
+    </div>
+    <div class="row">
+      <q-switch></q-switch>
+      <text>常规-关</text>
+    </div>
+    <div class="row">
+      <q-switch value="true" disabled="true"></q-switch>
+      <text>不可点击-开</text>
+    </div>
+    <div class="row">
+      <q-switch disabled="true"></q-switch>
+      <text>不可点击-关</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  padding: 20px;
+  .row {
+    margin-bottom: 10px;
+  }
+  text {
+    font-size: 14px;
+    color: #000000;
+    margin-left: 10px;
+  }
+}
+</style>

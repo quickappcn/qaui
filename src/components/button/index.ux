@@ -1,9 +1,9 @@
 <template>
   <div class="qaui-wrap">
-    <stack>
+    <stack style="width: {{width}}px;">
       <div
         class="btn btn-{{size}} btn-{{type}} {{ loading ? 'btn-loading' : '' }}"
-        style="{{!!bgColor ? `background-color: ${bgColor}` : ''}};{{!!color ? `border-color: ${color}` : ''}}"
+        style="{{!!bgColor ? `background-color: ${bgColor};` : ''}}{{!!color ? `border-color: ${color};` : ''}}"
       >
         <progress
           style="{{!!color ? `color: ${color}` : ''}}"
@@ -15,7 +15,12 @@
           <slot></slot>
         </text>
       </div>
-      <div if="{{!disabled}}" onclick="clickHandler" class="btn btn-touched btn-{{size}}"></div>
+      <div
+        if="{{!disabled}}"
+        onclick="clickHandler"
+        class="btn btn-touched btn-{{size}}"
+        style="{{!!width ? `width:${width}px;` : ''}}"
+      ></div>
       <div if="{{disabled || loading}}" class="btn btn-{{size}} {{ disabled ? 'btn-disabled' : ''}}"></div>
     </stack>
   </div>
@@ -25,10 +30,10 @@
 export default {
   props: {
     type: {
-      default: "primary", // primary ghost error
+      default: 'primary', // primary ghost error
     },
     size: {
-      default: "normal", // normal small
+      default: 'normal', // normal small
     },
     disabled: {
       default: false,
@@ -37,21 +42,24 @@ export default {
       default: false,
     },
     bgColor: {
-      default: "",
+      default: '',
     },
     color: {
-      default: "",
+      default: '',
+    },
+    width: {
+      default: '',
     },
   },
   clickHandler(e) {
-    this.$emit("tap", e);
+    this.$emit('tap', e)
   },
-};
+}
 </script>
 
 <style lang="less">
-@import "../common";
-@import "./button";
+@import '../common';
+@import './button';
 .qaui-wrap {
   align-self: center;
 }
