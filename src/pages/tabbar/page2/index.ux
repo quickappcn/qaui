@@ -15,7 +15,9 @@
 <style lang="less">
 .qaui-wrap {
   flex-direction: column;
-  height: 3000px;
+  text {
+    font-size: 13px;
+  }
 }
 </style>
 
