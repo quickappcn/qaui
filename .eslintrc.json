@@ -15,7 +15,7 @@
     "loadData": false,
     "saveData": false,
     "history": false,
-    "console": false,
+    "console": true,
     "setTimeout": false,
     "clearTimeout": false,
     "setInterval": false,
@@ -26,13 +26,14 @@
   ],
   "rules": {
     "indent": [
-      "warn",
+      "error",
       2
     ],
     "no-console": [
-      "warn",
+      "error",
       {
         "allow": [
+          "log",
           "info",
           "warn",
           "error"
@@ -46,7 +47,7 @@
       }
     ],
     "quotes": [
-      "warn",
+      "error",
       "single",
       {
         "avoidEscape": true,
@@ -58,7 +59,7 @@
       "windows"
     ],
     "semi": [
-      "warn",
+      "error",
       "never"
     ]
   }

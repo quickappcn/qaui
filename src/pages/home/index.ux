@@ -29,7 +29,6 @@
       <div class="item"><a href="/pages/switch">单选开关 switch</a></div>
       <div class="item"><a href="/pages/slider">滑动条 slider</a></div>
       <div class="item"><a href="/pages/calendar">日历 calendar</a></div>
-      <div class="item"><a href="/pages/terms">协议 terms</a></div>
     </div>
     <div class="type">
       <text>操作反馈</text>
@@ -115,10 +114,10 @@
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   onInit() {
-    console.log("home page init!!");
+    console.log('home page init!!')
   },
-};
+}
 </script>

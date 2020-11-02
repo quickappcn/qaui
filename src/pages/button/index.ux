@@ -2,12 +2,12 @@
 <template>
   <div class="qaui-wrap">
     <div class="inline">
-      <q-button class="button" type="primary" size="small">主操作按钮</q-button>
-      <q-button class="button" type="primary" size="small" disabled="{{true}}">主操作按钮</q-button>
+      <q-button class="button" type="primary" size="small" width="70">正常</q-button>
+      <q-button class="button" type="primary" size="small" width="70" disabled="{{true}}">不可点</q-button>
     </div>
     <div class="inline">
-      <q-button class="button" type="ghost" size="small">主操作按钮</q-button>
-      <q-button class="button" type="ghost" size="small" disabled="{{true}}">主操作按钮</q-button>
+      <q-button class="button" type="ghost" size="small" width="70">正常</q-button>
+      <q-button class="button" type="ghost" size="small" width="70" disabled="{{true}}">不可点</q-button>
     </div>
     <q-button class="button" type="primary">主操作按钮</q-button>
     <q-button class="button" type="primary" disabled="{{true}}">不可点击状态</q-button>
@@ -28,7 +28,7 @@
 </template>
 
 <script>
-export default {};
+export default {}
 </script>
 
 <style lang="less">

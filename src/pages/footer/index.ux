@@ -15,17 +15,17 @@ export default {
     return {
       links: [
         {
-          name: "底部链接",
-          url: "https://doc.quickapp.cn",
+          name: '底部链接',
+          url: 'https://doc.quickapp.cn',
         },
         {
-          name: "底部链接",
-          url: "https://doc.quickapp.cn",
+          name: '底部链接',
+          url: 'https://doc.quickapp.cn',
         },
       ],
-    };
+    }
   },
-};
+}
 </script>
 
 <style lang="less">
