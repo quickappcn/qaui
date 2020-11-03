@@ -14,9 +14,7 @@
     "server": "hap server --watch",
     "dev": "vuepress dev docs",
     "build:docs": "vuepress build docs",
-    "lint":"eslint --ext .js,.ux src",
-    "lint:fix": "eslint --ext .js,.ux src --fix",
-    "pretty": "prettier --write '**/*.ux'"
+    "pretty": "prettier --write **/*.ux"
   },
   "license": "MIT",
   "husky": {
@@ -27,9 +25,6 @@
   "lint-staged": {
     "**/*.{ux,less,js,md}": [
       "prettier --write"
-    ],
-    "src/**/*.{ux,js}": [
-      "npm run lint:fix"
     ]
   },
   "prettier": {
@@ -41,7 +36,6 @@
   },
   "devDependencies": {
     "babel-eslint": "^10.0.1",
-    "eslint": "^5.12.1",
     "eslint-plugin-hybrid": "0.0.5",
     "hap-toolkit": "^0.6.1",
     "husky": "^4.3.0",
