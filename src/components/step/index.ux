@@ -2,29 +2,11 @@
 
 <template>
   <div class="qaui-step-wrap" style="flex: 1">
-    <div
-      class="qaui-step-main"
-      style="flex-direction: {{ direction === 'column' ? 'row' : 'column' }}"
-    >
-      <div
-        class="{{ direction === 'column' ? 'qaui-step-main-hd-column' : 'qaui-step-main-hd-row' }}"
-        style="flex-direction: {{ direction === 'column' ? 'column' : 'row' }}"
-      >
-        <div
-          if="{{ leftLineShow }}"
-          class=" {{ leftLineColor }}"
-          style="{{ leftLineColorStyle }}"
-        ></div>
-        <div
-          if="{{ index !== length -1  }}"
-          class="{{ rightLineColor }}"
-          style="{{ rightLineColorStyle }}"
-        ></div>
-        <div
-          id="dot"
-          class="qaui-step-main-hd-dot"
-          style="background-color: {{ iconColor }}"
-        >
+    <div class="qaui-step-main" style="flex-direction: {{ isColumn ? 'row' : 'column' }}">
+      <div class="{{ isColumn ? 'qaui-step-main-hd-column' : 'qaui-step-main-hd-row' }}">
+        <div if="{{ leftLineShow }}" class=" {{ leftLineColor }}" style="{{ leftLineColorStyle }}"></div>
+        <div if="{{ index !== length -1  }}" class="{{ rightLineColor }}" style="{{ rightLineColorStyle }}"></div>
+        <div class="qaui-step-main-hd-dot" style="background-color: {{ iconColor }}">
           <div if="{{ hasText }}" class="qaui-step-main-hd-textWarp">
             <text
               style="color: {{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
@@ -33,29 +15,20 @@
             >
           </div>
           <div class="qaui-step-main-hd-iconWrap" if="{{ icon }}">
-            <q-icon
-              type="{{ icon }}"
-              size="14"
-              color="{{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
-            ></q-icon>
+            <q-icon type="{{ icon }}" size="14" color="{{ myStatus !== 'waiting' ? '#fff' : '#000' }}"></q-icon>
           </div>
         </div>
       </div>
-      <div
-        class="{{ direction === 'column' ? 'qaui-step-bd-column' : 'qaui-step-bd-row' }}"
-      >
+      <div class="{{ isColumn ? 'qaui-step-bd-column' : 'qaui-step-bd-row' }}">
         <div class="qaui-step-bd-titleWrap">
           <text
-            class="{{ direction === 'column' ? 'qaui-step-bd-column-title' : 'qaui-step-bd-row-title' }}"
+            class="{{ isColumn ? 'qaui-step-bd-column-title' : 'qaui-step-bd-row-title' }}"
             style="color: {{ titleColor }}"
             >{{ title }}</text
           >
         </div>
         <div class="qaui-step-bd-contentWarp">
-          <text
-            class="{{ direction === 'column' ? 'qaui-step-bd-column-content' : 'qaui-step-bd-row-content' }}"
-            >{{ content }}</text
-          >
+          <text class="{{ isColumn ? 'qaui-step-bd-column-content' : 'qaui-step-bd-row-content' }}">{{ content }}</text>
         </div>
       </div>
     </div>
@@ -73,6 +46,7 @@ export default {
       finishedColor: '',
       errorColor: '',
       myStatus: 'waiting',
+      isColumn: true,
     }
   },
 
@@ -107,26 +81,18 @@ export default {
   onReady() {
     const parent = this.$parent().$child(this.groupId)
     const temp = parent.steps
-    const steps = temp ? [...temp, this] : [this]
-    parent.steps = steps
+    parent.steps = temp ? [...temp, this] : [this]
   },
 
   updateStatus(opts = {}) {
-    const {
-      direction,
-      current,
-      index,
-      length,
-      hasText,
-      errorColor,
-      finishedColor,
-    } = opts
+    const { direction, current, index, length, hasText, errorColor, finishedColor } = opts
     this.direction = direction
     this.length = length
     this.index = index
     this.hasText = hasText
     this.errorColor = errorColor
     this.finishedColor = finishedColor
+    this.isColumn = direction === 'column' ? true : false
     if (index < current) {
       this.myStatus = 'finished'
     } else if (index === current) {
@@ -149,11 +115,10 @@ export default {
     titleColor() {
       let color = '#000000'
       const status = this.myStatus
-      if (status === 'error') {
-        color = this.errorColor
-      }
       if (status === 'finish' || status === 'proceed') {
         color = this.finishedColor
+      } else if (status === 'error') {
+        color = this.errorColor
       }
       return color
     },
@@ -161,13 +126,11 @@ export default {
     iconColor() {
       let color = '#F2F2F2'
       const status = this.myStatus
-      if (status === 'error') {
-        color = this.errorColor
-      }
       if (status === 'finished' || status === 'proceed') {
         color = this.finishedColor
+      } else if (status === 'error') {
+        color = this.errorColor
       }
-
       return color
     },
 
@@ -265,11 +228,13 @@ export default {
     &-hd {
       &-column {
         align-items: center;
+        flex-direction: column;
       }
 
       &-row {
         align-items: center;
         justify-content: center;
+        flex-direction: row;
       }
 
       &-dot {

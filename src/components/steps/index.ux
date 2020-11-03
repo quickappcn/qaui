@@ -1,11 +1,6 @@
 <template>
-  <div class="qaui-steps">
-    <div
-      class="qaui-steps-wrap"
-      style="flex-direction: {{direction === 'column' ? 'column' : 'row'}}"
-    >
-      <slot></slot>
-    </div>
+  <div class="qaui-steps-wrap" style="flex-direction: {{direction === 'column' ? 'column' : 'row'}}">
+    <slot></slot>
   </div>
 </template>
 
@@ -74,14 +69,11 @@ export default {
 <style lang="less">
 @import '../common.less';
 
-.qaui-steps {
+.qaui-steps-wrap {
+  width: 306px * @ratio;
+  background-color: #ffffff;
+  padding-top: 21px * @ratio;
   justify-content: center;
-
-  &-wrap {
-    width: 306px * @ratio;
-    background-color: #ffffff;
-    padding-top: 21px * @ratio;
-    justify-content: center;
-  }
+  margin-left: 27px * @ratio;
 }
 </style>
