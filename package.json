@@ -14,13 +14,9 @@
     "server": "hap server --watch",
     "dev": "vuepress dev docs",
     "build:docs": "vuepress build docs",
-<<<<<<< HEAD
     "lint":"eslint --ext .js,.ux src",
     "lint:fix": "eslint --ext .js,.ux src --fix",
-    "pretty": "prettier --write '**/*.ux'"
-=======
     "pretty": "prettier --write **/*.ux"
->>>>>>> 590b041... 完成gallery组件和文档
   },
   "license": "MIT",
   "husky": {
@@ -37,10 +33,7 @@
     ]
   },
   "prettier": {
-<<<<<<< HEAD
     "printWidth": 120,
-=======
->>>>>>> 590b041... 完成gallery组件和文档
     "tabWidth": 2,
     "useTabs": false,
     "singleQuote": true,
