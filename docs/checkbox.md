@@ -21,7 +21,11 @@
 ```html
 <template>
   <div class="qaui-wrap">
-    <q-checkbox-group id="myGroup" current="{{current}}" onchange="handleChange">
+    <q-checkbox-group
+      id="myGroup"
+      current="{{current}}"
+      onchange="handleChange"
+    >
       <q-checkbox
         group="myGroup"
         type="list"
@@ -65,7 +69,9 @@ export default {
   },
   handleChange({ detail }) {
     const index = this.current.indexOf(detail.value)
-    index === -1 ? this.current.push(detail.value) : this.current.splice(index, 1)
+    index === -1
+      ? this.current.push(detail.value)
+      : this.current.splice(index, 1)
   },
 }
 ```

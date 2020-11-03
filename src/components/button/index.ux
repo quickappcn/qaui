@@ -11,7 +11,10 @@
           type="circular"
           if="loading"
         ></progress>
-        <text class="btn-{{size}}-content btn-{{type}}-content" style="{{!!color ? `color: ${color}` : ''}}">
+        <text
+          class="btn-{{size}}-content btn-{{type}}-content"
+          style="{{!!color ? `color: ${color}` : ''}}"
+        >
           <slot></slot>
         </text>
       </div>
@@ -19,9 +22,11 @@
         if="{{!disabled}}"
         onclick="clickHandler"
         class="btn btn-touched btn-{{size}}"
-        style="{{!!width ? `width:${width}px;` : ''}}"
       ></div>
-      <div if="{{disabled || loading}}" class="btn btn-{{size}} {{ disabled ? 'btn-disabled' : ''}}"></div>
+      <div
+        if="{{disabled || loading}}"
+        class="btn btn-{{size}} {{ disabled ? 'btn-disabled' : ''}}"
+      ></div>
     </stack>
   </div>
 </template>
@@ -45,9 +50,6 @@ export default {
       default: '',
     },
     color: {
-      default: '',
-    },
-    width: {
       default: '',
     },
   },

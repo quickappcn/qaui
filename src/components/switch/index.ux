@@ -1,5 +1,8 @@
 <template>
-  <div class="qaui-wrap {{disabled?'disabled':''}} {{active?'checked':'unchecked'}}" onclick="clickHandler">
+  <div
+    class="qaui-wrap {{disabled?'disabled':''}} {{active?'checked':'unchecked'}}"
+    onclick="clickHandler"
+  >
     <div class="dot {{active?'dot-checked':'dot-unchecked'}}"></div>
   </div>
 </template>
