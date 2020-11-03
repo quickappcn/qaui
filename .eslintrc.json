@@ -56,7 +56,7 @@
     ],
     "linebreak-style": [
       "warn",
-      "unix"
+      "windows"
     ],
     "semi": [
       "error",

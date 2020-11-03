@@ -8,7 +8,8 @@
   "features": [
     { "name": "system.prompt" },
     { "name": "system.router" },
-    { "name": "system.shortcut" }
+    { "name": "system.shortcut" },
+    { "name": "system.vibrator" }
   ],
   "config": {
     "logLevel": "debug",
@@ -60,6 +61,15 @@
         "component": "index"
       },
       "pages/switch": {
+        "component": "index"
+      },
+      "pages/tabbar": {
+        "component": "index"
+      },
+      "pages/tabbar/page1": {
+        "component": "index"
+      },
+      "pages/tabbar/page2": {
         "component": "index"
       }
     }
@@ -128,7 +138,19 @@
       "pages/switch": {
         "titleBarText": "单选开关 switch",
         "menu": false
-      }
+      },
+      "pages/tabbar": {
+        "titleBarText": "底部导航 tabbar 一",
+        "menu": false
+      },
+      "pages/tabbar/page1": {
+        "titleBarText": "底部导航 tabbar 二",
+        "menu": false
+      },
+      "pages/tabbar/page2": {
+        "titleBarText": "底部导航 tabbar 三",
+        "menu": false
+      }  
     }
   }
 }
