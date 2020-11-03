@@ -1,0 +1,126 @@
+<template>
+  <div
+    class="qaui-wrap {{disabled?'disabled':''}} {{active?'checked':'unchecked'}}"
+    onclick="clickHandler"
+  >
+    <div class="dot {{active?'dot-checked':'dot-unchecked'}}"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      active: this.value,
+    }
+  },
+  props: {
+    value: {
+      default: false,
+    },
+    disabled: {
+      default: false,
+    },
+  },
+  clickHandler() {
+    if (this.disabled) return
+    this.active = !this.active
+    this.$emit('change', { active: this.active })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  align-items: center;
+  height: 18px * @ratio;
+  width: 38px * @ratio;
+  border-radius: 11px * @ratio;
+  background-color: rgba(0, 0, 0, 0.08);
+  .dot {
+    border-radius: 4px * @ratio;
+    margin-left: 5px * @ratio;
+  }
+}
+
+.disabled {
+  opacity: 0.3;
+}
+
+.checked {
+  animation-name: bgChecked;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.unchecked {
+  animation-name: bgUnchecked;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes bgChecked {
+  0% {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+  100% {
+    background-color: @primary-color;
+  }
+}
+
+@keyframes bgUnchecked {
+  0% {
+    background-color: @primary-color;
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+}
+
+.dot-checked {
+  animation-name: dotChecked;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+.dot-unchecked {
+  animation-name: dotUnchecked;
+  animation-duration: 300ms;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes dotChecked {
+  0% {
+    background-color: rgba(0, 0, 0, 0.36);
+    height: 8px * @ratio;
+    width: 8px * @ratio;
+    transform: translateX(0);
+  }
+  100% {
+    background-color: #ffffff;
+    width: 4px * @ratio;
+    height: 10px * @ratio;
+    transform: translateX(20px * @ratio);
+  }
+}
+
+@keyframes dotUnchecked {
+  0% {
+    background-color: #ffffff;
+    width: 4px * @ratio;
+    height: 10px * @ratio;
+    transform: translateX(20px * @ratio);
+  }
+  100% {
+    background-color: rgba(0, 0, 0, 0.36);
+    height: 8px * @ratio;
+    width: 8px * @ratio;
+    transform: translateX(0);
+  }
+}
+</style>

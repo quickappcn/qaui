@@ -1,0 +1,150 @@
+<template>
+  <div class="qaui-progress" style="{{ progressStyle }}">
+    <div class="qaui-progress-trail" style="{{ trailStyle }}">
+      <div class="qaui-progress-trail-stroke" style="{{ strokeStyle }}"></div>
+    </div>
+    <text
+      if="{{ isContentShow }}"
+      class="qaui-progress-text"
+      style="{{ contentStyle }}"
+      >{{ content }}</text
+    >
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      strokeStyle: {}, //已完成进度条的width样式
+      progressStyle: {}, //进度条的宽高样式
+      content: '', //设置右侧文字的内容
+      trailStyle: '', //设置进度条未完成部分的颜色样式
+      innerPercent: 50, //保存符合规则或者已经纠正过的percentage，默认值和percentage的默认值一样
+    }
+  },
+  props: {
+    percentage: {
+      //接收用户传来的进度条百分比
+      type: Number,
+      default: 50,
+      validator: function (value) {
+        if (value < 0 || value > 100) {
+          return false
+        }
+        return true
+      },
+    },
+    isContentShow: {
+      //接收用户传来的是否显示文字的布尔值
+      type: Boolean,
+      default: false,
+    },
+    progressWidth: {
+      //接收用户传来的进度条组件宽度(包含文字宽度)
+      type: String,
+      default: '100%',
+    },
+    strokeHeight: {
+      //接收用户传来的进度条高度
+      type: Number,
+      default: 2,
+    },
+    format: {
+      //接收用户传来的文字内容模板函数
+      type: Function,
+      default: (percent) => percent + '%',
+    },
+    contentStyle: {
+      //接收用户传来的文字样式
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    strokeColor: {
+      //接收用户传来的进度条颜色
+      type: String,
+      default: '',
+    },
+    trailColor: {
+      //接收用户传来的未完成的分段颜色
+      type: String,
+      default: 'rgba(0, 0, 0, 0.12)',
+    },
+  },
+  onInit() {
+    //给百分比设置监听，实时根据百分比的值更新进度条进度
+    this.$watch('percentage', 'watchPercentageChange')
+    //设置进度条组件总宽度
+    this.progressStyle = {
+      width: this.progressWidth,
+    }
+    //设置进度条未完成部分的颜色
+    this.trailStyle = {
+      backgroundColor: this.trailColor,
+    }
+    //设置与percentage相关的属性
+    this.setProgress()
+  },
+  //percentage属性值的监听函数
+  watchPercentageChange() {
+    //设置与percentage相关的属性
+    this.setProgress()
+  },
+  //设置与percentage相关的属性
+  setProgress() {
+    //对用户传来的percentage进行纠正
+    if (this.percentage < 0) {
+      this.innerPercent = 0
+    } else if (this.percentage > 100) {
+      this.innerPercent = 100
+    } else if (this.percentage >= 0 && this.percentage <= 100) {
+      this.innerPercent = this.percentage
+    }
+
+    const percent = Number(this.innerPercent.toFixed(1)) //toFixed保留一位小数，然后Number方法把整数的小数位0去掉
+    //设置进度条样式
+    if (this.strokeColor) {
+      this.strokeStyle = {
+        width: percent + '%',
+        height: this.strokeHeight + 'px',
+        backgroundColor: this.strokeColor,
+      }
+    } else {
+      this.strokeStyle = {
+        width: percent + '%',
+        height: this.strokeHeight + 'px',
+      }
+    }
+    //设置右侧文字内容
+    this.content = this.format(percent)
+  },
+}
+</script>
+<style lang="less">
+@import '../common';
+.qaui-progress {
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+
+  &-trail {
+    flex: 1;
+    border-radius: 8px * @ratio;
+
+    &-stroke {
+      border-radius: 8px * @ratio;
+      background-color: @primary-color;
+    }
+  }
+
+  &-text {
+    height: 21px * @ratio;
+    margin-left: 10px * @ratio;
+    font-size: 12px * @ratio;
+    color: #b2b2b2;
+    line-height: 21px * @ratio;
+  }
+}
+</style>

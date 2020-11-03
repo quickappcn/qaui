@@ -1,24 +1,8 @@
-## 多选按钮 checkbox
-
-### 描述
-
-用于让用户在表单选择多个信息项。
-
-### 使用效果
-
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
-
-### 使用方法
-
-在`.ux`文件中引入组件
-
-```html
-<import name="q-checkbox" src="qaui/src/components/checkbox/index"></import>
-```
-
-### 示例
-
-```html
+<import name="q-checkbox" src="../../components/checkbox/index"></import>
+<import
+  name="q-checkbox-group"
+  src="../../components/checkbox-group/index"
+></import>
 <template>
   <div class="qaui-wrap">
     <q-checkbox-group
@@ -37,9 +21,8 @@
     </q-checkbox-group>
   </div>
 </template>
-```
 
-```js
+<script>
 export default {
   data() {
     return {
@@ -74,30 +57,13 @@ export default {
       : this.current.splice(index, 1)
   },
 }
-```
+</script>
 
-```less
+<style lang="less">
 .qaui-wrap {
   flex-direction: column;
   align-items: center;
   background-color: #f2f2f2;
   padding: 10px 0;
 }
-```
-
-### API
-
-#### 组件属性
-
-| 属性     | 类型    | 默认值 | 说明                 |
-| -------- | ------- | ------ | -------------------- |
-| checked  | Boolean | false  | 是否处于选中状态     |
-| disabled | Boolean | false  | 是否处于禁用状态     |
-| value    | String  | -      | 展示选项的值         |
-| group    | String  | -      | 多选框所在组的 id 值 |
-
-#### 组件事件
-
-| 事件名称 | 事件描述         | 返回值                         |
-| -------- | ---------------- | ------------------------------ |
-| change   | 值发生变化的事件 | {current:current, value:value} |
+</style>

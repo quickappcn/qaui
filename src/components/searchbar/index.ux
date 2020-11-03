@@ -116,10 +116,10 @@ export default {
     this.$emit('enterkeyclick', { event: evt })
     this.$element('input').focus({ focus: false })
   },
-  leftClickHandler(evt) {
+  leftClickHandler() {
     this.$emit('left', { value: this.inputValue })
   },
-  rightClickHandler(evt) {
+  rightClickHandler() {
     this.$emit('right', { value: this.inputValue })
   },
   goBack() {

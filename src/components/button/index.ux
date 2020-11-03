@@ -1,9 +1,9 @@
 <template>
   <div class="qaui-wrap">
-    <stack>
+    <stack style="width: {{width}}px;">
       <div
         class="btn btn-{{size}} btn-{{type}} {{ loading ? 'btn-loading' : '' }}"
-        style="{{!!bgColor ? `background-color: ${bgColor}` : ''}};{{!!color ? `border-color: ${color}` : ''}}"
+        style="{{!!bgColor ? `background-color: ${bgColor};` : ''}}{{!!color ? `border-color: ${color};` : ''}}"
       >
         <progress
           style="{{!!color ? `color: ${color}` : ''}}"
@@ -22,6 +22,7 @@
         if="{{!disabled}}"
         onclick="clickHandler"
         class="btn btn-touched btn-{{size}}"
+        style="{{!!width ? `width:${width}px;` : ''}}"
       ></div>
       <div
         if="{{disabled || loading}}"
@@ -50,6 +51,9 @@ export default {
       default: '',
     },
     color: {
+      default: '',
+    },
+    width: {
       default: '',
     },
   },
