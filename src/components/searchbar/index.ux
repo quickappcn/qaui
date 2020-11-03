@@ -32,12 +32,6 @@
         placeholder="{{placeholder}}"
         onenterkeyclick="enterEvent"
       />
-<<<<<<< HEAD
-      <image class="icon icon-clear" src="../../common/images/clear.svg" onclick="bindClear" if="inputValue"></image>
-    </div>
-    <div class="right-icon" if="{{!menubar && rightBtn}}" onclick="rightClickHandler">
-      <image if="rightBtn && rightBtn!=='search'" src="{{rightBtn}}" class="icon"></image>
-=======
       <image
         class="icon icon-clear"
         src="../../common/images/clear.svg"
@@ -55,7 +49,6 @@
         src="{{rightBtn}}"
         class="icon"
       ></image>
->>>>>>> 590b041... 完成gallery组件和文档
       <text if="rightBtn==='search'" class="search-btn">搜索</text>
     </div>
   </div>
@@ -123,17 +116,10 @@ export default {
     this.$emit('enterkeyclick', { event: evt })
     this.$element('input').focus({ focus: false })
   },
-<<<<<<< HEAD
-  leftClickHandler() {
-    this.$emit('left', { value: this.inputValue })
-  },
-  rightClickHandler() {
-=======
   leftClickHandler(evt) {
     this.$emit('left', { value: this.inputValue })
   },
   rightClickHandler(evt) {
->>>>>>> 590b041... 完成gallery组件和文档
     this.$emit('right', { value: this.inputValue })
   },
   goBack() {

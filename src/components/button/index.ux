@@ -51,12 +51,6 @@ export default {
     },
     color: {
       default: '',
-<<<<<<< HEAD
-    },
-    width: {
-      default: '',
-=======
->>>>>>> 590b041... 完成gallery组件和文档
     },
   },
   clickHandler(e) {

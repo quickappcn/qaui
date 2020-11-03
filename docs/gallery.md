@@ -18,7 +18,9 @@
 
 #### 组件属性
 
-| 名称        | 参数  | 描述           |
-| ----------- | ----- | -------------- |
-| videoClick  | event | 点击视频时触发 |
-| videoAppear | event | 视频出现时触发 |
+| 名称                | 参数  | 描述               |
+| ------------------- | ----- | ------------------ |
+| imagePreviewSuccess | event | 点击图片成功时触发 |
+| imagePreviewFail    | event | 点击图片失败时触发 |
+| videoClick          | event | 点击视频时触发     |
+| videoAppear         | event | 视频出现时触发     |

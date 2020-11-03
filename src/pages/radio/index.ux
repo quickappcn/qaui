@@ -24,9 +24,6 @@
     </q-radio-group>
     <text class="title">dot样式</text>
     <q-radio-group id="myGroup3" current="{{current}}" onchange="handleChange">
-<<<<<<< HEAD
-      <q-radio group="myGroup3" type="dot" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
-=======
       <q-radio
         group="myGroup3"
         type="dot"
@@ -34,7 +31,13 @@
         value="{{$item.value}}"
         checked="{{$item.checked}}"
       ></q-radio>
->>>>>>> 590b041... 完成gallery组件和文档
+      <q-radio
+        group="myGroup3"
+        type="dot"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
   </div>
 </template>

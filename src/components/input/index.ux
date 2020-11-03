@@ -1,6 +1,11 @@
 <template>
   <div class="qaui-wrap">
-    <image if="iconLeft" onclick="clickHandler('iconLeft')" class="icon icon-left" src="{{iconLeft}}"></image>
+    <image
+      if="iconLeft"
+      onclick="clickHandler('iconLeft')"
+      class="icon icon-left"
+      src="{{iconLeft}}"
+    ></image>
     <text if="title" class="title">{{ title }}</text>
     <stack class="input-wrap">
       <input
@@ -21,14 +26,21 @@
         src="../../common/images/clear.svg"
       ></image>
     </stack>
-    <image if="iconRightA" onclick="clickHandler('iconRightA')" class="icon icon-right" src="{{iconRightA}}"></image>
+    <image
+      if="iconRightA"
+      onclick="clickHandler('iconRightA')"
+      class="icon icon-right"
+      src="{{iconRightA}}"
+    ></image>
     <image
       if="!button && iconRightB"
       onclick="clickHandler('iconRightB')"
       class="icon icon-right"
       src="{{iconRightB}}"
     ></image>
-    <text if="button" onclick="clickHandler('button')" class="button-right">{{ button }}</text>
+    <text if="button" onclick="clickHandler('button')" class="button-right">{{
+      button
+    }}</text>
   </div>
 </template>
 

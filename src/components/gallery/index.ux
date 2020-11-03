@@ -49,7 +49,6 @@
 
 <script>
 import media from '@system.media'
-import prompt from '@system.prompt'
 
 export default {
   data() {
@@ -90,11 +89,11 @@ export default {
         const width = this.imageInfo[0].width
         const height = this.imageInfo[0].height
         if (width > height) {
-          imageClass = 'qaui-gallery-image-wrapper-one-typeOne'
+          imageClass = 'qaui-gallery-image-wrapper-one-type-one'
         } else if (width === height) {
-          imageClass = 'qaui-gallery-image-wrapper-one-typeTwo'
+          imageClass = 'qaui-gallery-image-wrapper-one-type-two'
         } else {
-          imageClass = 'qaui-gallery-image-wrapper-one-typeThird'
+          imageClass = 'qaui-gallery-image-wrapper-one-type-third'
         }
       } else {
         imageClass = 'qaui-gallery-image-wrapper-standard'
@@ -115,9 +114,9 @@ export default {
     videoWrapperClass() {
       let videoWrapperClass
       if (this.videoOrientation === 'landscape') {
-        videoWrapperClass = 'qaui-gallery-videoWrapper'
+        videoWrapperClass = 'qaui-gallery-video-wrapper'
       } else {
-        videoWrapperClass = 'qaui-gallery-videoWrapper-portrait'
+        videoWrapperClass = 'qaui-gallery-video-wrapper-portrait'
       }
 
       return videoWrapperClass
@@ -133,20 +132,22 @@ export default {
     media.previewImage({
       uris: this.srcs,
       current: this.$idx,
-      success: function () {},
-      fail: function (data, code) {},
+      success: () => {
+        this.$emit('imagePreviewSuccess')
+      },
+      fail: (data, code) => {
+        this.$emit('imagePreviewFail', { data: data, code: code })
+      },
     })
   },
 
   // 将视频出现的事件暴露给开发者
-
   onVideoAppear(e) {
     this.$element('video').start()
     this.$emit('videoAppear', e)
   },
 
   // 将视频点击的事件暴露给开发者
-
   onVideoClick(e) {
     this.$emit('videoClick', e)
   },
@@ -191,19 +192,19 @@ export default {
       flex-wrap: wrap;
       justify-content: space-between;
     }
-    &-one-typeOne {
+    &-one-type-one {
       width: 210px * @ratio;
       height: 158px * @ratio;
       margin-top: 10px * @ratio;
     }
 
-    &-one-typeTwo {
+    &-one-type-two {
       margin-top: 10px * @ratio;
       width: 210px * @ratio;
       height: 210px * @ratio;
     }
 
-    &-one-typeThird {
+    &-one-type-third {
       margin-top: 10px * @ratio;
       width: 210px * @ratio;
       height: 280px * @ratio;
@@ -245,7 +246,7 @@ export default {
     margin-top: 10px * @ratio;
   }
 
-  &-videoWrapper {
+  &-video-wrapper {
     width: 320px * @ratio;
     height: 180px * @ratio;
     margin: 10px * @ratio 0 10px * @ratio 10px * @ratio;
