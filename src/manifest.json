@@ -36,6 +36,9 @@
       "pages/title": {
         "component": "index"
       },
+      "pages/collapse-group": {
+        "component": "index"
+      },
       "pages/divider": {
         "component": "index"
       },
@@ -45,10 +48,16 @@
       "pages/icon": {
         "component": "index"
       },
+      "pages/radio": {
+        "component": "index"
+      },
       "pages/progress": {
         "component": "index"
       },
-      "pages/radio": {
+      "pages/page-result": {
+        "component": "index"
+      },
+      "pages/page-error": {
         "component": "index"
       },
       "pages/textarea": {
@@ -65,7 +74,7 @@
       },
       "pages/alphabet": {
         "component": "index"
-      }
+      },
       "pages/tabbar": {
         "component": "index"
       },
@@ -74,6 +83,15 @@
       },
       "pages/tabbar/page2": {
         "component": "index"
+      },
+      "pages/steps": {
+        "component": "index"
+      },
+      "pages/list": {
+        "component": "index"
+      },
+      "pages/gallery": {
+        "component":"index"
       }
     }
   },
@@ -122,6 +140,14 @@
         "titleBarText": "进度条 progress",
         "menu": false
       },
+      "pages/page-result": {
+        "titleBarText": "结果页 pageResult",
+        "menu": false
+      },
+      "pages/page-error": {
+        "titleBarText": "异常页 pageError",
+        "menu": false
+      },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
         "menu": false
@@ -145,7 +171,11 @@
       "pages/alphabet": {
         "titleBarText": "字母索引表 alphabet",
         "menu": false
-      }
+      },
+      "pages/steps": {
+        "titleBarText": "步骤条 steps",
+        "menu": false
+      },
       "pages/tabbar": {
         "titleBarText": "底部导航 tabbar 一",
         "menu": false
@@ -157,7 +187,19 @@
       "pages/tabbar/page2": {
         "titleBarText": "底部导航 tabbar 三",
         "menu": false
-      }  
+      },
+      "pages/list": {
+        "titleBarText": "列表 list",
+        "menu": false
+      },  
+      "pages/collapse-group": {
+        "titleBarText": "折叠版 collapse",
+        "menu": false
+      },
+      "pages/gallery": {
+        "titleBarText": "画廊 steps",
+        "menu": false
+      }
     }
   }
 }

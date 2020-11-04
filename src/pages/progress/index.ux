@@ -10,19 +10,32 @@
         <q-progress percentage="{{ percentage }}"></q-progress>
       </div>
       <div class="progress-box">
-        <q-progress percentage="{{ percentage }}" is-content-show="{{ isContentShow }}"></q-progress>
+        <q-progress
+          percentage="{{ percentage }}"
+          is-content-show="{{ isContentShow }}"
+        ></q-progress>
       </div>
     </div>
     <text class="title">自定义进度条</text>
     <div class="progress-group">
       <div class="progress-box">
-        <q-progress stroke-color="{{ strokeColor }}" trail-color="{{ trailColor }}"></q-progress>
+        <q-progress
+          stroke-color="{{ strokeColor }}"
+          trail-color="{{ trailColor }}"
+        ></q-progress>
       </div>
       <div class="progress-box">
-        <q-progress is-content-show="{{ isContentShow }}" format="{{ format }}"></q-progress>
+        <q-progress
+          is-content-show="{{ isContentShow }}"
+          format="{{ format }}"
+        ></q-progress>
       </div>
       <div class="progress-box">
-        <q-progress percentage="{{ 80 }}" is-content-show="{{ isContentShow }}" format="{{ format }}"></q-progress>
+        <q-progress
+          percentage="{{ 80 }}"
+          is-content-show="{{ isContentShow }}"
+          format="{{ format }}"
+        ></q-progress>
       </div>
       <div class="progress-box">
         <q-progress

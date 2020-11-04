@@ -1,0 +1,188 @@
+<import name="q-icon" src="../../components/icon/index"></import>
+<import name="q-button" src="../../components/button/index"></import>
+<template>
+  <div class="qaui-page-result">
+    <div class="qaui-page-result-wrap">
+      <div class="qaui-page-result-wrap-icon {{ type === 'warning' ? 'rotate' : '' }}">
+        <q-icon type="{{ iconType }}" size="84" color="{{ iconColor }}"></q-icon>
+      </div>
+      <text class="qaui-page-result-wrap-title">{{ title }}</text>
+      <text if="{{ isSlot }}" class="qaui-page-result-wrap-content">
+        <slot name="default"></slot>
+      </text>
+      <text if="{{ description && !isSlot }}" class="qaui-page-result-wrap-content">
+        {{ description }}
+      </text>
+      <div class="qaui-page-result-wrap-btns">
+        <div class="qaui-page-result-wrap-btns-left">
+          <q-button type="ghost" width="126" ontap="leftClick">
+            <span>{{ leftBtnName }}</span>
+          </q-button>
+        </div>
+        <q-button type="primary" width="126" ontap="rightClick">
+          <span>{{ rightBtnName }}</span>
+        </q-button>
+      </div>
+    </div>
+    <div if="{{ footerInfo }}" class="qaui-page-result-footer">
+      <text class="qaui-page-result-footer-info">{{ footerInfo }}</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isSlot: false, //判断用户是否传了slot
+      iconType: '', //图标类型
+      iconColor: '', //图标颜色
+    }
+  },
+  props: {
+    type: {
+      //接收用户传来的type
+      type: String,
+      default: 'success',
+    },
+    title: {
+      //接收用户传来的标题
+      type: String,
+      default: '',
+    },
+    description: {
+      //接收用户传来的描述性文字
+      type: String,
+      default: '',
+    },
+    leftBtnName: {
+      //接收用户传来的左侧按钮名称
+      type: String,
+      default: '',
+    },
+    rightBtnName: {
+      //接收用户传来的右侧按钮名称
+      type: String,
+      default: '',
+    },
+    footerInfo: {
+      //接收用户传来的底部自定义信息
+      type: String,
+      default: '',
+    },
+  },
+  onInit() {
+    this.setTypeIcon()
+    // 如果用户传了slot，则把isSlot设置为true，表示使用slot
+    if (this._slot.namedSlotCache.default) {
+      this.isSlot = true
+    }
+  },
+  //根据用户传来的type设置图标
+  setTypeIcon() {
+    switch (this.type) {
+      case 'success':
+        this.iconType = 'check-fill'
+        this.iconColor = '#38C797'
+        break
+      case 'warning':
+        this.iconType = 'info-fill'
+        this.iconColor = '#F88138'
+        break
+      case 'error':
+        this.iconType = 'close-circle-fill'
+        this.iconColor = '#F55353'
+        break
+      case 'waiting':
+        this.iconType = 'time-fill'
+        this.iconColor = '#456FFF'
+        break
+      default:
+        break
+    }
+  },
+  //左侧按钮点击事件
+  leftClick(ev) {
+    this.$emit('leftBtnTap', { event: ev.detail })
+  },
+  //右侧按钮点击事件
+  rightClick(ev) {
+    this.$emit('rightBtnTap', { event: ev.detail })
+  },
+}
+</script>
+<style lang="less">
+@import '../common';
+.qaui-page-result {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  &-wrap {
+    top: 72px * @ratio;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    &-icon {
+      width: 70px * @ratio;
+      height: 70px * @ratio;
+    }
+
+    .rotate {
+      transform: rotate(180deg);
+    }
+
+    &-title {
+      height: 34px * @ratio;
+      margin-top: 30px * @ratio;
+      font-size: 24px * @ratio;
+      color: rgba(0, 0, 0, 0.8);
+      text-align: center;
+      line-height: 34px * @ratio;
+      lines: 1;
+      text-overflow: ellipsis;
+    }
+
+    &-content {
+      margin: 9px * @ratio 20px * @ratio 0 20px * @ratio;
+      padding: 0 6px * @ratio;
+      font-size: 14px * @ratio;
+      color: #999999;
+      text-align: center;
+      line-height: 22px * @ratio;
+      lines: 2;
+      text-overflow: ellipsis;
+    }
+
+    &-btns {
+      margin-top: 30px * @ratio;
+
+      &-left {
+        margin-right: 16px * @ratio;
+      }
+    }
+  }
+
+  &-footer {
+    position: fixed;
+    bottom: 18px * @ratio;
+    width: 320px * @ratio;
+    height: 21px * @ratio;
+    margin: 0 20px * @ratio;
+
+    &-info {
+      width: 100%;
+      height: 100%;
+      line-height: 21px * @ratio;
+      color: #999999;
+      font-size: 12px * @ratio;
+      text-align: center;
+    }
+  }
+}
+</style>

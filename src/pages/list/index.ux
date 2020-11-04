@@ -1,0 +1,107 @@
+<import name="q-list" src="../../components/list/index"></import>
+
+<template>
+  <div class="qaui-wrap">
+    <q-list
+      title="列表标题"
+      data="{{ listData }}"
+      onclick-item="clickItem"
+      onclick-samll-btn="clickSamllBtn"
+      onclick-switch="clickSwitch"
+    ></q-list>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      listData: [
+        {
+          title: '标题文字',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+        },
+        {
+          title: '标题文字',
+          rightType: 'rightArrow',
+        },
+        {
+          title: '标题文字标题文字标题文字标题文字标题文字标题文字标题文字标题文字',
+          description:
+            '这是一段描述文字这是一段描述文字这是一段描述文字这是一段描述文字这是一段描述文字这是一段描述文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+          extra: 'rightArrow',
+          rightText: '结果文字',
+        },
+        {
+          title: '标题文字1',
+          iconType: 'bill-fill',
+        },
+        {
+          title: '标题文字2',
+          description: '这是一段描述文字2',
+          iconType: 'bill-fill',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字3',
+          description: '这是一段描述文字2',
+          thumb: '../../common/logo.png',
+          extra: 'button',
+          rightBtnText: '按钮',
+        },
+        {
+          title: '标题文字4',
+          description: '这是一段描述文字2',
+          thumb: '../../common/logo.png',
+          extra: 'rightArrow',
+          rightText: '结果文字',
+        },
+        {
+          title: '标题文字5',
+          description: '这是一段描述文字2',
+          thumb: '../../common/logo.png',
+        },
+        {
+          title: '标题文字6',
+          description: '这是一段描述文字2',
+          thumb: '../../common/logo.png',
+          extra: 'button',
+          rightBtnText: '按钮',
+        },
+        {
+          title: '标题文字7',
+          description: '这是一段描述文字2',
+          thumb: '../../common/logo.png',
+          extra: 'switch',
+          switchValue: true,
+        },
+      ],
+    }
+  },
+
+  clickItem(data) {
+    console.log(data)
+    const index = data.detail.index
+    this.listData[index].title = `已选中第${index}行`
+  },
+
+  clickSamllBtn(data) {
+    const index = data.detail.index
+    console.log(`选中小按钮${index}`)
+    this.listData[index].title = `选中小按钮${index}`
+  },
+
+  clickSwitch(data) {
+    const index = data.detail.index
+    console.log(`选中switch${index}`, data)
+  },
+}
+</script>
