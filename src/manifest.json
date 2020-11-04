@@ -76,6 +76,9 @@
       "pages/input": {
         "component": "index"
       },
+      "pages/filter": {
+        "component": "index"
+      },
       "pages/switch": {
         "component": "index"
       },
@@ -177,6 +180,10 @@
       },
       "pages/input": {
         "titleBarText": "输入框 input",
+        "menu": false
+      },
+      "pages/filter": {
+        "titleBarText": "筛选栏 filter",
         "menu": false
       },
       "pages/switch": {
