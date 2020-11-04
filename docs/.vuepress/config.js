@@ -12,7 +12,10 @@ module.exports = {
   ],
   head: [
     ['link', { rel: 'icon', href: 'favicon.ico' }],
-    ['meta', { name: 'keywords', content: '快应用 组件库 官方 UI组件库 快应用开发' }],
+    [
+      'meta',
+      { name: 'keywords', content: '快应用 组件库 官方 UI组件库 快应用开发' },
+    ],
   ],
   markdown: {
     lineNumbers: true,
@@ -29,7 +32,16 @@ module.exports = {
       {
         title: '基础组件',
         collapsable: false,
-        children: ['/icon', '/button', '/container', '/titlebar', '/searchbar', '/title', '/divider', '/footer'],
+        children: [
+          '/icon',
+          '/button',
+          '/container',
+          '/titlebar',
+          '/searchbar',
+          '/title',
+          '/divider',
+          '/footer',
+        ],
       },
       {
         title: '表单组件',
@@ -51,7 +63,13 @@ module.exports = {
       {
         title: '操作反馈',
         collapsable: false,
-        children: ['/notice', '/popover', '/page-error', '/page-result', '/progress'],
+        children: [
+          '/notice',
+          '/popover',
+          '/page-error',
+          '/page-result',
+          '/progress',
+        ],
       },
       {
         title: '数据展示',

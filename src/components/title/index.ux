@@ -7,7 +7,11 @@
     </div>
     <div class="right">
       <text class="description">{{ description }}</text>
-      <image if="target" class="icon icon-arrow-right" src="/common/images/arrow-right.svg"></image>
+      <image
+        if="target"
+        class="icon icon-arrow-right"
+        src="/common/images/arrow-right.svg"
+      ></image>
     </div>
   </div>
 </template>

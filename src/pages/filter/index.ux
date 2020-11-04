@@ -1,0 +1,271 @@
+<import name="q-filter" src="../../components/filter"></import>
+
+<template>
+  <div class="wrap">
+    <q-filter
+      bar-option="{{barOption}}"
+      popup-option="{{popupOption}}"
+      show-filter-icon="{{showFilterIcon}}"
+      onselect-bar="handleSelectBar"
+      onselect-popup="handleSelectPopup"
+    ></q-filter>
+    <div style="flex-direction: column">
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+      <text>文字文字文字</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data: {
+    barOption: [
+      {
+        type: 'drawer',
+        label: '标题文字',
+        value: 'barValue1',
+        select: 'radio',
+        direction: 'column',
+        children: [
+          {
+            label: '描述文字描述文字',
+            value: 'value1',
+          },
+          {
+            label: '描述文字',
+            value: 'value2',
+          },
+          {
+            label: '描述文字',
+            value: 'value3',
+          },
+          {
+            label: '描述文字描述文字',
+            value: 'value4',
+            size: 'large',
+          },
+          {
+            label: '描述文字',
+            value: 'value5',
+          },
+        ],
+      },
+      {
+        type: 'singleState',
+        label: '标题文字',
+        value: 'barValue2',
+      },
+      {
+        type: 'sort',
+        label: '标题文字',
+        value: 'barValue3',
+      },
+    ],
+    popupOption: [
+      {
+        type: 'radio',
+        label: '标题文字',
+        value: 'popupValue1',
+        children: [
+          {
+            label: '描述文字描述文字',
+            value: 'value1',
+          },
+          {
+            label: '描述文字',
+            value: 'value2',
+          },
+          {
+            label: '描述文字',
+            value: 'value3',
+          },
+          {
+            label: '描述文字描述文字',
+            value: 'value4',
+          },
+          {
+            label: '描述文字',
+            value: 'value5',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        label: '标题文字',
+        value: 'popupValue2',
+        children: [
+          {
+            label: '描述文字描述文字',
+            value: 'value1',
+          },
+          {
+            label: '描述文字',
+            value: 'value2',
+          },
+          {
+            label: '描述文字',
+            value: 'value3',
+          },
+          {
+            label: '描述文字描述文字',
+            value: 'value4',
+          },
+          {
+            label: '描述文字',
+            value: 'value5',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        label: '标题文字',
+        value: 'popupValue3',
+        children: [
+          {
+            hasSecond: true,
+            firstLabel: '标题',
+            secondLabel: '辅助文字',
+            value: 'value1',
+          },
+          {
+            hasSecond: true,
+            firstLabel: '标题',
+            secondLabel: '辅助文字',
+            value: 'value2',
+          },
+          {
+            hasSecond: true,
+            firstLabel: '标题',
+            secondLabel: '辅助文字',
+            value: 'value3',
+          },
+        ],
+      },
+      {
+        type: 'range',
+        label: '标题文字',
+        value: 'popupValue3',
+        leftRange: {
+          default: '100',
+          placeholder: '可输入文字',
+        },
+        rightRange: {
+          default: '',
+          placeholder: '可输入文字',
+        },
+      },
+      {
+        type: 'checkbox',
+        label: '标题文字',
+        value: 'popupValue3',
+        canFold: true,
+        isFolded: false,
+        children: [
+          {
+            label: '描述文字描述文字',
+            value: 'value1',
+          },
+          {
+            label: '描述文字',
+            value: 'value2',
+          },
+          {
+            label: '描述文字',
+            value: 'value3',
+          },
+          {
+            label: '描述文字描述文字',
+            value: 'value4',
+          },
+          {
+            label: '描述文字',
+            value: 'value5',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        label: '标题文字',
+        value: 'popupValue3',
+        canFold: true,
+        isFolded: true,
+        children: [
+          {
+            label: '描述文字描述文字',
+            value: 'value1',
+          },
+          {
+            label: '描述文字',
+            value: 'value2',
+          },
+          {
+            label: '描述文字',
+            value: 'value3',
+          },
+          {
+            label: '描述文字描述文字',
+            value: 'value4',
+          },
+          {
+            label: '描述文字',
+            value: 'value5',
+          },
+        ],
+      },
+      {
+        type: 'checkbox',
+        label: '标题文字',
+        value: 'popupValue3',
+        canFold: true,
+        isFolded: true,
+        children: [
+          {
+            label: '描述文字描述文字',
+            value: 'value1',
+          },
+          {
+            label: '描述文字',
+            value: 'value2',
+          },
+          {
+            label: '描述文字',
+            value: 'value3',
+          },
+          {
+            label: '描述文字描述文字',
+            value: 'value4',
+          },
+          {
+            label: '描述文字',
+            value: 'value5',
+          },
+        ],
+      },
+    ],
+    showFilterIcon: true,
+    drawerTop: '40px',
+  },
+
+  handleSelectBar(e) {
+    console.log('选中的项为：', e.detail.barResult)
+  },
+
+  handleSelectPopup(e) {
+    console.log('选中的项为：', e.detail.popupResult)
+  },
+}
+</script>
+
+<style>
+.wrap {
+  flex-direction: column;
+}
+</style>
