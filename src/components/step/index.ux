@@ -1,0 +1,406 @@
+<import name="q-icon" src="../../components/icon/index"></import>
+
+<template>
+  <div class="qaui-step-wrap" style="flex: 1">
+    <div
+      class="qaui-step-main"
+      style="flex-direction: {{ isColumn ? 'row' : 'column' }}"
+    >
+      <div
+        class="{{ isColumn ? 'qaui-step-main-hd-column' : 'qaui-step-main-hd-row' }}"
+      >
+        <div
+          if="{{ leftLineShow }}"
+          class=" {{ leftLineColor }}"
+          style="{{ leftLineColorStyle }}"
+        ></div>
+        <div
+          if="{{ index !== length -1  }}"
+          class="{{ rightLineColor }}"
+          style="{{ rightLineColorStyle }}"
+        ></div>
+        <div
+          class="qaui-step-main-hd-dot"
+          style="background-color: {{ iconColor }}"
+        >
+          <div if="{{ hasText }}" class="qaui-step-main-hd-textWarp">
+            <text
+              style="color: {{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
+              class="qaui-step-main-hd-textWrap-text"
+              >{{ index + 1 }}</text
+            >
+          </div>
+          <div class="qaui-step-main-hd-iconWrap" if="{{ icon }}">
+            <q-icon
+              type="{{ icon }}"
+              size="14"
+              color="{{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
+            ></q-icon>
+          </div>
+        </div>
+      </div>
+      <div class="{{ isColumn ? 'qaui-step-bd-column' : 'qaui-step-bd-row' }}">
+        <div class="qaui-step-bd-titleWrap">
+          <text
+            class="{{ isColumn ? 'qaui-step-bd-column-title' : 'qaui-step-bd-row-title' }}"
+            style="color: {{ titleColor }}"
+            >{{ title }}</text
+          >
+        </div>
+        <div class="qaui-step-bd-contentWarp">
+          <text
+            class="{{ isColumn ? 'qaui-step-bd-column-content' : 'qaui-step-bd-row-content' }}"
+            >{{ content }}</text
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      direction: 'column',
+      index: 0,
+      length: 0,
+      hasText: false,
+      finishedColor: '',
+      errorColor: '',
+      myStatus: 'waiting',
+      isColumn: true,
+    }
+  },
+
+  props: {
+    text: {
+      type: String,
+      default: '',
+    },
+    icon: {
+      type: String,
+      default: '',
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    content: {
+      type: String,
+      default: '',
+    },
+    groupId: {
+      type: String,
+      required: true,
+      default: '',
+    },
+    status: {
+      type: String,
+      default: '',
+    },
+  },
+
+  onReady() {
+    const parent = this.$parent().$child(this.groupId)
+    const temp = parent.steps
+    parent.steps = temp ? [...temp, this] : [this]
+  },
+
+  updateStatus(opts = {}) {
+    const {
+      direction,
+      current,
+      index,
+      length,
+      hasText,
+      errorColor,
+      finishedColor,
+    } = opts
+    this.direction = direction
+    this.length = length
+    this.index = index
+    this.hasText = hasText
+    this.errorColor = errorColor
+    this.finishedColor = finishedColor
+    this.isColumn = direction === 'column' ? true : false
+    if (index < current) {
+      this.myStatus = 'finished'
+    } else if (index === current) {
+      this.myStatus = this.status ? this.status : 'proceed'
+    } else {
+      this.myStatus = this.status ? this.status : 'waiting'
+    }
+  },
+  computed: {
+    leftLineShow() {
+      if (this.direction === 'column' && this.index !== this.length - 1) {
+        return true
+      } else if (this.direction === 'row' && this.index !== 0) {
+        return true
+      } else {
+        return false
+      }
+    },
+
+    titleColor() {
+      let color = '#000000'
+      const status = this.myStatus
+      if (status === 'finish' || status === 'proceed') {
+        color = this.finishedColor
+      } else if (status === 'error') {
+        color = this.errorColor
+      }
+      return color
+    },
+
+    iconColor() {
+      let color = '#F2F2F2'
+      const status = this.myStatus
+      if (status === 'finished' || status === 'proceed') {
+        color = this.finishedColor
+      } else if (status === 'error') {
+        color = this.errorColor
+      }
+      return color
+    },
+
+    leftLineColor() {
+      let lineClass
+      const parent = this.$parent().$child(this.groupId)
+      if (this.direction === 'row') {
+        const newIndex = this.index - 1 > 0 ? this.index - 1 : 0
+        const status = parent.steps[newIndex].myStatus
+        if (status === 'finished') {
+          lineClass = 'qaui-step-main-hd-leftLine-row-finished'
+        } else {
+          lineClass = 'qaui-step-main-hd-leftLine-row'
+        }
+      } else {
+        const status = this.myStatus
+        if (status === 'finished') {
+          lineClass = 'qaui-step-main-hd-leftLine-column-finished'
+        } else {
+          lineClass = 'qaui-step-main-hd-leftLine-column'
+        }
+      }
+      return lineClass
+    },
+
+    rightLineColor() {
+      let lineClass
+      const parent = this.$parent().$child(this.groupId)
+      const status = this.myStatus
+      if (status === 'finished') {
+        if (this.direction === 'column') {
+          lineClass = 'qaui-step-main-hd-rightLine-column-finished'
+        } else {
+          lineClass = 'qaui-step-main-hd-rightLine-row-finished'
+        }
+      } else if (this.direction === 'column') {
+        lineClass = 'qaui-step-main-hd-rightLine-column'
+      } else {
+        lineClass = 'qaui-step-main-hd-rightLine-row'
+      }
+      return lineClass
+    },
+    leftLineColorStyle() {
+      let lineClass
+      const parent = this.$parent().$child(this.groupId)
+      if (this.direction === 'row') {
+        const newIndex = this.index - 1 > 0 ? this.index - 1 : 0
+        const status = parent.steps[newIndex].myStatus
+        if (status === 'finished') {
+          lineClass = { borderBottomColor: this.finishedColor }
+        } else {
+          lineClass = { borderBottomColor: '#F2F2F2' }
+        }
+      } else {
+        const status = this.myStatus
+        if (status === 'finished') {
+          lineClass = { borderRightColor: this.finishedColor }
+        } else {
+          lineClass = { borderRightColor: '#F2F2F2' }
+        }
+      }
+      return lineClass
+    },
+    rightLineColorStyle() {
+      let lineClass
+      const parent = this.$parent().$child(this.groupId)
+      const status = this.myStatus
+      if (status === 'finished') {
+        if (this.direction === 'column') {
+          lineClass = { borderRightColor: this.finishedColor }
+        } else {
+          lineClass = { borderBottomtColor: this.finishedColor }
+        }
+      } else if (this.direction === 'column') {
+        lineClass = { borderRightColor: '#F2F2F2' }
+      } else {
+        lineClass = { borderBottomtColor: '#F2F2F2' }
+      }
+      return lineClass
+    },
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+
+.qaui-step {
+  &-wrap {
+    flex: 1;
+  }
+
+  &-main {
+    flex: 1;
+    &-hd {
+      &-column {
+        align-items: center;
+        flex-direction: column;
+      }
+
+      &-row {
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+      }
+
+      &-dot {
+        width: 16px * @ratio;
+        height: 16px * @ratio;
+        border-radius: 10px * @ratio;
+        background-color: #456fff;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+      }
+
+      &-iconWrap {
+        justify-content: center;
+        align-items: center;
+      }
+
+      &-textWrap {
+        justify-content: center;
+        align-items: center;
+      }
+
+      &-textWrap-text {
+        font-family: HYQiHei-EES;
+        font-size: 10px;
+        color: rgba(0, 0, 0, 0.8);
+        text-align: center;
+        line-height: 12px;
+      }
+
+      &-leftLine-row {
+        position: absolute;
+        left: 0;
+        border-bottom: 2px * @ratio solid #f2f2f2;
+        width: 50%;
+
+        &-finished {
+          position: absolute;
+          left: 0;
+          border-bottom: 2px * @ratio solid #456fff;
+          width: 50%;
+        }
+      }
+
+      &-leftLine-column {
+        position: absolute;
+        top: 0;
+        border-right: 2px * @ratio solid #f2f2f2;
+        height: 50%;
+
+        &-finished {
+          position: absolute;
+          top: 0;
+          border-right: 2px * @ratio solid #456fff;
+          height: 50%;
+        }
+      }
+
+      &-rightLine-row {
+        position: absolute;
+        right: 0;
+        border-bottom: 2px * @ratio solid #f2f2f2;
+        width: 50%;
+
+        &-finished {
+          position: absolute;
+          right: 0;
+          border-bottom: 2px * @ratio solid #456fff;
+          width: 50%;
+        }
+      }
+
+      &-rightLine-column {
+        position: absolute;
+        bottom: 0;
+        border-right: 2px * @ratio solid #f2f2f2;
+        height: 50%;
+
+        &-finished {
+          position: absolute;
+          bottom: 0;
+          border-right: 2px * @ratio solid #456fff;
+          height: 50%;
+        }
+      }
+
+      &-line-right {
+        position: absolute;
+        right: 0;
+        border-bottom: 2px * @ratio solid #000000;
+        width: 50%;
+      }
+    }
+  }
+  &-bd-row {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 56px * @ratio;
+    align-self: center;
+
+    &-title {
+      font-size: 12px * @ratio;
+      color: #000000;
+      line-height: 16px * @ratio;
+      text-align: center;
+    }
+
+    &-content {
+      font-size: 12px * @ratio;
+      color: #b3b3b3;
+      line-height: 16px * @ratio;
+      text-align: center;
+    }
+  }
+
+  &-bd-column {
+    justify-content: center;
+    flex-direction: column;
+    width: 265px * @ratio;
+    margin-left: 19px * @ratio;
+
+    &-title {
+      font-size: 16px * @ratio;
+      color: #000000;
+      line-height: 16px * @ratio;
+      align-self: center;
+    }
+
+    &-content {
+      font-size: 12px * @ratio;
+      color: #b3b3b3;
+      line-height: 20px * @ratio;
+      margin-bottom: 18px * @ratio;
+    }
+  }
+}
+</style>

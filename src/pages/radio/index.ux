@@ -31,13 +31,6 @@
         value="{{$item.value}}"
         checked="{{$item.checked}}"
       ></q-radio>
-      <q-radio
-        group="myGroup3"
-        type="dot"
-        for="{{list}}"
-        value="{{$item.value}}"
-        checked="{{$item.checked}}"
-      ></q-radio>
     </q-radio-group>
   </div>
 </template>
