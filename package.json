@@ -27,6 +27,9 @@
   "lint-staged": {
     "**/*.{ux,less,js,md}": [
       "prettier --write"
+    ],
+    "src/**/*.{ux,js}": [
+      "npm run lint:fix"
     ]
   },
   "prettier": {
