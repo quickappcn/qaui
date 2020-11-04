@@ -1,0 +1,55 @@
+<import name="q-desktop" src="../../components/desktop/index"></import>
+
+<template>
+  <div class="qaui-wrap">
+    <q-desktop
+      description="{{ description }}"
+      btn-text="添加"
+      icon="qrcode-fill"
+      @close="handClose"
+      @success="handSuccess"
+      @fail="handFail"
+      @created="handCreated"
+    ></q-desktop>
+  </div>
+</template>
+
+<script>
+/* eslint-disable no-console */
+import prompt from '@system.prompt'
+export default {
+  props: {},
+  data() {
+    return {
+      description: '添加到桌面，描述文字描述',
+      background: '#fff',
+      activeColor: '#0091ff',
+      textColor: '#B2B2B2',
+    }
+  },
+  handClose() {
+    console.log('关闭浮层回调')
+  },
+  handSuccess() {
+    prompt.showToast({
+      message: '成功创建桌面图标',
+    })
+  },
+  handFail(evt) {
+    prompt.showToast({
+      message: `添桌失败 ${evt.detail.code} ${evt.detail.msg}`,
+    })
+  },
+  handCreated() {
+    prompt.showToast({
+      message: '已创建桌面图标',
+    })
+  },
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+}
+</style>

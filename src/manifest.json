@@ -108,6 +108,12 @@
       },
       "pages/vcode": {
         "component": "index"
+      },
+      "pages/calendar": {
+        "component": "index"
+      },
+      "pages/desktop": {
+        "component": "index"
       }
     }
   },
@@ -234,6 +240,14 @@
       },
       "pages/vcode": {
         "titleBarText": "验证码 vcode",
+        "menu": false
+      },
+      "pages/calendar": {
+        "titleBarText": "日历 calendar",
+        "menu": false
+      },
+      "pages/desktop": {
+        "titleBarText": "添桌浮层 desktop",
         "menu": false
       }
     }

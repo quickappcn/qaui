@@ -32,14 +32,16 @@
 export default {
   data() {
     return {
-      image: 'https://s3.ifanr.com/wp-content/uploads/2019/07/yanzhengma01-1024x312.png',
+      image:
+        'https://s3.ifanr.com/wp-content/uploads/2019/07/yanzhengma01-1024x312.png',
     }
   },
   sendHandler() {
     console.log('request for sending verify code!')
   },
   imageHandler() {
-    this.image = 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnx_z6MfMIVA0etrLHrpzAo-kU-Rm2VJMTbQ&usqp=CAU'
+    this.image =
+      'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcTnx_z6MfMIVA0etrLHrpzAo-kU-Rm2VJMTbQ&usqp=CAU'
   },
   changeHandler({ detail }) {
     console.log('input value', detail.value)
