@@ -1,22 +1,4 @@
-## 通告栏 notice
-
-### 描述
-
-适用性广泛的通知栏，可用于通知的静态展示以及动态展示。
-
-### 使用效果
-
-### 使用方法
-
-在`.ux`文件中引入组件
-
-```html
-<import name="q-notice" src="qaui/src/components/notice/index"></import>
-```
-
-### 示例
-
-```html
+<import name="q-notice" src="../../components/notice/index"></import>
 <template>
   <div class="wrap">
     <div class="notice">
@@ -152,9 +134,8 @@
     </div>
   </div>
 </template>
-```
 
-```js
+<script>
 import router from '@system.router'
 export default {
   data() {
@@ -212,9 +193,9 @@ export default {
     })
   },
 }
-```
+</script>
 
-```less
+<style lang="less">
 .wrap {
   flex-direction: column;
 
@@ -222,27 +203,4 @@ export default {
     margin-bottom: 5px;
   }
 }
-```
-
-### API
-
-#### 组件属性
-
-| 属性          | 类型    | 默认值   | 说明                                                                                                                                                                                                                                                    |
-| ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type          | String  | 'normal' | 通告栏类型，可选值有 normal/warning/transparent                                                                                                                                                                                                         |
-| noticeText    | String  | -        | 通告栏说明文字                                                                                                                                                                                                                                          |
-| textColor     | String  | -        | 通告栏说明文字的颜色,会覆盖 type 类型所带的默认颜色                                                                                                                                                                                                     |
-| bgColor       | String  | -        | 通告栏颜色背景颜色,不建议使用 rgba，建议背景色为文字颜色乘以 0.15 透明度之后的 16 进制颜色值                                                                                                                                                            |
-| leftIcon      | Object  | -        | 左侧图标对象，对象包括 iconPath、icon 两个属性，其中 iconPath 为左侧图标路径，icon 为对象，是组件库中 icon 组件的配置项，目前支持 type 和 color，iconPath 和 icon 只需要写一个，如果都写，默认使用 icon                                                 |
-| rightIconType | String  | 'close'  | 通告栏右侧按钮图标，可选值有 close/link                                                                                                                                                                                                                 |
-| rightIcon     | Object  | -        | 右侧图标对象，如需自定义右侧图标，可传入图标对象覆盖默认图标，对象包括 iconPath、icon 两个属性，其中 iconPath 为左侧图标路径，icon 为对象，是组件库中 icon 组件的配置项，目前支持 type 和 color，iconPath 和 icon 只需要写一个，如果都写，默认使用 icon |
-| scrollable    | Boolean | false    | 是否滚动播放                                                                                                                                                                                                                                            |
-| speed         | Number  | 20       | 滚动速度                                                                                                                                                                                                                                                |
-| scrollTimes   | Number  | 5        | 滚动播放次数,当值为-1 时，则为无限滚动                                                                                                                                                                                                                  |
-
-#### 组件事件
-
-| 事件名称 | 事件描述                                          | 返回值 |
-| -------- | ------------------------------------------------- | ------ |
-| link     | 当 rightIconType 为'link'时，用户可自定义跳转方法 | event  |
+</style>

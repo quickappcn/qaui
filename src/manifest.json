@@ -60,6 +60,9 @@
       "pages/page-error": {
         "component": "index"
       },
+      "pages/notice": {
+        "component": "index"
+      },
       "pages/textarea": {
         "component": "index"
       },
@@ -143,6 +146,10 @@
       },
       "pages/page-error": {
         "titleBarText": "异常页 pageError",
+        "menu": false
+      },
+      "pages/notice": {
+        "titleBarText": "通告栏 notice",
         "menu": false
       },
       "pages/radio": {
