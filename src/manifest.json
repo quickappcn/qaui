@@ -108,6 +108,9 @@
       },
       "pages/vcode": {
         "component": "index"
+      },
+      "pages/calendar": {
+        "component": "index"
       }
     }
   },
@@ -234,6 +237,10 @@
       },
       "pages/vcode": {
         "titleBarText": "验证码 vcode",
+        "menu": false
+      },
+      "pages/calendar": {
+        "titleBarText": "日历 calendar",
         "menu": false
       }
     }

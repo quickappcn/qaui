@@ -2,7 +2,12 @@
 <template>
   <div class="qaui-wrap">
     <text class="title">验证码</text>
-    <input type="text" onchange="changeHandler" placeholder="请输入验证码" class="input" />
+    <input
+      type="text"
+      onchange="changeHandler"
+      placeholder="请输入验证码"
+      class="input"
+    />
     <div class="code" if="!image" onclick="clickHandler">
       <text if="countdown<=0">{{ button }}</text>
       <text else class="countdown">{{ countdown }}秒后重试</text>
