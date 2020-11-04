@@ -114,6 +114,9 @@
       },
       "pages/desktop": {
         "component": "index"
+      },
+      "pages/tabs": {
+        "component": "index" 
       }
     }
   },
@@ -248,6 +251,10 @@
       },
       "pages/desktop": {
         "titleBarText": "添桌浮层 desktop",
+        "menu": false
+      },
+      "pages/tabs": {
+        "titleBarText": "tabs横向选项卡",
         "menu": false
       }
     }

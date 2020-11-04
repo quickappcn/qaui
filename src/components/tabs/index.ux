@@ -1,0 +1,212 @@
+<template>
+  <tabs index="{{ index }}" @change="ChangeTab">
+    <tab-bar class="tab-bar" mode="{{ mode }}">
+      <block for="{{ compData }}">
+        <div class="tab-item" style="{{ compItemWidth }}">
+          <div
+            class="tab-item-{{ type }} {{ activeStyle($idx) }}"
+            style="{{ activeBg($idx) }}"
+          >
+            <text
+              class="tab-item-{{ type }} {{ activeStyle($idx) }}"
+              style="{{ $item.textStyle }}"
+              >{{ $item.text }}</text
+            >
+          </div>
+          <div if="{{ type === 'desc' }}">
+            <div
+              class="item-desc {{ $idx === index ? 'item-desc-active' : '' }}"
+              style="{{ descStyle($idx) }}"
+            >
+              <text style="{{ descTextStyle($idx) }}">{{ $item.desc }}</text>
+            </div>
+          </div>
+          <div
+            if="{{ type === 'default' }}"
+            class="tab-item-bottom"
+            style="{{ $item.bottomStyle }}"
+          ></div>
+        </div>
+      </block>
+    </tab-bar>
+    <tab-content>
+      <slot></slot>
+    </tab-content>
+  </tabs>
+</template>
+
+<script>
+export default {
+  props: {
+    index: {
+      type: String,
+      default: '0',
+    },
+    data: {
+      type: Array,
+      default: () => {
+        return []
+      },
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'default', //default capsule desc
+    },
+    background: {
+      type: String,
+      default: '',
+    },
+    activeBackground: {
+      type: String,
+      default: '#fff',
+    },
+    activeColor: {
+      default: '#456FFF',
+    },
+  },
+  computed: {
+    tabsLength() {
+      return this.data.length
+    },
+    mode() {
+      let mode = 'fixed'
+
+      if (this.type !== 'default') {
+        mode = this.tabsLength > 3 ? 'scrollable' : mode
+      } else {
+        mode = this.tabsLength > 4 ? 'scrollable' : mode
+      }
+
+      return mode
+    },
+    compItemWidth() {
+      let width = ''
+      if (this.tabsLength == 1) {
+        width = '320px'
+      } else if (this.tabsLength == 2) {
+        width = '160px'
+      } else if (this.tabsLength == 3) {
+        width = '106px'
+      } else {
+        width = this.type !== 'default' ? '106px' : '80px'
+      }
+
+      return { width }
+    },
+
+    compData() {
+      let arr = []
+      for (let i = 0; i < this.data.length; i++) {
+        let item = {
+          text: this.data[i].label,
+          desc: this.data[i].describe,
+          textStyle:
+            i === this.index
+              ? 'color: ' + this.activeColor + ';'
+              : 'color: ' + this.typeDefaultColor() + ';',
+          bottomStyle:
+            i === this.index
+              ? 'background-color: ' + this.activeColor + ';'
+              : 'background-color: transparent;',
+        }
+        arr.push(item)
+      }
+      return arr
+    },
+  },
+
+  activeStyle(idx) {
+    return idx === this.index ? 'tab-item-' + this.type + '-active' : ''
+  },
+  activeBg(idx) {
+    let background = ''
+    if (this.type !== 'desc' && idx === this.index) {
+      background = this.activeBackground
+    } else {
+      background = this.background
+    }
+
+    return 'background-color:' + background
+  },
+  typeDefaultColor() {
+    return this.type === 'capsule' ? '#fff' : '#b3b3b3'
+  },
+  descStyle(idx) {
+    let background = '#fff'
+    background = idx === this.index ? this.activeBackground : background
+    return 'background-color:' + background
+  },
+  descTextStyle(idx) {
+    let color = '#fff'
+    color = idx === this.index ? color : this.typeDefaultColor()
+    return 'color:' + color
+  },
+  ChangeTab(evt) {
+    this.index = evt.index
+    this.$emit('changeTab', {
+      index: this.index,
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+.tab-content {
+  flex: 1;
+}
+.tab-bar {
+  height: 47px * @ratio;
+  border-color: #f2f2f2;
+  border-bottom-width: 1px * @ratio;
+}
+
+.tab-item {
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  &-capsule {
+    width: 80px * @ratio;
+    height: 24px * @ratio;
+    border-radius: 14px * @ratio;
+    font-size: 14px * @ratio;
+    text-align: center;
+  }
+
+  &-default {
+    font-size: 14px * @ratio;
+    line-height: 48px * @ratio;
+    &-active {
+      font-size: 14px * @ratio;
+      font-weight: bold;
+      line-height: 48px * @ratio;
+    }
+  }
+  &-bottom {
+    position: absolute;
+    bottom: 0px;
+    height: 2px * @ratio;
+    width: 24px * @ratio;
+  }
+
+  &-desc {
+    font-size: 14px * @ratio;
+    color: #b3b3b3;
+  }
+
+  .item-desc {
+    flex-direction: column;
+    align-items: center;
+    text {
+      color: #b3b3b3;
+      font-size: 10px * @ratio;
+    }
+    &-active {
+      width: 52px * @ratio;
+      height: 14px * @ratio;
+      border-radius: 7px * @ratio;
+    }
+  }
+}
+</style>
