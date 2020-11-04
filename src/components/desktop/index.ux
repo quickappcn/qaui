@@ -1,0 +1,140 @@
+<import name="my-icon" src="../../components/icon/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <div class="qaui-wrap-layer" if="{{ isShow }}">
+      <div class="qaui-wrap-layer-close" @click="handClose">
+        <my-icon
+          type="close"
+          size="26"
+          color="rgba(255,255,255,0.80)"
+        ></my-icon>
+      </div>
+      <div class="qaui-wrap-layer-icon">
+        <my-icon
+          type="{{ icon }}"
+          size="26"
+          color="rgba(255,255,255,0.80)"
+        ></my-icon>
+      </div>
+      <div class="qaui-wrap-layer-desc">
+        <text>{{ description }}</text>
+      </div>
+      <div class="qaui-wrap-layer-button" @click="handClick">
+        <text>{{ btnText }}</text>
+      </div>
+    </div>
+  </div>
+</template>
+<script>
+import shortcut from '@system.shortcut'
+export default {
+  props: {
+    description: {
+      type: String,
+      default: '这里添加描述文字',
+      required: true,
+    },
+    btnText: {
+      type: String,
+      default: '添加',
+      required: true,
+    },
+    icon: {
+      type: String,
+      required: true,
+      default: 'qrcode',
+    },
+  },
+  data() {
+    return {
+      isShow: true,
+      timer: null,
+    }
+  },
+  handClose() {
+    this.isShow = false
+    this.$emit('close')
+  },
+  handClick() {
+    let _this = this
+    shortcut.hasInstalled({
+      success: function (ret) {
+        if (ret) {
+          _this.$emit('created')
+        } else {
+          shortcut.install({
+            success: function () {
+              _this.$emit('success')
+            },
+            fail: function (msg, code) {
+              _this.$emit('fail', {
+                msg: msg,
+                code: code,
+              })
+            },
+          })
+        }
+      },
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+
+.common {
+  width: 24px * @ratio;
+  height: 24px * @ratio;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px * @ratio;
+}
+
+.qaui-wrap {
+  flex-direction: column;
+  &-layer {
+    position: fixed;
+    height: 48px * @ratio;
+    bottom: 74px * @ratio;
+    left: 12px * @ratio;
+    right: 12px * @ratio;
+    border-radius: 5px * @ratio;
+    background-color: rgba(0, 0, 0, 0.68);
+    flex-direction: row;
+    align-items: center;
+    padding: 0 12px * @ratio 0 8px * @ratio;
+
+    &-close {
+      &:extend(.common);
+      padding: 7px * @ratio;
+    }
+    &-icon {
+      &:extend(.common);
+    }
+    &-desc {
+      &:extend(.common);
+      width: 178px * @ratio;
+
+      text {
+        font-size: 14px * @ratio;
+        color: #fff;
+        lines: 1;
+        text-overflow: ellipsis;
+      }
+    }
+
+    &-button {
+      &:extend(.common);
+      width: 66px * @ratio;
+      border-radius: 5px * @ratio;
+      background-color: #456fff;
+      text {
+        font-size: 12px;
+        color: #fff;
+      }
+    }
+  }
+}
+</style>

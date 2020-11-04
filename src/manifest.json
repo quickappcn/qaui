@@ -111,6 +111,12 @@
       },
       "pages/calendar": {
         "component": "index"
+      },
+      "pages/desktop": {
+        "component": "index"
+      },
+      "pages/tabs": {
+        "component": "index" 
       }
     }
   },
@@ -241,6 +247,14 @@
       },
       "pages/calendar": {
         "titleBarText": "日历 calendar",
+        "menu": false
+      },
+      "pages/desktop": {
+        "titleBarText": "添桌浮层 desktop",
+        "menu": false
+      },
+      "pages/tabs": {
+        "titleBarText": "tabs横向选项卡",
         "menu": false
       }
     }
