@@ -21,7 +21,13 @@
 ```html
 <template>
   <div class="qaui-wrap">
-    <q-alphabet id="alphabet" data="{{ data }}" active-color="#fff" active-background="#2878ff" is-shake="{{ true }}">
+    <q-alphabet
+      id="alphabet"
+      data="{{ data }}"
+      active-color="#fff"
+      active-background="#2878ff"
+      is-shake="{{ true }}"
+    >
     </q-alphabet>
   </div>
 </template>

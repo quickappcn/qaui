@@ -32,7 +32,11 @@
           <text class="qaui-wrap-group-index">{{ $item.index }}</text>
           <div class="qaui-wrap-group-child">
             <block for="{{ $item.child }}">
-              <text class="qaui-wrap-group-child-text" @click="handleClick($item)">{{ $item.text }}</text>
+              <text
+                class="qaui-wrap-group-child-text"
+                @click="handleClick($item)"
+                >{{ $item.text }}</text
+              >
             </block>
           </div>
         </list-item>

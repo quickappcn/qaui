@@ -2,7 +2,10 @@
 <template>
   <div class="qaui-notice" style="{{ bgStyle }}">
     <div if="{{ isNoticeShow }}" class="qaui-notice-wrap">
-      <div if="{{ leftIcon.iconPath || leftIcon.icon }}" class="qaui-notice-wrap-left">
+      <div
+        if="{{ leftIcon.iconPath || leftIcon.icon }}"
+        class="qaui-notice-wrap-left"
+      >
         <image
           if="{{ leftIcon.iconPath && !leftIcon.icon }}"
           class="qaui-notice-wrap-left-icon"
@@ -25,11 +28,19 @@
           onfinish="scrollFinish"
           >{{ noticeText }}</marquee
         >
-        <div class="qaui-notice-wrap-box-mask qaui-notice-wrap-box-mask-left" style="{{ leftMaskStyle }}"></div>
-        <div class="qaui-notice-wrap-box-mask qaui-notice-wrap-box-mask-right" style="{{ rightMaskStyle }}"></div>
+        <div
+          class="qaui-notice-wrap-box-mask qaui-notice-wrap-box-mask-left"
+          style="{{ leftMaskStyle }}"
+        ></div>
+        <div
+          class="qaui-notice-wrap-box-mask qaui-notice-wrap-box-mask-right"
+          style="{{ rightMaskStyle }}"
+        ></div>
       </div>
       <div else="{{ !isMarqueeShow }}" class="qaui-notice-wrap-box">
-        <text class="qaui-notice-wrap-box-text" style="{{ textStyle }}">{{ noticeText }}</text>
+        <text class="qaui-notice-wrap-box-text" style="{{ textStyle }}">{{
+          noticeText
+        }}</text>
       </div>
       <div class="qaui-notice-wrap-right" onclick="handleClick">
         <q-icon
@@ -181,7 +192,11 @@ export default {
         this.leftMaskStyle = {
           background: {
             values: [
-              { type: 'linearGradient', directions: ['to', 'right'], values: ['#FAE5DF', 'rgba(255,255,255,0)'] },
+              {
+                type: 'linearGradient',
+                directions: ['to', 'right'],
+                values: ['#FAE5DF', 'rgba(255,255,255,0)'],
+              },
             ],
           },
         }
@@ -189,7 +204,11 @@ export default {
         this.rightMaskStyle = {
           background: {
             values: [
-              { type: 'linearGradient', directions: ['to', 'left'], values: ['#FAE5DF', 'rgba(255,255,255,0)'] },
+              {
+                type: 'linearGradient',
+                directions: ['to', 'left'],
+                values: ['#FAE5DF', 'rgba(255,255,255,0)'],
+              },
             ],
           },
         }
@@ -209,7 +228,11 @@ export default {
         this.leftMaskStyle = {
           background: {
             values: [
-              { type: 'linearGradient', directions: ['to', 'right'], values: ['#cccccc', 'rgba(255,255,255,0)'] },
+              {
+                type: 'linearGradient',
+                directions: ['to', 'right'],
+                values: ['#cccccc', 'rgba(255,255,255,0)'],
+              },
             ],
           },
         }
@@ -217,7 +240,11 @@ export default {
         this.rightMaskStyle = {
           background: {
             values: [
-              { type: 'linearGradient', directions: ['to', 'left'], values: ['#cccccc', 'rgba(255,255,255,0)'] },
+              {
+                type: 'linearGradient',
+                directions: ['to', 'left'],
+                values: ['#cccccc', 'rgba(255,255,255,0)'],
+              },
             ],
           },
         }
@@ -233,7 +260,11 @@ export default {
         this.leftMaskStyle = {
           background: {
             values: [
-              { type: 'linearGradient', directions: ['to', 'right'], values: ['#E3EAFF', 'rgba(255,255,255,0)'] },
+              {
+                type: 'linearGradient',
+                directions: ['to', 'right'],
+                values: ['#E3EAFF', 'rgba(255,255,255,0)'],
+              },
             ],
           },
         }
@@ -241,7 +272,11 @@ export default {
         this.rightMaskStyle = {
           background: {
             values: [
-              { type: 'linearGradient', directions: ['to', 'left'], values: ['#E3EAFF', 'rgba(255,255,255,0)'] },
+              {
+                type: 'linearGradient',
+                directions: ['to', 'left'],
+                values: ['#E3EAFF', 'rgba(255,255,255,0)'],
+              },
             ],
           },
         }
@@ -266,7 +301,11 @@ export default {
       this.leftMaskStyle = {
         background: {
           values: [
-            { type: 'linearGradient', directions: ['to', 'right'], values: [this.bgColor, 'rgba(255,255,255,0)'] },
+            {
+              type: 'linearGradient',
+              directions: ['to', 'right'],
+              values: [this.bgColor, 'rgba(255,255,255,0)'],
+            },
           ],
         },
       }
@@ -274,7 +313,11 @@ export default {
       this.rightMaskStyle = {
         background: {
           values: [
-            { type: 'linearGradient', directions: ['to', 'left'], values: [this.bgColor, 'rgba(255,255,255,0)'] },
+            {
+              type: 'linearGradient',
+              directions: ['to', 'left'],
+              values: [this.bgColor, 'rgba(255,255,255,0)'],
+            },
           ],
         },
       }

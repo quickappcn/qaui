@@ -11,7 +11,10 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="q-page-result" src="qaui/src/components/page-result/index"></import>
+<import
+  name="q-page-result"
+  src="qaui/src/components/page-result/index"
+></import>
 ```
 
 ### 示例
@@ -43,7 +46,8 @@ export default {
     return {
       typeArr: ['success', 'warning', 'error', 'waiting'],
       title: '主标题',
-      description: '内容详情可换行，不超过两行内容。也可以通过插入文字链接更具有功能性的提示',
+      description:
+        '内容详情可换行，不超过两行内容。也可以通过插入文字链接更具有功能性的提示',
       leftBtnName: '副按钮',
       rightBtnName: '主按钮',
       footerInfo: '底部自定义信息',

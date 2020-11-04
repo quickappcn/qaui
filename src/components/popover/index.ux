@@ -3,7 +3,10 @@
   <div class="qaui-popover">
     <div if="{{ isMenuShow }}" class="qaui-popover-wrap" onclick="hideMenu">
       <!-- 包裹气泡菜单和箭头的盒子 -->
-      <div class="qaui-popover-wrap-menu {{ arrangeDirectionClass }} {{ alignClass }}" style="{{ menuOffset }}">
+      <div
+        class="qaui-popover-wrap-menu {{ arrangeDirectionClass }} {{ alignClass }}"
+        style="{{ menuOffset }}"
+      >
         <!-- 箭头 -->
         <div
           if="{{ isBefore }}"
@@ -23,7 +26,10 @@
               ontouchend="unpressedColor"
               onclick="clickItem"
             >
-              <div if="{{ $item.iconPath || $item.icon }}" class="qaui-popover-wrap-menu-list-box-item-icon">
+              <div
+                if="{{ $item.iconPath || $item.icon }}"
+                class="qaui-popover-wrap-menu-list-box-item-icon"
+              >
                 <image
                   if="{{ $item.iconPath && !$item.icon }}"
                   class="qaui-popover-wrap-menu-list-box-item-image"
@@ -142,7 +148,8 @@ export default {
   //触发气泡菜单的根元素的点击事件
   clickTrigger(ev) {
     if (!this.isMenuShow) {
-      const x = parseInt(ev.touches[0].clientX) - parseInt(ev.touches[0].offsetX), //获取触发气泡菜单根元素的left
+      const x =
+          parseInt(ev.touches[0].clientX) - parseInt(ev.touches[0].offsetX), //获取触发气泡菜单根元素的left
         y = parseInt(ev.touches[0].clientY) - parseInt(ev.touches[0].offsetY) //获取触发气泡菜单根元素的top
 
       this.showPreviousOperations(x, y)

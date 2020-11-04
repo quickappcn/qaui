@@ -3,14 +3,23 @@
 <template>
   <div class="qaui-page-result">
     <div class="qaui-page-result-wrap">
-      <div class="qaui-page-result-wrap-icon {{ type === 'warning' ? 'rotate' : '' }}">
-        <q-icon type="{{ iconType }}" size="84" color="{{ iconColor }}"></q-icon>
+      <div
+        class="qaui-page-result-wrap-icon {{ type === 'warning' ? 'rotate' : '' }}"
+      >
+        <q-icon
+          type="{{ iconType }}"
+          size="84"
+          color="{{ iconColor }}"
+        ></q-icon>
       </div>
       <text class="qaui-page-result-wrap-title">{{ title }}</text>
       <text if="{{ isSlot }}" class="qaui-page-result-wrap-content">
         <slot name="default"></slot>
       </text>
-      <text if="{{ description && !isSlot }}" class="qaui-page-result-wrap-content">
+      <text
+        if="{{ description && !isSlot }}"
+        class="qaui-page-result-wrap-content"
+      >
         {{ description }}
       </text>
       <div class="qaui-page-result-wrap-btns">

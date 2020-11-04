@@ -102,6 +102,9 @@
       },
       "pages/gallery": {
         "component":"index"
+      },
+      "pages/slider": {
+        "component": "index"
       }
     }
   },
@@ -213,13 +216,17 @@
       "pages/list": {
         "titleBarText": "列表 list",
         "menu": false
-      },  
+      },
       "pages/collapse-group": {
         "titleBarText": "折叠版 collapse",
         "menu": false
       },
       "pages/gallery": {
         "titleBarText": "画廊 steps",
+        "menu": false
+      },
+      "pages/slider": {
+        "titleBarText": "滑动条 slider",
         "menu": false
       }
     }

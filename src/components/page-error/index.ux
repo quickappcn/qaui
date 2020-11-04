@@ -18,7 +18,9 @@
       </div>
     </div>
     <div if="{{ footerBtnText }}" class="qaui-page-error-footer">
-      <text class="qaui-page-error-footer-btn" onclick="footerClick">{{ footerBtnText }}</text>
+      <text class="qaui-page-error-footer-btn" onclick="footerClick">{{
+        footerBtnText
+      }}</text>
     </div>
   </div>
 </template>

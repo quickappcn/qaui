@@ -29,7 +29,8 @@ export default {
           rightType: 'rightArrow',
         },
         {
-          title: '标题文字标题文字标题文字标题文字标题文字标题文字标题文字标题文字',
+          title:
+            '标题文字标题文字标题文字标题文字标题文字标题文字标题文字标题文字',
           description:
             '这是一段描述文字这是一段描述文字这是一段描述文字这是一段描述文字这是一段描述文字这是一段描述文字',
           extra: 'rightArrow',

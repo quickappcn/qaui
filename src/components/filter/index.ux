@@ -4,40 +4,73 @@
   <div class="qaui-wrap">
     <div class="filter-bar-wrap">
       <block for="myBarOption">
-        <div class="filter-bar-item" if="{{$item.type === 'drawer'}}" onclick="clickDrawer($item,$idx)">
-          <text style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}">{{
-            $item.selectItemLabel || $item.label
-          }}</text>
+        <div
+          class="filter-bar-item"
+          if="{{$item.type === 'drawer'}}"
+          onclick="clickDrawer($item,$idx)"
+        >
+          <text
+            style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+            >{{ $item.selectItemLabel || $item.label }}</text
+          >
           <image
             class="filter-bar-icon {{showDrawer && !hideDrawer ? 'rotate':''}} {{hideDrawer && !showDrawer ? 'anti-rotate':''}}"
             src="{{barResult.value === $item.value?'../../common/images/filter-drawer-checked.png':'../../common/images/filter-drawer.png'}}"
           ></image>
         </div>
-        <div class="filter-bar-item" if="{{$item.type === 'singleState'}}" onclick="chooseSingleState($item)">
-          <text style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}">{{
-            $item.label
-          }}</text>
+        <div
+          class="filter-bar-item"
+          if="{{$item.type === 'singleState'}}"
+          onclick="chooseSingleState($item)"
+        >
+          <text
+            style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+            >{{ $item.label }}</text
+          >
         </div>
-        <div class="filter-bar-item" if="{{$item.type === 'sort'}}" onclick="chooseSort($item)">
-          <text style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}">{{
-            $item.label
-          }}</text>
+        <div
+          class="filter-bar-item"
+          if="{{$item.type === 'sort'}}"
+          onclick="chooseSort($item)"
+        >
+          <text
+            style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+            >{{ $item.label }}</text
+          >
           <image
             class="filter-bar-icon"
             src="{{barResult.value !== $item.value ? '../../common/images/filter-sort.png' : barResult.order === 'asc' ? '../../common/images/filter-sort-asc.png' : '../../common/images/filter-sort-desc.png'}}"
           ></image>
         </div>
       </block>
-      <div class="filter-bar-item" if="{{showFilterIcon}}" onclick="clickFilterIcon">
-        <text style="{{hasPopupResult ? 'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}">筛选</text>
+      <div
+        class="filter-bar-item"
+        if="{{showFilterIcon}}"
+        onclick="clickFilterIcon"
+      >
+        <text
+          style="{{hasPopupResult ? 'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+          >筛选</text
+        >
         <div class="filter-icon">
-          <qu-icon if="{{hasPopupResult}}" type="filter-fill" size="14" color="#456FFF"></qu-icon>
+          <qu-icon
+            if="{{hasPopupResult}}"
+            type="filter-fill"
+            size="14"
+            color="#456FFF"
+          ></qu-icon>
           <qu-icon else type="filter" size="14" color="#333333"></qu-icon>
         </div>
       </div>
     </div>
-    <div class="{{showDrawer?'show-drawer':''}}" style="top:{{drawerTop}};" if="{{showDrawer}}">
-      <div class="{{drawer.direction === 'column'?'drawer-content-column':'drawer-content-row'}}">
+    <div
+      class="{{showDrawer?'show-drawer':''}}"
+      style="top:{{drawerTop}};"
+      if="{{showDrawer}}"
+    >
+      <div
+        class="{{drawer.direction === 'column'?'drawer-content-column':'drawer-content-row'}}"
+      >
         <block for="{{drawer.children}}">
           <div
             class="{{drawer.direction === 'row' && $item.checked ? 'selected-bg':''}} {{drawer.direction === 'column'?'drawer-item-column':'drawer-item-row'}}"
@@ -49,7 +82,10 @@
               if="{{$item.checked && drawer.direction === 'column'}}"
               src="{{drawer.select === 'checkbox'?'../../common/images/drawer-item-checked-checkbox.png':'../../common/images/drawer-item-checked.png'}}"
             ></image>
-            <text style="{{$item.checked?'color: #456FFF;':'color: #333333'}}">{{ $item.label }}</text>
+            <text
+              style="{{$item.checked?'color: #456FFF;':'color: #333333'}}"
+              >{{ $item.label }}</text
+            >
           </div>
         </block>
       </div>
@@ -70,7 +106,11 @@
               <div class="popup-item-title-wrap">
                 <div>
                   <text class="popup-item-title">{{ option.label }}</text>
-                  <text class="popup-item-title radio-text" if="{{option.type === 'radio'}}">单选</text>
+                  <text
+                    class="popup-item-title radio-text"
+                    if="{{option.type === 'radio'}}"
+                    >单选</text
+                  >
                 </div>
                 <image
                   if="{{option.canFold}}"
@@ -97,12 +137,18 @@
                 />
               </div>
               <div class="popup-item-item-wrap" else>
-                <block for="{{option.children}}" if="{{!option.canFold || (option.canFold && !option.isFolded)}}">
+                <block
+                  for="{{option.children}}"
+                  if="{{!option.canFold || (option.canFold && !option.isFolded)}}"
+                >
                   <div
                     class="popup-item-item {{$item.hasSecond?'has-second':''}} {{popupResult[index] && popupResult[index].includes($item.value)?'popup-item-clicked':''}}"
                     onclick="clickPopupItem(index,option,$item)"
                   >
-                    <div style="flex-direction: column; justify-content: center" if="{{$item.hasSecond}}">
+                    <div
+                      style="flex-direction: column; justify-content: center"
+                      if="{{$item.hasSecond}}"
+                    >
                       <text
                         class="small-text"
                         style="color: {{popupResult[index] && popupResult[index].includes($item.value)?'#456FFF':'#333333'}};"
@@ -172,7 +218,10 @@ export default {
 
   computed: {
     hasPopupResult() {
-      return this.popupResult && this.popupResult.some((item) => item && item.length > 0)
+      return (
+        this.popupResult &&
+        this.popupResult.some((item) => item && item.length > 0)
+      )
     },
   },
 
@@ -219,7 +268,11 @@ export default {
 
   clickPopupItem(index, option, item) {
     if (option.type === 'radio') {
-      if (!this.popupResult[index] || !this.popupResult[index].length || this.popupResult[index][0] !== item.value) {
+      if (
+        !this.popupResult[index] ||
+        !this.popupResult[index].length ||
+        this.popupResult[index][0] !== item.value
+      ) {
         this.popupResult.splice(index, 1, [item.value])
       } else if (this.popupResult[index][0] === item.value) {
         this.popupResult.splice(index, 1, [])
@@ -229,9 +282,15 @@ export default {
       if (!this.popupResult[index] || !this.popupResult[index].length) {
         this.popupResult.splice(index, 1, [item.value])
       } else if (!this.popupResult[index].includes(item.value)) {
-        this.popupResult.splice(index, 1, [...this.popupResult[index], item.value])
+        this.popupResult.splice(index, 1, [
+          ...this.popupResult[index],
+          item.value,
+        ])
       } else if (this.popupResult[index].includes(item.value)) {
-        this.popupResult[index].splice(this.popupResult[index].indexOf(item.value), 1)
+        this.popupResult[index].splice(
+          this.popupResult[index].indexOf(item.value),
+          1
+        )
       }
     }
   },
@@ -263,7 +322,10 @@ export default {
       this.barResult = this.drawer
     } else if (this.selectedDrawerItemLabel.length) {
       this.barResult = this.drawer
-    } else if (!this.selectedDrawerItemLabel.length && this.barResult.type === 'drawer') {
+    } else if (
+      !this.selectedDrawerItemLabel.length &&
+      this.barResult.type === 'drawer'
+    ) {
       //选中子项数量>=0 => 选中子项数量==0，重置filter bar为默认label，并且清除选中态
       this.barResult = {}
     }
@@ -304,7 +366,11 @@ export default {
       this.showDrawer = false
       this.hideDrawer = true
     }
-    if (this.barResult.value && this.barResult.value === item.value && this.barResult.order === 'desc') {
+    if (
+      this.barResult.value &&
+      this.barResult.value === item.value &&
+      this.barResult.order === 'desc'
+    ) {
       this.barResult = {
         order: 'asc',
         ...item,
@@ -335,7 +401,10 @@ export default {
       if (item.checked) {
         this.selectedDrawerItemLabel.push(item.label)
       } else {
-        this.selectedDrawerItemLabel.splice(this.selectedDrawerItemLabel.indexOf(item.label), 1)
+        this.selectedDrawerItemLabel.splice(
+          this.selectedDrawerItemLabel.indexOf(item.label),
+          1
+        )
       }
       this.drawer = JSON.parse(JSON.stringify(this.drawer)) //深拷贝并且重新赋值，触发DOM刷新
     }
