@@ -79,6 +79,9 @@
       "pages/switch": {
         "component": "index"
       },
+      "pages/alphabet": {
+        "component": "index"
+      },
       "pages/tabbar": {
         "component": "index"
       },
@@ -178,6 +181,10 @@
       },
       "pages/switch": {
         "titleBarText": "单选开关 switch",
+        "menu": false
+      },
+      "pages/alphabet": {
+        "titleBarText": "字母索引表 alphabet",
         "menu": false
       },
       "pages/steps": {
