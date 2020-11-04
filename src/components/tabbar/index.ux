@@ -17,8 +17,13 @@
             size="{{ iconSize }}"
             color="{{ tab.active?activeColor:textColor }}"
           ></my-icon>
-          <image else src="{{ tab.active?tab.selectedIconPath:tab.iconPath }}"></image>
-          <text style="color:{{ tab.active?activeColor:textColor }}">{{ tab.text }}</text>
+          <image
+            else
+            src="{{ tab.active?tab.selectedIconPath:tab.iconPath }}"
+          ></image>
+          <text style="color:{{ tab.active?activeColor:textColor }}">{{
+            tab.text
+          }}</text>
         </div>
       </div>
     </div>
