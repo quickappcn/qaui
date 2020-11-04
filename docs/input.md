@@ -21,12 +21,24 @@
 ```html
 <template>
   <div class="qaui-wrap">
-    <q-input onchange="changeHandler" onblur="blurHandler" onclear="clearHandler"></q-input>
+    <q-input
+      onchange="changeHandler"
+      onblur="blurHandler"
+      onclear="clearHandler"
+    ></q-input>
     <q-input title="姓名" value="快应用" focus="true"></q-input>
     <q-input title="电子邮箱"></q-input>
     <q-input title="超长的家庭地址"></q-input>
-    <q-input title="我的表头" icon-right-a="/common/logo.png" ontap="tapHandler"></q-input>
-    <q-input title="很长的表头" icon-left="/common/logo.png" icon-right-a="/common/logo.png"></q-input>
+    <q-input
+      title="我的表头"
+      icon-right-a="/common/logo.png"
+      ontap="tapHandler"
+    ></q-input>
+    <q-input
+      title="很长的表头"
+      icon-left="/common/logo.png"
+      icon-right-a="/common/logo.png"
+    ></q-input>
     <q-input type="border"></q-input>
     <q-input type="border" value="正在输入内容" button="发送"></q-input>
     <q-input icon-left="/common/logo.png" type="border" button="发送"></q-input>
@@ -36,7 +48,12 @@
       icon-right-a="/common/logo.png"
       icon-right-b="/common/logo.png"
     ></q-input>
-    <q-input icon-left="/common/logo.png" type="border" icon-right-a="/common/logo.png" button="发送"></q-input>
+    <q-input
+      icon-left="/common/logo.png"
+      type="border"
+      icon-right-a="/common/logo.png"
+      button="发送"
+    ></q-input>
   </div>
 </template>
 ```

@@ -1,5 +1,8 @@
 <template>
-  <div class="qaui-steps-wrap" style="flex-direction: {{direction === 'column' ? 'column' : 'row'}}">
+  <div
+    class="qaui-steps-wrap"
+    style="flex-direction: {{direction === 'column' ? 'column' : 'row'}}"
+  >
     <slot></slot>
   </div>
 </template>

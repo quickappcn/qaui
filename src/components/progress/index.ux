@@ -3,7 +3,12 @@
     <div class="qaui-progress-trail" style="{{ trailStyle }}">
       <div class="qaui-progress-trail-stroke" style="{{ strokeStyle }}"></div>
     </div>
-    <text if="{{ isContentShow }}" class="qaui-progress-text" style="{{ contentStyle }}">{{ content }}</text>
+    <text
+      if="{{ isContentShow }}"
+      class="qaui-progress-text"
+      style="{{ contentStyle }}"
+      >{{ content }}</text
+    >
   </div>
 </template>
 

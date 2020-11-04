@@ -11,6 +11,7 @@
       title="基础用法"
       id="1"
       default-open="{{['key1','key2']}}"
+      onchange="change"
     >
       <q-collapse
         title="标题文字1"
@@ -58,6 +59,14 @@
     </div>
   </div>
 </template>
+
+<script>
+export default {
+  change(data) {
+    console.log(data)
+  },
+}
+</script>
 
 <style lang="less">
 .qaui-wrap {

@@ -2,11 +2,27 @@
 
 <template>
   <div class="qaui-step-wrap" style="flex: 1">
-    <div class="qaui-step-main" style="flex-direction: {{ isColumn ? 'row' : 'column' }}">
-      <div class="{{ isColumn ? 'qaui-step-main-hd-column' : 'qaui-step-main-hd-row' }}">
-        <div if="{{ leftLineShow }}" class=" {{ leftLineColor }}" style="{{ leftLineColorStyle }}"></div>
-        <div if="{{ index !== length -1  }}" class="{{ rightLineColor }}" style="{{ rightLineColorStyle }}"></div>
-        <div class="qaui-step-main-hd-dot" style="background-color: {{ iconColor }}">
+    <div
+      class="qaui-step-main"
+      style="flex-direction: {{ isColumn ? 'row' : 'column' }}"
+    >
+      <div
+        class="{{ isColumn ? 'qaui-step-main-hd-column' : 'qaui-step-main-hd-row' }}"
+      >
+        <div
+          if="{{ leftLineShow }}"
+          class=" {{ leftLineColor }}"
+          style="{{ leftLineColorStyle }}"
+        ></div>
+        <div
+          if="{{ index !== length -1  }}"
+          class="{{ rightLineColor }}"
+          style="{{ rightLineColorStyle }}"
+        ></div>
+        <div
+          class="qaui-step-main-hd-dot"
+          style="background-color: {{ iconColor }}"
+        >
           <div if="{{ hasText }}" class="qaui-step-main-hd-textWarp">
             <text
               style="color: {{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
@@ -15,7 +31,11 @@
             >
           </div>
           <div class="qaui-step-main-hd-iconWrap" if="{{ icon }}">
-            <q-icon type="{{ icon }}" size="14" color="{{ myStatus !== 'waiting' ? '#fff' : '#000' }}"></q-icon>
+            <q-icon
+              type="{{ icon }}"
+              size="14"
+              color="{{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
+            ></q-icon>
           </div>
         </div>
       </div>
@@ -28,7 +48,10 @@
           >
         </div>
         <div class="qaui-step-bd-contentWarp">
-          <text class="{{ isColumn ? 'qaui-step-bd-column-content' : 'qaui-step-bd-row-content' }}">{{ content }}</text>
+          <text
+            class="{{ isColumn ? 'qaui-step-bd-column-content' : 'qaui-step-bd-row-content' }}"
+            >{{ content }}</text
+          >
         </div>
       </div>
     </div>
@@ -85,7 +108,15 @@ export default {
   },
 
   updateStatus(opts = {}) {
-    const { direction, current, index, length, hasText, errorColor, finishedColor } = opts
+    const {
+      direction,
+      current,
+      index,
+      length,
+      hasText,
+      errorColor,
+      finishedColor,
+    } = opts
     this.direction = direction
     this.length = length
     this.index = index
