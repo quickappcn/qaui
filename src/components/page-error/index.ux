@@ -1,0 +1,187 @@
+<import name="q-button" src="../../components/button/index"></import>
+<template>
+  <div class="qaui-page-error">
+    <div class="qaui-page-error-wrap">
+      <image class="qaui-page-error-wrap-image" src="{{ imagePath }}"></image>
+      <div class="qaui-page-error-wrap-content">
+        <text class="qaui-page-error-wrap-content-text">{{ textContent }}</text>
+      </div>
+      <div class="qaui-page-error-wrap-btns">
+        <div class="qaui-page-error-wrap-btns-left">
+          <q-button type="ghost" width="126" ontap="leftClick">
+            <span>{{ leftBtnName }}</span>
+          </q-button>
+        </div>
+        <q-button type="primary" width="126" ontap="rightClick">
+          <span>{{ rightBtnName }}</span>
+        </q-button>
+      </div>
+    </div>
+    <div if="{{ footerBtnText }}" class="qaui-page-error-footer">
+      <text class="qaui-page-error-footer-btn" onclick="footerClick">{{ footerBtnText }}</text>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      imagePath: '', //配图的路径
+      textContent: '', //文字描述内容
+    }
+  },
+  props: {
+    type: {
+      //接收用户传来的type
+      type: String,
+      default: 'page_error',
+    },
+    image: {
+      //接收用户传来的图片路径
+      type: String,
+      default: '',
+    },
+    leftBtnName: {
+      //接收用户传来的左侧按钮名称
+      type: String,
+      default: '',
+    },
+    rightBtnName: {
+      //接收用户传来的右侧按钮名称
+      type: String,
+      default: '',
+    },
+    description: {
+      //接收用户传来的描述文字
+      type: String,
+      default: '',
+    },
+    footerBtnText: {
+      //接收用户传来的底部文字按钮名称
+      type: String,
+      default: '',
+    },
+  },
+  onInit() {
+    //设置默认的配图和文字
+    this.setDefaultAttributes(this.type)
+    //如果用户传了图片，就使用用户自定义的图片
+    if (this.image) {
+      this.imagePath = this.image
+    }
+    //如果用户传了描述文字，就使用用户自定义的文字
+    if (this.description) {
+      this.textContent = this.description
+    }
+  },
+  //根据type类型设置默认的配图和文字描述
+  setDefaultAttributes(type) {
+    switch (type) {
+      case 'page_error':
+        this.imagePath = '/common/images/page_error.svg'
+        this.textContent = '页面出错'
+        break
+      case 'network_anomaly':
+        this.imagePath = '/common/images/network_anomaly.png'
+        this.textContent = '网络异常'
+        break
+      case 'version_too_low':
+        this.imagePath = '/common/images/version_too_low.svg'
+        this.textContent = '版本过低'
+        break
+      case 'not_found':
+        this.imagePath = '/common/images/not_found.svg'
+        this.textContent = '访问地址有误或不存在'
+        break
+      case 'quick_app_offline':
+        this.imagePath = '/common/images/quick_app_offline.svg'
+        this.textContent = '快应用已下架'
+        break
+      case 'quick_app_not_online':
+        this.imagePath = '/common/images/quick_app_not_online.svg'
+        this.textContent = '快应用暂未上架'
+        break
+      case 'certificate_expires':
+        this.imagePath = '/common/images/certificate_expires.svg'
+        this.textContent = '证书已过期或无效'
+        break
+      default:
+        break
+    }
+  },
+  //左侧按钮点击事件
+  leftClick(ev) {
+    this.$emit('leftBtnTap', { event: ev.detail })
+  },
+  //右侧按钮点击事件
+  rightClick(ev) {
+    this.$emit('rightBtnTap', { event: ev.detail })
+  },
+  //底部文字按钮点击事件
+  footerClick(ev) {
+    this.$emit('footerBtnTap', { event: ev })
+  },
+}
+</script>
+<style lang="less">
+@import '../common';
+.qaui-page-error {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  flex-direction: column;
+  align-items: center;
+
+  &-wrap {
+    top: 114px * @ratio;
+    flex-direction: column;
+    align-items: center;
+
+    &-image {
+      width: 120px * @ratio;
+      height: 120px * @ratio;
+    }
+
+    &-content {
+      width: 100%;
+      margin: 15px * @ratio 20px * @ratio 0 20px * @ratio;
+      padding: 0 60px * @ratio;
+
+      &-text {
+        color: #999999;
+        font-size: 14px * @ratio;
+        line-height: 22px * @ratio;
+        text-align: center;
+      }
+    }
+
+    &-btns {
+      margin-top: 50px * @ratio;
+
+      &-left {
+        margin-right: 16px * @ratio;
+      }
+    }
+  }
+
+  &-footer {
+    position: fixed;
+    bottom: 48px * @ratio;
+    width: 160px * @ratio;
+    height: 20px * @ratio;
+    margin: 0 100px * @ratio;
+
+    &-btn {
+      width: 100%;
+      height: 100%;
+      line-height: 20px * @ratio;
+      color: @primary-color;
+      font-size: 14px * @ratio;
+      text-align: center;
+    }
+  }
+}
+</style>
