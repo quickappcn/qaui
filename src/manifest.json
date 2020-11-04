@@ -36,6 +36,9 @@
       "pages/title": {
         "component": "index"
       },
+      "pages/collapse-group": {
+        "component": "index"
+      },
       "pages/divider": {
         "component": "index"
       },
@@ -46,6 +49,9 @@
         "component": "index"
       },
       "pages/radio": {
+        "component": "index"
+      },
+      "pages/progress": {
         "component": "index"
       },
       "pages/steps": {
@@ -100,6 +106,22 @@
       },
       "pages/steps": {
         "titleBarText": "步骤条 steps",
+        "menu": false
+      },
+      "pages/tabbar": {
+        "titleBarText": "底部导航 tabbar 一",
+        "menu": false
+      },
+      "pages/tabbar/page1": {
+        "titleBarText": "底部导航 tabbar 二",
+        "menu": false
+      },
+      "pages/tabbar/page2": {
+        "titleBarText": "底部导航 tabbar 三",
+        "menu": false
+      },  
+      "pages/collapse-group": {
+        "titleBarText": "折叠版 collapse",
         "menu": false
       }
     }
