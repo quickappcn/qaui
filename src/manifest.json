@@ -54,11 +54,35 @@
       "pages/progress": {
         "component": "index"
       },
+      "pages/textarea": {
+        "component": "index"
+      },
+      "pages/checkbox": {
+        "component": "index"
+      },
+      "pages/input": {
+        "component": "index"
+      },
+      "pages/switch": {
+        "component": "index"
+      },
+      "pages/tabbar": {
+        "component": "index"
+      },
+      "pages/tabbar/page1": {
+        "component": "index"
+      },
+      "pages/tabbar/page2": {
+        "component": "index"
+      },
       "pages/steps": {
         "component": "index"
       },
       "pages/list": {
         "component": "index"
+      },
+      "pages/gallery": {
+        "component":"index"
       }
     }
   },
@@ -103,8 +127,28 @@
         "titleBarText": "图标 icon",
         "menu": false
       },
+      "pages/progress": {
+        "titleBarText": "进度条 progress",
+        "menu": false
+      },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
+        "menu": false
+      },
+      "pages/textarea": {
+        "titleBarText": "多行输入框 textarea",
+        "menu": false
+      },
+      "pages/checkbox": {
+        "titleBarText": "多选按钮 checkbox",
+        "menu": false
+      },
+      "pages/input": {
+        "titleBarText": "输入框 input",
+        "menu": false
+      },
+      "pages/switch": {
+        "titleBarText": "单选开关 switch",
         "menu": false
       },
       "pages/steps": {
@@ -125,9 +169,14 @@
       },
       "pages/list": {
         "titleBarText": "列表 list",
+        "menu": false
       },  
       "pages/collapse-group": {
         "titleBarText": "折叠版 collapse",
+        "menu": false
+      },
+      "pages/gallery": {
+        "titleBarText": "画廊 steps",
         "menu": false
       }
     }
