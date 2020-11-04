@@ -105,6 +105,9 @@
       },
       "pages/slider": {
         "component": "index"
+      },
+      "pages/vcode": {
+        "component": "index"
       }
     }
   },
@@ -227,6 +230,10 @@
       },
       "pages/slider": {
         "titleBarText": "滑动条 slider",
+        "menu": false
+      },
+      "pages/vcode": {
+        "titleBarText": "验证码 vcode",
         "menu": false
       }
     }

@@ -3,7 +3,11 @@
     <image class="icon" if="leftIcon" src="{{leftIcon}}"></image>
     <stack>
       <div class="dots" if="dot">
-        <div class="dot" style="background-color: {{calcColor($idx)}};" for="dots"></div>
+        <div
+          class="dot"
+          style="background-color: {{calcColor($idx)}};"
+          for="dots"
+        ></div>
       </div>
       <slider
         class="slider"
