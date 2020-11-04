@@ -24,7 +24,12 @@
     <text class="title">默认用法</text>
     <q-textarea></q-textarea>
     <text class="title">自定义用法</text>
-    <q-textarea placeholder="请输入您的意见！" maxlength="50" default-value="快应用真快" focus="true"></q-textarea>
+    <q-textarea
+      placeholder="请输入您的意见！"
+      maxlength="50"
+      default-value="快应用真快"
+      focus="true"
+    ></q-textarea>
   </div>
 </template>
 ```

@@ -1,0 +1,118 @@
+<template>
+  <div class="qaui-wrap">
+    <image class="icon" if="leftIcon" src="{{leftIcon}}"></image>
+    <stack>
+      <div class="dots" if="dot">
+        <div
+          class="dot"
+          style="background-color: {{calcColor($idx)}};"
+          for="dots"
+        ></div>
+      </div>
+      <slider
+        class="slider"
+        style="selected-color: {{selectedColor}};block-color: {{selectedColor}};color: {{color}};"
+        min="{{min}}"
+        max="{{max}}"
+        step="{{step}}"
+        value="{{my_value}}"
+        onchange="changeHandler()"
+      ></slider>
+    </stack>
+    <image class="icon" if="rightIcon" src="{{rightIcon}}"></image>
+    <text if="showValue" class="value">{{ my_value }}</text>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    min: {
+      default: 0,
+    },
+    max: {
+      default: 100,
+    },
+    step: {
+      default: 1,
+    },
+    color: {
+      default: '#F2F2F2',
+    },
+    selectedColor: {
+      default: '#456fff',
+    },
+    value: {
+      default: 0,
+    },
+    showValue: {
+      default: false,
+    },
+    dot: {
+      default: false,
+    },
+    leftIcon: {
+      default: '',
+    },
+    rightIcon: {
+      default: '',
+    },
+  },
+  data() {
+    return {
+      dots: [],
+      my_value: this.value,
+    }
+  },
+  onInit() {
+    this.dots.length = ~~((this.max - this.min) / this.step + 1)
+    this.dots.fill(1)
+  },
+  calcColor(index) {
+    return index * this.step >= this.my_value ? this.color : this.selectedColor
+  },
+  changeHandler({ progress }) {
+    this.my_value = progress
+    this.$emit('change', progress)
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  width: 100%;
+  align-items: center;
+  padding: 0 20px * @ratio;
+  .value {
+    width: 23px * @ratio;
+    font-size: 12px * @ratio;
+    margin-left: 20px * @ratio;
+  }
+  stack {
+    justify-content: center;
+    flex-grow: 1;
+  }
+  .slider {
+    flex-grow: 1;
+    padding: 15px * @ratio;
+  }
+  .dots {
+    width: 100%;
+    margin: 0 10px * @ratio;
+    align-items: center;
+    justify-content: space-between;
+    .dot {
+      width: 8px * @ratio;
+      height: 8px * @ratio;
+      border-radius: 4px * @ratio;
+      background-color: #f2f2f2;
+    }
+  }
+  .icon {
+    height: 24px * @ratio;
+    width: 24px * @ratio;
+    flex-shrink: 0;
+  }
+}
+</style>

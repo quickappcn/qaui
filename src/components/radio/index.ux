@@ -1,7 +1,14 @@
 <template>
-  <div class="qaui-wrap qaui-{{type}} {{disabled?'disabled':''}}" onclick="clickHandler">
+  <div
+    class="qaui-wrap qaui-{{type}} {{disabled?'disabled':''}}"
+    onclick="clickHandler"
+  >
     <div class="icon icon-{{type}} {{my_checked?'active':''}}">
-      <image if="my_checked" src="/common/images/radio-{{type}}.svg" class="icon-{{type}}-check"></image>
+      <image
+        if="my_checked"
+        src="/common/images/radio-{{type}}.svg"
+        class="icon-{{type}}-check"
+      ></image>
     </div>
     <text class="value">{{ value }}</text>
   </div>

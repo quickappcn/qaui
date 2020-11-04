@@ -1,12 +1,25 @@
 <template>
   <div class="qaui-wrap">
     <div if="!search">
-      <image if="back" onclick="goBack" src="../../common/images/back.svg" class="icon icon-back"></image>
-      <image if="home" onclick="goHome" src="../../common/images/home.svg" class="icon icon-home"></image>
+      <image
+        if="back"
+        onclick="goBack"
+        src="../../common/images/back.svg"
+        class="icon icon-back"
+      ></image>
+      <image
+        if="home"
+        onclick="goHome"
+        src="../../common/images/home.svg"
+        class="icon icon-home"
+      ></image>
       <text class="title">{{ title }}</text>
     </div>
     <div if="search" class="search" onclick="goSearch">
-      <image class="icon icon-search" src="../../common/images/search.svg"></image>
+      <image
+        class="icon icon-search"
+        src="../../common/images/search.svg"
+      ></image>
       <text class="placeholder">{{ placeholder }}</text>
     </div>
   </div>

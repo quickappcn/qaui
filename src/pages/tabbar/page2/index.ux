@@ -1,0 +1,60 @@
+<import name="q-tabbar" src="../../../components/tabbar/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <text>页面三</text>
+    <q-tabbar
+      background="{{ background }}"
+      text-color="{{ textColor }}"
+      active-color="{{ activeColor }}"
+      data="{{ tabbarData }}"
+      icon-size="20"
+    >
+    </q-tabbar>
+  </div>
+</template>
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  text {
+    font-size: 13px;
+  }
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      tabbarData: [
+        {
+          iconPath: '../../../common/images/tabIcon.svg',
+          selectedIconPath: '../../../common/images/tabSelectIcon.svg',
+          pagePath: '/pages/tabbar',
+          text: '首页首页',
+          active: false,
+          icon: '',
+        },
+        {
+          iconPath: '../../../common/images/tabIcon.svg',
+          selectedIconPath: '../../../common/images/tabSelectIcon.svg',
+          pagePath: '/pages/tabbar/page1',
+          text: '产品列表',
+          active: false,
+          icon: 'qrcode',
+        },
+        {
+          iconPath: '../../../common/images/tabIcon.svg',
+          selectedIconPath: '../../../common/images/tabSelectIcon.svg',
+          pagePath: '/pages/tabbar/page1',
+          text: '我的',
+          active: true,
+          icon: 'contact-fill',
+        },
+      ],
+      background: '#fff',
+      activeColor: '#0091ff',
+      textColor: '#B2B2B2',
+    }
+  },
+}
+</script>

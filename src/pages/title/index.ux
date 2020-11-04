@@ -5,19 +5,45 @@
     <div class="group">
       <q-title title="外部标题"></q-title>
       <q-title title="外部标题" target="/pages/home"></q-title>
-      <q-title title="外部标题" description="描述文字" target="/pages/home"></q-title>
+      <q-title
+        title="外部标题"
+        description="描述文字"
+        target="/pages/home"
+      ></q-title>
     </div>
     <div class="group bg-white">
       <q-title title="内部标题"></q-title>
-      <q-title icon="/common/logo.png" title="内部标题" target="/pages/home"></q-title>
-      <q-title icon="/common/logo.png" title="内部标题" description="描述文字" target="/pages/home"></q-title>
-      <q-title icon="/common/logo.png" target="/pages/home"><text class="custom">自定义样式</text></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="内部标题"
+        target="/pages/home"
+      ></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="内部标题"
+        description="描述文字"
+        target="/pages/home"
+      ></q-title>
+      <q-title icon="/common/logo.png" target="/pages/home"
+        ><text class="custom">自定义样式</text></q-title
+      >
     </div>
     <q-container flex-direction="column">
       <q-title title="标题文字"></q-title>
-      <q-title icon="/common/logo.png" title="标题文字" target="/pages/home"></q-title>
-      <q-title icon="/common/logo.png" title="标题文字" description="描述文字" target="/pages/home"></q-title>
-      <q-title icon="/common/logo.png" target="/pages/home"><text class="custom">自定义样式</text></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="标题文字"
+        target="/pages/home"
+      ></q-title>
+      <q-title
+        icon="/common/logo.png"
+        title="标题文字"
+        description="描述文字"
+        target="/pages/home"
+      ></q-title>
+      <q-title icon="/common/logo.png" target="/pages/home"
+        ><text class="custom">自定义样式</text></q-title
+      >
     </q-container>
   </div>
 </template>
