@@ -1,0 +1,99 @@
+<import name="q-tabs" src="../../components/tabs/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-tabs
+      index="1"
+      type="default"
+      data="{{ data }}"
+      class="q-tabs"
+      active-color="#456fff"
+      background="#fff"
+      active-background="#fff"
+      @change-tab="changeTab"
+    >
+      <block for="{{ data }}">
+        <div class="item-container">
+          <div class="item-content">
+            <text>标签{{ $idx + 1 }}内容</text>
+          </div>
+        </div>
+      </block>
+    </q-tabs>
+
+    <q-tabs
+      index="2"
+      type="capsule"
+      data="{{ data }}"
+      class="q-tabs"
+      active-color="#fff"
+      background="#b3b3b3"
+      active-background="#456fff"
+      @change-tab="changeTab"
+    >
+      <block for="{{ data }}">
+        <div class="item-container">
+          <div class="item-content">
+            <text>标签{{ $idx + 1 }}内容</text>
+          </div>
+        </div>
+      </block>
+    </q-tabs>
+    <q-tabs
+      index="2"
+      type="desc"
+      data="{{ data }}"
+      class="q-tabs"
+      active-color="#456fff"
+      active-background="#456fff"
+      @change-tab="changeTab"
+    >
+      <block for="{{ data }}">
+        <div class="item-container">
+          <div class="item-content">
+            <text>标签{{ $idx + 1 }}内容</text>
+          </div>
+        </div>
+      </block>
+    </q-tabs>
+  </div>
+</template>
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  height: 100%;
+}
+.q-tabs {
+  margin-bottom: 20px;
+}
+.item-container {
+  padding-top: 30px;
+  padding-left: 30px;
+  padding-right: 30px;
+  flex-direction: column;
+}
+.item-content {
+  flex-direction: column;
+  padding-bottom: 30px;
+  text {
+    color: red;
+  }
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      data: [
+        { label: '标签一', describe: '描述一' },
+        { label: '标签二', describe: '描述二' },
+        { label: '标签三', describe: '描述三' },
+        { label: '标签四', describe: '描述四' },
+      ],
+    }
+  },
+  changeTab(evt) {
+    console.log(evt.detail)
+  },
+}
+</script>
