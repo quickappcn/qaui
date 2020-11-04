@@ -1,0 +1,128 @@
+<import name="q-progress" src="../../components/progress/index"></import>
+<template>
+  <div class="wrap">
+    <text class="title">progress进度条</text>
+    <div class="progress-group">
+      <div class="progress-box">
+        <q-progress></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress percentage="{{ percentage }}"></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          percentage="{{ percentage }}"
+          is-content-show="{{ isContentShow }}"
+        ></q-progress>
+      </div>
+    </div>
+    <text class="title">自定义进度条</text>
+    <div class="progress-group">
+      <div class="progress-box">
+        <q-progress
+          stroke-color="{{ strokeColor }}"
+          trail-color="{{ trailColor }}"
+        ></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          is-content-show="{{ isContentShow }}"
+          format="{{ format }}"
+        ></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          percentage="{{ 80 }}"
+          is-content-show="{{ isContentShow }}"
+          format="{{ format }}"
+        ></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          percentage="{{ percentage }}"
+          is-content-show="{{ isContentShow }}"
+          progress-width="{{ progressWidth }}"
+          stroke-height="{{ strokeHeight }}"
+          content-style="{{ contentStyle1 }}"
+        ></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          percentage="{{ dynamicPercent }}"
+          is-content-show="{{ isContentShow }}"
+          progress-width="300px"
+          stroke-height="{{ strokeHeight }}"
+          content-style="{{ contentStyle2 }}"
+          stroke-color="#FF0000"
+          trail-color="rgba(255,192,203,.8)"
+          format="{{ format }}"
+        ></q-progress>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      percentage: 25,
+      dynamicPercent: 0,
+      isContentShow: true,
+      progressWidth: '250px',
+      strokeHeight: 10,
+      contentStyle1: {
+        width: '50px',
+        fontSize: '20px',
+        color: '#1E90FF',
+      },
+      contentStyle2: {
+        width: '100px',
+        fontSize: '16px',
+        color: '#FF0000',
+      },
+      strokeColor: '#1E90FF',
+      trailColor: 'rgba(255,215,0,.5)',
+      format: (percentage) => '已下载' + percentage + '%',
+    }
+  },
+  onInit() {
+    const t = setInterval(() => {
+      this.dynamicPercent += 0.5
+      if (this.dynamicPercent >= 100) {
+        this.dynamicPercent = 100
+        clearInterval(t)
+      }
+    }, 100)
+  },
+}
+</script>
+
+<style lang="less">
+.wrap {
+  flex-direction: column;
+  width: 100%;
+  height: 100px;
+  background-color: #f2f2f2;
+  opacity: 0.8;
+
+  .title {
+    width: 100%;
+    height: 45px;
+    margin-left: 20px;
+    line-height: 45px;
+    font-size: 12px;
+  }
+
+  .progress-group {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px 40px 20px;
+    background-color: #ffffff;
+
+    .progress-box {
+      margin-top: 28px;
+    }
+  }
+}
+</style>

@@ -1,0 +1,106 @@
+<import name="q-input" src="../input/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <text class="title">验证码</text>
+    <input
+      type="text"
+      onchange="changeHandler"
+      placeholder="请输入验证码"
+      class="input"
+    />
+    <div class="code" if="!image" onclick="clickHandler">
+      <text if="countdown<=0">{{ button }}</text>
+      <text else class="countdown">{{ countdown }}秒后重试</text>
+      <div class="line"></div>
+    </div>
+    <div class="code" else>
+      <image onclick="imageHandler" src="{{image}}"></image>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    time: {
+      default: 120,
+    },
+    image: {
+      default: '',
+    },
+  },
+  data() {
+    return {
+      countdown: 0,
+      button: '获取验证码',
+    }
+  },
+  clickHandler(e) {
+    this.$emit('send', e)
+    this.button = '重发验证码'
+    this.countdown = this.time
+    const timer = setInterval(() => {
+      this.countdown--
+      if (this.countdown < 0) {
+        clearInterval(timer)
+      }
+    }, 1000)
+  },
+  imageHandler(e) {
+    this.$emit('image', e)
+  },
+  changeHandler({ value }) {
+    this.$emit('change', { value })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  width: 100%;
+  justify-content: space-between;
+  padding-left: 20px * @ratio;
+  height: 52px * @ratio;
+  background-color: #ffffff;
+  .title {
+    font-size: 14px * @ratio;
+    color: #000000;
+    width: 84px * @ratio;
+  }
+  .input {
+    font-size: 14px * @ratio;
+    width: 133px * @ratio;
+    placeholder-color: #cccccc;
+    color: #000000;
+    caret-color: @primary-color;
+  }
+  .code {
+    width: 108px * @ratio;
+    align-items: center;
+    flex-direction: row-reverse;
+    text {
+      font-size: 14px * @ratio;
+      color: @primary-color;
+      text-align: center;
+      width: 100%;
+    }
+    .line {
+      height: 12px * @ratio;
+      width: 1px * @ratio;
+      background-color: #e9eaec;
+    }
+    .countdown {
+      color: #000000;
+      opacity: 0.3;
+    }
+    image {
+      width: 100px * @ratio;
+      height: 100%;
+      align-self: flex-start;
+      background-color: #d8d8d8;
+      object-fit: fill;
+    }
+  }
+}
+</style>

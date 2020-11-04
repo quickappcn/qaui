@@ -8,7 +8,9 @@
   "features": [
     { "name": "system.prompt" },
     { "name": "system.router" },
-    { "name": "system.shortcut" }
+    { "name": "system.shortcut" },
+    { "name": "system.vibrator" },
+    { "name": "system.media" }
   ],
   "config": {
     "logLevel": "debug",
@@ -35,6 +37,9 @@
       "pages/title": {
         "component": "index"
       },
+      "pages/collapse-group": {
+        "component": "index"
+      },
       "pages/divider": {
         "component": "index"
       },
@@ -47,6 +52,21 @@
       "pages/radio": {
         "component": "index"
       },
+      "pages/progress": {
+        "component": "index"
+      },
+      "pages/page-result": {
+        "component": "index"
+      },
+      "pages/page-error": {
+        "component": "index"
+      },
+      "pages/notice": {
+        "component": "index"
+      },
+      "pages/popover": {
+        "component": "index"
+      },
       "pages/textarea": {
         "component": "index"
       },
@@ -56,7 +76,37 @@
       "pages/input": {
         "component": "index"
       },
+      "pages/filter": {
+        "component": "index"
+      },
       "pages/switch": {
+        "component": "index"
+      },
+      "pages/alphabet": {
+        "component": "index"
+      },
+      "pages/tabbar": {
+        "component": "index"
+      },
+      "pages/tabbar/page1": {
+        "component": "index"
+      },
+      "pages/tabbar/page2": {
+        "component": "index"
+      },
+      "pages/steps": {
+        "component": "index"
+      },
+      "pages/list": {
+        "component": "index"
+      },
+      "pages/gallery": {
+        "component":"index"
+      },
+      "pages/slider": {
+        "component": "index"
+      },
+      "pages/vcode": {
         "component": "index"
       },
       "pages/calendar": {
@@ -105,6 +155,26 @@
         "titleBarText": "图标 icon",
         "menu": false
       },
+      "pages/progress": {
+        "titleBarText": "进度条 progress",
+        "menu": false
+      },
+      "pages/page-result": {
+        "titleBarText": "结果页 pageResult",
+        "menu": false
+      },
+      "pages/page-error": {
+        "titleBarText": "异常页 pageError",
+        "menu": false
+      },
+      "pages/notice": {
+        "titleBarText": "通告栏 notice",
+        "menu": false
+      },
+      "pages/popover": {
+        "titleBarText": "气泡菜单 popover",
+        "menu": false
+      },
       "pages/radio": {
         "titleBarText": "单选按钮 radio",
         "menu": false
@@ -121,8 +191,52 @@
         "titleBarText": "输入框 input",
         "menu": false
       },
+      "pages/filter": {
+        "titleBarText": "筛选栏 filter",
+        "menu": false
+      },
       "pages/switch": {
         "titleBarText": "单选开关 switch",
+        "menu": false
+      },
+      "pages/alphabet": {
+        "titleBarText": "字母索引表 alphabet",
+        "menu": false
+      },
+      "pages/steps": {
+        "titleBarText": "步骤条 steps",
+        "menu": false
+      },
+      "pages/tabbar": {
+        "titleBarText": "底部导航 tabbar 一",
+        "menu": false
+      },
+      "pages/tabbar/page1": {
+        "titleBarText": "底部导航 tabbar 二",
+        "menu": false
+      },
+      "pages/tabbar/page2": {
+        "titleBarText": "底部导航 tabbar 三",
+        "menu": false
+      },
+      "pages/list": {
+        "titleBarText": "列表 list",
+        "menu": false
+      },
+      "pages/collapse-group": {
+        "titleBarText": "折叠版 collapse",
+        "menu": false
+      },
+      "pages/gallery": {
+        "titleBarText": "画廊 steps",
+        "menu": false
+      },
+      "pages/slider": {
+        "titleBarText": "滑动条 slider",
+        "menu": false
+      },
+      "pages/vcode": {
+        "titleBarText": "验证码 vcode",
         "menu": false
       },
       "pages/calendar": {

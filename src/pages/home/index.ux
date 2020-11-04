@@ -29,7 +29,6 @@
       <div class="item"><a href="/pages/switch">单选开关 switch</a></div>
       <div class="item"><a href="/pages/slider">滑动条 slider</a></div>
       <div class="item"><a href="/pages/calendar">日历 calendar</a></div>
-      <div class="item"><a href="/pages/terms">协议 terms</a></div>
     </div>
     <div class="type">
       <text>操作反馈</text>
@@ -45,10 +44,12 @@
       <text>数据展示</text>
     </div>
     <div class="component">
-      <div class="item"><a href="/pages/list">列表 list</a></div>
       <div class="item"><a href="/pages/steps">步骤条 steps</a></div>
-      <div class="item"><a href="/pages/collapse">折叠面板 collapse</a></div>
+      <div class="item">
+        <a href="/pages/collapse-group">折叠面板 collapse</a>
+      </div>
       <div class="item"><a href="/pages/gallery">画廊 gallery</a></div>
+      <div class="item"><a href="/pages/list">列表 list</a></div>
     </div>
     <div class="type">
       <text>高级组件</text>

@@ -11,3 +11,5 @@ node_modules/
 dist/
 build/
 docs/*/dist/
+
+.eslintrc

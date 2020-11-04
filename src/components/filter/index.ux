@@ -1,0 +1,769 @@
+<import name="qu-icon" src="../icon/index.ux"></import>
+
+<template>
+  <div class="qaui-wrap">
+    <div class="filter-bar-wrap">
+      <block for="myBarOption">
+        <div
+          class="filter-bar-item"
+          if="{{$item.type === 'drawer'}}"
+          onclick="clickDrawer($item,$idx)"
+        >
+          <text
+            style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+            >{{ $item.selectItemLabel || $item.label }}</text
+          >
+          <image
+            class="filter-bar-icon {{showDrawer && !hideDrawer ? 'rotate':''}} {{hideDrawer && !showDrawer ? 'anti-rotate':''}}"
+            src="{{barResult.value === $item.value?'../../common/images/filter-drawer-checked.png':'../../common/images/filter-drawer.png'}}"
+          ></image>
+        </div>
+        <div
+          class="filter-bar-item"
+          if="{{$item.type === 'singleState'}}"
+          onclick="chooseSingleState($item)"
+        >
+          <text
+            style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+            >{{ $item.label }}</text
+          >
+        </div>
+        <div
+          class="filter-bar-item"
+          if="{{$item.type === 'sort'}}"
+          onclick="chooseSort($item)"
+        >
+          <text
+            style="{{barResult.value === $item.value?'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+            >{{ $item.label }}</text
+          >
+          <image
+            class="filter-bar-icon"
+            src="{{barResult.value !== $item.value ? '../../common/images/filter-sort.png' : barResult.order === 'asc' ? '../../common/images/filter-sort-asc.png' : '../../common/images/filter-sort-desc.png'}}"
+          ></image>
+        </div>
+      </block>
+      <div
+        class="filter-bar-item"
+        if="{{showFilterIcon}}"
+        onclick="clickFilterIcon"
+      >
+        <text
+          style="{{hasPopupResult ? 'color: #456FFF;':'color: rgba(0, 0, 0, 0.8);'}}"
+          >筛选</text
+        >
+        <div class="filter-icon">
+          <qu-icon
+            if="{{hasPopupResult}}"
+            type="filter-fill"
+            size="14"
+            color="#456FFF"
+          ></qu-icon>
+          <qu-icon else type="filter" size="14" color="#333333"></qu-icon>
+        </div>
+      </div>
+    </div>
+    <div
+      class="{{showDrawer?'show-drawer':''}}"
+      style="top:{{drawerTop}};"
+      if="{{showDrawer}}"
+    >
+      <div
+        class="{{drawer.direction === 'column'?'drawer-content-column':'drawer-content-row'}}"
+      >
+        <block for="{{drawer.children}}">
+          <div
+            class="{{drawer.direction === 'row' && $item.checked ? 'selected-bg':''}} {{drawer.direction === 'column'?'drawer-item-column':'drawer-item-row'}}"
+            style="{{$item | calWidth}}"
+            onclick="clickDrawerItem($item)"
+          >
+            <image
+              class="drawer-item-checked"
+              if="{{$item.checked && drawer.direction === 'column'}}"
+              src="{{drawer.select === 'checkbox'?'../../common/images/drawer-item-checked-checkbox.png':'../../common/images/drawer-item-checked.png'}}"
+            ></image>
+            <text
+              style="{{$item.checked?'color: #456FFF;':'color: #333333'}}"
+              >{{ $item.label }}</text
+            >
+          </div>
+        </block>
+      </div>
+      <div class="btn-wrap" if="{{drawer.select === 'checkbox'}}">
+        <text class="reset" onclick="resetDrawerItem">重置</text>
+        <text class="commit" onclick="commitDrawer">确定</text>
+      </div>
+    </div>
+    <stack class="popup-wrap" if="{{showPopup}}">
+      <div class="mask {{showPopup?'show-mask':''}}" onclick="hidePopup"></div>
+      <div class="popup-content {{showPopup?'show-popup':''}}">
+        <list class="list">
+          <block for="(index, option) in myPopupOption">
+            <list-item
+              class="popup-item {{index !== myPopupOption.length - 1 && !option.isFolded?'border':''}}"
+              type="filterItem"
+            >
+              <div class="popup-item-title-wrap">
+                <div>
+                  <text class="popup-item-title">{{ option.label }}</text>
+                  <text
+                    class="popup-item-title radio-text"
+                    if="{{option.type === 'radio'}}"
+                    >单选</text
+                  >
+                </div>
+                <image
+                  if="{{option.canFold}}"
+                  class="fold-icon"
+                  src="{{option.isFolded?'../../common/images/fold-icon.png':'../../common/images/fold-icon-anti.png'}}"
+                  onclick="openFold(option)"
+                ></image>
+              </div>
+              <div if="{{option.type==='range'}}">
+                <input
+                  class="input"
+                  type="text"
+                  value="{{option.leftRange.default}}"
+                  placeholder="{{option.leftRange.placeholder}}"
+                  onchange="inputChange('left',index)"
+                />
+                <div class="line"></div>
+                <input
+                  class="input"
+                  type="text"
+                  value="{{option.rightRange.default}}"
+                  placeholder="{{option.rightRange.placeholder}}"
+                  onchange="inputChange('right',index)"
+                />
+              </div>
+              <div class="popup-item-item-wrap" else>
+                <block
+                  for="{{option.children}}"
+                  if="{{!option.canFold || (option.canFold && !option.isFolded)}}"
+                >
+                  <div
+                    class="popup-item-item {{$item.hasSecond?'has-second':''}} {{popupResult[index] && popupResult[index].includes($item.value)?'popup-item-clicked':''}}"
+                    onclick="clickPopupItem(index,option,$item)"
+                  >
+                    <div
+                      style="flex-direction: column; justify-content: center"
+                      if="{{$item.hasSecond}}"
+                    >
+                      <text
+                        class="small-text"
+                        style="color: {{popupResult[index] && popupResult[index].includes($item.value)?'#456FFF':'#333333'}};"
+                        >{{ $item.firstLabel }}</text
+                      >
+                      <text
+                        class="small-text"
+                        style="color: {{popupResult[index] && popupResult[index].includes($item.value)?'#456FFF':'#333333'}};"
+                        >{{ $item.secondLabel }}</text
+                      >
+                    </div>
+                    <text
+                      class="normal-text"
+                      style="color: {{popupResult[index] && popupResult[index].includes($item.value)?'#456FFF':'#333333'}};"
+                      else
+                      >{{ $item.label }}</text
+                    >
+                  </div>
+                </block>
+              </div>
+            </list-item>
+          </block>
+        </list>
+        <div class="btn-wrap" style="position: absolute; bottom: 0">
+          <text class="reset" onclick="resetPopupItem">重置</text>
+          <text class="commit" onclick="commitPopup">确定</text>
+        </div>
+      </div>
+    </stack>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      barResult: {}, //顶部筛选栏结果
+      popupResult: [], //弹出的筛选框的结果
+      drawer: '', //当前打开的drawer
+      drawerIdx: '', //当前打开的drawer在Option中的位置
+      selectedDrawerItemLabel: [], //用于保存选中的项目的label
+      showDrawer: false,
+      hideDrawer: false,
+      showPopup: false,
+      myBarOption: this.barOption,
+      myPopupOption: this.popupOption,
+      ratio: 1,
+    }
+  },
+
+  props: {
+    barOption: {
+      default: [],
+    },
+    popupOption: {
+      default: [],
+    },
+    showFilterIcon: {
+      //是否展示筛选按钮
+      default: true,
+    },
+    drawerTop: {
+      //下拉框顶部相对于视窗顶部距离
+      default: '40px',
+    },
+  },
+
+  computed: {
+    hasPopupResult() {
+      return (
+        this.popupResult &&
+        this.popupResult.some((item) => item && item.length > 0)
+      )
+    },
+  },
+
+  onInit() {
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    this.ratio = designWidth / 360
+    this.initPopupResult()
+  },
+
+  openFold(option) {
+    console.log('test111')
+    option.isFolded = !option.isFolded
+    this.myPopupOption = JSON.parse(JSON.stringify(this.myPopupOption))
+    console.log('test111', this.myPopupOption)
+  },
+
+  clickFilterIcon() {
+    this.showPopup = true
+  },
+
+  resetPopupItem() {
+    this.initPopupResult()
+  },
+
+  commitPopup() {
+    this.hidePopup()
+    this.popupEmitHappen()
+  },
+
+  hidePopup() {
+    this.showPopup = false
+  },
+
+  inputChange(type, index, e) {
+    if (!this.popupResult[index]) {
+      this.popupResult[index] = {}
+    }
+    this.popupResult[index][type] = e.value
+  },
+
+  initPopupResult() {
+    this.popupResult = new Array(this.myPopupOption.length)
+  },
+
+  clickPopupItem(index, option, item) {
+    if (option.type === 'radio') {
+      if (
+        !this.popupResult[index] ||
+        !this.popupResult[index].length ||
+        this.popupResult[index][0] !== item.value
+      ) {
+        this.popupResult.splice(index, 1, [item.value])
+      } else if (this.popupResult[index][0] === item.value) {
+        this.popupResult.splice(index, 1, [])
+      }
+    }
+    if (option.type === 'checkbox') {
+      if (!this.popupResult[index] || !this.popupResult[index].length) {
+        this.popupResult.splice(index, 1, [item.value])
+      } else if (!this.popupResult[index].includes(item.value)) {
+        this.popupResult.splice(index, 1, [
+          ...this.popupResult[index],
+          item.value,
+        ])
+      } else if (this.popupResult[index].includes(item.value)) {
+        this.popupResult[index].splice(
+          this.popupResult[index].indexOf(item.value),
+          1
+        )
+      }
+    }
+  },
+
+  resetDrawer() {
+    //当选择中其他项时，重置label为默认label
+    if (this.drawer && this.drawer.selectItemLabel) {
+      this.resetDrawerItem()
+      this.drawer.selectItemLabel = ''
+      this.myBarOption[this.drawerIdx] = this.drawer
+      this.myBarOption = JSON.parse(JSON.stringify(this.myBarOption)) //深拷贝并且重新赋值，触发DOM刷新
+    }
+  },
+
+  resetDrawerItem() {
+    this.drawer.children.forEach((child) => {
+      child.checked = false
+    })
+    this.selectedDrawerItemLabel = []
+  },
+
+  commitDrawer() {
+    this.drawer.selectItemLabel = this.selectedDrawerItemLabel.join(',') //filter bar的默认label更换成选中项的label
+    this.closeDrawer()
+  },
+
+  closeDrawer() {
+    if (this.drawer.select === 'radio') {
+      this.barResult = this.drawer
+    } else if (this.selectedDrawerItemLabel.length) {
+      this.barResult = this.drawer
+    } else if (
+      !this.selectedDrawerItemLabel.length &&
+      this.barResult.type === 'drawer'
+    ) {
+      //选中子项数量>=0 => 选中子项数量==0，重置filter bar为默认label，并且清除选中态
+      this.barResult = {}
+    }
+    this.myBarOption[this.drawerIdx] = this.drawer
+    this.myBarOption = JSON.parse(JSON.stringify(this.myBarOption)) //深拷贝并且重新赋值，触发DOM刷新
+    this.showDrawer = false
+    this.hideDrawer = true
+    this.barEmitHappen()
+  },
+
+  clickDrawer(item, idx) {
+    this.drawer = item
+    this.drawerIdx = idx
+    //触发icon转动动画
+    if (this.showDrawer) {
+      this.showDrawer = false
+      this.hideDrawer = true
+    } else {
+      this.showDrawer = true
+      this.hideDrawer = false
+    }
+  },
+
+  chooseSingleState(item) {
+    this.resetDrawer()
+    if (this.showDrawer) {
+      //关闭下拉框
+      this.showDrawer = false
+      this.hideDrawer = true
+    }
+    this.barResult = item
+    this.barEmitHappen()
+  },
+
+  chooseSort(item) {
+    this.resetDrawer()
+    if (this.showDrawer) {
+      this.showDrawer = false
+      this.hideDrawer = true
+    }
+    if (
+      this.barResult.value &&
+      this.barResult.value === item.value &&
+      this.barResult.order === 'desc'
+    ) {
+      this.barResult = {
+        order: 'asc',
+        ...item,
+      }
+    } else {
+      this.barResult = {
+        order: 'desc',
+        ...item,
+      }
+    }
+    this.barEmitHappen()
+  },
+
+  clickDrawerItem(item) {
+    if (this.drawer.select === 'radio') {
+      //单选
+      this.drawer.children.forEach((child) => {
+        if (child.value === item.value) {
+          child.checked = true
+        } else {
+          child.checked = false
+        }
+      })
+      this.drawer.selectItemLabel = item.label //filter bar的默认label更换成选中项的label
+      this.closeDrawer()
+    } else {
+      item.checked = !item.checked
+      if (item.checked) {
+        this.selectedDrawerItemLabel.push(item.label)
+      } else {
+        this.selectedDrawerItemLabel.splice(
+          this.selectedDrawerItemLabel.indexOf(item.label),
+          1
+        )
+      }
+      this.drawer = JSON.parse(JSON.stringify(this.drawer)) //深拷贝并且重新赋值，触发DOM刷新
+    }
+  },
+
+  barEmitHappen() {
+    this.$emit('selectBar', {
+      barResult: this.barResult,
+    })
+  },
+
+  popupEmitHappen() {
+    this.$emit('selectPopup', {
+      popupResult: this.popupResult,
+    })
+  },
+
+  calWidth(item) {
+    if (this.drawer.direction === 'column') {
+      return ''
+    } else {
+      if (!item.size || item.size === 'small') {
+        return `width:${104 * this.ratio}px;`
+      } else if (item.size === 'middle') {
+        return `width:${154 * this.ratio}px;`
+      } else {
+        return `width:${220 * this.ratio}px;`
+      }
+    }
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+
+.list {
+  padding-bottom: 47px * @ratio;
+}
+
+.fold-icon {
+  width: 36px * @ratio;
+  height: 18px * @ratio;
+  padding: 6px * @ratio 12px * @ratio;
+}
+
+.input {
+  width: 126px * @ratio;
+  height: 30px * @ratio;
+  padding: 7px * @ratio;
+  background-color: #f2f2f2;
+  border-radius: 6px * @ratio;
+  font-size: 12px * @ratio;
+  color: #000000;
+  text-align: center;
+  line-height: 16px * @ratio;
+  placeholder-color: #d0d0d0;
+  margin-bottom: 12px * @ratio;
+}
+
+.line {
+  width: 8px * @ratio;
+  height: 1px * @ratio;
+  background-color: #d8d8d8;
+  margin-left: 5px * @ratio;
+  margin-right: 5px * @ratio;
+  margin-top: 15px * @ratio;
+}
+
+.border {
+  border-bottom: 6px * @ratio solid #f2f2f2;
+}
+
+.popup-item {
+  padding: 12px * @ratio 8px * @ratio 0 20px * @ratio;
+  flex-direction: column;
+  &-title-wrap {
+    justify-content: space-between;
+    margin-bottom: 9px * @ratio;
+  }
+  &-title {
+    font-size: 14px * @ratio;
+    color: #333333;
+    line-height: 18px * @ratio;
+    lines: 1;
+    text-overflow: ellipsis;
+  }
+  &-item-wrap {
+    flex-wrap: wrap;
+  }
+  &-item {
+    width: 82px * @ratio;
+    height: 30px * @ratio;
+    padding: 7px * @ratio;
+    margin-right: 12px * @ratio;
+    margin-bottom: 12px * @ratio;
+    background-color: #f8f8f8;
+    border-radius: 6px * @ratio;
+    justify-content: center;
+  }
+}
+
+.popup-item-clicked {
+  background-color: rgba(69, 111, 255, 0.1);
+}
+
+.popup-content {
+  width: 310px * @ratio;
+  height: 100%;
+  background-color: #fff;
+  position: absolute;
+  left: 50px * @ratio;
+}
+
+.popup-wrap {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.mask {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+.rotate {
+  animation-name: rotate;
+  animation-duration: 50ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+.anti-rotate {
+  animation-name: anti_rotate;
+  animation-duration: 50ms;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+}
+
+@keyframes anti_rotate {
+  from {
+    transform: rotate(180deg);
+  }
+  to {
+    transform: rotate(0deg);
+  }
+}
+
+.show-popup {
+  animation-name: show_popup;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show_popup {
+  from {
+    transform: translateX(310px * @ratio);
+  }
+  to {
+    transform: translateX(0px * @ratio);
+  }
+}
+
+.show-mask {
+  animation-name: show_mask;
+  animation-duration: 400ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show_mask {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.btn-wrap {
+  width: 100%;
+  height: 47px * @ratio;
+  border-top: 1px * @ratio solid #f2f2f2;
+}
+
+.reset {
+  width: 50%;
+  height: 47px * @ratio;
+  background-color: #fff;
+  font-size: 16px * @ratio;
+  color: #333333;
+  text-align: center;
+  line-height: 20px * @ratio;
+}
+
+.commit {
+  width: 50%;
+  height: 47px * @ratio;
+  background-color: #456fff;
+  font-size: 16px * @ratio;
+  color: #ffffff;
+  text-align: center;
+  line-height: 20px * @ratio;
+}
+
+.qaui-wrap {
+  flex-direction: column;
+}
+
+.drawer-wrap {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+.drawer-content-column {
+  width: 100%;
+  background-color: #fff;
+  flex-direction: column;
+}
+
+.drawer-content-row {
+  width: 100%;
+  padding: 12px * @ratio 0 0 12px * @ratio;
+  background-color: #fff;
+  flex-wrap: wrap;
+}
+
+.drawer-item-column {
+  width: 100%;
+  background-color: #fff;
+  height: 40px * @ratio;
+  padding: 11px * @ratio 20px * @ratio;
+}
+
+.drawer-item-row {
+  height: 30px * @ratio;
+  margin-right: 12px * @ratio;
+  margin-bottom: 12px * @ratio;
+  background-color: #f8f8f8;
+  padding: 7px * @ratio;
+  border-radius: 6px * @ratio;
+  justify-content: center;
+  align-items: center;
+}
+
+.drawer-item-checked {
+  width: 18px * @ratio;
+  height: 18px * @ratio;
+  margin-right: 6px * @ratio;
+}
+
+.drawer-item-column text {
+  font-size: 14px * @ratio;
+  line-height: 18px * @ratio;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.drawer-item-row text {
+  font-size: 12px * @ratio;
+  color: #333333;
+  text-align: center;
+  line-height: 16px * @ratio;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.show-drawer {
+  position: fixed;
+  flex-direction: column;
+  animation-name: show_drawer;
+  animation-duration: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes show_drawer {
+  from {
+    transform: translateY(-10px * @ratio);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0px * @ratio);
+    opacity: 1;
+  }
+}
+
+.filter-bar-wrap {
+  width: 100%;
+  height: 40px * @ratio;
+  background-color: #ffffff;
+  justify-content: center;
+}
+
+.filter-bar-item {
+  width: 90px * @ratio;
+  height: 40px * @ratio;
+  justify-content: center;
+  align-items: center;
+}
+
+.filter-bar-item text {
+  font-size: 14px * @ratio;
+  text-align: center;
+  line-height: 18px * @ratio;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.filter-bar-icon {
+  width: 9px * @ratio;
+  margin-left: 3px * @ratio;
+  margin-top: 16px * @ratio;
+  margin-bottom: 15px * @ratio;
+}
+
+.filter-icon {
+  margin-top: 1px * @ratio;
+}
+
+.selected-bg {
+  background-color: rgba(69, 111, 255, 0.1);
+}
+
+.has-second {
+  padding-top: 5px * @ratio;
+  padding-bottom: 5px * @ratio;
+}
+
+.normal-text {
+  font-size: 12px * @ratio;
+  text-align: center;
+  line-height: 16px * @ratio;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.small-text {
+  font-size: 9px * @ratio;
+  line-height: 10px * @ratio;
+  text-align: center;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+
+.radio-text {
+  font-size: 10px * @ratio;
+  margin-left: 6px * @ratio;
+  margin-top: 3px * @ratio;
+}
+</style>
