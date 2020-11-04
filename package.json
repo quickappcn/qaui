@@ -14,7 +14,7 @@
     "server": "hap server --watch",
     "dev": "vuepress dev docs",
     "build:docs": "vuepress build docs",
-    "lint":"eslint --ext .js,.ux src",
+    "lint": "eslint --ext .js,.ux src",
     "lint:fix": "eslint --ext .js,.ux src --fix",
     "pretty": "prettier --write **/*.ux"
   },
