@@ -1,0 +1,55 @@
+<import name="q-tabs" src="../../components/vtabs/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <!-- default capsule icon-label -->
+    <q-tabs
+      type="default"
+      data="{{ data }}"
+      active-color="#456fff"
+      @change-tab="changeTab"
+    >
+      <block for="{{ data }}">
+        <div class="item-container">
+          <div class="item-content">
+            <text>标签{{ $idx + 1 }}内容</text>
+          </div>
+        </div>
+      </block>
+    </q-tabs>
+  </div>
+</template>
+<style lang="less">
+.item-content {
+  flex-direction: column;
+  text {
+    color: red;
+    font-size: 13px;
+  }
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      data: [
+        { label: '标签文字', icon: 'qrcode-fill' },
+        { label: '标签文字', icon: 'send' },
+        { label: '标签文字', icon: 'call-forwarding' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+        { label: '标签文字', icon: 'restore-call-records' },
+      ],
+    }
+  },
+  changeTab(evt) {
+    console.log(evt.detail)
+  },
+}
+</script>
