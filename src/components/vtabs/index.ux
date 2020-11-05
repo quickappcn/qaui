@@ -1,0 +1,172 @@
+<import name="my-icon" src="../../components/icon/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <list class="qaui-wrap-nav" index="{{ index }}">
+      <block for="{{ compData }}">
+        <list-item class="nav-item-{{ type }}" @click="onChangeTabIndex($idx)">
+          <div
+            if="{{ type === 'default' }}"
+            class="nav-item-left"
+            style="{{ $item.leftStyle }}"
+          ></div>
+          <div class="nav-item-text-{{ type }} {{ activeStyle($idx) }}">
+            <my-icon
+              type="{{ $item.icon }}"
+              if="{{ type === 'icon-label'}}"
+              size="20"
+              color="{{ $idx === index ? activeColor:''}}"
+            ></my-icon>
+            <text style="{{ $item.textStyle }}">{{ $item.text }}</text>
+          </div>
+        </list-item>
+      </block>
+    </list>
+    <div class="qaui-wrap-content">
+      <tabs index="{{ index }}">
+        <tab-content>
+          <slot></slot>
+        </tab-content>
+      </tabs>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    data: {
+      type: Array,
+      default: () => {
+        return []
+      },
+    },
+    type: {
+      type: String,
+      default: 'default', //default capsule icon-label
+    },
+    activeColor: {
+      type: String,
+      default: '#456FFF',
+    },
+  },
+  data() {
+    return {
+      index: 0,
+    }
+  },
+  activeStyle(idx) {
+    return idx === this.index ? `nav-item-${this.type}-active` : ''
+  },
+  computed: {
+    compData() {
+      let arr = []
+      for (let i = 0; i < this.data.length; i++) {
+        const item = {
+          icon: this.data[i].icon,
+          text: this.data[i].label,
+          textStyle:
+            i === this.index
+              ? `color: ${this.activeColor};`
+              : 'color: rgba(0,0,0,0.80);',
+          leftStyle:
+            i === this.index
+              ? `background-color: ${this.activeColor};`
+              : 'background-color: transparent;',
+        }
+        arr.push(item)
+      }
+      return arr
+    },
+  },
+
+  onChangeTabIndex(idx) {
+    this.index = idx
+    this.$emit('changeTab', {
+      index: idx,
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+.qaui-wrap {
+  flex-direction: row;
+  &-nav {
+    position: fixed;
+    height: 100%;
+    top: 0;
+    bottom: 0px;
+    width: 80px * @ratio;
+    border-color: rgba(0, 0, 0, 0.08);
+    border-right-width: 1px * @ratio;
+    flex-direction: column;
+    .nav-item-left {
+      position: absolute;
+      left: 0px;
+      height: 20px * @ratio;
+      width: 3px * @ratio;
+      background-color: #456fff;
+    }
+  }
+
+  .nav-item-default {
+    height: 52px * @ratio;
+    margin: 9px * @ratio 0;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text {
+      font-size: 13px * @ratio;
+    }
+  }
+
+  .nav-item-capsule {
+    height: 52px * @ratio;
+    margin: 9px * @ratio 0;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text {
+      font-size: 13px * @ratio;
+    }
+    &-active {
+      background-color: #456fff;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 70px * @ratio;
+      height: 20px * @ratio;
+      border-radius: 14px * @ratio;
+      font-size: 13px * @ratio;
+    }
+  }
+
+  .nav-item-icon-label {
+    height: 52px * @ratio;
+    margin: 9px * @ratio 0;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text {
+      font-size: 13px * @ratio;
+    }
+  }
+
+  .nav-item-text-icon-label {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text {
+      font-size: 13px * @ratio;
+    }
+  }
+
+  &-content {
+    margin-left: 80px * @ratio;
+  }
+}
+</style>
