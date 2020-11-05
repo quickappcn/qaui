@@ -117,6 +117,9 @@
       },
       "pages/tabs": {
         "component": "index" 
+      },
+      "pages/vtabs": {
+        "component": "index"
       }
     }
   },
@@ -255,6 +258,10 @@
       },
       "pages/tabs": {
         "titleBarText": "tabs横向选项卡",
+        "menu": false
+      },
+      "pages/vtabs": {
+        "titleBarText": "vtabs纵向选项卡",
         "menu": false
       }
     }

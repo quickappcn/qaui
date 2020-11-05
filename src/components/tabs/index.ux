@@ -1,10 +1,13 @@
 <template>
-  <tabs index="{{ index }}" @change="ChangeTab">
+  <tabs index="{{ currentIndex }}" onchange="ChangeTap">
     <tab-bar class="tab-bar" mode="{{ mode }}">
       <block for="{{ compData }}">
-        <div class="tab-item" style="{{ compItemWidth }}">
+        <div
+          class="tab-item {{$idx==0?'left-padding':''}} {{$idx==compData.length-1?'right-padding':''}}"
+          style="{{ compItemWidth }}"
+        >
           <div
-            class="tab-item-{{ type }} {{ activeStyle($idx) }}"
+            class="tab-item-{{ type }} {{ activeStyle($idx) }} tab-flag"
             style="{{ activeBg($idx) }}"
           >
             <text
@@ -12,20 +15,20 @@
               style="{{ $item.textStyle }}"
               >{{ $item.text }}</text
             >
+            <div
+              if="{{ type === 'default' }}"
+              class="tab-item-default-bottom"
+              style="{{ $item.bottomStyle }}"
+            ></div>
           </div>
           <div if="{{ type === 'desc' }}">
             <div
-              class="item-desc {{ $idx === index ? 'item-desc-active' : '' }}"
+              class="item-desc {{ $idx === currentIndex ? 'item-desc-active' : '' }}"
               style="{{ descStyle($idx) }}"
             >
               <text style="{{ descTextStyle($idx) }}">{{ $item.desc }}</text>
             </div>
           </div>
-          <div
-            if="{{ type === 'default' }}"
-            class="tab-item-bottom"
-            style="{{ $item.bottomStyle }}"
-          ></div>
         </div>
       </block>
     </tab-bar>
@@ -44,7 +47,7 @@ export default {
     },
     data: {
       type: Array,
-      default: () => {
+      default() {
         return []
       },
       required: true,
@@ -59,11 +62,16 @@ export default {
     },
     activeBackground: {
       type: String,
-      default: '#fff',
+      default: '#FFF',
     },
     activeColor: {
       default: '#456FFF',
     },
+  },
+  data() {
+    return {
+      currentIndex: this.index,
+    }
   },
   computed: {
     tabsLength() {
@@ -71,30 +79,22 @@ export default {
     },
     mode() {
       let mode = 'fixed'
-
-      if (this.type !== 'default') {
-        mode = this.tabsLength > 3 ? 'scrollable' : mode
-      } else {
+      if (this.type === 'default' || this.type === 'desc') {
         mode = this.tabsLength > 4 ? 'scrollable' : mode
+      } else {
+        mode = this.tabsLength > 3 ? 'scrollable' : mode
       }
-
       return mode
     },
     compItemWidth() {
       let width = ''
-      if (this.tabsLength == 1) {
-        width = '320px'
-      } else if (this.tabsLength == 2) {
-        width = '160px'
-      } else if (this.tabsLength == 3) {
-        width = '106px'
+      if (this.tabsLength < 4) {
+        width = (1 / this.tabsLength) * 100 + '%'
       } else {
-        width = this.type !== 'default' ? '106px' : '80px'
+        width = this.type === 'capsule' ? '106px' : '80px'
       }
-
       return { width }
     },
-
     compData() {
       let arr = []
       for (let i = 0; i < this.data.length; i++) {
@@ -102,11 +102,11 @@ export default {
           text: this.data[i].label,
           desc: this.data[i].describe,
           textStyle:
-            i === this.index
+            i === this.currentIndex
               ? 'color: ' + this.activeColor + ';'
               : 'color: ' + this.typeDefaultColor() + ';',
           bottomStyle:
-            i === this.index
+            i === this.currentIndex
               ? 'background-color: ' + this.activeColor + ';'
               : 'background-color: transparent;',
         }
@@ -115,13 +115,12 @@ export default {
       return arr
     },
   },
-
   activeStyle(idx) {
-    return idx === this.index ? 'tab-item-' + this.type + '-active' : ''
+    return idx === this.currentIndex ? 'tab-item-' + this.type + '-active' : ''
   },
   activeBg(idx) {
     let background = ''
-    if (this.type !== 'desc' && idx === this.index) {
+    if (this.type !== 'desc' && idx === this.currentIndex) {
       background = this.activeBackground
     } else {
       background = this.background
@@ -134,18 +133,18 @@ export default {
   },
   descStyle(idx) {
     let background = '#fff'
-    background = idx === this.index ? this.activeBackground : background
+    background = idx === this.currentIndex ? this.activeBackground : background
     return 'background-color:' + background
   },
   descTextStyle(idx) {
     let color = '#fff'
-    color = idx === this.index ? color : this.typeDefaultColor()
+    color = idx === this.currentIndex ? color : this.typeDefaultColor()
     return 'color:' + color
   },
-  ChangeTab(evt) {
-    this.index = evt.index
-    this.$emit('changeTab', {
-      index: this.index,
+  ChangeTap(evt) {
+    this.currentIndex = evt.index
+    this.$emit('tap', {
+      index: this.currentIndex,
     })
   },
 }
@@ -153,19 +152,34 @@ export default {
 
 <style lang="less">
 @import '../common.less';
-.tab-content {
-  flex: 1;
+.qaui-wrap {
+  flex-direction: column;
+  height: 100%;
+}
+.white-column {
+  width: 20px * @ratio;
+  height: 48px * @ratio;
+}
+
+.left-padding {
+  padding-left: 20px * @ratio;
+}
+
+.right-padding {
+  padding-right: 20px * @ratio;
 }
 .tab-bar {
   height: 47px * @ratio;
   border-color: #f2f2f2;
   border-bottom-width: 1px * @ratio;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tab-item {
   flex-direction: column;
+  justify-content: flex-start;
   align-items: center;
-  position: relative;
   &-capsule {
     width: 80px * @ratio;
     height: 24px * @ratio;
@@ -177,17 +191,20 @@ export default {
   &-default {
     font-size: 14px * @ratio;
     line-height: 48px * @ratio;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-bottom {
+      position: absolute;
+      bottom: 0px;
+      height: 2px * @ratio;
+      width: 24px * @ratio;
+      border-radius: 2px * @ratio;
+    }
     &-active {
       font-size: 14px * @ratio;
       font-weight: bold;
-      line-height: 48px * @ratio;
     }
-  }
-  &-bottom {
-    position: absolute;
-    bottom: 0px;
-    height: 2px * @ratio;
-    width: 24px * @ratio;
   }
 
   &-desc {
