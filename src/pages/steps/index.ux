@@ -9,17 +9,16 @@
       <q-step title="步骤2" content="步骤二状态说明" group-id="11"></q-step>
       <q-step title="步骤3" content="步骤二状态说明" group-id="11"></q-step>
     </q-steps>
-    <q-steps direction="row" id="15" has-text="{{true}}" current="{{2}}">
-      <q-step title="步骤1" group-id="15" content="步骤一状态说明"></q-step>
-      <q-step title="步骤2" content="步骤二状态说明" group-id="15"></q-step>
+    <q-steps direction="row" id="12" has-text="{{true}}" current="{{2}}">
+      <q-step title="步骤1" group-id="12" content="步骤一状态说明"></q-step>
+      <q-step title="步骤2" content="步骤二状态说明" group-id="12"></q-step>
       <q-step
         title="步骤3"
         content="步骤二状态说明"
-        group-id="15"
+        group-id="12"
         status="error"
       ></q-step>
     </q-steps>
-
     <q-steps direction="column" id="13" current="{{2}}">
       <q-step
         title="步骤1"
@@ -32,7 +31,7 @@
     </q-steps>
     <q-steps
       direction="column"
-      id="13"
+      id="14"
       error-color="#FF0000"
       finished-color="#00FF80"
       current="{{1}}"
@@ -40,22 +39,22 @@
       <q-step
         title="步骤1"
         content="步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明"
-        group-id="13"
+        group-id="14"
       ></q-step>
       <q-step
         title="步骤2"
         icon="close"
         content="步骤二状态说明"
-        group-id="13"
+        group-id="14"
         status="error"
       ></q-step>
-      <q-step title="步骤3" content="步骤三状态说明" group-id="13"></q-step>
-      <q-step title="步骤4" content="步骤四状态说明" group-id="13"></q-step>
+      <q-step title="步骤3" content="步骤三状态说明" group-id="14"></q-step>
+      <q-step title="步骤4" content="步骤四状态说明" group-id="14"></q-step>
     </q-steps>
 
     <q-steps
       direction="column"
-      id="13"
+      id="15"
       error-color="#FF0000"
       finished-color="#00FF80"
       current="{{ current }}"
@@ -63,11 +62,11 @@
       <q-step
         title="步骤1"
         content="步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明步骤一状态说明"
-        group-id="13"
+        group-id="15"
       ></q-step>
-      <q-step title="步骤2" content="步骤二状态说明" group-id="13"></q-step>
-      <q-step title="步骤3" content="步骤三状态说明" group-id="13"></q-step>
-      <q-step title="步骤4" content="步骤四状态说明" group-id="13"></q-step>
+      <q-step title="步骤2" content="步骤二状态说明" group-id="15"></q-step>
+      <q-step title="步骤3" content="步骤三状态说明" group-id="15"></q-step>
+      <q-step title="步骤4" content="步骤四状态说明" group-id="15"></q-step>
     </q-steps>
     <div class="qaui-steps-button">
       <q-button class="button" type="ghost" ontap="changeStatus"
