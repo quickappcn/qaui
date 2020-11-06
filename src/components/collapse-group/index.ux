@@ -44,7 +44,9 @@ export default {
   },
 
   changeIsActives(activeKeys) {
-    const elements = this.accordions
+    const elements = this.$parent()._childrenVms.filter(
+      (element) => element.groupId === this.id && element._type === 'q-collapse'
+    )
     if (elements.length > 0) {
       for (let index = 0; index < elements.length; index++) {
         let element = elements[index]
