@@ -1,30 +1,76 @@
+<import name="q-tabbar" src="../../components/tabbar/index"></import>
 <import name="q-tabs" src="../../components/vtabs/index"></import>
 <template>
   <div class="qaui-wrap">
-    <!-- default capsule icon-label -->
-    <q-tabs
-      type="default"
-      data="{{ data }}"
-      active-color="#456fff"
-      @change-tab="changeTab"
+    <q-tabbar
+      index="{{ index }}"
+      background="{{ background }}"
+      text-color="{{ textColor }}"
+      active-color="{{ activeColor }}"
+      data="{{ tabbarData }}"
+      icon-size="{{ iconSize }}"
+      ontap="changeTabbar"
     >
-      <block for="{{ data }}">
-        <div class="item-container">
-          <div class="item-content">
-            <text>标签{{ $idx + 1 }}内容</text>
-          </div>
+      <div class="item-container">
+        <div class="item-content">
+          <q-tabs
+            type="default"
+            data="{{ data }}"
+            active-color="#456fff"
+            ontap="changeTap"
+          >
+            <block for="{{ data }}">
+              <div class="item-container">
+                <div class="item-content">
+                  <text>标签{{ $idx + 1 }}内容</text>
+                </div>
+              </div>
+            </block>
+          </q-tabs>
         </div>
-      </block>
-    </q-tabs>
+      </div>
+      <div class="item-container">
+        <div class="item-content">
+          <q-tabs
+            type="capsule"
+            data="{{ data }}"
+            active-color="#fff"
+            ontap="changeTap"
+          >
+            <block for="{{ data }}">
+              <div class="item-container">
+                <div class="item-content">
+                  <text>标签{{ $idx + 1 }}内容</text>
+                </div>
+              </div>
+            </block>
+          </q-tabs>
+        </div>
+      </div>
+      <div class="item-container">
+        <div class="item-content">
+          <q-tabs
+            type="icon-label"
+            data="{{ data }}"
+            active-color="#456fff"
+            ontap="changeTap"
+          >
+            <block for="{{ data }}">
+              <div class="item-container">
+                <div class="item-content">
+                  <text>标签{{ $idx + 1 }}内容</text>
+                </div>
+              </div>
+            </block>
+          </q-tabs>
+        </div>
+      </div>
+    </q-tabbar>
   </div>
 </template>
 <style lang="less">
-.item-content {
-  flex-direction: column;
-  text {
-    color: red;
-    font-size: 13px;
-  }
+.qaui-wrap {
+  flex-direction: row;
 }
 </style>
 
@@ -46,10 +92,37 @@ export default {
         { label: '标签文字', icon: 'restore-call-records' },
         { label: '标签文字', icon: 'restore-call-records' },
       ],
+      tabbarData: [
+        {
+          icon: 'homepage',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '普通标签',
+        },
+        {
+          icon: 'qrcode',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '胶囊标签',
+        },
+        {
+          icon: 'contact-fill',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '描述标签',
+        },
+      ],
+      iconSize: 22,
+      background: '#fff',
+      activeColor: '#456FFF',
+      textColor: '#B2B2B2',
     }
   },
-  changeTab(evt) {
-    console.log(evt.detail)
+  changeTabbar(evt) {
+    console.log('changeTabbar', evt.detail)
+  },
+  changeTap(evt) {
+    console.log('changeTap', evt.detail)
   },
 }
 </script>
