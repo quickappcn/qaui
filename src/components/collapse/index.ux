@@ -72,13 +72,6 @@ export default {
     },
   },
 
-  onReady() {
-    const parent = this.$parent().$child(this.groupId)
-    const temp = parent.accordions
-    const accordions = temp ? [...temp, this] : [this]
-    parent.accordions = accordions
-  },
-
   computed: {
     iconClass() {
       return this.isActive
