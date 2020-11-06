@@ -101,12 +101,6 @@ export default {
     },
   },
 
-  onReady() {
-    const parent = this.$parent().$child(this.groupId)
-    const temp = parent.steps
-    parent.steps = temp ? [...temp, this] : [this]
-  },
-
   updateStatus(opts = {}) {
     const {
       direction,
@@ -131,7 +125,13 @@ export default {
     } else {
       this.myStatus = this.status ? this.status : 'waiting'
     }
+    const parent = this.$parent().$child(this.groupId)
+    const temp = parent.steps
+    parent.steps = temp
+      ? [...temp, { myStatus: this.myStatus }]
+      : [{ myStatus: this.myStatus }]
   },
+
   computed: {
     leftLineShow() {
       if (this.direction === 'column' && this.index !== this.length - 1) {

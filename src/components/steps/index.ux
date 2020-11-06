@@ -52,7 +52,9 @@ export default {
   },
 
   updateCurrent() {
-    const elements = this.steps
+    const elements = this.$parent()._childrenVms.filter(
+      (element) => element.groupId === this.id && element._type === 'q-step'
+    )
     const { direction, current, hasText, finishedColor, errorColor } = this
     elements.forEach((element, index) => {
       element.updateStatus({
