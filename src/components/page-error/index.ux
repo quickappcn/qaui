@@ -9,11 +9,13 @@
       <div class="qaui-page-error-wrap-btns">
         <div class="qaui-page-error-wrap-btns-left">
           <q-button type="ghost" width="126" ontap="leftClick">
-            <span>{{ leftBtnName }}</span>
+            <span class="qaui-page-error-wrap-btns-size">{{
+              leftBtnName
+            }}</span>
           </q-button>
         </div>
         <q-button type="primary" width="126" ontap="rightClick">
-          <span>{{ rightBtnName }}</span>
+          <span class="qaui-page-error-wrap-btns-size">{{ rightBtnName }}</span>
         </q-button>
       </div>
     </div>
@@ -163,6 +165,10 @@ export default {
 
     &-btns {
       margin-top: 50px * @ratio;
+
+      &-size {
+        font-size: 14px * @ratio;
+      }
 
       &-left {
         margin-right: 16px * @ratio;
