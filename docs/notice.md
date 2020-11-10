@@ -48,7 +48,7 @@
         type="{{ typeArr[2] }}"
         notice-text="{{ noticeTextArr[4] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -65,7 +65,7 @@
         notice-text="{{ noticeTextArr[6] }}"
         left-icon="{{ leftIcon1 }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -82,7 +82,7 @@
         notice-text="{{ noticeTextArr[8] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
         right-icon="{{ rightIcon2 }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -120,7 +120,7 @@
         right-icon-type="{{ rightIconTypeArr[1] }}"
         scrollable="{{ scrollable }}"
         speed="{{ speed }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -137,7 +137,7 @@
         notice-text="{{ noticeTextArr[14] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
         scrollable="{{ scrollable }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -147,7 +147,7 @@
         notice-text="{{ noticeTextArr[15] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
         scrollable="{{ scrollable }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
   </div>
@@ -208,7 +208,7 @@ export default {
     const event = data.detail.event
     console.log(event)
     router.push({
-      uri: '/pages/icon',
+      uri: '/pages/button',
     })
   },
 }
@@ -228,21 +228,28 @@ export default {
 
 #### 组件属性
 
-| 属性          | 类型    | 默认值   | 说明                                                                                                                                                                                                                                                    |
-| ------------- | ------- | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type          | String  | 'normal' | 通告栏类型，可选值有 normal/warning/transparent                                                                                                                                                                                                         |
-| noticeText    | String  | -        | 通告栏说明文字                                                                                                                                                                                                                                          |
-| textColor     | String  | -        | 通告栏说明文字的颜色,会覆盖 type 类型所带的默认颜色                                                                                                                                                                                                     |
-| bgColor       | String  | -        | 通告栏颜色背景颜色,不建议使用 rgba，建议背景色为文字颜色乘以 0.15 透明度之后的 16 进制颜色值                                                                                                                                                            |
-| leftIcon      | Object  | -        | 左侧图标对象，对象包括 iconPath、icon 两个属性，其中 iconPath 为左侧图标路径，icon 为对象，是组件库中 icon 组件的配置项，目前支持 type 和 color，iconPath 和 icon 只需要写一个，如果都写，默认使用 icon                                                 |
-| rightIconType | String  | 'close'  | 通告栏右侧按钮图标，可选值有 close/link                                                                                                                                                                                                                 |
-| rightIcon     | Object  | -        | 右侧图标对象，如需自定义右侧图标，可传入图标对象覆盖默认图标，对象包括 iconPath、icon 两个属性，其中 iconPath 为左侧图标路径，icon 为对象，是组件库中 icon 组件的配置项，目前支持 type 和 color，iconPath 和 icon 只需要写一个，如果都写，默认使用 icon |
-| scrollable    | Boolean | false    | 是否滚动播放                                                                                                                                                                                                                                            |
-| speed         | Number  | 20       | 滚动速度                                                                                                                                                                                                                                                |
-| scrollTimes   | Number  | 5        | 滚动播放次数,当值为-1 时，则为无限滚动                                                                                                                                                                                                                  |
+| 属性          | 类型    | 默认值   | 说明                                                                                     |
+| ------------- | ------- | -------- | ---------------------------------------------------------------------------------------- |
+| type          | String  | 'normal' | 通告栏类型，可选值有: 'normal' \| 'warning' \| 'transparent'                             |
+| noticeText    | String  | ''       | 通告栏文字                                                                               |
+| textColor     | String  | ''       | 自定义通告栏文字颜色                                                                     |
+| bgColor       | String  | ''       | 通告栏背景颜色,不建议使用 rgba，建议背景色为文字颜色乘以 0.15 透明度之后的 16 进制颜色值 |
+| leftIcon      | Object  | {}       | 左侧图标对象，具体说明见下方文档                                                         |
+| rightIconType | String  | 'close'  | 通告栏右侧按钮图标，可选值有: 'close' \| 'link'                                          |
+| rightIcon     | Object  | {}       | 右侧图标对象，具体说明见下方文档                                                         |
+| scrollable    | Boolean | false    | 是否滚动播放                                                                             |
+| speed         | Number  | 20       | 滚动速度                                                                                 |
+| scrollTimes   | Number  | 5        | 滚动播放次数,当值为-1 时，则为无限滚动                                                   |
+
+leftIcon、rightIcon 属性对象的具体说明
+
+| 属性     | 类型   | 说明                                                             |
+| -------- | ------ | ---------------------------------------------------------------- |
+| iconPath | String | 图标路径，iconPath 和 icon 只需填写一个，如都填写，优先使用 icon |
+| icon     | Object | 组件库中 icon 组件配置项，目前只支持 type 和 color 两个属性      |
 
 #### 组件事件
 
-| 事件名称 | 事件描述                                          | 返回值 |
-| -------- | ------------------------------------------------- | ------ |
-| link     | 当 rightIconType 为'link'时，用户可自定义跳转方法 | event  |
+| 事件名称 | 事件描述                              | 返回值 |
+| -------- | ------------------------------------- | ------ |
+| linkTap  | 当 rightIconType 为'link'时，点击触发 | event  |

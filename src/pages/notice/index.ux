@@ -30,7 +30,7 @@
         type="{{ typeArr[2] }}"
         notice-text="{{ noticeTextArr[4] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -47,7 +47,7 @@
         notice-text="{{ noticeTextArr[6] }}"
         left-icon="{{ leftIcon1 }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -64,7 +64,7 @@
         notice-text="{{ noticeTextArr[8] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
         right-icon="{{ rightIcon2 }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -102,7 +102,7 @@
         right-icon-type="{{ rightIconTypeArr[1] }}"
         scrollable="{{ scrollable }}"
         speed="{{ speed }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -119,7 +119,7 @@
         notice-text="{{ noticeTextArr[14] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
         scrollable="{{ scrollable }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
     <div class="notice">
@@ -129,7 +129,7 @@
         notice-text="{{ noticeTextArr[15] }}"
         right-icon-type="{{ rightIconTypeArr[1] }}"
         scrollable="{{ scrollable }}"
-        onlink="linkTo"
+        onlink-tap="linkTo"
       ></q-notice>
     </div>
   </div>
