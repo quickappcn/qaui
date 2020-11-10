@@ -41,6 +41,10 @@ export default {
       type: String,
       default: '#F19E38',
     },
+    hasIcon: {
+      type: Boolean,
+      default: false,
+    },
   },
 
   onInit() {
@@ -55,7 +59,14 @@ export default {
     const elements = this.$parent()._childrenVms.filter(
       (element) => element.groupId === this.id && element._type === 'q-step'
     )
-    const { direction, current, hasText, finishedColor, errorColor } = this
+    const {
+      direction,
+      current,
+      hasText,
+      finishedColor,
+      errorColor,
+      hasIcon,
+    } = this
     elements.forEach((element, index) => {
       element.updateStatus({
         direction,
@@ -65,6 +76,7 @@ export default {
         length: elements.length,
         finishedColor,
         errorColor,
+        hasIcon,
       })
     })
   },
