@@ -148,9 +148,8 @@ export default {
   //触发气泡菜单的根元素的点击事件
   clickTrigger(ev) {
     if (!this.isMenuShow) {
-      const x =
-          parseInt(ev.touches[0].clientX) - parseInt(ev.touches[0].offsetX), //获取触发气泡菜单根元素的left
-        y = parseInt(ev.touches[0].clientY) - parseInt(ev.touches[0].offsetY) //获取触发气泡菜单根元素的top
+      const x = parseInt(ev.clientX) - parseInt(ev.offsetX), //获取触发气泡菜单根元素的left
+        y = parseInt(ev.clientY) - parseInt(ev.offsetY) //获取触发气泡菜单根元素的top
 
       this.showPreviousOperations(x, y)
       this.showMenu()
@@ -406,6 +405,8 @@ export default {
     align-items: flex-start;
 
     &-menu {
+      position: absolute;
+
       &-column {
         flex-direction: column;
       }

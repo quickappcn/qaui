@@ -132,12 +132,15 @@ export default {
   align-items: center;
 
   &-wrap {
+    position: absolute;
     top: 72px * @ratio;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 
     &-icon {
+      justify-content: center;
+      align-items: center;
       width: 70px * @ratio;
       height: 70px * @ratio;
     }

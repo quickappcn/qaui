@@ -11,7 +11,7 @@
       onright-btn-tap="rightBtn"
     >
       <span>内容详情可换行，不超过两行内容，也可以通过插入</span>
-      <a class="text-link" href="/pages/icon">文字链接</a>
+      <a class="text-link" href="/pages/button">文字链接</a>
       <span>更具有功能性的提示。</span>
     </q-page-result>
   </div>
@@ -40,7 +40,7 @@ export default {
     const event = data.detail.event
     console.log(event)
     router.push({
-      uri: '/pages/icon',
+      uri: '/pages/button',
     })
   },
 }

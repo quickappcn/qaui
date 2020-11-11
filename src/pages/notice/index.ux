@@ -181,7 +181,7 @@ export default {
         },
       },
       scrollable: true,
-      speed: 60,
+      speed: 40,
       scrollTimes: -1,
     }
   },
@@ -189,7 +189,7 @@ export default {
     const event = data.detail.event
     console.log(event)
     router.push({
-      uri: '/pages/icon',
+      uri: '/pages/button',
     })
   },
 }

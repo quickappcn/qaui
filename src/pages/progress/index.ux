@@ -54,9 +54,26 @@
           stroke-height="{{ strokeHeight }}"
           content-style="{{ contentStyle2 }}"
           stroke-color="#FF0000"
-          trail-color="rgba(255,192,203,.8)"
+          trail-color="rgba(255,0,0,.3)"
           format="{{ format }}"
         ></q-progress>
+      </div>
+      <div class="progress-box">
+        <text class="btn btn-left" data-key="-" onclick="changePercentage"
+          >-</text
+        >
+        <q-progress
+          percentage="{{ manualPercentage }}"
+          is-content-show="{{ isContentShow }}"
+          progress-width="240px"
+          stroke-height="{{ 5 }}"
+          content-style="{{ contentStyle3 }}"
+          stroke-color="#FFA500"
+          trail-color="rgba(255,165,0,.3)"
+        ></q-progress>
+        <text class="btn btn-right" data-key="+" onclick="changePercentage"
+          >+</text
+        >
       </div>
     </div>
   </div>
@@ -68,6 +85,7 @@ export default {
     return {
       percentage: 25,
       dynamicPercent: 0,
+      manualPercentage: 50,
       isContentShow: true,
       progressWidth: '250px',
       strokeHeight: 10,
@@ -81,19 +99,34 @@ export default {
         fontSize: '16px',
         color: '#FF0000',
       },
+      contentStyle3: {
+        width: '40px',
+        fontSize: '16px',
+        color: '#FFA500',
+      },
       strokeColor: '#1E90FF',
       trailColor: 'rgba(255,215,0,.5)',
       format: (percentage) => '已下载' + percentage + '%',
     }
   },
   onInit() {
-    const t = setInterval(() => {
+    const timer = setInterval(() => {
       this.dynamicPercent += 0.5
       if (this.dynamicPercent >= 100) {
         this.dynamicPercent = 100
-        clearInterval(t)
+        clearInterval(timer)
       }
     }, 100)
+  },
+  changePercentage(e) {
+    const key = e._target._dataset.key
+    if (key === '+') {
+      this.manualPercentage =
+        this.manualPercentage + 10 > 100 ? 100 : this.manualPercentage + 10
+    } else if (key === '-') {
+      this.manualPercentage =
+        this.manualPercentage - 10 < 0 ? 0 : this.manualPercentage - 10
+    }
   },
 }
 </script>
@@ -102,7 +135,6 @@ export default {
 .wrap {
   flex-direction: column;
   width: 100%;
-  height: 100px;
   background-color: #f2f2f2;
   opacity: 0.8;
 
@@ -121,7 +153,27 @@ export default {
     background-color: #ffffff;
 
     .progress-box {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
       margin-top: 28px;
+
+      .btn {
+        width: 30px;
+        height: 30px;
+        font-size: 20px;
+        text-align: center;
+        color: #ffa500;
+        border: 1px solid #ffa500;
+      }
+
+      .btn-left {
+        margin-right: 10px;
+      }
+
+      .btn-right {
+        margin-left: 10px;
+      }
     }
   }
 }
