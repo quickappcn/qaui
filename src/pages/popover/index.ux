@@ -196,7 +196,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 150px 0;
+  padding: 130px 0;
 
   .header {
     width: 100%;
