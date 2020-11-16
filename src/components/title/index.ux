@@ -1,11 +1,11 @@
 <template>
-  <div class="qaui-wrap" onclick="clickHandler">
+  <div class="qaui-wrap">
     <div class="left">
       <image class="icon" if="icon" src="{{icon}}"></image>
       <text class="title">{{ title }}</text>
       <block if="!title"><slot></slot></block>
     </div>
-    <div class="right">
+    <div class="right" onclick="clickHandler">
       <text class="description">{{ description }}</text>
       <image
         if="target"
