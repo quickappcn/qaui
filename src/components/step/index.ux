@@ -37,6 +37,11 @@
               color="{{ myStatus !== 'waiting' ? '#fff' : '#000' }}"
             ></q-icon>
           </div>
+          <image
+            src="{{ imageSrc }}"
+            if="{{ hasIcon }}"
+            class="qaui-step-main-hd-iconImage"
+          ></image>
         </div>
       </div>
       <div class="{{ isColumn ? 'qaui-step-bd-column' : 'qaui-step-bd-row' }}">
@@ -70,6 +75,7 @@ export default {
       errorColor: '',
       myStatus: 'waiting',
       isColumn: true,
+      hasIcon: false,
     }
   },
 
@@ -110,6 +116,7 @@ export default {
       hasText,
       errorColor,
       finishedColor,
+      hasIcon,
     } = opts
     this.direction = direction
     this.length = length
@@ -117,6 +124,8 @@ export default {
     this.hasText = hasText
     this.errorColor = errorColor
     this.finishedColor = finishedColor
+    this.hasIcon = hasIcon
+    console.log(this.hasIcon)
     this.isColumn = direction === 'column' ? true : false
     if (index < current) {
       this.myStatus = 'finished'
@@ -242,6 +251,13 @@ export default {
       }
       return lineClass
     },
+    imageSrc() {
+      if (this.myStatus === 'finished') {
+        return '/common/images/steps-finished.svg'
+      } else if (this.myStatus === 'error') {
+        return '/common/images/steps-error.svg'
+      }
+    },
   },
 }
 </script>
@@ -267,7 +283,6 @@ export default {
         justify-content: center;
         flex-direction: row;
       }
-
       &-dot {
         width: 16px * @ratio;
         height: 16px * @ratio;
@@ -288,6 +303,10 @@ export default {
         align-items: center;
       }
 
+      &-iconImage {
+        height: 16px * @ratio;
+        width: 16px * @ratio;
+      }
       &-textWrap-text {
         font-family: HYQiHei-EES;
         font-size: 10px;
@@ -366,6 +385,7 @@ export default {
     flex-direction: column;
     width: 56px * @ratio;
     align-self: center;
+    margin-top: 12px * @ratio;
 
     &-title {
       font-size: 12px * @ratio;
