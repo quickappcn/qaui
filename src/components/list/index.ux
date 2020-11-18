@@ -41,19 +41,19 @@ export default {
   clickItem($idx) {
     const data = this.$child('list')._childrenVms[$idx]._data
     const itemData = { index: $idx, data: data }
-    this.$emit('clickItem', itemData)
+    this.$emit('itemTap', itemData)
   },
 
   clickSamllBtn($idx) {
     const data = this.$child('list')._childrenVms[$idx]._data
     const itemData = { index: $idx, data: data }
-    this.$emit('clickSamllBtn', itemData)
+    this.$emit('samllBtnTap', itemData)
   },
 
   clickSwitch($idx, e) {
     const data = this.$child('list')._childrenVms[$idx]._data
     const itemData = { index: $idx, data: data, active: e.detail.active }
-    this.$emit('clickSwitch', itemData)
+    this.$emit('switchTap', itemData)
   },
 }
 </script>
