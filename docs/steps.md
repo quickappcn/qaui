@@ -15,7 +15,7 @@
 
 ### 示例
 
-````html
+```html
 <template>
   <div class="qaui-steps">
     <div class="qaui-steps-wrapper">
@@ -35,11 +35,7 @@
     </div>
     <div class="qaui-steps-wrapper">
       <q-steps direction="row" id="16" current="{{1}}" has-icon="{{true}}">
-        <q-step
-          title="步骤1"
-          group-id="16"
-          content="步骤一状态说明```"
-        ></q-step>
+        <q-step title="步骤1" group-id="16" content="步骤一状态说明"></q-step>
         <q-step
           title="步骤2"
           group-id="16"
@@ -144,7 +140,7 @@
     </div>
   </div>
 </template>
-````
+```
 
 ```js
 export default {
@@ -186,7 +182,7 @@ export default {
 | direction     | String  | 'horizontal' | 排列方式，可选值为 'vertical' \|'horizontal' |
 | id            | String  | ''           | ID，必填                                     |
 | hasText       | Boolean | false        | 步骤是否显示默认样式的数字                   |
-| hasText       | Boolean | false        | 步骤是否默认样式的 icon                      |
+| hasIcon       | Boolean | false        | 步骤是否默认样式的 icon                      |
 | finishedColor | String  | \#456FFF     | 自定义的 finished 状态的颜色                 |
 | errorColor    | String  | \#F19E38     | 自定义的 error 状态的颜色                    |
 
