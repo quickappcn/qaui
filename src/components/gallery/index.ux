@@ -8,12 +8,13 @@
       </div>
       <div class="qaui-gallery-media-wrapper">
         <div if="{{ !videoUrl }}" class="{{ imageWrapperClass }}">
-          <div for="{{ srcs }}">
+          <div
+            for="{{ srcs }}"
+            if="{{ srcs.length <= 9 ? true : $idx > 7 ? false : true }}"
+          >
             <image
-              if="{{ srcs.length <= 9 ? true : $idx > 7 ? false : true }}"
               src="{{ $item }}"
               class="{{ imageClass }}"
-              style="object-fit: fill"
               oncomplete="onImageComplete"
               onclick="onImageClick($idx)"
             ></image>
@@ -21,8 +22,7 @@
           <div class="qaui-gallery-mask-wrapper" if="{{ srcs.length > 9}}">
             <image
               src="{{ srcs[8] }}"
-              class="qaui-gallery-image-wrapper-standard"
-              style="margin-top: 0"
+              class="qaui-gallery-image-wrapper-standard qaui-gallery-image-wrapper-extra"
             >
               <div class="qaui-gallery-image-wrapper-mask">
                 <text>+ {{ srcs.length - 9 }}</text>
@@ -37,7 +37,7 @@
             controls="{{ false }}"
             orientation="{{ videoOrientation }}"
             poster="{{ posterUrl }}"
-            style="object-fit: fill"
+            style="object-fit: cover"
             onappear="onVideoAppear"
             onclick="onVideoClick"
           ></video>
@@ -69,7 +69,7 @@ export default {
     },
     videoUrl: {
       type: String,
-      default: false,
+      default: '',
     },
     posterUrl: {
       type: String,
@@ -149,7 +149,7 @@ export default {
 
   // 将视频点击的事件暴露给开发者
   onVideoClick(e) {
-    this.$emit('videoClick', e)
+    this.$emit('videoTap', e)
   },
 }
 </script>
@@ -196,18 +196,21 @@ export default {
       width: 210px * @ratio;
       height: 158px * @ratio;
       margin-top: 10px * @ratio;
+      object-fit: cover;
     }
 
     &-one-type-two {
       margin-top: 10px * @ratio;
       width: 210px * @ratio;
       height: 210px * @ratio;
+      object-fit: cover;
     }
 
     &-one-type-third {
       margin-top: 10px * @ratio;
       width: 210px * @ratio;
       height: 280px * @ratio;
+      object-fit: cover;
     }
 
     &-standard {
@@ -215,8 +218,12 @@ export default {
       height: 100px * @ratio;
       align-items: flex-start;
       margin-top: 10px * @ratio;
+      object-fit: cover;
     }
 
+    &-extra {
+      margin-top: 0;
+    }
     &-mask {
       position: absolute;
       width: 100px * @ratio;
@@ -250,6 +257,7 @@ export default {
     width: 320px * @ratio;
     height: 180px * @ratio;
     margin: 10px * @ratio 0 10px * @ratio 10px * @ratio;
+    margin-left: 20px * @ratio;
 
     &-portrait {
       width: 210px * @ratio;
