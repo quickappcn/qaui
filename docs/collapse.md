@@ -48,7 +48,6 @@
         thumb="../../common/logo.png"
       ></q-collapse>
     </q-collapse-group>
-
     <div style="margin-top: 20px">
       <q-collapse-group title="手风琴用法" id="2" accordion="{{true}}">
         <q-collapse
@@ -69,6 +68,25 @@
           content="内容区域3"
           group-id="2"
           key="key6"
+        ></q-collapse>
+      </q-collapse-group>
+    </div>
+    <div style="margin-top: 20px">
+      <q-collapse-group title="禁用示例" id="3" accordion="{{true}}">
+        <q-collapse
+          title="标题文字1"
+          content="内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1"
+          group-id="3"
+          key="key7"
+          disabled="true"
+        ></q-collapse>
+        <q-collapse
+          title="标题文字2"
+          content="内容区域2"
+          group-id="3"
+          key="key8"
+          icon="theme-sms"
+          disabled="true"
         ></q-collapse>
       </q-collapse-group>
     </div>
