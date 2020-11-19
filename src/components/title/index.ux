@@ -50,7 +50,6 @@ export default {
   justify-content: space-between;
   .icon {
     height: 24px * @ratio;
-    width: 24px * @ratio;
     align-self: center;
     padding: 2px * @ratio;
   }
@@ -76,7 +75,7 @@ export default {
     }
     .icon-arrow-right {
       margin-top: 2px * @ratio;
-      padding: 4px * @ratio;
+      margin-left: 4px * @ratio;
       object-fit: contain;
     }
   }
