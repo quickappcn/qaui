@@ -13,7 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
-<import name="q-alphabet" src="../../components/alphabet/index"></import>
+<import name="q-alphabet" src="qaui/src/components/alphabet/index"></import>
 ```
 
 ### 示例
@@ -25,8 +25,9 @@
       id="alphabet"
       data="{{ data }}"
       active-color="#fff"
-      active-background="#2878ff"
+      active-background="#456FFF"
       is-shake="{{ true }}"
+      onitemtap="itemtap"
     >
     </q-alphabet>
   </div>
@@ -36,9 +37,6 @@
 ```js
 <script>
 export default {
-  onInit() {
-    this.$on('getItem', this.getItem)
-  },
   data() {
     return {
       id: 'alphabetId',
@@ -206,7 +204,7 @@ export default {
       ],
     }
   },
-  getItem(evt) {
+  itemtap(evt) {
     console.log(evt.detail)
   },
 }
@@ -218,22 +216,24 @@ export default {
 
 #### 组件属性
 
-| 属性           | 类型    | 默认值     | 说明                                         |
-| -------------- | ------- | ---------- | -------------------------------------------- |
-| id             | String  | -          | 组件的 id，必须                              |
-| active-color   | String  | `fff`      | 激活状态下字母的颜色                         |
-| active-bgcolor | String  | \`#2878ff` | 激活状态下字母的背景颜色                     |
-| is-shake       | Boolean | true       | 是否开启震动，点击字母时，调用原生的震动效果 |
-| data           | Array   | [ ]        | data 数据对象数组，对象数据结构见下表        |
+| 属性          | 类型    | 默认值    | 说明                                         |
+| ------------- | ------- | --------- | -------------------------------------------- |
+| id            | String  | ''        | 组件的 id，必须                              |
+| activeColor   | String  | '#fff'    | 激活状态下字母的颜色                         |
+| activeBgcolor | String  | '#2878ff' | 激活状态下字母的背景颜色                     |
+| isShake       | Boolean | true      | 是否开启震动，点击字母时，调用原生的震动效果 |
+| data          | Array   | [ ]       | data 数据对象数组，对象数据结构见下表        |
+
+data 内对象的属性说明
 
 | 属性  | 类型   | 默认值 | 说明                                                                   |
 | :---- | :----- | :----- | :--------------------------------------------------------------------- |
-| index | String | -      | 字母，必填                                                             |
-| child | []     | -      | 对应字母索引的二级列表，如`child: [{ id: '111218', text: '北京' }]`    |
-| text  | String | -      | 二级列表中的正文内容，必填，child 中除 text 字段外，其余字段皆可自定义 |
+| index | String | ''     | 字母，必填                                                             |
+| child | []     | ''     | 对应字母索引的二级列表，如`child: [{ id: '111218', text: '北京' }]`    |
+| text  | String | ''     | 二级列表中的正文内容，必填，child 中除 text 字段外，其余字段皆可自定义 |
 
 #### 组件事件
 
-| 事件名  | 说明                                 | 回调参数                                                |
-| ------- | ------------------------------------ | ------------------------------------------------------- |
-| getItem | 点击事件，点击索引表关联的正文时触发 | evt：回调对象，通过`evt.detail`可以获取到回传过来的对象 |
+| 事件名称 | 事件描述                             | 返回值                                                  |
+| -------- | ------------------------------------ | ------------------------------------------------------- |
+| itemtap  | 点击事件，点击索引表关联的正文时触发 | evt：回调对象，通过`evt.detail`可以获取到回传过来的对象 |

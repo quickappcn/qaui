@@ -4,23 +4,22 @@
       <block for="{{ compIndex }}">
         <div
           class="qaui-wrap-nav-item {{ currentIndex===$idx?'active ':'' }}"
-          style="{{ currentIndex===$idx? `background-color:${ activeBackground }`:'background-color:#fff' }}"
+          style="{{ currentIndex===$idx? `background-color:${ activeBackground }`:'background-color:rgba(0,0,0,0)' }}"
           @click="handleScroll($idx, $item)"
         >
           <text
-            class="nav-item {{ currentIndex===$idx?'active-text ':'' }}"
+            class="nav-item {{ currentIndex===$idx?'active-text':'' }}"
             style="{{ currentIndex===$idx? `color:${ activeColor }`:'color:#333' }}"
             >{{ $item }}</text
           >
         </div>
       </block>
     </div>
-    <div class="qaui-wrap-indicator" if="{{ isShow }}">
+    <div class="qaui-wrap-indicator" style="{{ }}" if="{{ isShow }}">
       <div>
         <text>{{ currentLetterName }}</text>
       </div>
     </div>
-
     <list id="{{ id }}">
       <block for="{{ data }}">
         <list-item
@@ -56,7 +55,7 @@ export default {
     },
     activeBackground: {
       type: String,
-      default: '#2878ff',
+      default: '#456FFF',
     },
     isShake: {
       type: Boolean,
@@ -69,10 +68,9 @@ export default {
       compIndex: [], //存储字母
       currentIndex: 0,
       currentLetterName: '', //当前字母
-      isShow: false,
+      isShow: true,
     }
   },
-
   onInit() {
     var arr = []
     this.data.forEach((item) => {
@@ -83,7 +81,7 @@ export default {
   },
 
   handleClick(item) {
-    this.$dispatch('getItem', {
+    this.$dispatch('itemtap', {
       obj: item,
     })
   },
@@ -133,8 +131,10 @@ export default {
 <style lang="less">
 @import '../common.less';
 .qaui-wrap {
+  position: relative;
   &-group {
     flex-direction: column;
+
     &-index {
       padding-left: 33px * @ratio;
       font-weight: bold;
@@ -168,6 +168,8 @@ export default {
       justify-content: center;
       text {
         font-size: 12px * @ratio;
+        position: relative;
+        top: -1px * @ratio;
       }
     }
 
@@ -186,6 +188,7 @@ export default {
       color: #fff;
     }
   }
+
   &-indicator {
     width: 50px * @ratio;
     height: 50px * @ratio;
@@ -194,10 +197,12 @@ export default {
     left: 269px * @ratio;
     background-color: #d8d8d8;
     border-radius: 50%;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-
     text {
+      position: relative;
+      top: -1px * @ratio;
       color: #ffffff;
       font-size: 30px * @ratio;
       font-weight: bold;
