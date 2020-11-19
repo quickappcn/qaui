@@ -22,8 +22,16 @@
 <template>
   <div class="qaui-wrap">
     <q-button ontap="changeType">切换日历显示模式</q-button>
-    <q-calendar if="type==='default'" type="default" description="{{desc}}"></q-calendar>
-    <q-calendar if="type==='list'" type="list" description="{{desc}}"></q-calendar>
+    <q-calendar
+      if="type==='default'"
+      type="default"
+      description="{{desc}}"
+    ></q-calendar>
+    <q-calendar
+      if="type==='list'"
+      type="list"
+      description="{{desc}}"
+    ></q-calendar>
   </div>
 </template>
 ```
@@ -65,14 +73,14 @@ export default {
 
 #### 组件属性
 
-| 属性        | 类型          | 默认值                | 说明                                |
-| ----------- | ------------- | --------------------- | ----------------------------------- |
-| type        | String        | 'default'             | 日历显示类型，可选值有 default,list |
-| range       | Array<string> | ['2020-10','2021-10'] | 日历显示范围                        |
-| description | Array<desc>   | []                    | 日期上显示相关描述文字              |
-| desc.date   | String        | ''                    | 要显示文字的日期，示例'2020-12-10'  |
-| desc.top    | String        | ''                    | 日期上面要显示的文字                |
-| desc.bottom | String        | ''                    | 日期下面要显示的文字                |
+| 属性        | 类型   | 默认值                | 说明                                |
+| ----------- | ------ | --------------------- | ----------------------------------- |
+| type        | String | 'default'             | 日历显示类型，可选值有 default,list |
+| range       | Array  | ['2020-10','2021-10'] | 日历显示范围                        |
+| description | Array  | []                    | 日期上显示相关描述文字              |
+| desc.date   | String | ''                    | 要显示文字的日期，示例'2020-12-10'  |
+| desc.top    | String | ''                    | 日期上面要显示的文字                |
+| desc.bottom | String | ''                    | 日期下面要显示的文字                |
 
 #### 组件事件
 
