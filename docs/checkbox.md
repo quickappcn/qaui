@@ -47,6 +47,7 @@ export default {
         {
           id: 1,
           value: '多选项1',
+          checked: true,
         },
         {
           id: 2,
