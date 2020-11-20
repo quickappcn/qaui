@@ -47,7 +47,7 @@
 
 | 属性    | 类型    | 默认值 | 说明               |
 | ------- | ------- | ------ | ------------------ |
-| loading | Boolean | false  | 是否显示加载中状态 |
+| loading | Boolean | false  | 是否显示加载中样式 |
 | content | String  | ''     | 分隔提示文本       |
 
 #### slot
