@@ -58,18 +58,18 @@
 
 #### 组件属性
 
-| 属性          | 类型    | 默认值    | 说明             |
-| ------------- | ------- | --------- | ---------------- |
-| min           | Number  | 0         | 滑动条最小值     |
-| max           | Number  | 100       | 滑动条最大值     |
-| step          | Number  | 1         | 步长，必须大于 0 |
-| value         | Number  | 0         | 滑动条当前值     |
-| showValue     | Boolean | false     | 是否显示滑动条值 |
-| color         | String  | '#F2F2F2' | 滑动条颜色       |
-| selectedColor | String  | '#456FFF' | 滑动条划过的颜色 |
-| dot           | Boolean | false     | 是否显示节点     |
-| leftIcon      | String  | ''        | 左边 icon 的路径 |
-| rightIcon     | String  | ''        | 右边 icon 的路径 |
+| 属性          | 类型    | 默认值    | 说明                           |
+| ------------- | ------- | --------- | ------------------------------ |
+| min           | Number  | 0         | 滑动条最小值                   |
+| max           | Number  | 100       | 滑动条最大值                   |
+| step          | Number  | 1         | 步长，必须大于 0               |
+| value         | Number  | 0         | 滑动条当前值                   |
+| showValue     | Boolean | false     | 是否显示滑动条值               |
+| color         | String  | '#F2F2F2' | 滑动条颜色                     |
+| selectedColor | String  | '#456FFF' | 滑动条划过的颜色               |
+| dot           | Boolean | false     | 是否显示节点                   |
+| leftIcon      | String  | ''        | 左边 icon 的路径, 支持网络图片 |
+| rightIcon     | String  | ''        | 右边 icon 的路径, 支持网络图片 |
 
 #### 组件事件
 
