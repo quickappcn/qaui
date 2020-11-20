@@ -23,7 +23,12 @@
   <div class="qaui-wrap">
     <text class="title">default样式</text>
     <q-radio-group id="myGroup1" current="{{current}}" onchange="handleChange">
-      <q-radio group="myGroup1" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
+      <q-radio
+        group="myGroup1"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
     <text class="title">list样式</text>
     <q-radio-group id="myGroup2" current="{{current}}" onchange="handleChange">
@@ -37,7 +42,13 @@
     </q-radio-group>
     <text class="title">dot样式</text>
     <q-radio-group id="myGroup3" current="{{current}}" onchange="handleChange">
-      <q-radio group="myGroup3" type="dot" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
+      <q-radio
+        group="myGroup3"
+        type="dot"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
   </div>
 </template>
@@ -50,25 +61,25 @@ export default {
       list: [
         {
           id: 1,
-          value: "单选项1",
+          value: '单选项1',
         },
         {
           id: 2,
-          value: "单选项2",
+          value: '单选项2',
           checked: true,
         },
         {
           id: 3,
-          value: "单选项3",
+          value: '单选项3',
         },
       ],
-      current: "单选项2",
-    };
+      current: '单选项2',
+    }
   },
   handleChange({ detail }) {
-    this.current = detail.value;
+    this.current = detail.value
   },
-};
+}
 ```
 
 ```less
@@ -90,13 +101,13 @@ export default {
 
 #### 组件属性
 
-| 属性     | 类型    | 默认值    | 说明                                    |
-| -------- | ------- | --------- | --------------------------------------- |
-| checked  | Boolean | false     | 是否处于选中状态                        |
-| disabled | Boolean | false     | 是否处于禁用状态                        |
-| type     | String  | 'default' | 选择器样式，可选值有 default, list, dot |
-| value    | String  | -         | 展示选项的值                            |
-| group    | String  | -         | 单选框所在组的 id 值                    |
+| 属性     | 类型    | 默认值    | 说明                                          |
+| -------- | ------- | --------- | --------------------------------------------- |
+| checked  | Boolean | false     | 是否处于选中状态                              |
+| disabled | Boolean | false     | 是否处于禁用状态                              |
+| type     | String  | 'default' | 选择器样式，可选值有 'default'\|'list'\|'dot' |
+| value    | String  | -         | 展示选项的值                                  |
+| group    | String  | -         | 单选框所在组的 id 值                          |
 
 #### 组件事件
 
