@@ -21,9 +21,18 @@
 ```html
 <template>
   <div class="qaui-wrap">
-    <q-footer content="这是一行版本号版本号信息，内容自定义" logo="/common/logo.png"></q-footer>
-    <q-footer links="{{links}}" content="这是一行版本号版本号信息，内容自定义"></q-footer>
-    <q-footer links="{{links.slice(0,1)}}" content="这是一行版本号版本号信息，内容自定义"></q-footer>
+    <q-footer
+      content="这是一行版本号版本号信息，内容自定义"
+      logo="/common/logo.png"
+    ></q-footer>
+    <q-footer
+      links="{{links}}"
+      content="这是一行版本号版本号信息，内容自定义"
+    ></q-footer>
+    <q-footer
+      links="{{links.slice(0,1)}}"
+      content="这是一行版本号版本号信息，内容自定义"
+    ></q-footer>
     <q-footer content="底部文案自定义置底"></q-footer>
   </div>
 </template>
@@ -36,17 +45,17 @@ export default {
     return {
       links: [
         {
-          name: "底部链接",
-          url: "https://doc.quickapp.cn",
+          name: '底部链接',
+          url: 'https://doc.quickapp.cn',
         },
         {
-          name: "底部链接",
-          url: "https://doc.quickapp.cn",
+          name: '底部链接',
+          url: 'https://doc.quickapp.cn',
         },
       ],
-    };
+    }
   },
-};
+}
 ```
 
 ```less
@@ -66,13 +75,13 @@ export default {
 
 #### 组件属性
 
-| 属性      | 类型        | 默认值 | 说明                   |
-| --------- | ----------- | ------ | ---------------------- |
-| logo      | String      | ''     | 图标图片链接或路由路径 |
-| content   | String      | ''     | 描述内容文本           |
-| links     | Array<link> | []     | 链接数据               |
-| link.name | String      | ''     | 链接名称               |
-| link.url  | String      | ''     | 链接跳转地址           |
+| 属性      | 类型   | 默认值 | 说明                   |
+| --------- | ------ | ------ | ---------------------- |
+| logo      | String | ''     | 图标图片链接或路由路径 |
+| content   | String | ''     | 描述内容文本           |
+| links     | Array  | []     | 链接数据               |
+| link.name | String | ''     | 链接名称               |
+| link.url  | String | ''     | 链接跳转地址           |
 
 #### slot
 
