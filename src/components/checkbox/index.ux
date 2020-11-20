@@ -90,6 +90,7 @@ export default {
     text-overflow: ellipsis;
   }
   .active {
+    border: 1px * @ratio solid @primary-color;
     border-color: @primary-color;
   }
   .disabled {
