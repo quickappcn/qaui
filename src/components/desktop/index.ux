@@ -2,24 +2,24 @@
 <template>
   <div class="qaui-wrap">
     <div class="qaui-wrap-layer" if="{{ isShow }}">
-      <div class="qaui-wrap-layer-close" @click="handClose">
+      <div class="qaui-wrap-layer-close" onclick="handClose">
         <my-icon
           type="close"
-          size="26"
+          size="16"
           color="rgba(255,255,255,0.80)"
         ></my-icon>
       </div>
       <div class="qaui-wrap-layer-icon">
         <my-icon
           type="{{ icon }}"
-          size="26"
+          size="16"
           color="rgba(255,255,255,0.80)"
         ></my-icon>
       </div>
       <div class="qaui-wrap-layer-desc">
         <text>{{ description }}</text>
       </div>
-      <div class="qaui-wrap-layer-button" @click="handClick">
+      <div class="qaui-wrap-layer-button" onclick="handClick">
         <text>{{ btnText }}</text>
       </div>
     </div>
@@ -60,10 +60,12 @@ export default {
     shortcut.hasInstalled({
       success: function (ret) {
         if (ret) {
+          _this.isShow = false
           _this.$emit('created')
         } else {
           shortcut.install({
             success: function () {
+              _this.isShow = false
               _this.$emit('success')
             },
             fail: function (msg, code) {
@@ -108,10 +110,13 @@ export default {
 
     &-close {
       &:extend(.common);
+      background-color: rgba(255, 255, 255, 0.05);
       padding: 7px * @ratio;
     }
     &-icon {
       &:extend(.common);
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 6px * @ratio;
     }
     &-desc {
       &:extend(.common);

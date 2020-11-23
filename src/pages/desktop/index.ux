@@ -6,10 +6,10 @@
       description="{{ description }}"
       btn-text="添加"
       icon="qrcode-fill"
-      @close="handClose"
-      @success="handSuccess"
-      @fail="handFail"
-      @created="handCreated"
+      onclose="handClose"
+      onsuccess="handSuccess"
+      onfail="handFail"
+      oncreated="handCreated"
     ></q-desktop>
   </div>
 </template>
@@ -23,7 +23,7 @@ export default {
     return {
       description: '添加到桌面，描述文字描述',
       background: '#fff',
-      activeColor: '#0091ff',
+      activeColor: '#456FFF',
       textColor: '#B2B2B2',
     }
   },
@@ -36,9 +36,7 @@ export default {
     })
   },
   handFail(evt) {
-    prompt.showToast({
-      message: `添桌失败 ${evt.detail.code} ${evt.detail.msg}`,
-    })
+    console.log(evt.detail)
   },
   handCreated() {
     prompt.showToast({
