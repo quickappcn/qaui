@@ -62,7 +62,7 @@ export default {
     const event = data.detail.event
     console.log(event)
     router.push({
-      uri: '/pages/icon',
+      uri: '/pages/button',
     })
   },
   footerBtn(data) {
@@ -86,19 +86,19 @@ export default {
 
 #### 组件属性
 
-| 属性          | 类型   | 默认值       | 说明                                                                                                                                                                            |
-| ------------- | ------ | ------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| type          | String | 'page_error' | 默认类型(每种类型有默认配图和文字)，可选值有'page_error', 'network_anomaly', 'version_too_low', 'not_found', 'quick_app_offline', 'quick_app_not_online', 'certificate_expires' |
-| image         | String | -            | 自定义异常图片                                                                                                                                                                  |
-| leftBtnName   | String | -            | 左侧按钮名称                                                                                                                                                                    |
-| rightBtnName  | String | -            | 右侧按钮名称                                                                                                                                                                    |
-| description   | String | -            | 异常描述文字                                                                                                                                                                    |
-| footerBtnText | String | -            | 底部文字按钮内容                                                                                                                                                                |
+| 属性          | 类型   | 默认值       | 说明                                                                                                                                                                                          |
+| ------------- | ------ | ------------ | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| type          | String | 'page_error' | 默认类型(每种类型有默认配图和文字)，可选值有: 'page_error' \| 'network_anomaly' \| 'version_too_low' \| 'not_found' \| 'quick_app_offline' \| 'quick_app_not_online' \| 'certificate_expires' |
+| image         | String | ''           | 自定义异常图片                                                                                                                                                                                |
+| leftBtnName   | String | ''           | 左侧按钮名称                                                                                                                                                                                  |
+| rightBtnName  | String | ''           | 右侧按钮名称                                                                                                                                                                                  |
+| description   | String | ''           | 异常描述文字                                                                                                                                                                                  |
+| footerBtnText | String | ''           | 底部文字按钮内容                                                                                                                                                                              |
 
 #### 组件事件
 
-| 事件名称     | 事件描述                 | 返回值 |
-| ------------ | ------------------------ | ------ |
-| leftBtnTap   | 点击左侧按钮时触发的事件 | event  |
-| rightBtnTap  | 点击右侧按钮时触发的事件 | event  |
-| footerBtnTap | 点击底部按钮时触发的事件 | event  |
+| 事件名称     | 事件描述         | 返回值 |
+| ------------ | ---------------- | ------ |
+| leftBtnTap   | 点击左侧按钮触发 | event  |
+| rightBtnTap  | 点击右侧按钮触发 | event  |
+| footerBtnTap | 点击底部按钮触发 | event  |
