@@ -33,47 +33,10 @@
       <div class="progress-box">
         <q-progress
           percentage="{{ 80 }}"
-          is-content-show="{{ isContentShow }}"
-          format="{{ format }}"
-        ></q-progress>
-      </div>
-      <div class="progress-box">
-        <q-progress
-          percentage="{{ percentage }}"
-          is-content-show="{{ isContentShow }}"
           progress-width="{{ progressWidth }}"
-          stroke-height="{{ strokeHeight }}"
-          content-style="{{ contentStyle1 }}"
-        ></q-progress>
-      </div>
-      <div class="progress-box">
-        <q-progress
-          percentage="{{ dynamicPercent }}"
           is-content-show="{{ isContentShow }}"
-          progress-width="300px"
-          stroke-height="{{ strokeHeight }}"
-          content-style="{{ contentStyle2 }}"
-          stroke-color="#FF0000"
-          trail-color="rgba(255,0,0,.3)"
           format="{{ format }}"
         ></q-progress>
-      </div>
-      <div class="progress-box">
-        <text class="btn btn-left" data-key="-" onclick="changePercentage"
-          >-</text
-        >
-        <q-progress
-          percentage="{{ manualPercentage }}"
-          is-content-show="{{ isContentShow }}"
-          progress-width="240px"
-          stroke-height="{{ 5 }}"
-          content-style="{{ contentStyle3 }}"
-          stroke-color="#FFA500"
-          trail-color="rgba(255,165,0,.3)"
-        ></q-progress>
-        <text class="btn btn-right" data-key="+" onclick="changePercentage"
-          >+</text
-        >
       </div>
     </div>
   </div>
@@ -84,48 +47,11 @@ export default {
   data() {
     return {
       percentage: 25,
-      dynamicPercent: 0,
-      manualPercentage: 50,
       isContentShow: true,
-      progressWidth: '250px',
-      strokeHeight: 10,
-      contentStyle1: {
-        width: '50px',
-        fontSize: '20px',
-        color: '#1E90FF',
-      },
-      contentStyle2: {
-        width: '100px',
-        fontSize: '16px',
-        color: '#FF0000',
-      },
-      contentStyle3: {
-        width: '40px',
-        fontSize: '16px',
-        color: '#FFA500',
-      },
+      progressWidth: '360px',
       strokeColor: '#1E90FF',
       trailColor: 'rgba(255,215,0,.5)',
       format: (percentage) => '已下载' + percentage + '%',
-    }
-  },
-  onInit() {
-    const timer = setInterval(() => {
-      this.dynamicPercent += 0.5
-      if (this.dynamicPercent >= 100) {
-        this.dynamicPercent = 100
-        clearInterval(timer)
-      }
-    }, 100)
-  },
-  changePercentage(e) {
-    const key = e._target._dataset.key
-    if (key === '+') {
-      this.manualPercentage =
-        this.manualPercentage + 10 > 100 ? 100 : this.manualPercentage + 10
-    } else if (key === '-') {
-      this.manualPercentage =
-        this.manualPercentage - 10 < 0 ? 0 : this.manualPercentage - 10
     }
   },
 }
@@ -157,23 +83,6 @@ export default {
       justify-content: flex-start;
       align-items: center;
       margin-top: 28px;
-
-      .btn {
-        width: 30px;
-        height: 30px;
-        font-size: 20px;
-        text-align: center;
-        color: #ffa500;
-        border: 1px solid #ffa500;
-      }
-
-      .btn-left {
-        margin-right: 10px;
-      }
-
-      .btn-right {
-        margin-left: 10px;
-      }
     }
   }
 }
