@@ -215,7 +215,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 150px 0;
+  padding: 130px 0;
 
   .header {
     width: 100%;
@@ -269,23 +269,31 @@ export default {
 
 #### 组件属性
 
-| 属性         | 类型   | 默认值   | 说明                                                                                                                                                                                                                                                                   |
-| ------------ | ------ | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| popoverWidth | Number | -        | 自定义气泡菜单宽度(必填)                                                                                                                                                                                                                                               |
-| contents     | Array  | -        | 气泡菜单内容数组，数组每一项为一个对象，对象包括 content、iconPath 和 icon 三个属性，其中 content 为每一行内容，iconPath 为每一行的图标路径，icon 为对象，是组件库中 icon 组件的配置项，目前支持 type 和 color，iconPath 和 icon 只需要写一个，如果都写，默认使用 icon |
-| placement    | String | 'bottom' | 箭头出现位置，可选值有 top /topLeft /topRight /bottom /bottomLeft /bottomRight /left /leftTop /leftBottom /right /rightTop /rightBottom                                                                                                                                |
-| offset       | Array  | [0, 0]   | 气泡菜单在水平和垂直方向的偏移量，当给触发元素设置了 margin 时，气泡菜单的位置会有影响，可以通过 offset 来进行调整                                                                                                                                                     |
-| arrowSpace   | Number | 10       | 当箭头位置不为 top、left、right、bottom 时箭头离所在边界的距离（自定义值需大于 10）                                                                                                                                                                                    |
-| triggerSize  | Array  | -        | 用户通过 slot 自定义组件的宽高（必填，而且须根据自己定义的宽高准确填入）                                                                                                                                                                                               |
+| 属性         | 类型   | 默认值   | 说明                                                                                                                                                                                  |
+| ------------ | ------ | -------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| popoverWidth | Number | 0        | 自定义气泡菜单宽度(必填)                                                                                                                                                              |
+| contents     | Array  | []       | 气泡菜单内容数组，数组每一项为一个对象，对象的具体说明见下方文档                                                                                                                      |
+| placement    | String | 'bottom' | 箭头出现位置，可选值有: 'top' \| 'topLeft' \| 'topRight' \| 'bottom' \| 'bottomLeft' \| 'bottomRight' \| 'left' \| 'leftTop' \| 'leftBottom' \| 'right' \| 'rightTop' \|'rightBottom' |
+| offset       | Array  | [0, 0]   | 气泡菜单在水平和垂直方向的偏移量                                                                                                                                                      |
+| arrowSpace   | Number | 10       | 当箭头位置不为 'top' \| 'left' \| 'right' \| 'bottom' 时箭头离所在边界的距离（自定义值需大于 10）                                                                                     |
+| triggerSize  | Array  | []       | 用户通过 slot 自定义的组件的宽高（必填，而且须根据自己定义的宽高准确填入）                                                                                                            |
+
+contents 属性数组每一项具体说明
+
+| 属性     | 类型   | 说明                                                                           |
+| -------- | ------ | ------------------------------------------------------------------------------ |
+| content  | String | 菜单栏每一行的内容                                                             |
+| iconPath | String | 菜单栏每一行的图标路径，iconPath 和 icon 只需填写一个，如都填写，优先使用 icon |
+| icon     | Object | 组件库中 icon 组件配置项，目前只支持 type 和 color 两个属性                    |
 
 #### 组件事件
 
-| 事件名称    | 事件描述         | 返回值         |
-| ----------- | ---------------- | -------------- |
-| menuItemTap | 点击时触发的事件 | (event, index) |
+| 事件名称    | 事件描述       | 返回值         |
+| ----------- | -------------- | -------------- |
+| menuItemTap | 点击菜单栏触发 | (event, index) |
 
 #### slot
 
-| slot 名称 | 描述                           |
-| --------- | ------------------------------ |
-| trigger   | 自定义触发气泡菜单的组件，必填 |
+| 名称    | 描述                           |
+| ------- | ------------------------------ |
+| trigger | 自定义触发气泡菜单的组件，必填 |

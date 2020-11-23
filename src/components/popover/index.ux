@@ -10,17 +10,22 @@
         <!-- 箭头 -->
         <div
           if="{{ isBefore }}"
-          class="qaui-popover-wrap-menu-arrows {{ arrowDirectionClass }}"
+          class="{{ arrowBoxClass }}"
           style="{{ arrowMarginStyle }}"
-        ></div>
+        >
+          <image
+            class="qaui-popover-wrap-menu-arrow {{ arrowDirectionClass }}"
+            src="/common/images/arrow.png"
+          ></image>
+        </div>
         <!-- 气泡菜单 -->
         <div class="qaui-popover-wrap-menu-list" style="{{ menuStyleObj }}">
           <div
             for="{{ contents }}"
-            class="qaui-popover-wrap-menu-list-box {{ pressKey === $idx ? 'press-color' : '' }}"
+            class="qaui-popover-wrap-menu-list-box {{ pressKey === $idx ? 'press-color' : '' }} {{ computedClass($idx) }}"
           >
             <div
-              class="qaui-popover-wrap-menu-list-box-item {{ $idx === contents.length - 1 ? 'no-bottom-border' : '' }}"
+              class="qaui-popover-wrap-menu-list-box-item {{ (pressKey === $idx - 1 || $idx === 0) ? 'no-top-border' : '' }}"
               key="{{ $idx }}"
               ontouchstart="pressColor"
               ontouchend="unpressedColor"
@@ -53,9 +58,14 @@
         <!-- 箭头 -->
         <div
           if="{{ !isBefore }}"
-          class="qaui-popover-wrap-menu-arrows {{ arrowDirectionClass }}"
+          class="{{ arrowBoxClass }}"
           style="{{ arrowMarginStyle }}"
-        ></div>
+        >
+          <image
+            class="qaui-popover-wrap-menu-arrow {{ arrowDirectionClass }}"
+            src="/common/images/arrow.png"
+          ></image>
+        </div>
       </div>
     </div>
     <!-- 触发气泡菜单的根元素 -->
@@ -74,7 +84,8 @@ export default {
       pressKey: -1, //记录当前被按下的菜单某项的下标
       arrangeDirectionClass: 'qaui-popover-wrap-menu-column', //记录气泡菜单和箭头的父级盒子排列方式的类名
       alignClass: 'qaui-popover-wrap-menu-center', ////记录气泡菜单和箭头的父级盒子对齐方式的类名
-      arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-bottom', //记录箭头方向的类名
+      arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-bottom', //记录箭头方向的类名
+      arrowBoxClass: '', //设置箭头盒子的宽高
       arrowMarginStyle: {}, //当箭头不在正中间时，所需要添加的外边距
       isBefore: true, //箭头组件在DOM中的位置是否在气泡菜单组件的前面
       menuStyleObj: {}, //气泡菜单的宽高，
@@ -118,6 +129,20 @@ export default {
       //接收用户传来的箭头离所在边界的距离
       type: Number,
       default: 10,
+    },
+  },
+  computed: {
+    // 计算类名
+    computedClass() {
+      return (idx) => {
+        if (idx === this.contents.length - 1) {
+          return 'border-bottom-radius'
+        }
+        if (idx === 0) {
+          return 'border-top-radius'
+        }
+        return ''
+      }
     },
   },
   onInit() {
@@ -203,8 +228,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-column',
           alignClass: 'qaui-popover-wrap-menu-center',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-top',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-top',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-horizontal-size'
         //计算气泡菜单的位置
         this.menuOffset = {
           left: x + triggerWidth / 2 - menuWidth / 2 + offsetX + 'px',
@@ -216,8 +243,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-column',
           alignClass: 'qaui-popover-wrap-menu-start',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-top',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-top',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-horizontal-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginLeft: this.computedArrowMargin(menuWidth / 2) + 'px',
@@ -233,8 +262,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-column',
           alignClass: 'qaui-popover-wrap-menu-end',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-top',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-top',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-horizontal-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginRight: this.computedArrowMargin(menuWidth / 2) + 'px',
@@ -250,8 +281,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-column',
           alignClass: 'qaui-popover-wrap-menu-center',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-bottom',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-bottom',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-horizontal-size'
         //计算气泡菜单的位置
         this.menuOffset = {
           left: x + triggerWidth / 2 - menuWidth / 2 + offsetX + 'px',
@@ -263,8 +296,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-column',
           alignClass: 'qaui-popover-wrap-menu-start',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-bottom',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-bottom',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-horizontal-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginLeft: this.computedArrowMargin(menuWidth / 2) + 'px',
@@ -280,8 +315,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-column',
           alignClass: 'qaui-popover-wrap-menu-end',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-bottom',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-bottom',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-horizontal-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginRight: this.computedArrowMargin(menuWidth / 2) + 'px',
@@ -297,8 +334,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-row',
           alignClass: 'qaui-popover-wrap-menu-center',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-left',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-left',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-vertical-size'
         //计算气泡菜单的位置
         this.menuOffset = {
           left: x - menuWidth - defaultMargin - arrowHeight + offsetX + 'px',
@@ -310,8 +349,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-row',
           alignClass: 'qaui-popover-wrap-menu-start',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-left',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-left',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-vertical-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginTop: this.computedArrowMargin(menuHeight / 2) + 'px',
@@ -327,8 +368,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-row',
           alignClass: 'qaui-popover-wrap-menu-end',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-left',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-left',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-vertical-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginBottom: this.computedArrowMargin(menuHeight / 2) + 'px',
@@ -344,8 +387,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-row',
           alignClass: 'qaui-popover-wrap-menu-center',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-right',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-right',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-vertical-size'
         //计算气泡菜单的位置
         this.menuOffset = {
           left: x + triggerWidth + defaultMargin + offsetX + 'px',
@@ -357,8 +402,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-row',
           alignClass: 'qaui-popover-wrap-menu-start',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-right',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-right',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-vertical-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginTop: this.computedArrowMargin(menuHeight / 2) + 'px',
@@ -374,8 +421,10 @@ export default {
         this.addClass({
           arrangeDirectionClass: 'qaui-popover-wrap-menu-row',
           alignClass: 'qaui-popover-wrap-menu-end',
-          arrowDirectionClass: 'qaui-popover-wrap-menu-arrows-right',
+          arrowDirectionClass: 'qaui-popover-wrap-menu-arrow-right',
         })
+        //设置箭头盒子的宽高
+        this.arrowBoxClass = 'arrow-vertical-size'
         //计算箭头的margin
         this.arrowMarginStyle = {
           marginBottom: this.computedArrowMargin(menuHeight / 2) + 'px',
@@ -427,32 +476,42 @@ export default {
         align-items: flex-end;
       }
 
-      &-arrows {
-        width: 0;
-        height: 0;
+      .arrow-size {
+        justify-content: center;
+        align-items: center;
+        width: 14px * @ratio;
+      }
+
+      .arrow-horizontal-size {
+        .arrow-size;
+        height: 8px * @ratio;
+      }
+
+      .arrow-vertical-size {
+        .arrow-size;
+        height: 14px * @ratio;
+        margin-left: -3px * @ratio;
+        margin-right: -3px * @ratio;
+      }
+
+      &-arrow {
+        width: 17px * @ratio;
+        height: 8px * @ratio;
 
         &-top {
-          border-top: 8px * @ratio solid #ffffff;
-          border-left: 7px * @ratio solid transparent;
-          border-right: 7px * @ratio solid transparent;
+          transform: rotate(0deg);
         }
 
         &-bottom {
-          border-bottom: 8px * @ratio solid #ffffff;
-          border-left: 7px * @ratio solid transparent;
-          border-right: 7px * @ratio solid transparent;
+          transform: rotate(180deg);
         }
 
         &-left {
-          border-left: 8px * @ratio solid #ffffff;
-          border-top: 7px * @ratio solid transparent;
-          border-bottom: 7px * @ratio solid transparent;
+          transform: rotate(-90deg);
         }
 
         &-right {
-          border-right: 8px * @ratio solid #ffffff;
-          border-top: 7px * @ratio solid transparent;
-          border-bottom: 7px * @ratio solid transparent;
+          transform: rotate(90deg);
         }
       }
 
@@ -471,7 +530,7 @@ export default {
             align-items: center;
             height: 36px * @ratio;
             padding: 9px * @ratio 0;
-            border-bottom: 1px * @ratio solid #f2f2f2;
+            border-top: 1px * @ratio solid #f2f2f2;
 
             &-image {
               width: 100%;
@@ -500,9 +559,20 @@ export default {
               line-height: 18px * @ratio;
             }
           }
-          .no-bottom-border {
-            border: 0;
+
+          .no-top-border {
+            border-top: 1px * @ratio solid transparent;
           }
+        }
+
+        .border-top-radius {
+          border-top-left-radius: 6px * @ratio;
+          border-top-right-radius: 6px * @ratio;
+        }
+
+        .border-bottom-radius {
+          border-bottom-left-radius: 6px * @ratio;
+          border-bottom-right-radius: 6px * @ratio;
         }
 
         .press-color {
