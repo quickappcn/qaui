@@ -8,7 +8,7 @@
       >
         <q-icon
           type="{{ iconType }}"
-          size="84"
+          size="83"
           color="{{ iconColor }}"
         ></q-icon>
       </div>
@@ -25,11 +25,15 @@
       <div class="qaui-page-result-wrap-btns">
         <div class="qaui-page-result-wrap-btns-left">
           <q-button type="ghost" width="126" ontap="leftClick">
-            <span>{{ leftBtnName }}</span>
+            <span class="qaui-page-result-wrap-btns-size">{{
+              leftBtnName
+            }}</span>
           </q-button>
         </div>
         <q-button type="primary" width="126" ontap="rightClick">
-          <span>{{ rightBtnName }}</span>
+          <span class="qaui-page-result-wrap-btns-size">{{
+            rightBtnName
+          }}</span>
         </q-button>
       </div>
     </div>
@@ -153,6 +157,7 @@ export default {
       height: 34px * @ratio;
       margin-top: 30px * @ratio;
       font-size: 24px * @ratio;
+      font-weight: bold;
       color: rgba(0, 0, 0, 0.8);
       text-align: center;
       line-height: 34px * @ratio;
@@ -173,6 +178,10 @@ export default {
 
     &-btns {
       margin-top: 30px * @ratio;
+
+      &-size {
+        font-size: 14px * @ratio;
+      }
 
       &-left {
         margin-right: 16px * @ratio;
