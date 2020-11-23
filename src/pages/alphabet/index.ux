@@ -5,8 +5,9 @@
       id="alphabet"
       data="{{ data }}"
       active-color="#fff"
-      active-background="#2878ff"
+      active-background="#456FFF"
       is-shake="{{ true }}"
+      @itemtap="itemtap"
     >
     </q-alphabet>
   </div>
@@ -15,9 +16,6 @@
 
 <script>
 export default {
-  onInit() {
-    this.$on('getItem', this.getItem)
-  },
   data() {
     return {
       id: 'alphabetId',
@@ -185,7 +183,7 @@ export default {
       ],
     }
   },
-  getItem(evt) {
+  itemtap(evt) {
     console.log(evt.detail)
   },
 }
