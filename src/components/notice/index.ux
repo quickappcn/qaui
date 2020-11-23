@@ -46,13 +46,13 @@
         <q-icon
           if="{{ !rightIcon.iconPath && !rightIcon.icon }}"
           type="{{ computedIconType }}"
-          size="10"
+          size="16"
           color="{{ iconColor }}"
         ></q-icon>
         <q-icon
           if="{{ rightIcon.icon }}"
           type="{{  rightIcon.icon.type || 'send-fill' }}"
-          size="10"
+          size="16"
           color="{{ rightIcon.icon.color }}"
         ></q-icon>
         <image
@@ -171,7 +171,7 @@ export default {
       this.isNoticeShow = false
     } else if (this.rightIconType === 'link') {
       //暴露一个跳转函数给用户
-      this.$emit('link', { event: ev })
+      this.$emit('linkTap', { event: ev })
     }
   },
   //根据用户传入的type值设置对应的默认样式
@@ -352,12 +352,10 @@ export default {
       align-items: center;
       width: 24px * @ratio;
       height: 24px * @ratio;
-      padding: 7px * @ratio;
 
       &-icon {
-        width: 100%;
-        height: 100%;
-        line-height: 10px;
+        width: 16px * @ratio;
+        height: 16px * @ratio;
       }
     }
 
