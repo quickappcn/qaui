@@ -3,7 +3,7 @@
   <div class="qaui-wrap">
     <list class="qaui-wrap-nav" index="{{ index }}">
       <block for="{{ compData }}">
-        <list-item class="nav-item-{{ type }}" @click="onChangeTabIndex($idx)">
+        <list-item class="nav-item-{{ type }}" onclick="changeTab($idx)">
           <div
             if="{{ type === 'default' }}"
             class="nav-item-left"
@@ -14,7 +14,7 @@
               type="{{ $item.icon }}"
               if="{{ type === 'icon-label'}}"
               size="20"
-              color="{{ $idx === index ? activeColor:''}}"
+              color="{{ $idx === index  ? activeColor:''}}"
             ></my-icon>
             <text style="{{ $item.textStyle }}">{{ $item.text }}</text>
           </div>
@@ -36,7 +36,7 @@ export default {
   props: {
     data: {
       type: Array,
-      default: () => {
+      default() {
         return []
       },
     },
@@ -79,9 +79,9 @@ export default {
     },
   },
 
-  onChangeTabIndex(idx) {
+  changeTab(idx) {
     this.index = idx
-    this.$emit('changeTab', {
+    this.$emit('tap', {
       index: idx,
     })
   },
@@ -92,8 +92,9 @@ export default {
 @import '../common.less';
 .qaui-wrap {
   flex-direction: row;
+  position: relative;
   &-nav {
-    position: fixed;
+    position: absolute;
     height: 100%;
     top: 0;
     bottom: 0px;
@@ -111,6 +112,7 @@ export default {
   }
 
   .nav-item-default {
+    width: 80px * @ratio;
     height: 52px * @ratio;
     margin: 9px * @ratio 0;
     position: relative;
@@ -123,6 +125,7 @@ export default {
   }
 
   .nav-item-capsule {
+    width: 80px * @ratio;
     height: 52px * @ratio;
     margin: 9px * @ratio 0;
     position: relative;
