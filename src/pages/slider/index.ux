@@ -18,6 +18,13 @@
       left-icon="../../common/logo.png"
       right-icon="../../common/logo.png"
     ></q-slider>
+    <q-slider
+      dot="true"
+      step="25"
+      value="50"
+      left-icon="../../common/images/font-size-s.svg"
+      right-icon="../../common/images/font-size-b.svg"
+    ></q-slider>
   </div>
 </template>
 

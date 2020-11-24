@@ -95,7 +95,7 @@ export default {
   }
   .slider {
     flex-grow: 1;
-    padding: 15px * @ratio;
+    padding: 16px * @ratio;
   }
   .dots {
     width: 100%;
