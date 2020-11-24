@@ -27,32 +27,35 @@
         >不可点</q-button
       >
     </div>
-    <q-button class="button" type="primary">主操作按钮</q-button>
-    <q-button class="button" type="primary" disabled="{{true}}"
+    <q-button class="button" type="primary" width="300">主操作按钮</q-button>
+    <q-button class="button" type="primary" width="300" disabled="{{true}}"
       >不可点击状态</q-button
     >
-    <q-button class="button" type="primary" loading="{{true}}"
+    <q-button class="button" type="primary" width="300" loading="{{true}}"
       >加载状态</q-button
     >
-
-    <q-button class="button" type="ghost">描边按钮</q-button>
-    <q-button class="button" type="ghost" color="orange" loading="{{true}}"
+    <q-button class="button" type="ghost" width="300">描边按钮</q-button>
+    <q-button class="button" type="ghost" width="300" disabled="{{true}}"
+      >不可点击状态</q-button
+    >
+    <q-button class="button" type="error" width="300">警示按钮</q-button>
+    <q-button class="button" type="error" width="300" disabled="{{true}}"
+      >不可点击状态</q-button
+    >
+    <q-button
+      class="button"
+      type="ghost"
+      width="300"
+      color="orange"
+      loading="{{true}}"
       >自定义颜色按钮</q-button
     >
-    <q-button class="button" type="ghost" disabled="{{true}}"
-      >不可点击状态</q-button
-    >
-
-    <q-button class="button" type="error">警示按钮</q-button>
-    <q-button class="button" type="error" disabled="{{true}}"
-      >不可点击状态</q-button
-    >
-
-    <q-button class="button" bg-color="orange" color="#000"
+    <q-button class="button" width="300" bg-color="orange" color="#000"
       >自定义颜色按钮</q-button
     >
     <q-button
       class="button"
+      width="300"
       type="error"
       loading="{{true}}"
       bg-color="orange"
