@@ -36,7 +36,7 @@
         </div>
       </div>
     </div>
-    <div class="{{showDrawer?'show-drawer':''}}" style="top:{{drawerTop}};" if="{{showDrawer}}">
+    <div class="drawer {{showDrawer?'show-drawer':''}}" style="top:{{drawerTop}};" if="{{showDrawer}}">
       <div class="{{drawer.direction === 'column'?'drawer-content-column':'drawer-content-row'}}">
         <block for="{{drawer.children}}">
           <div
@@ -67,7 +67,7 @@
               class="popup-item {{index !== myPopupOption.length - 1 && !option.isFolded?'border':''}}"
               type="filterItem"
             >
-              <div class="popup-item-title-wrap">
+              <div class="popup-item-title-wrap" onclick="openFold(option)">
                 <div>
                   <text class="popup-item-title">{{ option.label }}</text>
                   <text class="popup-item-title radio-text" if="{{option.type === 'radio'}}">单选</text>
@@ -75,8 +75,7 @@
                 <image
                   if="{{option.canFold}}"
                   class="fold-icon"
-                  src="{{option.isFolded?'../../common/images/fold-icon.png':'../../common/images/fold-icon-anti.png'}}"
-                  onclick="openFold(option)"
+                  src="{{option.isFolded?'../../common/images/fold-icon.svg':'../../common/images/unfold-icon.svg'}}"
                 ></image>
               </div>
               <div if="{{option.type==='range'}}">
@@ -183,10 +182,10 @@ export default {
   },
 
   openFold(option) {
-    console.log('test111')
-    option.isFolded = !option.isFolded
-    this.myPopupOption = JSON.parse(JSON.stringify(this.myPopupOption))
-    console.log('test111', this.myPopupOption)
+    if (option.canFold) {
+      option.isFolded = !option.isFolded
+      this.myPopupOption = JSON.parse(JSON.stringify(this.myPopupOption))
+    }
   },
 
   clickFilterIcon() {
@@ -394,6 +393,7 @@ export default {
   line-height: 16px * @ratio;
   placeholder-color: #d0d0d0;
   margin-bottom: 12px * @ratio;
+  caret-color: #456fff;
 }
 
 .line {
@@ -612,6 +612,12 @@ export default {
   line-height: 16px * @ratio;
   lines: 1;
   text-overflow: ellipsis;
+}
+
+.drawer {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
 }
 
 .show-drawer {
