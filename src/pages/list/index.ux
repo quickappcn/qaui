@@ -1,0 +1,150 @@
+<import name="q-list" src="../../components/list/index"></import>
+
+<template>
+  <div class="qaui-wrap">
+    <q-list
+      title="列表标题"
+      data="{{ listData }}"
+      onitem-tap="itemTap"
+      onsamll-btn-tap="smallBtnTap"
+      onswitch-tap="switchTap"
+    ></q-list>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      listData: [
+        {
+          title: '标题文字',
+        },
+        {
+          title: '标题文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字',
+          rightText: '结果文字',
+        },
+        {
+          title: '标题文字',
+          rightText: '结果文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字',
+          extra: 'switch',
+          switchValue: true,
+        },
+        {
+          title: '标题文字',
+          extra: 'button',
+          rightBtnText: '按钮',
+        },
+        {
+          title: '标题文字1',
+          iconType: 'bill-fill',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字1',
+          iconType: 'bill-fill',
+          rightText: '结果文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字1',
+          iconType: 'bill-fill',
+          extra: 'switch',
+          switchValue: true,
+        },
+        {
+          title: '标题文字4',
+          thumb: '../../common/logo.png',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+          rightText: '结果文字',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+          extra: 'rightArrow',
+          rightText: '结果文字',
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+          extra: 'switch',
+          switchValue: true,
+        },
+        {
+          title: '标题文字',
+          description: '这是一段描述文字',
+          extra: 'button',
+          rightBtnText: '按钮',
+        },
+        {
+          title: '标题文字1',
+          iconType: 'bill-fill',
+          description: '这是一段描述文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字2',
+          description: '这是一段描述文字2',
+          iconType: 'bill-fill',
+          rightText: '结果文字',
+          extra: 'rightArrow',
+        },
+        {
+          title: '标题文字2',
+          description: '这是一段描述文字2',
+          iconType: 'bill-fill',
+          extra: 'switch',
+          switchValue: true,
+        },
+        {
+          title: '标题文字2',
+          description: '这是一段描述文字2',
+          iconType: 'bill-fill',
+          extra: 'button',
+          rightBtnText: '按钮',
+        },
+        {
+          title: '标题文字3',
+          description: '这是一段描述文字2',
+          thumb: '../../common/logo.png',
+        },
+      ],
+    }
+  },
+
+  itemTap(data) {
+    const index = data.detail.index
+    this.listData[index].title = `已选中第${index}行`
+  },
+
+  smallBtnTap(data) {
+    const index = data.detail.index
+    this.listData[index].title = `选中小按钮${index}`
+  },
+
+  switchTap(data) {
+    const index = data.detail.index
+    this.listData[index].title = `选中switch按钮${index}`
+  },
+}
+</script>

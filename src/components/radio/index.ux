@@ -1,7 +1,17 @@
 <template>
-  <div class="qaui-wrap qaui-{{type}} {{disabled?'disabled':''}}" onclick="clickHandler">
-    <div class="icon icon-{{type}} {{my_checked?'active':''}}">
-      <image if="my_checked" src="/common/images/radio-{{type}}.svg" class="icon-{{type}}-check"></image>
+  <div
+    class="qaui-wrap qaui-{{type}} {{disabled?'disabled':''}}"
+    onclick="clickHandler"
+  >
+    <div
+      class="icon icon-{{type}} {{my_checked?'active':''}}"
+      style="background-color:{{my_checked&&type==='default'?'#456edf':''}};"
+    >
+      <image
+        if="my_checked"
+        src="/common/images/radio-{{type}}.svg"
+        class="icon-{{type}}-check"
+      ></image>
     </div>
     <text class="value">{{ value }}</text>
   </div>
@@ -69,15 +79,12 @@ export default {
   .icon {
     height: 20px * @ratio;
     width: 20px * @ratio;
+    border-radius: 20px * @ratio;
     align-self: center;
     &-default {
       border-radius: 20px * @ratio;
       border: 1px * @ratio solid #d0d0d0;
       margin-right: 11px * @ratio;
-      &-check {
-        border-radius: 20px * @ratio;
-        background-color: @primary-color;
-      }
     }
     &-list {
       height: 24px * @ratio;

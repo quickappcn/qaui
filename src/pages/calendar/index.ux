@@ -1,0 +1,55 @@
+<import name="q-calendar" src="../../components/calendar/index"></import>
+<import name="q-button" src="../../components/button/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-button ontap="changeType" width="300">切换日历显示模式</q-button>
+    <q-calendar
+      if="type==='default'"
+      type="default"
+      description="{{desc}}"
+    ></q-calendar>
+    <q-calendar
+      if="type==='list'"
+      type="list"
+      description="{{desc}}"
+    ></q-calendar>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      type: 'default',
+      desc: [
+        {
+          date: '2020-10-15',
+          top: '描述文字',
+          bottom: '描述文字',
+        },
+        {
+          date: '2020-10-21',
+          top: '描述文字',
+          bottom: '描述文字',
+        },
+        {
+          date: '2020-10-25',
+          top: '描述文字',
+          bottom: '描述文字',
+        },
+      ],
+    }
+  },
+  changeType() {
+    this.type === 'default' ? (this.type = 'list') : (this.type = 'default')
+    console.log(this.type)
+  },
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+  align-items: center;
+}
+</style>

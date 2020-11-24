@@ -1,0 +1,95 @@
+<import
+  name="q-collapse-group"
+  src="../../components/collapse-group/index"
+></import>
+<import name="q-collapse" src="../../components/collapse/index"></import>
+<import name="q-icon" src="../..//components/icon/index"></import>
+
+<template>
+  <div class="qaui-wrap">
+    <q-collapse-group
+      title="基础用法"
+      id="1"
+      default-open="{{['key1','key2']}}"
+      onchange="change"
+    >
+      <q-collapse
+        title="标题文字1"
+        content="内容区域1"
+        group-id="1"
+        key="key1"
+      ></q-collapse>
+      <q-collapse
+        title="标题文字2"
+        content="内容区域2"
+        group-id="1"
+        key="key2"
+        icon="theme-sms"
+      ></q-collapse>
+      <q-collapse
+        title="标题文字3"
+        content="内容区域3"
+        group-id="1"
+        key="key3"
+        thumb="../../common/logo.png"
+      ></q-collapse>
+    </q-collapse-group>
+    <div style="margin-top: 20px">
+      <q-collapse-group title="手风琴用法" id="2" accordion="{{true}}">
+        <q-collapse
+          title="标题文字1"
+          content="内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1"
+          group-id="2"
+          key="key4"
+        ></q-collapse>
+        <q-collapse
+          title="标题文字2"
+          content="内容区域2"
+          group-id="2"
+          key="key5"
+          icon="theme-sms"
+        ></q-collapse>
+        <q-collapse
+          title="标题文字3"
+          content="内容区域3"
+          group-id="2"
+          key="key6"
+        ></q-collapse>
+      </q-collapse-group>
+    </div>
+    <div style="margin-top: 20px">
+      <q-collapse-group title="禁用示例" id="3" accordion="{{true}}">
+        <q-collapse
+          title="标题文字1"
+          content="内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1内容区域1"
+          group-id="3"
+          key="key7"
+          disabled="true"
+        ></q-collapse>
+        <q-collapse
+          title="标题文字2"
+          content="内容区域2"
+          group-id="3"
+          key="key8"
+          icon="theme-sms"
+          disabled="true"
+        ></q-collapse>
+      </q-collapse-group>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  change(data) {
+    console.log(data)
+  },
+}
+</script>
+
+<style lang="less">
+.qaui-wrap {
+  background-color: #ffffff;
+  flex-direction: column;
+}
+</style>

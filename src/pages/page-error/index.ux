@@ -1,0 +1,64 @@
+<import name="q-page-error" src="../../components/page-error/index"></import>
+<template>
+  <div class="wrap">
+    <q-page-error
+      type="{{ typesArr[0] }}"
+      left-btn-name="{{ leftBtnName }}"
+      right-btn-name="{{ rightBtnName }}"
+      description="{{ description }}"
+      footer-btn-text="{{ footerBtnText }}"
+      onleft-btn-tap="leftBtn"
+      onright-btn-tap="rightBtn"
+      onfooter-btn-tap="footerBtn"
+    ></q-page-error>
+  </div>
+</template>
+
+<script>
+import router from '@system.router'
+export default {
+  data() {
+    return {
+      typesArr: [
+        'page_error',
+        'network_anomaly',
+        'version_too_low',
+        'not_found',
+        'quick_app_offline',
+        'quick_app_not_online',
+        'certificate_expires',
+      ],
+      leftBtnName: '返回',
+      rightBtnName: '查看',
+      description: '这是描述文字描述文字描述文字描述文字描述文字',
+      footerBtnText: '底部文字按钮',
+    }
+  },
+  leftBtn(data) {
+    const event = data.detail.event
+    console.log(event)
+    router.back()
+  },
+  rightBtn(data) {
+    const event = data.detail.event
+    console.log(event)
+    router.push({
+      uri: '/pages/button',
+    })
+  },
+  footerBtn(data) {
+    const event = data.detail.event
+    console.log(event)
+    router.push({
+      uri: '/pages/footer',
+    })
+  },
+}
+</script>
+
+<style lang="less">
+.wrap {
+  width: 100%;
+  height: 100%;
+}
+</style>

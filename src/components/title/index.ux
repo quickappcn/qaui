@@ -1,13 +1,17 @@
 <template>
-  <div class="qaui-wrap" onclick="clickHandler">
+  <div class="qaui-wrap">
     <div class="left">
       <image class="icon" if="icon" src="{{icon}}"></image>
       <text class="title">{{ title }}</text>
       <block if="!title"><slot></slot></block>
     </div>
-    <div class="right">
+    <div class="right" onclick="clickHandler">
       <text class="description">{{ description }}</text>
-      <image if="target" class="icon icon-arrow-right" src="/common/images/arrow-right.svg"></image>
+      <image
+        if="target"
+        class="icon icon-arrow-right"
+        src="/common/images/arrow-right.svg"
+      ></image>
     </div>
   </div>
 </template>
@@ -46,7 +50,6 @@ export default {
   justify-content: space-between;
   .icon {
     height: 24px * @ratio;
-    width: 24px * @ratio;
     align-self: center;
     padding: 2px * @ratio;
   }
@@ -72,7 +75,7 @@ export default {
     }
     .icon-arrow-right {
       margin-top: 2px * @ratio;
-      padding: 4px * @ratio;
+      margin-left: 4px * @ratio;
       object-fit: contain;
     }
   }

@@ -1,0 +1,89 @@
+<import name="q-progress" src="../../components/progress/index"></import>
+<template>
+  <div class="wrap">
+    <text class="title">progress进度条</text>
+    <div class="progress-group">
+      <div class="progress-box">
+        <q-progress></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress percentage="{{ percentage }}"></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          percentage="{{ percentage }}"
+          is-content-show="{{ isContentShow }}"
+        ></q-progress>
+      </div>
+    </div>
+    <text class="title">自定义进度条</text>
+    <div class="progress-group">
+      <div class="progress-box">
+        <q-progress
+          stroke-color="{{ strokeColor }}"
+          trail-color="{{ trailColor }}"
+        ></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          is-content-show="{{ isContentShow }}"
+          format="{{ format }}"
+        ></q-progress>
+      </div>
+      <div class="progress-box">
+        <q-progress
+          percentage="{{ 80 }}"
+          progress-width="{{ progressWidth }}"
+          is-content-show="{{ isContentShow }}"
+          format="{{ format }}"
+        ></q-progress>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      percentage: 25,
+      isContentShow: true,
+      progressWidth: '360px',
+      strokeColor: '#1E90FF',
+      trailColor: 'rgba(255,215,0,.5)',
+      format: (percentage) => '已下载' + percentage + '%',
+    }
+  },
+}
+</script>
+
+<style lang="less">
+.wrap {
+  flex-direction: column;
+  width: 100%;
+  background-color: #f2f2f2;
+  opacity: 0.8;
+
+  .title {
+    width: 100%;
+    height: 45px;
+    margin-left: 20px;
+    line-height: 45px;
+    font-size: 12px;
+  }
+
+  .progress-group {
+    flex-direction: column;
+    width: 100%;
+    padding: 0 20px 40px 20px;
+    background-color: #ffffff;
+
+    .progress-box {
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+      margin-top: 28px;
+    }
+  }
+}
+</style>

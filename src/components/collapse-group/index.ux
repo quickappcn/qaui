@@ -1,0 +1,114 @@
+<template>
+  <div class="qaui-collapse-group">
+    <div class="qaui-collapse-group-title" if="{{ title }}">
+      <text>{{ title }}</text>
+    </div>
+    <div class="qaui-collapse-group-slot">
+      <slot></slot>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      activeKeys: [],
+      accordions: [],
+    }
+  },
+
+  props: {
+    defaultOpen: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    accordion: {
+      type: Boolean,
+      default: false,
+    },
+    title: {
+      type: String,
+      default: '',
+    },
+    id: {
+      type: String,
+      required: true,
+    },
+  },
+
+  onReady() {
+    this.updated(this.defaultOpen)
+  },
+
+  changeIsActives(activeKeys) {
+    const elements = this.$parent()._childrenVms.filter(
+      (element) => element.groupId === this.id && element._type === 'q-collapse'
+    )
+    if (elements.length > 0) {
+      for (let index = 0; index < elements.length; index++) {
+        let element = elements[index]
+        const key = element.key || String(index)
+        let current = this.accordion
+          ? activeKeys[0] === key
+          : activeKeys.indexOf(key) !== -1
+        element.changeIsActive(key, current)
+      }
+    }
+  },
+
+  updated(activeKeys = this.activeKeys) {
+    if (activeKeys !== this.activeKeys) {
+      this.activeKeys = activeKeys
+    }
+    this.changeIsActives(activeKeys)
+  },
+
+  emitEvent(key) {
+    this.$emit('change', { key })
+  },
+
+  onClickItem(key) {
+    let activeKeys = this.activeKeys
+    if (this.accordion) {
+      activeKeys = activeKeys[0] === key ? [] : [key]
+    } else {
+      const index = activeKeys.indexOf(key)
+      if (index === -1) {
+        activeKeys.push(key)
+      } else {
+        activeKeys.splice(index, 1)
+      }
+    }
+    this.updated(activeKeys)
+    this.emitEvent(this.accordion ? [activeKeys[0]] : activeKeys)
+  },
+}
+</script>
+<style lang="less">
+@import '../common.less';
+
+.qaui-collapse-group {
+  flex-direction: column;
+  width: 100%;
+  background-color: #ffffff;
+
+  &-title {
+    background-color: #ffffff;
+    height: 52px * @ratio;
+    padding: 14px * @ratio 20px * @ratio;
+    text {
+      color: #000000;
+      font-size: 16px * @ratio;
+      font-family: HYQiHei-EES;
+      line-height: 20px * @ratio;
+    }
+  }
+
+  &-slot {
+    flex-direction: column;
+  }
+}
+</style>

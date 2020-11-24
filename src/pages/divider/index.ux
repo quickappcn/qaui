@@ -2,8 +2,11 @@
 <template>
   <div class="qaui-wrap">
     <q-divider loading="{{true}}" content="正在加载"></q-divider>
+    <div class="space"></div>
     <q-divider content="暂无数据"></q-divider>
+    <div class="space"></div>
     <q-divider content="自定义没有更多的内容"></q-divider>
+    <div class="space"></div>
     <q-divider><text class="custom">自定义样式内容</text></q-divider>
   </div>
 </template>
@@ -19,6 +22,10 @@ export default {
   background-color: #ffffff;
   flex-direction: column;
   padding: 20px 0;
+  .space {
+    height: 40px;
+    width: 100%;
+  }
   .custom {
     font-size: 20px;
     color: #456fff;

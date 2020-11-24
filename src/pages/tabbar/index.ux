@@ -1,0 +1,72 @@
+<import name="q-tabbar" src="../../components/tabbar/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <q-tabbar
+      index="{{ index }}"
+      background="{{ background }}"
+      text-color="{{ textColor }}"
+      active-color="{{ activeColor }}"
+      data="{{ tabbarData }}"
+      icon-size="{{ iconSize }}"
+      ontap="changeTap"
+    >
+      <block for="{{ tabbarData }}">
+        <div class="item-container">
+          <div class="item-content">
+            <text>标签{{ $idx + 1 }}内容</text>
+          </div>
+        </div>
+      </block>
+    </q-tabbar>
+  </div>
+</template>
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+}
+
+.item-content {
+  flex-direction: column;
+  text {
+    color: red;
+    font-size: 13px;
+  }
+}
+</style>
+
+<script>
+export default {
+  data() {
+    return {
+      tabbarData: [
+        {
+          icon: 'homepage',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '首页首页',
+        },
+        {
+          icon: 'qrcode',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '产品列表',
+        },
+        {
+          icon: 'contact-fill',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '我的',
+        },
+      ],
+      index: 0,
+      iconSize: 22,
+      background: '#FFF',
+      activeColor: '#456FFF',
+      textColor: '#B2B2B2',
+    }
+  },
+  changeTap(evt) {
+    console.log(evt.detail)
+  },
+}
+</script>

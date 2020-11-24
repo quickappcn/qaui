@@ -1,0 +1,398 @@
+<import name="q-icon" src="../../components/icon/index"></import>
+<template>
+  <div class="qaui-notice" style="{{ bgStyle }}">
+    <div if="{{ isNoticeShow }}" class="qaui-notice-wrap">
+      <div
+        if="{{ leftIcon.iconPath || leftIcon.icon }}"
+        class="qaui-notice-wrap-left"
+      >
+        <image
+          if="{{ leftIcon.iconPath && !leftIcon.icon }}"
+          class="qaui-notice-wrap-left-icon"
+          src="{{ leftIcon.iconPath }}"
+        ></image>
+        <q-icon
+          if="{{ leftIcon.icon }}"
+          type="{{ leftIcon.icon.type || 'volume-up-fill' }}"
+          size="16"
+          color="{{ leftIcon.icon.color }}"
+        ></q-icon>
+      </div>
+      <div if="{{ isMarqueeShow }}" class="qaui-notice-wrap-box">
+        <marquee
+          id="marqueeText"
+          class="qaui-notice-wrap-box-text qaui-notice-wrap-box-marquee"
+          style="{{ textStyle }}"
+          scrollamount="{{ speed }}"
+          loop="{{ scrollTimes }}"
+          onfinish="scrollFinish"
+          >{{ noticeText }}</marquee
+        >
+        <div
+          class="qaui-notice-wrap-box-mask qaui-notice-wrap-box-mask-left"
+          style="{{ leftMaskStyle }}"
+        ></div>
+        <div
+          class="qaui-notice-wrap-box-mask qaui-notice-wrap-box-mask-right"
+          style="{{ rightMaskStyle }}"
+        ></div>
+      </div>
+      <div else="{{ !isMarqueeShow }}" class="qaui-notice-wrap-box">
+        <text class="qaui-notice-wrap-box-text" style="{{ textStyle }}">{{
+          noticeText
+        }}</text>
+      </div>
+      <div class="qaui-notice-wrap-right" onclick="handleClick">
+        <q-icon
+          if="{{ !rightIcon.iconPath && !rightIcon.icon }}"
+          type="{{ computedIconType }}"
+          size="16"
+          color="{{ iconColor }}"
+        ></q-icon>
+        <q-icon
+          if="{{ rightIcon.icon }}"
+          type="{{  rightIcon.icon.type || 'send-fill' }}"
+          size="16"
+          color="{{ rightIcon.icon.color }}"
+        ></q-icon>
+        <image
+          if="{{ rightIcon.iconPath && !rightIcon.icon }}"
+          class="qaui-notice-wrap-right-icon"
+          src="{{ rightIcon.iconPath }}"
+        ></image>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      isNoticeShow: true, //通告栏是否显示
+      isMarqueeShow: false, //走马灯是否显示
+      textStyle: {}, //文字的颜色
+      bgStyle: {}, //通告栏背景颜色
+      iconColor: '#456FFF', //图标颜色
+      leftMaskStyle: {}, //左侧mask的样式
+      rightMaskStyle: {}, //右侧mask的样式
+    }
+  },
+  props: {
+    type: {
+      //接收用户传来的通告栏类型
+      type: String,
+      default: 'normal',
+    },
+    noticeText: {
+      //接收用户传来的通告栏内容
+      type: String,
+      default: '',
+    },
+    textColor: {
+      //接收用户传来的字体颜色
+      type: String,
+      default: '',
+    },
+    bgColor: {
+      //接收用户传来的背景颜色
+      type: String,
+      default: '',
+    },
+    leftIcon: {
+      //接收用户传来的左侧图标对象
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    rightIconType: {
+      //接收用户传来的右侧图标类型
+      type: String,
+      default: 'close',
+    },
+    rightIcon: {
+      //接收用户传来的右侧图标对象
+      type: Object,
+      default() {
+        return {}
+      },
+    },
+    scrollable: {
+      //接收用户传来的是否滚动的布尔值
+      type: Boolean,
+      default: false,
+    },
+    speed: {
+      //接收用户传来的滚动速度
+      type: Number,
+      default: 20,
+    },
+    scrollTimes: {
+      //接收用户传来的滚动循环次数
+      type: Number,
+      default: 5,
+    },
+  },
+  computed: {
+    // 计算图标的type
+    computedIconType() {
+      let type
+      if (this.rightIconType === 'close') {
+        type = 'close'
+      } else if (this.rightIconType === 'link') {
+        type = 'forward-arrow'
+      }
+      return type
+    },
+  },
+  onInit() {
+    this.isMarqueeShow = this.scrollable
+    this.setTypeStyle()
+    this.setColor()
+  },
+  onReady() {
+    if (this.isMarqueeShow) {
+      //当用户设置了滚动效果时，延迟300ms后开始滚动
+      setTimeout(() => {
+        this.$element('marqueeText').start()
+      }, 300)
+    }
+  },
+  //滚动结束的监听函数
+  scrollFinish() {
+    //滚动结束后，设置成不滚动
+    this.isMarqueeShow = false
+  },
+  //当用户自定义图标时，根据rightIconType决定事件处理函数
+  handleClick(ev) {
+    if (this.rightIconType === 'close') {
+      //关闭通告栏
+      this.isNoticeShow = false
+    } else if (this.rightIconType === 'link') {
+      //暴露一个跳转函数给用户
+      this.$emit('linkTap', { event: ev })
+    }
+  },
+  //根据用户传入的type值设置对应的默认样式
+  setTypeStyle() {
+    switch (this.type) {
+      case 'warning':
+        //设置文字颜色
+        this.textStyle = {
+          color: '#DB4F2B',
+        }
+        //设置图标颜色
+        this.iconColor = '#DB4F2B'
+        //设置背景颜色
+        this.bgStyle = {
+          backgroundColor: '#FAE5DF',
+        }
+        //设置左侧蒙层的线性渐变
+        this.leftMaskStyle = {
+          background: {
+            values: [
+              {
+                type: 'linearGradient',
+                directions: ['to', 'right'],
+                values: ['#FAE5DF', 'rgba(255,255,255,0)'],
+              },
+            ],
+          },
+        }
+        //设置右侧蒙层的线性渐变
+        this.rightMaskStyle = {
+          background: {
+            values: [
+              {
+                type: 'linearGradient',
+                directions: ['to', 'left'],
+                values: ['#FAE5DF', 'rgba(255,255,255,0)'],
+              },
+            ],
+          },
+        }
+        break
+      case 'transparent':
+        //设置文字颜色
+        this.textStyle = {
+          color: '#ffffff',
+        }
+        //设置图标颜色
+        this.iconColor = '#ffffff'
+        //设置背景颜色
+        this.bgStyle = {
+          backgroundColor: '#cccccc',
+        }
+        //设置左侧蒙层的线性渐变
+        this.leftMaskStyle = {
+          background: {
+            values: [
+              {
+                type: 'linearGradient',
+                directions: ['to', 'right'],
+                values: ['#cccccc', 'rgba(255,255,255,0)'],
+              },
+            ],
+          },
+        }
+        //设置右侧蒙层的线性渐变
+        this.rightMaskStyle = {
+          background: {
+            values: [
+              {
+                type: 'linearGradient',
+                directions: ['to', 'left'],
+                values: ['#cccccc', 'rgba(255,255,255,0)'],
+              },
+            ],
+          },
+        }
+        break
+      default:
+        //设置图标颜色
+        this.iconColor = '#456FFF'
+        //设置背景颜色
+        this.bgStyle = {
+          backgroundColor: '#E3EAFF',
+        }
+        //设置左侧蒙层的线性渐变
+        this.leftMaskStyle = {
+          background: {
+            values: [
+              {
+                type: 'linearGradient',
+                directions: ['to', 'right'],
+                values: ['#E3EAFF', 'rgba(255,255,255,0)'],
+              },
+            ],
+          },
+        }
+        //设置右侧蒙层的线性渐变
+        this.rightMaskStyle = {
+          background: {
+            values: [
+              {
+                type: 'linearGradient',
+                directions: ['to', 'left'],
+                values: ['#E3EAFF', 'rgba(255,255,255,0)'],
+              },
+            ],
+          },
+        }
+        break
+    }
+  },
+  //根据用户传入的自定义颜色设置通告栏和文字的颜色，可覆盖type对应的默认样式
+  setColor() {
+    if (this.textColor) {
+      //设置文字颜色
+      this.textStyle = {
+        color: this.textColor,
+      }
+      this.iconColor = this.textColor
+    }
+    if (this.bgColor) {
+      //设置背景颜色
+      this.bgStyle = {
+        backgroundColor: this.bgColor,
+      }
+      //设置左侧蒙层的线性渐变
+      this.leftMaskStyle = {
+        background: {
+          values: [
+            {
+              type: 'linearGradient',
+              directions: ['to', 'right'],
+              values: [this.bgColor, 'rgba(255,255,255,0)'],
+            },
+          ],
+        },
+      }
+      //设置右侧蒙层的线性渐变
+      this.rightMaskStyle = {
+        background: {
+          values: [
+            {
+              type: 'linearGradient',
+              directions: ['to', 'left'],
+              values: [this.bgColor, 'rgba(255,255,255,0)'],
+            },
+          ],
+        },
+      }
+    }
+  },
+}
+</script>
+<style lang="less">
+@import '../common';
+.qaui-notice {
+  &-wrap {
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 30px * @ratio;
+    padding: 4px * @ratio 12px * @ratio 4px * @ratio 20px * @ratio;
+
+    &-left {
+      justify-content: center;
+      align-items: center;
+      width: 16px * @ratio;
+      height: 16px * @ratio;
+      margin-right: 6px * @ratio;
+
+      &-icon {
+        width: 100%;
+      }
+    }
+
+    &-right {
+      justify-content: center;
+      align-items: center;
+      width: 24px * @ratio;
+      height: 24px * @ratio;
+
+      &-icon {
+        width: 16px * @ratio;
+        height: 16px * @ratio;
+      }
+    }
+
+    &-box {
+      flex: 1;
+      height: 22px * @ratio;
+      opacity: 0.8;
+
+      &-mask {
+        position: absolute;
+        top: 0;
+        width: 20px * @ratio;
+        height: 100%;
+
+        &-left {
+          left: 0;
+        }
+
+        &-right {
+          right: 0;
+        }
+      }
+
+      &-text {
+        width: 100%;
+        height: 100%;
+        line-height: 22px * @ratio;
+        font-size: 14px * @ratio;
+        lines: 1;
+        text-overflow: ellipsis;
+        color: @primary-color;
+      }
+
+      &-marquee {
+        padding-top: 1px * @ratio;
+      }
+    }
+  }
+}
+</style>

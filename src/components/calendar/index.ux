@@ -1,0 +1,361 @@
+<import name="q-icon" src="../icon/index"></import>
+<template>
+  <div class="qaui-wrap">
+    <div class="calendar">
+      <div class="title" if="type==='default'">
+        <q-icon
+          type="backward"
+          size="24"
+          color="#000000"
+          onclick="previous"
+        ></q-icon>
+        <text class="message"
+          >{{ calendar[0].year }}年{{ calendar[0].month }}月</text
+        >
+        <q-icon
+          type="forward-arrow"
+          size="24"
+          color="#000000"
+          onclick="next"
+        ></q-icon>
+      </div>
+      <div
+        class="weekday"
+        style="background-color: {{type==='list'?'#F2F2F2':'#ffffff'}};"
+      >
+        <text>日</text>
+        <text>一</text>
+        <text>二</text>
+        <text>三</text>
+        <text>四</text>
+        <text>五</text>
+        <text>六</text>
+      </div>
+      <div class="calendar-data">
+        <list class="outer-list {{type==='list'?'list-height':''}}">
+          <list-item
+            class="list-item-wrap"
+            for="{{monthItem in calendar}}"
+            type="month"
+          >
+            <text class="date" if="type==='list'">
+              {{ monthItem.year }}年{{ monthItem.month }}月
+            </text>
+            <div class="inner-list">
+              <!--下面在style中判断颜色状态实属无奈，用类名控制会出现样式不生效的情况-->
+              <div
+                for="{{day in monthItem.allDays}}"
+                class="list-item"
+                style="background-color:{{active(monthItem.year, monthItem.month, day.day)?'#456FFF':'#ffffff'}};"
+                onclick="touchItem(day)"
+              >
+                <text
+                  class="desc"
+                  style="color:{{active(monthItem.year, monthItem.month, day.day)?'rgba(255,255,255,0.70)':'rgba(0,0,0,0.35)'}};"
+                  >{{ day.top }}</text
+                >
+                <text
+                  class="day"
+                  style="color:{{active(monthItem.year, monthItem.month, day.day)?'#ffffff':'#000000'}};"
+                  >{{ day.day }}</text
+                >
+                <text
+                  class="desc"
+                  style="color:{{active(monthItem.year, monthItem.month, day.day)?'rgba(255,255,255,0.70)':'rgba(0,0,0,0.35)'}};"
+                  >{{ day.bottom }}</text
+                >
+              </div>
+            </div>
+          </list-item>
+        </list>
+      </div>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    type: {
+      default: 'list', // list default
+    },
+    range: {
+      default: ['2020-10', '2021-10'],
+    },
+    description: {
+      default: [],
+    },
+  },
+  data() {
+    return {
+      calendar: [],
+      current: '2020-10-20',
+    }
+  },
+  onInit() {
+    const { year, month, today } = this.getToday()
+    this.year = year
+    this.month = month
+    this.current = `${year}-${month}-${today}`
+    if (this.type === 'list') {
+      this.calendar = this.genCalendarData()
+    } else {
+      this.calendar = [this.calcCalendar(year, month)]
+    }
+  },
+  getToday() {
+    const date = new Date()
+    let year = date.getFullYear()
+    let month = date.getMonth() + 1
+    let today = date.getDate()
+    return { year, month, today }
+  },
+  genCalendarData() {
+    const calendar = []
+    const dataArray = this.getDateArray()
+    dataArray.forEach((item) => {
+      let date = item.split('-')
+      calendar.push(this.calcCalendar(~~date[0], ~~date[1]))
+    })
+    console.log(222, calendar)
+    return calendar
+  },
+  getDateArray() {
+    let d1 = this.range[0]
+    let d2 = this.range[1]
+    let dateArray = []
+    let s1 = d1.split('-')
+    let s2 = d2.split('-')
+    let mCount = 0
+    if (parseInt(s1[0]) < parseInt(s2[0])) {
+      mCount =
+        (parseInt(s2[0]) - parseInt(s1[0])) * 12 +
+        parseInt(s2[1]) -
+        parseInt(s1[1]) +
+        1
+    } else {
+      mCount = parseInt(s2[1]) - parseInt(s1[1]) + 1
+    }
+    if (mCount > 0) {
+      let startM = parseInt(s1[1])
+      let startY = parseInt(s1[0])
+      for (let i = 0; i < mCount; i++) {
+        if (startM < 12) {
+          dateArray[i] = startY + '-' + (startM > 9 ? startM : '0' + startM)
+          startM += 1
+        } else {
+          dateArray[i] = startY + '-' + (startM > 9 ? startM : '0' + startM)
+          startM = 1
+          startY += 1
+        }
+      }
+    }
+    return dateArray
+  },
+  calcCalendar(year, month) {
+    // 计算年月以及具体日历
+    let emptyGrids = this.getEmptyGrids(year, month)
+    let nextMonthGrids = this.getNextMonthGrids(year, month + 1)
+    let daysOfThisMonth = this.getDaysOfThisMonth(year, month)
+    // 把空格和具体日历合为一个数组
+    let allDays = [...emptyGrids, ...daysOfThisMonth, ...nextMonthGrids]
+    return {
+      year,
+      month,
+      allDays,
+    }
+  },
+  getMonthDays(year, month) {
+    return new Date(year, month, 0).getDate()
+  },
+  getWeekday(year, month, day) {
+    return new Date(year, month - 1, day).getDay()
+  },
+  getFirstDayOfMonth(year, month) {
+    return this.getWeekday(year, month, 1)
+  },
+  getEmptyGrids(year, month) {
+    // FirstDayOfMonth代表本月的第一天是星期几
+    const FirstDayOfMonth = this.getFirstDayOfMonth(year, month)
+    let emptyGrids = []
+    // 有空格的情况
+    if (FirstDayOfMonth > 0) {
+      for (let i = 0; i < FirstDayOfMonth; i++) {
+        emptyGrids.push({
+          num: '',
+          fullDate: 'x', //x是我自己定义的一个值，代表没有日期
+        })
+      }
+      // 将空格放入数组
+      return emptyGrids
+    } else {
+      // 否则返回一个新数组
+      return []
+    }
+  },
+  getNextMonthGrids(year, month) {
+    // FirstDayOfMonth代表本月的第一天是星期几
+    const FirstDayOfMonth = this.getFirstDayOfMonth(year, month)
+    let emptyGrids = []
+    // 有空格的情况
+    if (FirstDayOfMonth > 0) {
+      for (let i = 0; i < 7 - FirstDayOfMonth; i++) {
+        emptyGrids.push({
+          num: '',
+          fullDate: 'x', // x是我自己定义的一个值，代表没有日期
+        })
+      }
+      // 将空格放入数组
+      return emptyGrids
+    } else {
+      // 否则返回一个新数组
+      return []
+    }
+  },
+  getDaysOfThisMonth(year, month) {
+    let days = []
+    const AllDaysOfMonth = this.getMonthDays(year, month)
+    let fullMonth = month.toString().length === 1 ? `0${month}` : month
+    for (let i = 0; i < AllDaysOfMonth; i++) {
+      let day = i + 1,
+        fullDay = day
+      fullDay = fullDay.toString().length === 1 ? `0${day}` : fullDay
+      const fullDate = `${year}-${fullMonth}-${fullDay}`
+      let desc = {}
+      this.description.forEach((item) => {
+        if (item.date === fullDate) {
+          desc = item
+        }
+      })
+      days.push({
+        day,
+        fullDay,
+        fullDate,
+        ...desc,
+      })
+    }
+    // 返回每个月的具体日期
+    return days
+  },
+  touchItem(e) {
+    this.current = e.fullDate
+    console.log(e)
+    this.$emit('tap', e)
+  },
+  previous() {
+    const { year, month } = this.getPreMonth()
+    this.calendar = [this.calcCalendar(year, month)]
+  },
+  next() {
+    const { year, month } = this.getNextMonth()
+    this.calendar = [this.calcCalendar(year, month)]
+  },
+  getPreMonth() {
+    let year = this.year
+    let month = parseInt(this.month) - 1
+    if (month === 0) {
+      year = parseInt(year) - 1
+      month = 12
+    }
+    this.year = year
+    this.month = month
+    return { year, month }
+  },
+  getNextMonth() {
+    let year = this.year
+    let month = parseInt(this.month) + 1
+    if (month === 13) {
+      year = parseInt(year) + 1
+      month = 1
+    }
+    this.year = year
+    this.month = month
+    return { year, month }
+  },
+  active(year, month, day) {
+    const arr = this.current.split('-')
+    return ~~arr[0] === year && ~~arr[1] === month && ~~arr[2] === day
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common';
+.qaui-wrap {
+  align-self: center;
+  .calendar {
+    flex-direction: column;
+
+    .title {
+      justify-content: space-between;
+      height: 42px * @ratio;
+      margin: 12px * @ratio;
+      padding: 9px * @ratio;
+      .message {
+        text-align: center;
+        font-size: 16px * @ratio;
+        color: #000000;
+        font-weight: bold;
+      }
+    }
+    .weekday {
+      flex-direction: row;
+      justify-content: space-around;
+      padding: 10px * @ratio 12px * @ratio;
+      flex-shrink: 0;
+      text {
+        color: #b3b3b3;
+        font-size: 14px * @ratio;
+      }
+    }
+
+    .calendar-data {
+      padding: 0 12px * @ratio;
+      .outer-list {
+        height: 300px * @ratio;
+        flex-direction: column;
+        .list-item-wrap {
+          flex-direction: column;
+          margin-bottom: 12px * @ratio;
+        }
+        .date {
+          font-size: 16px * @ratio;
+          color: #000000;
+          font-weight: bold;
+          height: 42px * @ratio;
+          text-align: center;
+          width: 100%;
+        }
+
+        .inner-list {
+          flex-wrap: wrap;
+
+          .list-item {
+            border-radius: 6px * @ratio;
+            height: 48px * @ratio;
+            width: 48px * @ratio;
+            justify-content: space-between;
+            align-content: center;
+            flex-grow: 1;
+            flex-direction: column;
+            align-items: center;
+            padding: 3px * @ratio 2px * @ratio;
+            .day {
+              font-size: 14px * @ratio;
+              color: #000000;
+            }
+            .desc {
+              font-size: 10px * @ratio;
+              text-align: center;
+              lines: 1;
+            }
+          }
+        }
+      }
+      .list-height {
+        height: 100%;
+      }
+    }
+  }
+}
+</style>

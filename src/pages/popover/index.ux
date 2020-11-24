@@ -1,0 +1,247 @@
+<import name="q-popover" src="../../components/popover/index"></import>
+<template>
+  <div class="wrap">
+    <div class="header">
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[0] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">topLeft</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[1] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">top</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[2] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">topRight</text>
+      </q-popover>
+    </div>
+    <div class="body">
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[3] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">leftTop</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[4] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">left</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[5] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">leftBottom</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[6] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">rightTop</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[7] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">right</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[8] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">rightBottom</text>
+      </q-popover>
+    </div>
+    <div class="footer">
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[9] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">bottomLeft</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[10] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">bottom</text>
+      </q-popover>
+      <q-popover
+        contents="{{ contents }}"
+        placement="{{ placementArr[11] }}"
+        popover-width="{{ popoverWidth }}"
+        trigger-size="{{ triggerSize }}"
+        offset="{{ offset }}"
+        arrow-space="{{ arrowSpace }}"
+        onmenu-item-tap="handleClick"
+      >
+        <text slot="trigger" class="rootText">bottomRight</text>
+      </q-popover>
+    </div>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      contents: [
+        {
+          content: '描述内容',
+          iconPath: '/common/images/default_black.png',
+        },
+        {
+          content: '描述内容',
+          icon: {
+            type: 'category-fill',
+            color: '#456FFF',
+          },
+        },
+        {
+          content: '描述内容',
+        },
+      ],
+      placementArr: [
+        'topLeft',
+        'top',
+        'topRight',
+        'leftTop',
+        'left',
+        'leftBottom',
+        'rightTop',
+        'right',
+        'rightBottom',
+        'bottomLeft',
+        'bottom',
+        'bottomRight',
+      ],
+      popoverWidth: 95,
+      triggerSize: [84, 33],
+      offset: [0, 0],
+      arrowSpace: 10,
+    }
+  },
+  handleClick(data) {
+    const { event, index } = data.detail
+    console.log(event)
+    console.log(index)
+  },
+}
+</script>
+
+<style lang="less">
+.wrap {
+  background-color: #e1e1e1;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  padding: 130px 0;
+
+  .header {
+    width: 100%;
+    padding: 0 20px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  .body {
+    width: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex: 1;
+  }
+
+  .footer {
+    width: 100%;
+    padding: 0 20px;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+
+  &-select {
+    width: 95px;
+    height: 33px;
+    margin: 50px 0 200px;
+    font-size: 14px;
+    background-color: #ffffff;
+
+    &-item {
+      margin: 5px 0;
+      font-size: 14px;
+    }
+  }
+
+  .rootText {
+    width: 84px;
+    height: 33px;
+    border-radius: 6px;
+    font-size: 13px;
+    color: rgba(0, 0, 0, 0.8);
+    text-align: center;
+    line-height: 33px;
+    background-color: #ffffff;
+  }
+}
+</style>

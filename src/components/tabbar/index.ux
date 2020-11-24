@@ -1,0 +1,130 @@
+<import name="my-icon" src="../../components/icon/index"></import>
+<template>
+  <div class="{{ data.length>0?'qaui-wrap':'' }}">
+    <tabs
+      if="{{ data.length > 0 }}"
+      index="{{ currentIndex }}"
+      onchange="changeTap"
+    >
+      <tab-content class="tab-content">
+        <slot></slot>
+      </tab-content>
+      <tab-bar class="tabs" style="{{ tabbarStyle }}">
+        <div class="tabbar" for="{{ tab in data }}">
+          <my-icon
+            type="{{ tab.icon }}"
+            if="{{ tab.icon }}"
+            size="{{ iconSize }}"
+            color="{{ $idx===currentIndex?activeColor:textColor }}"
+          ></my-icon>
+          <image
+            else
+            src="{{ $idx===currentIndex?tab.selectedIconPath:tab.iconPath }}"
+          ></image>
+          <text style="color:{{ $idx===currentIndex?activeColor:textColor }}">{{
+            tab.text
+          }}</text>
+        </div>
+      </tab-bar>
+    </tabs>
+    <div class="shadow"></div>
+  </div>
+</template>
+
+<script>
+export default {
+  props: {
+    data: {
+      type: Array,
+      default() {
+        return []
+      },
+    },
+    index: {
+      type: Number,
+      default: 0,
+    },
+    background: {
+      type: String,
+      default: '#000',
+    },
+    textColor: {
+      type: String,
+      default: '#B2B2B2',
+    },
+    activeColor: {
+      type: String,
+      default: '#456FFF',
+    },
+    iconSize: {
+      type: Number,
+      default: 22,
+    },
+  },
+  data() {
+    return {
+      currentIndex: this.index,
+    }
+  },
+  computed: {
+    tabbarStyle() {
+      return {
+        backgroundColor: this.background,
+      }
+    },
+  },
+  changeTap(e) {
+    this.currentIndex = e.index
+    this.$emit('tap', {
+      index: e.index,
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+
+.qaui-wrap {
+  height: 100%;
+  padding-bottom: 62px * @ratio;
+}
+
+.tab-content {
+  position: fixed;
+  top: 0;
+  bottom: 62px * @ratio;
+  width: 100%;
+}
+.shadow {
+  position: fixed;
+  bottom: 62px * @ratio;
+  height: 1px * @ratio;
+  width: 100%;
+  background: linear-gradient(rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.09));
+}
+
+.tabs {
+  position: fixed;
+  bottom: 0;
+  height: 62px * @ratio;
+  width: 100%;
+}
+
+.tabbar {
+  flex: 1;
+  height: 62px * @ratio;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  image {
+    width: 20px * @ratio;
+    height: 20px * @ratio;
+  }
+
+  text {
+    font-size: 10px * @ratio;
+  }
+}
+</style>

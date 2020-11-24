@@ -1,0 +1,212 @@
+<template>
+  <div class="qaui-wrap">
+    <div class="qaui-wrap-nav">
+      <block for="{{ compIndex }}">
+        <div
+          class="qaui-wrap-nav-item {{ currentIndex===$idx?'active ':'' }}"
+          style="{{ currentIndex===$idx? `background-color:${ activeBackground }`:'background-color:rgba(0,0,0,0)' }}"
+          @click="handleScroll($idx, $item)"
+        >
+          <text
+            class="nav-item {{ currentIndex===$idx?'active-text':'' }}"
+            style="{{ currentIndex===$idx? `color:${ activeColor }`:'color:#333' }}"
+            >{{ $item }}</text
+          >
+        </div>
+      </block>
+    </div>
+    <div class="qaui-wrap-indicator" style="{{ }}" if="{{ isShow }}">
+      <div>
+        <text>{{ currentLetterName }}</text>
+      </div>
+    </div>
+    <list id="{{ id }}">
+      <block for="{{ data }}">
+        <list-item
+          type="alphabet-item"
+          class="qaui-wrap-group"
+          @disappear="handlerDisappear($idx)"
+          @appear="handlerAppear($idx)"
+        >
+          <text class="qaui-wrap-group-index">{{ $item.index }}</text>
+          <div class="qaui-wrap-group-child">
+            <block for="{{ $item.child }}">
+              <text
+                class="qaui-wrap-group-child-text"
+                @click="handleClick($item)"
+                >{{ $item.text }}</text
+              >
+            </block>
+          </div>
+        </list-item>
+      </block>
+    </list>
+  </div>
+</template>
+<script>
+import vibrator from '@system.vibrator'
+export default {
+  props: {
+    id: {},
+    data: {},
+    activeColor: {
+      type: String,
+      default: '#fff',
+    },
+    activeBackground: {
+      type: String,
+      default: '#456FFF',
+    },
+    isShake: {
+      type: Boolean,
+      default: true,
+    },
+  },
+
+  data() {
+    return {
+      compIndex: [], //存储字母
+      currentIndex: 0,
+      currentLetterName: '', //当前字母
+      isShow: true,
+    }
+  },
+  onInit() {
+    var arr = []
+    this.data.forEach((item) => {
+      arr.push(item.index)
+    })
+    this.compIndex = arr
+    this.currentLetterName = arr[0]
+  },
+
+  handleClick(item) {
+    this.$dispatch('itemtap', {
+      obj: item,
+    })
+  },
+
+  handleScroll(index, item) {
+    this.currentIndex = index
+    this.currentLetterName = item
+    this.$element(this.id).scrollTo({ index: index })
+    this.LetterShow()
+
+    if (this.isShake) {
+      vibrator.vibrate({
+        mode: 'short',
+      })
+    }
+  },
+
+  LetterShow() {
+    if (this.timer) {
+      clearTimeout(this.timer)
+      this.timer = null
+    }
+    this.isShow = true
+    this.timer = setTimeout(() => {
+      this.isShow = false
+    }, 3000)
+  },
+
+  handlerDisappear(index) {
+    if (this.currentIndex === index) {
+      this.currentIndex = index + 1
+      this.currentLetterName = this.compIndex[this.currentIndex]
+      this.LetterShow()
+    }
+  },
+
+  handlerAppear(index) {
+    if (index < this.currentIndex) {
+      this.currentIndex = index
+      this.currentLetterName = this.compIndex[this.currentIndex]
+      this.LetterShow()
+    }
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+.qaui-wrap {
+  position: relative;
+  &-group {
+    flex-direction: column;
+
+    &-index {
+      padding-left: 33px * @ratio;
+      font-weight: bold;
+      line-height: 10px * 2.5;
+      border-color: #cccccc;
+      background-color: #f8f9fb;
+      border-bottom-width: 0.5px * @ratio;
+      font-size: 12px * @ratio;
+    }
+    &-child {
+      flex-direction: column;
+      &-text {
+        padding-left: 33px * @ratio;
+        background-color: #ffffff;
+        line-height: 16px * 2.5;
+        border-color: #ccc;
+        border-bottom-width: 0.5px * @ratio;
+        font-size: 12px * @ratio;
+      }
+    }
+  }
+  &-nav {
+    position: fixed;
+    top: 120px * @ratio;
+    right: 6px * @ratio;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    &-item {
+      align-items: center;
+      justify-content: center;
+      text {
+        font-size: 12px * @ratio;
+        position: relative;
+        top: -1px * @ratio;
+      }
+    }
+
+    .active {
+      width: 16px * @ratio;
+      height: 16px * @ratio;
+      background-color: #2878ff;
+      border-radius: 50%;
+    }
+
+    .nav-item {
+      color: #333333;
+    }
+
+    .active-text {
+      color: #fff;
+    }
+  }
+
+  &-indicator {
+    width: 50px * @ratio;
+    height: 50px * @ratio;
+    position: fixed;
+    top: 103px * @ratio;
+    left: 269px * @ratio;
+    background-color: #d8d8d8;
+    border-radius: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text {
+      position: relative;
+      top: -1px * @ratio;
+      color: #ffffff;
+      font-size: 30px * @ratio;
+      font-weight: bold;
+    }
+  }
+}
+</style>

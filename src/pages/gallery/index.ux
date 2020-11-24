@@ -1,0 +1,82 @@
+<import name="q-gallery" src="../../components/gallery/index"></import>
+
+<template>
+  <div style="flex-direction: column">
+    <q-gallery title="标题文字" srcs="{{ data1 }}"></q-gallery>
+    <q-gallery title="标题文字" srcs="{{ data2 }}"></q-gallery>
+    <q-gallery title="标题文字" srcs="{{ data3 }}"></q-gallery>
+    <q-gallery title="标题文字" srcs="{{ data4 }}"></q-gallery>
+    <q-gallery
+      title="标题文字"
+      srcs="{{ data5 }}"
+      onimage-preview-success="onImagePreviewSuccess"
+    ></q-gallery>
+    <q-gallery
+      title="视频文件"
+      video-orientation="landscape"
+      video-url="https://swsdl.vivo.com.cn/appstore/developer/uploadfile/20180323/20180323183010837.mp4"
+      onvideo-tap="clickItem"
+      onvideo-appear="videoAppear"
+      poster-url="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png"
+    ></q-gallery>
+  </div>
+</template>
+
+<script>
+import prompt from '@system.prompt'
+
+export default {
+  data() {
+    return {
+      data1: [
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+      ],
+      data2: [
+        'https://developer.huawei.com/images/quickApp-ide/banner_320-484.png',
+      ],
+      data3: [
+        'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=134518335,1751359104&fm=26&gp=0.jpg',
+      ],
+      data4: [
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+      ],
+      data5: [
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1603277817178&di=93757526f827b5ee7bdbcc033a29487b&imgtype=0&src=http%3A%2F%2Fwww.huaxia.com%2Fxw%2Fshgj%2Fimages%2F2018%2F06%2F12%2F2009996.png',
+        'https://imagestbook.cn/c9162600-17a7-11e9-8302-0d1daa9ceb5b',
+      ],
+    }
+  },
+
+  clickItem() {
+    prompt.showToast({
+      message: 'click video',
+    })
+  },
+  onImagePreviewSuccess() {
+    console.log('图片预览成功')
+  },
+  videoAppear() {
+    prompt.showToast({
+      message: '视频出现了',
+    })
+  },
+}
+</script>

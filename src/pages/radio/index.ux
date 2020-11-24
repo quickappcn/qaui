@@ -4,7 +4,12 @@
   <div class="qaui-wrap">
     <text class="title">default样式</text>
     <q-radio-group id="myGroup1" current="{{current}}" onchange="handleChange">
-      <q-radio group="myGroup1" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
+      <q-radio
+        group="myGroup1"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
     <text class="title">list样式</text>
     <q-radio-group id="myGroup2" current="{{current}}" onchange="handleChange">
@@ -19,7 +24,13 @@
     </q-radio-group>
     <text class="title">dot样式</text>
     <q-radio-group id="myGroup3" current="{{current}}" onchange="handleChange">
-      <q-radio group="myGroup3" type="dot" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
+      <q-radio
+        group="myGroup3"
+        type="dot"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
   </div>
 </template>

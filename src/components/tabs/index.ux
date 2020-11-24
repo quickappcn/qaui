@@ -1,0 +1,216 @@
+<template>
+  <tabs index="{{ currentIndex }}" onchange="ChangeTap">
+    <tab-bar class="tab-bar" mode="{{ mode }}">
+      <block for="{{ compData }}">
+        <div class="tab-item" style="{{ compItemWidth }}">
+          <div
+            class="tab-item-{{ type }} {{ activeStyle($idx) }}"
+            style="{{ activeBg($idx) }}"
+          >
+            <text
+              class="tab-item-{{ type }} {{ activeStyle($idx) }}"
+              style="{{ $item.textStyle }}"
+              >{{ $item.text }}</text
+            >
+          </div>
+          <div if="{{ type === 'desc' }}">
+            <div
+              class="item-desc {{ $idx === currentIndex ? 'item-desc-active' : '' }}"
+              style="{{ descStyle($idx) }}"
+            >
+              <text style="{{ descTextStyle($idx) }}">{{ $item.desc }}</text>
+            </div>
+          </div>
+          <div
+            if="{{ type === 'default' }}"
+            class="tab-item-bottom"
+            style="{{ $item.bottomStyle }}"
+          ></div>
+        </div>
+      </block>
+    </tab-bar>
+    <tab-content>
+      <slot></slot>
+    </tab-content>
+  </tabs>
+</template>
+
+<script>
+export default {
+  props: {
+    index: {
+      type: String,
+      default: '0',
+    },
+    data: {
+      type: Array,
+      default() {
+        return []
+      },
+      required: true,
+    },
+    type: {
+      type: String,
+      default: 'default', //default capsule desc
+    },
+    background: {
+      type: String,
+      default: '',
+    },
+    activeBackground: {
+      type: String,
+      default: '#FFF',
+    },
+    activeColor: {
+      default: '#456FFF',
+    },
+  },
+  data() {
+    return {
+      currentIndex: this.index,
+    }
+  },
+  computed: {
+    tabsLength() {
+      return this.data.length
+    },
+    mode() {
+      let mode = 'fixed'
+
+      if (this.type !== 'default') {
+        mode = this.tabsLength > 3 ? 'scrollable' : mode
+      } else {
+        mode = this.tabsLength > 4 ? 'scrollable' : mode
+      }
+
+      return mode
+    },
+    compItemWidth() {
+      let width = ''
+
+      if (this.tabsLength < 4) {
+        width = (1 / this.tabsLength) * 100 + '%'
+      } else {
+        width = this.type === 'capsule' ? '106px' : '80px'
+      }
+      return { width }
+    },
+    compData() {
+      let arr = []
+      for (let i = 0; i < this.data.length; i++) {
+        let item = {
+          text: this.data[i].label,
+          desc: this.data[i].describe,
+          textStyle:
+            i === this.currentIndex
+              ? 'color: ' + this.activeColor + ';'
+              : 'color: ' + this.typeDefaultColor() + ';',
+          bottomStyle:
+            i === this.currentIndex
+              ? 'background-color: ' + this.activeColor + ';'
+              : 'background-color: transparent;',
+        }
+        arr.push(item)
+      }
+      return arr
+    },
+  },
+  activeStyle(idx) {
+    return idx === this.currentIndex ? 'tab-item-' + this.type + '-active' : ''
+  },
+  activeBg(idx) {
+    let background = ''
+    if (this.type !== 'desc' && idx === this.currentIndex) {
+      background = this.activeBackground
+    } else {
+      background = this.background
+    }
+
+    return 'background-color:' + background
+  },
+  typeDefaultColor() {
+    return this.type === 'capsule' ? '#fff' : '#b3b3b3'
+  },
+  descStyle(idx) {
+    let background = '#fff'
+    background = idx === this.currentIndex ? this.activeBackground : background
+    return 'background-color:' + background
+  },
+  descTextStyle(idx) {
+    let color = '#fff'
+    color = idx === this.currentIndex ? color : this.typeDefaultColor()
+    return 'color:' + color
+  },
+  ChangeTap(evt) {
+    this.currentIndex = evt.index
+    this.$emit('tap', {
+      index: this.currentIndex,
+    })
+  },
+}
+</script>
+
+<style lang="less">
+@import '../common.less';
+.qaui-wrap {
+  flex-direction: column;
+  height: 100%;
+}
+
+.tab-bar {
+  height: 47px * @ratio;
+  border-color: #f2f2f2;
+  border-bottom-width: 1px * @ratio;
+  padding: 0 20px * @ratio;
+}
+
+.tab-item {
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  /* background-color: red; */
+  &-capsule {
+    width: 80px * @ratio;
+    height: 24px * @ratio;
+    border-radius: 14px * @ratio;
+    font-size: 14px * @ratio;
+    text-align: center;
+  }
+
+  &-default {
+    font-size: 14px * @ratio;
+    line-height: 48px * @ratio;
+    &-active {
+      font-size: 14px * @ratio;
+      font-weight: bold;
+    }
+  }
+  &-bottom {
+    position: absolute;
+    bottom: 0px;
+    height: 2px * @ratio;
+    width: 24px * @ratio;
+    border-radius: 2px * @ratio;
+  }
+
+  &-desc {
+    font-size: 14px * @ratio;
+    color: #b3b3b3;
+  }
+
+  .item-desc {
+    flex-direction: column;
+    align-items: center;
+    text {
+      color: #b3b3b3;
+      font-size: 10px * @ratio;
+    }
+    &-active {
+      width: 52px * @ratio;
+      height: 14px * @ratio;
+      border-radius: 7px * @ratio;
+    }
+  }
+}
+</style>
