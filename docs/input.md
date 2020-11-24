@@ -89,7 +89,7 @@ export default {
 
 | 属性        | 类型    | 默认值     | 说明                                            |
 | ----------- | ------- | ---------- | ----------------------------------------------- |
-| type        | String  | 'default'  | 输入框样式类型，可选值有 default, border        |
+| type        | String  | 'default'  | 输入框样式类型，可选值有 'default', 'border'    |
 | title       | String  | ''         | 输入框名称                                      |
 | value       | String  | ''         | 输入框默认值                                    |
 | focus       | Boolean | false      | 输入框是否默认获得焦点                          |
@@ -98,7 +98,7 @@ export default {
 | button      | String  | ''         | 输入框右边文字按钮文字，限两个字                |
 | iconLeft    | String  | ''         | 输入框左边图标按钮路径                          |
 | iconRightA  | String  | ''         | 输入框右边 A 图标按钮路径                       |
-| iconRightA  | String  | ''         | 输入框右边 B 图标按钮路径，当有文字按钮时不显示 |
+| iconRightB  | String  | ''         | 输入框右边 B 图标按钮路径，当有文字按钮时不显示 |
 
 #### 组件事件
 
