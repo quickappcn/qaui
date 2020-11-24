@@ -25,12 +25,12 @@
         type="text"
         enterkeytype="search"
         value="{{inputValue}}"
-        onchange="bindChange"
-        onfocus="bindFocus"
-        onblur="bindBlur"
         maxlength="{{maxlength}}"
         placeholder="{{placeholder}}"
         onenterkeyclick="enterEvent"
+        onchange="bindChange"
+        onfocus="bindFocus"
+        onblur="bindBlur"
       />
       <image
         class="icon icon-clear"
@@ -138,7 +138,7 @@ export default {
     height: 24px * @ratio;
     width: 24px * @ratio;
     align-self: center;
-    padding: 2px * @ratio;
+    margin: 2px * @ratio;
   }
   .left-icon image {
     margin-right: 10px * @ratio;
