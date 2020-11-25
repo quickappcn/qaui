@@ -278,6 +278,14 @@ export default {
         flex-direction: column;
       }
 
+      &-textWarp {
+        align-items: center;
+        justify-content: center;
+        width: 16px * @ratio;
+        height: 16px * @ratio;
+        border-radius: 10px * @ratio;
+      }
+
       &-row {
         align-items: center;
         justify-content: center;
