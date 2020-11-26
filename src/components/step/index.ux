@@ -125,7 +125,6 @@ export default {
     this.errorColor = errorColor
     this.finishedColor = finishedColor
     this.hasIcon = hasIcon
-    console.log(this.hasIcon)
     this.isColumn = direction === 'column' ? true : false
     if (index < current) {
       this.myStatus = 'finished'

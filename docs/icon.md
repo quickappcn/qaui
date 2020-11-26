@@ -4,10 +4,6 @@
 
 用于各类业务逻辑场景的基础组件。
 
-### 使用效果
-
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
-
 ### 图标列表
 
 <icon/>

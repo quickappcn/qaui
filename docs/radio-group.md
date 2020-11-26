@@ -6,14 +6,17 @@
 
 ### 使用效果
 
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
+<div style="text-align: center;margin: 40px;"><img src="./assets/radio.jpg" alt="barcode" style="width:300px" /></div>
 
 ### 使用方法
 
 在`.ux`文件中引入组件
 
 ```html
-<import name="q-radio-group" src="qaui/src/components/radio-group/index"></import>
+<import
+  name="q-radio-group"
+  src="qaui/src/components/radio-group/index"
+></import>
 ```
 
 ### 示例
@@ -23,7 +26,12 @@
   <div class="qaui-wrap">
     <text class="title">default样式</text>
     <q-radio-group id="myGroup1" current="{{current}}" onchange="handleChange">
-      <q-radio group="myGroup1" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
+      <q-radio
+        group="myGroup1"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
     <text class="title">list样式</text>
     <q-radio-group id="myGroup2" current="{{current}}" onchange="handleChange">
@@ -37,7 +45,13 @@
     </q-radio-group>
     <text class="title">dot样式</text>
     <q-radio-group id="myGroup3" current="{{current}}" onchange="handleChange">
-      <q-radio group="myGroup3" type="dot" for="{{list}}" value="{{$item.value}}" checked="{{$item.checked}}"></q-radio>
+      <q-radio
+        group="myGroup3"
+        type="dot"
+        for="{{list}}"
+        value="{{$item.value}}"
+        checked="{{$item.checked}}"
+      ></q-radio>
     </q-radio-group>
   </div>
 </template>
@@ -50,25 +64,25 @@ export default {
       list: [
         {
           id: 1,
-          value: "单选项1",
+          value: '单选项1',
         },
         {
           id: 2,
-          value: "单选项2",
+          value: '单选项2',
           checked: true,
         },
         {
           id: 3,
-          value: "单选项3",
+          value: '单选项3',
         },
       ],
-      current: "单选项2",
-    };
+      current: '单选项2',
+    }
   },
   handleChange({ detail }) {
-    this.current = detail.value;
+    this.current = detail.value
   },
-};
+}
 ```
 
 ```less
