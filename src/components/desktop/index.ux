@@ -3,16 +3,12 @@
   <div class="qaui-wrap">
     <div class="qaui-wrap-layer" if="{{ isShow }}">
       <div class="qaui-wrap-layer-close" onclick="handClose">
-        <my-icon
-          type="close"
-          size="16"
-          color="rgba(255,255,255,0.80)"
-        ></my-icon>
+        <image src="../../common/images/desktop_close.png"></image>
       </div>
       <div class="qaui-wrap-layer-icon">
         <my-icon
           type="{{ icon }}"
-          size="16"
+          size="24"
           color="rgba(255,255,255,0.80)"
         ></my-icon>
       </div>
@@ -106,20 +102,21 @@ export default {
     background-color: rgba(0, 0, 0, 0.68);
     flex-direction: row;
     align-items: center;
-    padding: 0 12px * @ratio 0 8px * @ratio;
 
     &-close {
       &:extend(.common);
-      background-color: rgba(255, 255, 255, 0.05);
-      padding: 7px * @ratio;
+      margin-left: 8px * @ratio;
+      image {
+        width: 24px * @ratio;
+        height: 24px * @ratio;
+      }
     }
     &-icon {
       &:extend(.common);
-      background-color: rgba(255, 255, 255, 0.05);
       border-radius: 6px * @ratio;
     }
     &-desc {
-      &:extend(.common);
+      margin-right: 8px * @ratio;
       width: 178px * @ratio;
 
       text {
@@ -131,7 +128,10 @@ export default {
     }
 
     &-button {
-      &:extend(.common);
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      height: 24px * @ratio;
       width: 66px * @ratio;
       border-radius: 5px * @ratio;
       background-color: #456fff;
