@@ -2,9 +2,12 @@
   <tabs index="{{ currentIndex }}" onchange="ChangeTap">
     <tab-bar class="tab-bar" mode="{{ mode }}">
       <block for="{{ compData }}">
-        <div class="tab-item" style="{{ compItemWidth }}">
+        <div
+          class="tab-item {{$idx==0?'left-padding':''}} {{$idx==compData.length-1?'right-padding':''}}"
+          style="{{ compItemWidth }}"
+        >
           <div
-            class="tab-item-{{ type }} {{ activeStyle($idx) }}"
+            class="tab-item-{{ type }} {{ activeStyle($idx) }} tab-flag"
             style="{{ activeBg($idx) }}"
           >
             <text
@@ -12,6 +15,11 @@
               style="{{ $item.textStyle }}"
               >{{ $item.text }}</text
             >
+            <div
+              if="{{ type === 'default' }}"
+              class="tab-item-default-bottom"
+              style="{{ $item.bottomStyle }}"
+            ></div>
           </div>
           <div if="{{ type === 'desc' }}">
             <div
@@ -21,11 +29,6 @@
               <text style="{{ descTextStyle($idx) }}">{{ $item.desc }}</text>
             </div>
           </div>
-          <div
-            if="{{ type === 'default' }}"
-            class="tab-item-bottom"
-            style="{{ $item.bottomStyle }}"
-          ></div>
         </div>
       </block>
     </tab-bar>
@@ -76,18 +79,15 @@ export default {
     },
     mode() {
       let mode = 'fixed'
-
-      if (this.type !== 'default') {
-        mode = this.tabsLength > 3 ? 'scrollable' : mode
-      } else {
+      if (this.type === 'default' || this.type === 'desc') {
         mode = this.tabsLength > 4 ? 'scrollable' : mode
+      } else {
+        mode = this.tabsLength > 3 ? 'scrollable' : mode
       }
-
       return mode
     },
     compItemWidth() {
       let width = ''
-
       if (this.tabsLength < 4) {
         width = (1 / this.tabsLength) * 100 + '%'
       } else {
@@ -156,20 +156,31 @@ export default {
   flex-direction: column;
   height: 100%;
 }
+.white-column {
+  width: 20px * @ratio;
+  height: 48px * @ratio;
+}
+
+.left-padding {
+  padding-left: 20px * @ratio;
+}
+
+.right-padding {
+  padding-right: 20px * @ratio;
+}
 
 .tab-bar {
   height: 47px * @ratio;
   border-color: #f2f2f2;
   border-bottom-width: 1px * @ratio;
-  padding: 0 20px * @ratio;
+  flex-direction: column;
+  align-items: center;
 }
 
 .tab-item {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  position: relative;
-  /* background-color: red; */
   &-capsule {
     width: 80px * @ratio;
     height: 24px * @ratio;
@@ -181,17 +192,20 @@ export default {
   &-default {
     font-size: 14px * @ratio;
     line-height: 48px * @ratio;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    &-bottom {
+      position: absolute;
+      bottom: 0px;
+      height: 2px * @ratio;
+      width: 24px * @ratio;
+      border-radius: 2px * @ratio;
+    }
     &-active {
       font-size: 14px * @ratio;
       font-weight: bold;
     }
-  }
-  &-bottom {
-    position: absolute;
-    bottom: 0px;
-    height: 2px * @ratio;
-    width: 24px * @ratio;
-    border-radius: 2px * @ratio;
   }
 
   &-desc {
