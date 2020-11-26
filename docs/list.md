@@ -4,6 +4,10 @@
 
 以列表的形式展示文字、图片、段落
 
+### 使用效果
+
+<preview url="https://editor.quickapp.cn/preview/2011/sL/2011sL1yEg08/build/pages/list/"/>
+
 ### 使用方法
 
 在`.ux`文件中引入组件

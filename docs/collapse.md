@@ -4,6 +4,10 @@
 
 对复杂区域进行展开和隐藏，其中‘手风琴’是一种特殊的折叠面板，只允许单个内容区域展开
 
+### 使用效果
+
+<preview url="https://editor.quickapp.cn/preview/2011/sL/2011sL1yEg08/build/pages/collapse-group/"/>
+
 ### 使用方法
 
 在`.ux`文件中引入组件
