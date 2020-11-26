@@ -13,6 +13,7 @@
 在`.ux`文件中引入组件
 
 ```html
+<import name="q-tabbar" src="qaui/src/components/tabbar/index"></import>
 <import name="q-tabs" src="qaui/src/components/tabs/index"></import>
 ```
 
@@ -21,57 +22,194 @@
 ```html
 <template>
   <div class="qaui-wrap">
-    <q-tabs
-      index="0"
-      type="default"
-      data="{{ data }}"
-      active-color="#456fff"
-      background="#FFF"
-      active-background="#FFF"
-      ontap="tap"
+    <q-tabbar
+      index="{{ index }}"
+      background="{{ background }}"
+      text-color="{{ textColor }}"
+      active-color="{{ activeColor }}"
+      data="{{ tabbarData }}"
+      icon-size="{{ iconSize }}"
+      ontap="changeTabbar"
     >
-      <block for="{{ data }}">
-        <div class="item-container">
-          <div class="item-content">
-            <text>标签{{ $idx + 1 }}内容</text>
-          </div>
-        </div>
-      </block>
-    </q-tabs>
-
-    <q-tabs
-      index="0"
-      type="capsule"
-      data="{{ data }}"
-      active-color="#fff"
-      background="#b3b3b3"
-      active-background="#456fff"
-      ontap="tap"
-    >
-      <block for="{{ data }}">
-        <div class="item-container">
-          <div class="item-content">
-            <text>标签{{ $idx + 1 }}内容</text>
-          </div>
-        </div>
-      </block>
-    </q-tabs>
-    <q-tabs
-      index="0"
-      type="desc"
-      data="{{ data }}"
-      active-color="#456fff"
-      active-background="#456fff"
-      ontap="tap"
-    >
-      <block for="{{ data }}">
-        <div class="item-container">
-          <div class="item-content">
-            <text>标签{{ $idx + 1 }}内容</text>
-          </div>
-        </div>
-      </block>
-    </q-tabs>
+      <div class="item-container">
+        <q-tabs
+          index="0"
+          type="default"
+          class="q-tabs"
+          data="{{ dataDefalut1 }}"
+          active-color="#456fff"
+          background="#FFF"
+          active-background="#FFF"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut1 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="default"
+          class="q-tabs"
+          data="{{ dataDefalut2 }}"
+          active-color="#456fff"
+          background="#FFF"
+          active-background="#FFF"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut2 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="default"
+          class="q-tabs"
+          data="{{ dataDefalut3 }}"
+          active-color="#456fff"
+          background="#FFF"
+          active-background="#FFF"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut3 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="default"
+          class="q-tabs"
+          data="{{ dataDefalut4 }}"
+          active-color="#456fff"
+          background="#FFF"
+          active-background="#FFF"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut4 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+      </div>
+      <div class="item-container">
+        <q-tabs
+          index="0"
+          type="capsule"
+          class="q-tabs"
+          data="{{ dataDefalut1 }}"
+          active-color="#fff"
+          background="#b3b3b3"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut1 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="capsule"
+          class="q-tabs"
+          data="{{ dataDefalut2 }}"
+          active-color="#fff"
+          background="#b3b3b3"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut2 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="capsule"
+          class="q-tabs"
+          data="{{ dataDefalut3 }}"
+          active-color="#fff"
+          background="#b3b3b3"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut3 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+      </div>
+      <div class="item-container">
+        <q-tabs
+          index="0"
+          type="desc"
+          class="q-tabs"
+          data="{{ dataDefalut1 }}"
+          active-color="#456fff"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut1 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="desc"
+          class="q-tabs"
+          data="{{ dataDefalut2 }}"
+          active-color="#456fff"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut2 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="desc"
+          class="q-tabs"
+          data="{{ dataDefalut3 }}"
+          active-color="#456fff"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut3 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+        <q-tabs
+          index="0"
+          type="desc"
+          class="q-tabs"
+          data="{{ dataDefalut4 }}"
+          active-color="#456fff"
+          active-background="#456fff"
+          ontap="tap"
+        >
+          <block for="{{ dataDefalut4 }}">
+            <div class="item-content">
+              <text>标签{{ $idx + 1 }}内容</text>
+            </div>
+          </block>
+        </q-tabs>
+      </div>
+    </q-tabbar>
   </div>
 </template>
 ```
@@ -80,18 +218,15 @@
 <style lang="less">
 .qaui-wrap {
   flex-direction: column;
-  height: 500px;
 }
 
 .item-container {
-  padding-top: 30px;
-  padding-left: 30px;
-  padding-right: 30px;
   flex-direction: column;
+  justify-content: flex-start;
+  height: 100px;
 }
 .item-content {
   flex-direction: column;
-  padding-bottom: 30px;
   text {
     color: red;
     font-size: 14px;
@@ -105,18 +240,58 @@
 export default {
   data() {
     return {
-      data: [
+      dataDefalut1: [
+        { label: '标签一', describe: '描述一' },
+        { label: '标签二', describe: '描述二' }],
+      dataDefalut2: [
+        { label: '标签一', describe: '描述一' },
+        { label: '标签二', describe: '描述二' },
+        { label: '标签三', describe: '描述三' }],
+      dataDefalut3: [
         { label: '标签一', describe: '描述一' },
         { label: '标签二', describe: '描述二' },
         { label: '标签三', describe: '描述三' },
+        { label: '标签四', describe: '描述四' }],
+      dataDefalut4: [
+        { label: '滑动标签', describe: '描述一' },
+        { label: '标签二', describe: '描述二' },
+        { label: '标签三', describe: '描述三' },
         { label: '标签四', describe: '描述四' },
-        { label: '标签五', describe: '描述五' },
+        { label: '标签五', describe: '描述五' }],
+      tabbarData: [
+        {
+          icon: 'homepage',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '普通标签',
+        },
+        {
+          icon: 'qrcode',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '胶囊标签',
+        },
+        {
+          icon: 'contact-fill',
+          iconPath: '../../common/images/tabIcon.svg',
+          selectedIconPath: '../../common/images/tabSelectIcon.svg',
+          text: '描述标签',
+        },
       ],
+      index: 0,
+      iconSize: 22,
+      background: '#fff',
+      activeColor: '#456FFF',
+      textColor: '#B2B2B2',
+
     }
   },
   tap(evt) {
     console.log(evt.detail)
   },
+  changeTabbar(evt) {
+    console.log('changeTabbar', evt.detail)
+  }
 }
 </script>
 ```
