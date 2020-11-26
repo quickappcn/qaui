@@ -4,6 +4,10 @@
 
 用于展示图片并可以点击预览
 
+### 使用效果
+
+<div style="text-align: center;margin: 40px;"><img src="./assets/gallery.gif" alt="barcode" style="width:300px" /></div>
+
 ### 使用方法
 
 在.ux 文件中引入组件

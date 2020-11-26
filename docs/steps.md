@@ -4,6 +4,10 @@
 
 显示任务的进度/引导用户完成某些操作
 
+### 使用效果
+
+<div style="text-align: center;margin: 40px;"><img src="./assets/steps.jpg" alt="barcode" style="width:300px" /></div>
+
 ### 使用方法
 
 在`.ux`文件中引入组件
