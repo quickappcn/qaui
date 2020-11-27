@@ -5,7 +5,7 @@
   >
     <div
       class="icon icon-{{type}} {{my_checked?'active':''}}"
-      style="background-color:{{my_checked&&type==='default'?'#456edf':''}};"
+      style="background-color:{{my_checked&&type==='default'?'#456fff':''}};"
     >
       <image
         if="my_checked"
