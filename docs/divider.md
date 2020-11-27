@@ -6,7 +6,7 @@
 
 ### 使用效果
 
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
+<preview url="https://editor.quickapp.cn/preview/2011/sL/2011sL1yEg08/build/pages/divider"/>
 
 ### 使用方法
 

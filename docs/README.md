@@ -4,6 +4,8 @@
 
 使用`浏览器`或者`快应用调试器`扫码快速预览组件库效果：
 
+<div style="text-align: center;margin: 40px;"><img src="./assets/qrcode.png" alt="barcode" style="width:300px" /></div>
+
 ### 使用组件库
 
 使用下面两种方式均可安装组件库到项目依赖中。

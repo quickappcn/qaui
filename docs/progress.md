@@ -6,6 +6,8 @@
 
 ### 使用效果
 
+<preview url="https://editor.quickapp.cn/preview/2011/sL/2011sL1yEg08/build/pages/progress/"/>
+
 ### 使用方法
 
 在`.ux`文件中引入组件
@@ -111,13 +113,13 @@ export default {
 
 #### 组件属性
 
-| 属性          | 类型     | 默认值                           | 说明                                              |
-| ------------- | -------- | -------------------------------- | ------------------------------------------------- |
-| percentage    | Number   | 50                               | 进度条百分比，可选值 0-100，可以为小数            |
-| progressWidth | String   | '100%'                           | 进度条组件的宽度(宽度包含文字的宽度，支持百分比和px) |
-| strokeHeight  | Number   | 2                                | 进度条的高度                                      |
-| isContentShow | Boolean  | false                            | 是否显示右侧文字                                  |
-| format        | Function | (percentage) => percentage + '%' | 右侧描述文字的模板函数                            |
-| contentStyle  | Object   | {}                               | 自定义右侧文字的样式                              |
-| strokeColor   | String   | '#456fff'                        | 进度条的颜色                                      |
-| trailColor    | String   | 'rgba(0, 0, 0, 0.12)'            | 未完成分段的颜色                                  |
+| 属性          | 类型     | 默认值                           | 说明                                                  |
+| ------------- | -------- | -------------------------------- | ----------------------------------------------------- |
+| percentage    | Number   | 50                               | 进度条百分比，可选值 0-100，可以为小数                |
+| progressWidth | String   | '100%'                           | 进度条组件的宽度(宽度包含文字的宽度，支持百分比和 px) |
+| strokeHeight  | Number   | 2                                | 进度条的高度                                          |
+| isContentShow | Boolean  | false                            | 是否显示右侧文字                                      |
+| format        | Function | (percentage) => percentage + '%' | 右侧描述文字的模板函数                                |
+| contentStyle  | Object   | {}                               | 自定义右侧文字的样式                                  |
+| strokeColor   | String   | '#456fff'                        | 进度条的颜色                                          |
+| trailColor    | String   | 'rgba(0, 0, 0, 0.12)'            | 未完成分段的颜色                                      |

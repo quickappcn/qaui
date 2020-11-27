@@ -6,7 +6,11 @@
 
 ### 使用效果
 
-<preview url=""/>
+<div style="text-align: center;margin: 40px;">
+    <img src="./assets/tabs-a.png" alt="tabs" style="width:300px" />
+    <img src="./assets/tabs-b.png" alt="tabs" style="width:300px" />
+    <img src="./assets/tabs-c.png" alt="tabs" style="width:300px" />
+</div>
 
 ### 使用方法
 

@@ -6,7 +6,10 @@
 
 ### 使用效果
 
-<preview url="https://editor.quickapp.cn/preview/2009/Yz/2009YzjNs0Tl/build/pages/button"/>
+<div style="text-align: center;margin: 40px;">
+    <img src="./assets/calendar-a.jpg" alt="barcode" style="width:300px" />
+    <img src="./assets/calendar-b.jpg" alt="barcode" style="width:300px" />
+</div>
 
 ### 使用方法
 
