@@ -6,6 +6,8 @@
 
 ### 使用效果
 
+<preview url="https://editor.quickapp.cn/preview/2011/sL/2011sL1yEg08/build/pages/desktop"/>
+
 ### 使用方法
 
 在`.ux`文件中引入组件

@@ -125,7 +125,6 @@ export default {
     this.errorColor = errorColor
     this.finishedColor = finishedColor
     this.hasIcon = hasIcon
-    console.log(this.hasIcon)
     this.isColumn = direction === 'column' ? true : false
     if (index < current) {
       this.myStatus = 'finished'
@@ -276,6 +275,14 @@ export default {
       &-column {
         align-items: center;
         flex-direction: column;
+      }
+
+      &-textWarp {
+        align-items: center;
+        justify-content: center;
+        width: 16px * @ratio;
+        height: 16px * @ratio;
+        border-radius: 10px * @ratio;
       }
 
       &-row {
