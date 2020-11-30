@@ -1,11 +1,12 @@
 module.exports = {
   title: 'QaUI',
+  base: '/qaui/',
   description: 'QaUI是联盟官方组件库',
   plugins: [
     [
       '@vuepress/google-analytics',
       {
-        ga: '',
+        ga: 'G-GNKRB7QBLL',
       },
     ],
     '@vuepress/back-to-top',
@@ -25,7 +26,7 @@ module.exports = {
     sidebarDepth: 0,
     nav: [
       { text: '快应用文档', link: 'https://doc.quickapp.cn' },
-      { text: 'GitHub', link: '' },
+      { text: 'GitHub', link: 'https://github.com/quickappcn/qaui' },
     ],
     sidebar: [
       '/',
