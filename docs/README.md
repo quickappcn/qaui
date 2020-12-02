@@ -21,6 +21,12 @@ yarn add qaui # 使用yarn
 npm install less less-loader --save-dev
 ```
 
+::: danger 强烈提示
+组件库 designWidth 基于 360 开发，为了适配不同的 designWidth，你需要修改文件`qaui/src/components/common.less`中的@ratio 变量。
+
+当前组件库默认@ratio 为 750/360，如果你的快应用 designWidth 为 360，则应该修改@ratio 为 360/360。
+:::
+
 ### 反馈交流
 
 你在使用组件库的过程中遇到任何问题，欢迎在`github`上给我们提 issue。

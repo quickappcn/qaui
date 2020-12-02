@@ -92,6 +92,7 @@
 | disabled | Boolean | false     | 按钮是否被禁用                                 |
 | bgColor  | String  | ''        | 按钮背景颜色                                   |
 | color    | String  | ''        | 按钮颜色（包括文字和边框）                     |
+| width    | Number  | ''        | 按钮宽度                                       |
 
 #### 组件事件
 
