@@ -10,7 +10,7 @@
       <image
         if="target"
         class="icon icon-arrow-right"
-        src="/common/images/arrow-right.svg"
+        src="../../common/images/arrow-right.svg"
       ></image>
     </div>
   </div>
