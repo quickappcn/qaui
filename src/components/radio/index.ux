@@ -8,9 +8,19 @@
       style="background-color:{{my_checked&&type==='default'?'#456fff':''}};"
     >
       <image
-        if="my_checked"
-        src="/common/images/radio-{{type}}.svg"
-        class="icon-{{type}}-check"
+        if="my_checked && type === 'default'"
+        src="../../common/images/radio-default.svg"
+        class="icon-default-check"
+      ></image>
+      <image
+        if="my_checked && type === 'list'"
+        src="../../common/images/radio-list.svg"
+        class="icon-list-check"
+      ></image>
+      <image
+        if="my_checked && type === 'dot'"
+        src=""
+        class="icon-dot-check"
       ></image>
     </div>
     <text class="value">{{ value }}</text>
@@ -104,21 +114,21 @@ export default {
       }
     }
   }
-  .qaui-list {
-    justify-content: space-between;
-    flex-direction: row-reverse;
-  }
-  .value {
-    font-size: 16px * @ratio;
-    color: #000000;
-    lines: 1;
-    text-overflow: ellipsis;
-  }
-  .active {
-    border-color: @primary-color;
-  }
-  .disabled {
-    opacity: 0.3;
-  }
+}
+.qaui-list {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+}
+.value {
+  font-size: 16px * @ratio;
+  color: #000000;
+  lines: 1;
+  text-overflow: ellipsis;
+}
+.active {
+  border-color: @primary-color;
+}
+.disabled {
+  opacity: 0.3;
 }
 </style>
