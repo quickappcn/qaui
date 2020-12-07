@@ -1,5 +1,7 @@
 <template>
-  <text class="font-icon" style="font-size: {{size}}px;color: {{color}};"
+  <text
+    class="font-icon"
+    style="font-size: {{size * ratio}}px;color: {{color}};"
     >{{ unescapeFontIconCode(iconMap[type]) }}
   </text>
 </template>
@@ -21,6 +23,7 @@ export default {
   data() {
     return {
       iconMap: icons,
+      ratio: 1,
     }
   },
   props: {
@@ -33,6 +36,10 @@ export default {
     color: {
       default: '',
     },
+  },
+  onInit() {
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    this.ratio = designWidth / 360
   },
   unescapeFontIconCode(iconCode = '') {
     let entity = '&#x' + iconCode
