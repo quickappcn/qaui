@@ -136,7 +136,7 @@ export default {
       border-radius: 5px * @ratio;
       background-color: #456fff;
       text {
-        font-size: 12px;
+        font-size: 12px * @ratio;
         color: #fff;
       }
     }
