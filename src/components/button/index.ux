@@ -1,6 +1,6 @@
 <template>
   <div class="qaui-wrap">
-    <stack style="width: {{width}}px;">
+    <stack style="width: {{myWidth}}px;">
       <div
         class="btn btn-{{size}} btn-{{type}} {{ loading ? 'btn-loading' : '' }}"
         style="{{!!bgColor ? `background-color: ${bgColor};` : ''}}{{!!color ? `border-color: ${color};` : ''}}"
@@ -56,6 +56,16 @@ export default {
     width: {
       default: '',
     },
+  },
+  data() {
+    return {
+      myWidth: '',
+    }
+  },
+  onInit() {
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    const ratio = designWidth / 360
+    this.myWidth = this.width !== '' ? ratio * this.width : ''
   },
   clickHandler(e) {
     this.$emit('tap', e)
