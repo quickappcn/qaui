@@ -6,7 +6,7 @@
     >
       <image
         if="my_checked"
-        src="/common/images/radio-default.svg"
+        src="../../common/images/radio-default.svg"
         class="icon-check"
       ></image>
     </div>
