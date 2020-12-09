@@ -15,7 +15,7 @@
         >
           <image
             class="qaui-popover-wrap-menu-arrow {{ arrowDirectionClass }}"
-            src="/common/images/arrow.png"
+            src="../../common/images/arrow.png"
           ></image>
         </div>
         <!-- 气泡菜单 -->
@@ -63,7 +63,7 @@
         >
           <image
             class="qaui-popover-wrap-menu-arrow {{ arrowDirectionClass }}"
-            src="/common/images/arrow.png"
+            src="../../common/images/arrow.png"
           ></image>
         </div>
       </div>
