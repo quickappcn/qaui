@@ -2,7 +2,47 @@
 <template>
   <div class="qaui-page-error">
     <div class="qaui-page-error-wrap">
-      <image class="qaui-page-error-wrap-image" src="{{ imagePath }}"></image>
+      <!--此处使用大量if判断实属无奈，因为打包工具对在node_module中的资源路径加载不支持-->
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'page_error'"
+        src="../../common/images/page_error.svg"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'network_anomaly'"
+        src="../../common/images/network_anomaly.png"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'version_too_low'"
+        src="../../common/images/version_too_low.svg"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'not_found'"
+        src="../../common/images/not_found.svg"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'quick_app_offline'"
+        src="../../common/images/quick_app_offline.svg"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'quick_app_not_online'"
+        src="../../common/images/quick_app_not_online.svg"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!image && type === 'certificate_expires'"
+        src="../../common/images/certificate_expires.svg"
+      ></image>
+      <image
+        class="qaui-page-error-wrap-image"
+        if="!!image"
+        src="{{ image }}"
+      ></image>
       <div class="qaui-page-error-wrap-content">
         <text class="qaui-page-error-wrap-content-text">{{ textContent }}</text>
       </div>
@@ -31,7 +71,6 @@
 export default {
   data() {
     return {
-      imagePath: '', //配图的路径
       textContent: '', //文字描述内容
     }
   },
@@ -70,10 +109,7 @@ export default {
   onInit() {
     //设置默认的配图和文字
     this.setDefaultAttributes(this.type)
-    //如果用户传了图片，就使用用户自定义的图片
-    if (this.image) {
-      this.imagePath = this.image
-    }
+
     //如果用户传了描述文字，就使用用户自定义的文字
     if (this.description) {
       this.textContent = this.description
@@ -83,31 +119,24 @@ export default {
   setDefaultAttributes(type) {
     switch (type) {
       case 'page_error':
-        this.imagePath = '/common/images/page_error.svg'
         this.textContent = '页面出错'
         break
       case 'network_anomaly':
-        this.imagePath = '/common/images/network_anomaly.png'
         this.textContent = '网络异常'
         break
       case 'version_too_low':
-        this.imagePath = '/common/images/version_too_low.svg'
         this.textContent = '版本过低'
         break
       case 'not_found':
-        this.imagePath = '/common/images/not_found.svg'
         this.textContent = '访问地址有误或不存在'
         break
       case 'quick_app_offline':
-        this.imagePath = '/common/images/quick_app_offline.svg'
         this.textContent = '快应用已下架'
         break
       case 'quick_app_not_online':
-        this.imagePath = '/common/images/quick_app_not_online.svg'
         this.textContent = '快应用暂未上架'
         break
       case 'certificate_expires':
-        this.imagePath = '/common/images/certificate_expires.svg'
         this.textContent = '证书已过期或无效'
         break
       default:
@@ -131,9 +160,6 @@ export default {
 <style lang="less">
 @import '../common';
 .qaui-page-error {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   flex-direction: column;
@@ -153,13 +179,13 @@ export default {
     &-content {
       width: 100%;
       margin: 15px * @ratio 20px * @ratio 0 20px * @ratio;
-      padding: 0 60px * @ratio;
 
       &-text {
         color: #999999;
         font-size: 14px * @ratio;
         line-height: 22px * @ratio;
         text-align: center;
+        width: 100%;
       }
     }
 
