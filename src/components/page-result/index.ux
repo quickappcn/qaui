@@ -127,9 +127,6 @@ export default {
 <style lang="less">
 @import '../common';
 .qaui-page-result {
-  position: absolute;
-  top: 0;
-  left: 0;
   width: 100%;
   height: 100%;
   flex-direction: column;
