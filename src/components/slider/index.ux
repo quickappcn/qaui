@@ -69,7 +69,9 @@ export default {
     this.dots.fill(1)
   },
   calcColor(index) {
-    return index * this.step >= this.my_value ? this.color : this.selectedColor
+    return index * this.step >= this.my_value - this.min
+      ? this.color
+      : this.selectedColor
   },
   changeHandler({ progress }) {
     this.my_value = progress
