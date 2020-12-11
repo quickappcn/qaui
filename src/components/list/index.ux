@@ -73,12 +73,11 @@ export default {
     text {
       font-size: 16px * @ratio;
       color: #000000;
-      line-height: 20px;
     }
   }
 
   &-content {
-    flex: 1;
+    height: 100%;
   }
 }
 </style>
