@@ -22,7 +22,7 @@
         if="{{!disabled}}"
         onclick="clickHandler"
         class="btn btn-touched btn-{{size}}"
-        style="{{!!width ? `width:${width}px;` : ''}}"
+        style="{{!!width ? `width:${myWidth}px;` : ''}}"
       ></div>
       <div
         if="{{disabled || loading}}"
