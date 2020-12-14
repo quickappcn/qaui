@@ -180,15 +180,15 @@ export default {
 
 ### steps 组件属性
 
-| 属性          | 类型    | 默认值       | 说明                                         |
-| ------------- | ------- | ------------ | -------------------------------------------- |
-| current       | Number  | 0            | 当前步骤，从 0 开始                          |
-| direction     | String  | 'horizontal' | 排列方式，可选值为 'vertical' \|'horizontal' |
-| id            | String  | ''           | ID，必填                                     |
-| hasText       | Boolean | false        | 步骤是否显示默认样式的数字                   |
-| hasIcon       | Boolean | false        | 步骤是否默认样式的 icon                      |
-| finishedColor | String  | \#456FFF     | 自定义的 finished 状态的颜色                 |
-| errorColor    | String  | \#F19E38     | 自定义的 error 状态的颜色                    |
+| 属性          | 类型    | 默认值   | 说明                                |
+| ------------- | ------- | -------- | ----------------------------------- |
+| current       | Number  | 0        | 当前步骤，从 0 开始                 |
+| direction     | String  | 'row'    | 排列方式，可选值为 'row' \|'column' |
+| id            | String  | ''       | ID，必填                            |
+| hasText       | Boolean | false    | 步骤是否显示默认样式的数字          |
+| hasIcon       | Boolean | false    | 步骤是否默认样式的 icon             |
+| finishedColor | String  | \#456FFF | 自定义的 finished 状态的颜色        |
+| errorColor    | String  | \#F19E38 | 自定义的 error 状态的颜色           |
 
 ### step 组件属性
 

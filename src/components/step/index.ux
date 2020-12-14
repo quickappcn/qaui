@@ -38,8 +38,13 @@
             ></q-icon>
           </div>
           <image
-            src="{{ imageSrc }}"
-            if="{{ hasIcon }}"
+            src="../../common/images/steps-finished.svg"
+            if="{{ hasIcon && myStatus === 'finished'}}"
+            class="qaui-step-main-hd-iconImage"
+          ></image>
+          <image
+            src="../../common/images/steps-error.svg"
+            if="{{ hasIcon && myStatus === 'error'}}"
             class="qaui-step-main-hd-iconImage"
           ></image>
         </div>
@@ -125,7 +130,7 @@ export default {
     this.errorColor = errorColor
     this.finishedColor = finishedColor
     this.hasIcon = hasIcon
-    this.isColumn = direction === 'column' ? true : false
+    this.isColumn = direction === 'column'
     if (index < current) {
       this.myStatus = 'finished'
     } else if (index === current) {
@@ -241,21 +246,14 @@ export default {
         if (this.direction === 'column') {
           lineClass = { borderRightColor: this.finishedColor }
         } else {
-          lineClass = { borderBottomtColor: this.finishedColor }
+          lineClass = { borderBottomColor: this.finishedColor }
         }
       } else if (this.direction === 'column') {
         lineClass = { borderRightColor: '#F2F2F2' }
       } else {
-        lineClass = { borderBottomtColor: '#F2F2F2' }
+        lineClass = { borderBottomColor: '#F2F2F2' }
       }
       return lineClass
-    },
-    imageSrc() {
-      if (this.myStatus === 'finished') {
-        return '/common/images/steps-finished.svg'
-      } else if (this.myStatus === 'error') {
-        return '/common/images/steps-error.svg'
-      }
     },
   },
 }
