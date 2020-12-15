@@ -1,5 +1,5 @@
 <template>
-  <tabs index="{{ currentIndex }}" onchange="ChangeTap">
+  <tabs index="{{ currentIndex }}" onchange="changeTap">
     <tab-bar class="tab-bar" mode="{{ mode }}">
       <block for="{{ compData }}">
         <div
@@ -58,19 +58,32 @@ export default {
     },
     background: {
       type: String,
-      default: '',
+      default: '#b3b3b3',
     },
     activeBackground: {
       type: String,
-      default: '#FFF',
+      default: '#456fff',
     },
     activeColor: {
-      default: '#456FFF',
+      default: '',
     },
   },
   data() {
     return {
       currentIndex: this.index,
+      myActiveColor: this.activeColor,
+      ratio: 1,
+    }
+  },
+  onInit() {
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    this.ratio = designWidth / 360
+    if (!this.activeColor) {
+      if (this.type === 'default' || this.type === 'desc') {
+        this.myActiveColor = '#456fff'
+      } else {
+        this.myActiveColor = '#ffffff'
+      }
     }
   },
   computed: {
@@ -91,7 +104,10 @@ export default {
       if (this.tabsLength < 4) {
         width = (1 / this.tabsLength) * 100 + '%'
       } else {
-        width = this.type === 'capsule' ? '106px' : '80px'
+        width =
+          this.type === 'capsule'
+            ? this.ratio * 106 + 'px'
+            : this.ratio * 80 + 'px'
       }
       return { width }
     },
@@ -103,11 +119,11 @@ export default {
           desc: this.data[i].describe,
           textStyle:
             i === this.currentIndex
-              ? 'color: ' + this.activeColor + ';'
+              ? 'color: ' + this.myActiveColor + ';'
               : 'color: ' + this.typeDefaultColor() + ';',
           bottomStyle:
             i === this.currentIndex
-              ? 'background-color: ' + this.activeColor + ';'
+              ? 'background-color: ' + this.myActiveColor + ';'
               : 'background-color: transparent;',
         }
         arr.push(item)
@@ -120,10 +136,15 @@ export default {
   },
   activeBg(idx) {
     let background = ''
+    if (this.type === 'default') {
+      return ''
+    }
     if (this.type !== 'desc' && idx === this.currentIndex) {
       background = this.activeBackground
     } else {
-      background = this.background
+      if (this.type !== 'desc') {
+        background = this.background
+      }
     }
 
     return 'background-color:' + background
@@ -132,7 +153,7 @@ export default {
     return this.type === 'capsule' ? '#fff' : '#b3b3b3'
   },
   descStyle(idx) {
-    let background = '#fff'
+    let background = '#FFFFFF'
     background = idx === this.currentIndex ? this.activeBackground : background
     return 'background-color:' + background
   },
@@ -141,7 +162,7 @@ export default {
     color = idx === this.currentIndex ? color : this.typeDefaultColor()
     return 'color:' + color
   },
-  ChangeTap(evt) {
+  changeTap(evt) {
     this.currentIndex = evt.index
     this.$emit('tap', {
       index: this.currentIndex,
@@ -216,6 +237,8 @@ export default {
   .item-desc {
     flex-direction: column;
     align-items: center;
+    border-radius: 14px * @ratio;
+    padding: 0 5px * @ratio;
     text {
       color: #b3b3b3;
       font-size: 10px * @ratio;

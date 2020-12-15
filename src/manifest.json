@@ -237,7 +237,7 @@
         "menu": false
       },
       "pages/gallery": {
-        "titleBarText": "画廊 steps",
+        "titleBarText": "画廊 gallery",
         "menu": false
       },
       "pages/slider": {
