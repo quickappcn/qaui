@@ -63,8 +63,14 @@
         </div>
       </div>
     </div>
-    <div class="drawer {{showDrawer?'show-drawer':''}}" style="top:{{drawerTop}};" if="{{showDrawer}}">
-      <div class="{{drawer.direction === 'column'?'drawer-content-column':'drawer-content-row'}}">
+    <div
+      class="drawer {{showDrawer?'show-drawer':''}}"
+      style="top:{{drawerTop}};"
+      if="{{showDrawer}}"
+    >
+      <div
+        class="{{drawer.direction === 'column'?'drawer-content-column':'drawer-content-row'}}"
+      >
         <block for="{{drawer.children}}">
           <div
             class="{{drawer.direction === 'row' && $item.checked ? 'selected-bg':''}} {{drawer.direction === 'column'?'drawer-item-column':'drawer-item-row'}}"

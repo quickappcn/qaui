@@ -9,7 +9,10 @@
             class="nav-item-left"
             style="{{ $item.leftStyle }}"
           ></div>
-          <div class="nav-item-text-{{ type }} {{ activeStyle($idx) }}">
+          <div
+            class="nav-item-text-{{ type }} {{ activeStyle($idx) }}"
+            style="background-color:{{ type==='capsule'&&$idx===index?activeColor:'' }};"
+          >
             <my-icon
               type="{{ $item.icon }}"
               if="{{ type === 'icon-label'}}"
@@ -66,7 +69,9 @@ export default {
           text: this.data[i].label,
           textStyle:
             i === this.index
-              ? `color: ${this.activeColor};`
+              ? `color: ${
+                  this.type !== 'capsule' ? this.activeColor : '#ffffff'
+                };`
               : 'color: rgba(0,0,0,0.80);',
           leftStyle:
             i === this.index
@@ -91,20 +96,21 @@ export default {
 <style lang="less">
 @import '../common.less';
 .qaui-wrap {
+  height: 100%;
   flex-direction: row;
   position: relative;
   &-nav {
     position: absolute;
     height: 100%;
     top: 0;
-    bottom: 0px;
+    bottom: 0;
     width: 80px * @ratio;
     border-color: rgba(0, 0, 0, 0.08);
     border-right-width: 1px * @ratio;
     flex-direction: column;
     .nav-item-left {
       position: absolute;
-      left: 0px;
+      left: 0;
       height: 20px * @ratio;
       width: 3px * @ratio;
       background-color: #456fff;
