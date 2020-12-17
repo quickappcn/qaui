@@ -25,6 +25,7 @@
       description="{{ description }}"
       btn-text="添加"
       icon="qrcode-fill"
+      icon-src="{{ iconSrc }}"
       onclose="handClose"
       onsuccess="handSuccess"
       onfail="handFail"
@@ -46,6 +47,7 @@ export default {
       background: '#fff',
       activeColor: '#456FFF',
       textColor: '#B2B2B2',
+      iconSrc:'../../common/images/default_blue.png'
     }
   },
   handClose() {
@@ -80,11 +82,12 @@ export default {
 
 #### 组件属性
 
-| 属性        | 类型   | 默认值   | 说明           |
-| :---------- | :----- | :------- | :------------- |
-| icon        | String | 'qrcode' | icon 名称      |
-| description | String | ''       | 文字描述，必填 |
-| btnText     | String | '添加'   | 按钮文字，必填 |
+| 属性        | 类型   | 默认值   | 说明                                       |
+| :---------- | :----- | :------- | :----------------------------------------- |
+| icon        | String | 'qrcode' | icon 名称                                  |
+| iconSrc     | String | ''       | icon 图片地址,与 icon 名称互斥，优先级更高 |
+| description | String | ''       | 文字描述，必填                             |
+| btnText     | String | '添加'   | 按钮文字，必填                             |
 
 #### 组件事件
 

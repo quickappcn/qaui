@@ -7,10 +7,12 @@
       </div>
       <div class="qaui-wrap-layer-icon">
         <my-icon
+          if="{{ !iconSrc }}"
           type="{{ icon }}"
           size="24"
           color="rgba(255,255,255,0.80)"
         ></my-icon>
+        <image else src="{{ iconSrc }}"></image>
       </div>
       <div class="qaui-wrap-layer-desc">
         <text>{{ description }}</text>
@@ -39,6 +41,9 @@ export default {
       type: String,
       required: true,
       default: 'qrcode',
+    },
+    iconSrc: {
+      type: String,
     },
   },
   data() {
@@ -114,6 +119,10 @@ export default {
     &-icon {
       &:extend(.common);
       border-radius: 6px * @ratio;
+      image {
+        width: 100%;
+        height: 100%;
+      }
     }
     &-desc {
       margin-right: 8px * @ratio;

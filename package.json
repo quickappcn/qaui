@@ -1,6 +1,6 @@
 {
   "name": "qaui",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "description": "quickapp official components library",
   "subversion": {
     "toolkit": "0.6.8"
@@ -16,7 +16,7 @@
     "build:docs": "vuepress build docs",
     "lint": "eslint --ext .js,.ux src",
     "lint:fix": "eslint --ext .js,.ux src --fix",
-    "pretty": "prettier --write **/*.ux"
+    "pretty": "prettier --write */**/*.ux"
   },
   "license": "MIT",
   "husky": {

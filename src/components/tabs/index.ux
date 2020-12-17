@@ -109,6 +109,7 @@ export default {
             ? this.ratio * 106 + 'px'
             : this.ratio * 80 + 'px'
       }
+
       return { width }
     },
     compData() {
