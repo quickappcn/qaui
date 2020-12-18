@@ -124,10 +124,10 @@ export default {
     margin-left: auto;
 
     text {
-      font-size: 14px;
+      font-size: 14px * @ratio;
       color: #b2b2b2;
       text-align: right;
-      line-height: 18px;
+      line-height: 18px * @ratio;
     }
   }
 }
