@@ -196,7 +196,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 130px 0;
+  padding: 160px 0;
 
   .header {
     width: 100%;
@@ -218,19 +218,6 @@ export default {
     padding: 0 20px;
     flex-direction: row;
     justify-content: space-around;
-  }
-
-  &-select {
-    width: 95px;
-    height: 33px;
-    margin: 50px 0 200px;
-    font-size: 14px;
-    background-color: #ffffff;
-
-    &-item {
-      margin: 5px 0;
-      font-size: 14px;
-    }
   }
 
   .rootText {
