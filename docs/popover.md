@@ -197,10 +197,10 @@ export default {
         'bottom',
         'bottomRight',
       ],
-      popoverWidth: 95,
-      triggerSize: [84, 33],
+      popoverWidth: 198,
+      triggerSize: [175, 69],
       offset: [0, 0],
-      arrowSpace: 10,
+      arrowSpace: 21,
     }
   },
   handleClick(data) {
@@ -217,7 +217,7 @@ export default {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  padding: 130px 0;
+  padding: 280px 0;
 
   .header {
     width: 100%;
@@ -241,27 +241,14 @@ export default {
     justify-content: space-around;
   }
 
-  &-select {
-    width: 95px;
-    height: 33px;
-    margin: 50px 0 200px;
-    font-size: 14px;
-    background-color: #ffffff;
-
-    &-item {
-      margin: 5px 0;
-      font-size: 14px;
-    }
-  }
-
   .rootText {
-    width: 84px;
-    height: 33px;
-    border-radius: 6px;
-    font-size: 13px;
+    width: 175px;
+    height: 69px;
+    border-radius: 12px;
+    font-size: 27px;
     color: rgba(0, 0, 0, 0.8);
     text-align: center;
-    line-height: 33px;
+    line-height: 69px;
     background-color: #ffffff;
   }
 }

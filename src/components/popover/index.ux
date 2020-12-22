@@ -88,9 +88,10 @@ export default {
       arrowBoxClass: '', //设置箭头盒子的宽高
       arrowMarginStyle: {}, //当箭头不在正中间时，所需要添加的外边距
       isBefore: true, //箭头组件在DOM中的位置是否在气泡菜单组件的前面
-      menuStyleObj: {}, //气泡菜单的宽高，
+      menuStyleObj: {}, //气泡菜单的宽度
       menuOffset: { top: 0, left: 0 }, //气泡菜单的位置
       innerArrowSpace: 10, //保存用户传来的符合要求的arrowSpace值，默认值为arrowSpace默认值
+      ratio: 1, //屏幕适配比，默认为1
     }
   },
   props: {
@@ -146,29 +147,30 @@ export default {
     },
   },
   onInit() {
-    //设置气泡菜单的宽高
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    this.ratio = designWidth / 360
+    //设置气泡菜单的宽度
     this.menuStyleObj = {
       width: this.popoverWidth + 'px',
-      height: this.contents.length * 36 + 'px',
+      height: this.contents.length * 36 * this.ratio + 'px',
     }
   },
   //每一行被点击时的事件处理函数
   clickItem(ev) {
-    const idx = ev.target._attr.key
+    const idx = ev.currentTarget._attr.key
     this.$emit('menuItemTap', {
       event: ev,
       index: idx,
     })
+    ev.stopPropagation()
   },
   //元素被按下时的事件处理函数
   pressColor(ev) {
-    this.pressKey = ev.target._attr.key
-    ev.stopPropagation()
+    this.pressKey = ev.currentTarget._attr.key
   },
   //元素被松开时的事件处理函数
   unpressedColor(ev) {
     this.pressKey = -1
-    ev.stopPropagation()
   },
   //触发气泡菜单的根元素的点击事件
   clickTrigger(ev) {
@@ -181,6 +183,7 @@ export default {
     } else {
       this.hideMenu()
     }
+    ev.stopPropagation()
   },
   //隐藏气泡菜单的方法
   hideMenu() {
@@ -214,8 +217,8 @@ export default {
   // 气泡菜单显示前需要做的一些操作
   showPreviousOperations(x, y) {
     const str = this.placement.toLowerCase(),
-      defaultMargin = 10,
-      arrowHeight = 8,
+      defaultMargin = 10 * this.ratio,
+      arrowHeight = 8 * this.ratio,
       menuWidth = parseInt(this.menuStyleObj.width),
       menuHeight = parseInt(this.menuStyleObj.height),
       triggerWidth = this.triggerSize[0],
