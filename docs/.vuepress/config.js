@@ -4,9 +4,9 @@ module.exports = {
   description: 'QaUI是联盟官方组件库',
   plugins: [
     [
-      '@vuepress/google-analytics',
+      'vuepress-plugin-google-tag-manager',
       {
-        ga: 'G-GNKRB7QBLL',
+        gtm: 'G-GNKRB7QBLL',
       },
     ],
     '@vuepress/back-to-top',
