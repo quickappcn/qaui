@@ -21,6 +21,7 @@ export default {
       content: '', //设置右侧文字的内容
       trailStyle: '', //设置进度条未完成部分的颜色样式
       innerPercent: 50, //保存符合规则或者已经纠正过的percentage，默认值和percentage的默认值一样
+      ratio: 1, //屏幕适配比，默认为1
     }
   },
   props: {
@@ -74,6 +75,8 @@ export default {
     },
   },
   onInit() {
+    const designWidth = this.$app.$def.manifest.config.designWidth || 750
+    this.ratio = designWidth / 360
     //给百分比设置监听，实时根据百分比的值更新进度条进度
     this.$watch('percentage', 'watchPercentageChange')
     //设置进度条组件总宽度
@@ -108,13 +111,13 @@ export default {
     if (this.strokeColor) {
       this.strokeStyle = {
         width: percent + '%',
-        height: this.strokeHeight + 'px',
+        height: this.strokeHeight * this.ratio + 'px',
         backgroundColor: this.strokeColor,
       }
     } else {
       this.strokeStyle = {
         width: percent + '%',
-        height: this.strokeHeight + 'px',
+        height: this.strokeHeight * this.ratio + 'px',
       }
     }
     //设置右侧文字内容

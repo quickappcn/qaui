@@ -111,7 +111,6 @@ export default {
       default: '',
     },
   },
-
   updateStatus(opts = {}) {
     const {
       direction,
@@ -314,10 +313,10 @@ export default {
       }
       &-textWrap-text {
         font-family: HYQiHei-EES;
-        font-size: 10px;
+        font-size: 10px * @ratio;
         color: rgba(0, 0, 0, 0.8);
         text-align: center;
-        line-height: 12px;
+        line-height: 12px * @ratio;
       }
 
       &-leftLine-row {

@@ -69,7 +69,7 @@ export default {
     return {
       percentage: 25,
       isContentShow: true,
-      progressWidth: '360px',
+      progressWidth: '750px',
       strokeColor: '#1E90FF',
       trailColor: 'rgba(255,215,0,.5)',
       format: (percentage) => '已下载' + percentage + '%',
@@ -87,23 +87,23 @@ export default {
 
   .title {
     width: 100%;
-    height: 45px;
-    margin-left: 20px;
-    line-height: 45px;
-    font-size: 12px;
+    height: 90px;
+    margin-left: 40px;
+    line-height: 90px;
+    font-size: 24px;
   }
 
   .progress-group {
     flex-direction: column;
     width: 100%;
-    padding: 0 20px 40px 20px;
+    padding: 0 40px 80px 40px;
     background-color: #ffffff;
 
     .progress-box {
       flex-direction: row;
       justify-content: flex-start;
       align-items: center;
-      margin-top: 28px;
+      margin-top: 56px;
     }
   }
 }
