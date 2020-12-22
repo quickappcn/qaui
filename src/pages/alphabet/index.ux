@@ -12,7 +12,12 @@
     </q-alphabet>
   </div>
 </template>
-<style lang="less"></style>
+
+<style lang="less">
+.qaui-wrap {
+  flex-direction: column;
+}
+</style>
 
 <script>
 export default {

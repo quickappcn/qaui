@@ -34,6 +34,14 @@
 </template>
 ```
 
+```less
+<style lang="less">
+.qaui-wrap{
+  flex-direction: column;
+}
+</style>
+```
+
 ```js
 <script>
 export default {

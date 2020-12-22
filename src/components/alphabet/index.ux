@@ -131,6 +131,7 @@ export default {
 <style lang="less">
 @import '../common.less';
 .qaui-wrap {
+  height: 100%;
   position: relative;
   &-group {
     flex-direction: column;

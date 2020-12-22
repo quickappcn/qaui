@@ -34,7 +34,7 @@
           <q-tabs
             type="capsule"
             data="{{ data }}"
-            active-color="#fff"
+            active-color="#456FFF"
             ontap="changeTap"
           >
             <block for="{{ data }}">
