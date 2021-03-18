@@ -50,7 +50,8 @@
     "vuepress-plugin-google-tag-manager": "^0.0.5"
   },
   "dependencies": {
-    "clipboard": "^2.0.6"
+    "clipboard": "^2.0.6",
+    "vue-feedback-component": "^1.0.0"
   },
   "browserslist": [
     "chrome 65"

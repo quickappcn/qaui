@@ -10,6 +10,15 @@ module.exports = {
       },
     ],
     '@vuepress/back-to-top',
+    [
+      'vuepress-plugin-feedback',
+      {
+        projectId: '161104887932449729',
+        titleText: '您对组件库的使用体验满意吗?',
+        good: '组件丰富&&使用简单方便&&UI清晰整洁&&文档丰富详细&&组件接口齐全',
+        bad: '组件不全&&使用复杂&&UI不美观&&文档描述不清晰&&组件接口不全',
+      },
+    ],
   ],
   head: [
     ['link', { rel: 'icon', href: 'favicon.ico' }],
