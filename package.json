@@ -46,12 +46,11 @@
     "lint-staged": "^10.4.0",
     "prettier": "^2.1.2",
     "prettier-plugin-quickapp": "^0.1.0",
-    "vuepress": "^1.5.4",
-    "vuepress-plugin-google-tag-manager": "^0.0.5"
+    "vuepress": "^1.5.4"
   },
   "dependencies": {
     "clipboard": "^2.0.6",
-    "vue-feedback-component": "^1.0.0"
+    "vuepress-plugin-feedback": "^1.2.0"
   },
   "browserslist": [
     "chrome 65"

@@ -3,12 +3,6 @@ module.exports = {
   base: '/qaui/',
   description: 'QaUI是联盟官方组件库',
   plugins: [
-    [
-      'vuepress-plugin-google-tag-manager',
-      {
-        gtm: 'G-GNKRB7QBLL',
-      },
-    ],
     '@vuepress/back-to-top',
     [
       'vuepress-plugin-feedback',
@@ -25,6 +19,18 @@ module.exports = {
     [
       'meta',
       { name: 'keywords', content: '快应用 组件库 官方 UI组件库 快应用开发' },
+    ],
+    [
+      'script',
+      {
+        async: '',
+        src: 'https://www.googletagmanager.com/gtag/js?id=G-GNKRB7QBLL',
+      },
+    ],
+    [
+      'script',
+      {},
+      'function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],gtag("js",new Date),gtag("config","G-GNKRB7QBLL");',
     ],
   ],
   markdown: {
