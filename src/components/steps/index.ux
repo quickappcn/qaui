@@ -59,14 +59,8 @@ export default {
     const elements = this.$parent()._childrenVms.filter(
       (element) => element.groupId === this.id && element._type === 'q-step'
     )
-    const {
-      direction,
-      current,
-      hasText,
-      finishedColor,
-      errorColor,
-      hasIcon,
-    } = this
+    const { direction, current, hasText, finishedColor, errorColor, hasIcon } =
+      this
     elements.forEach((element, index) => {
       element.updateStatus({
         direction,

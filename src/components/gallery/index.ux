@@ -22,7 +22,10 @@
           <div class="qaui-gallery-mask-wrapper" if="{{ srcs.length > 9}}">
             <image
               src="{{ srcs[8] }}"
-              class="qaui-gallery-image-wrapper-standard qaui-gallery-image-wrapper-extra"
+              class="
+                qaui-gallery-image-wrapper-standard
+                qaui-gallery-image-wrapper-extra
+              "
             >
               <div class="qaui-gallery-image-wrapper-mask">
                 <text>+ {{ srcs.length - 9 }}</text>
