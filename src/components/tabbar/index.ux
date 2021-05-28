@@ -66,6 +66,11 @@ export default {
       currentIndex: this.index,
     }
   },
+  onInit() {
+    this.$watch('index', (n, o) => {
+      this.currentIndex = n
+    })
+  },
   computed: {
     tabbarStyle() {
       return {
