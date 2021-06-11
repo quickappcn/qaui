@@ -48,6 +48,9 @@ export default {
       this.$element('textarea').focus({ focus: true })
     }
   },
+  onDestroy() {
+    this.$element('textarea').focus({ focus: false })
+  },
   lineHandler({ lineCount }) {
     if (lineCount < 2) return
     this.height = 18 * lineCount

@@ -89,6 +89,9 @@ export default {
       this.$element('input').focus({ focus: true })
     }
   },
+  onDestroy() {
+    this.$element('input').focus({ focus: false })
+  },
   changeHandler({ value }) {
     this.$emit('change', value)
     this.inputValue = value
